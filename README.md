@@ -1,3 +1,1 @@
-## Clinic Bahmni configuration and data. 
-======================================================================
-
+# Bahmni Clinic configuration and data.
