@@ -16,3 +16,8 @@ eventually migrate to K8s once we move to India AWS account.
 Note: any changes to docker-compose would not redeploy the containers on the
 environment. You would still need to SSH into the EC2 box and manually restart
 the containers.
+
+## References to openmrs-module-initializer for Bahmni
+
+https://github.com/CRUDEM/openmrs-config-hsc
+https://github.com/Siko099/openmrs-config-uganda
