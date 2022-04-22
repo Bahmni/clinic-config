@@ -21,3 +21,23 @@ the containers.
 
 https://github.com/CRUDEM/openmrs-config-hsc
 https://github.com/Siko099/openmrs-config-uganda
+
+## Steps to follow for openmrs initializer to load masterdata 
+
+Step 1: **cd docker/masterdata**
+
+Step 2: Make sure we have CSV's with respective folder names inside **masterdata/configuration** folder 
+    
+    configuration/
+        ├── addresshierarchy/
+        ├── locations/
+        ├── privileges/
+        ├── roles/
+Step 3: In **docker/masterdata/modules** folder place the respective omods if required.
+
+Step 4: **docker-compose up -d**
+
+Step 5: Login to openmrs https://localhost/openmrs
+            
+    Username:admin
+    Password:Admin123
