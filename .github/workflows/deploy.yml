@@ -15,7 +15,7 @@ jobs:
           SSH_KEY: ${{secrets.BAHMNI_CLINIC_PEM}}
       - name: deploy clinic configuration
         run: |
-          sudo ssh -T -o "StrictHostKeyChecking no" -i "bahmni-clinic-demo.pem" ec2-user@ec2-65-2-141-41.ap-south-1.compute.amazonaws.com <<EOF
+          sudo ssh -T -o "StrictHostKeyChecking no" -i "bahmni-clinic-demo.pem" ec2-user@ec2-3-110-214-169.ap-south-1.compute.amazonaws.com <<EOF
             cd clinic-config
             git pull
           EOF
