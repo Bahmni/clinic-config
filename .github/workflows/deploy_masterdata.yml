@@ -23,7 +23,7 @@ jobs:
             cd clinic-config
             git pull
             cd docker/masterdata
-            docker restart
+            docker restart masterdata-openmrs-1
           EOF
   notification:
     name: notification
