@@ -34,4 +34,4 @@ jobs:
       - name: Deploy notification
         if: ${{ needs.deploy.result == 'success' }}
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":":white_check_mark:  Clinic configuration deployed on https://clinics.bahmni-covid19.in/"}' ${{ secrets.SLACK_WEBHOOK_URL }}
+          curl -X POST -H 'Content-type: application/json' --data '{"text":":white_check_mark:  Masterdata configuration deployed on https://clinics.bahmni-covid19.in/"}' ${{ secrets.SLACK_WEBHOOK_URL }}
