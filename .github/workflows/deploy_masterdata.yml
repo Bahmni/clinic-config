@@ -17,8 +17,8 @@ jobs:
         shell: bash
         env:
           SSH_KEY: ${{secrets.BAHMNI_CLINIC_PEM}}
-      - name: Sleep for 20 seconds
-        run: sleep 20s
+      - name: Sleep for 10 seconds
+        run: sleep 10s
         shell: bash
       - name: deploy clinic configuration
         run: |

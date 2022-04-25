@@ -16,7 +16,7 @@ This would deploy the latest config to clinic.bahmni-covid19.in environment.
 1) deploy_clinic_config.yml --> paths-ignored: masterdata config folders
 2) deploy_masterdata.yml --> paths-only: masterdata config folders
 
-Added sleep for 20s in deploy_masterdata.yml to avoid Error: "No such file or directory" because workflow runs asynchronusly.
+Added sleep in deploy_masterdata.yml to avoid Error: "No such file or directory" because workflow runs asynchronusly.
 
 This is currently a temporary CI solution - we would
 eventually migrate to K8s once we move to India AWS account.
