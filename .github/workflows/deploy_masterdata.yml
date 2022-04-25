@@ -17,6 +17,9 @@ jobs:
         shell: bash
         env:
           SSH_KEY: ${{secrets.BAHMNI_CLINIC_PEM}}
+      - name: Sleep for 30 seconds
+        run: sleep 15s
+        shell: bash
       - name: deploy clinic configuration
         run: |
           sudo ssh -T -o "StrictHostKeyChecking no" -i "bahmni-clinic-demo.pem" ec2-user@ec2-3-110-214-169.ap-south-1.compute.amazonaws.com <<EOF
@@ -25,8 +28,6 @@ jobs:
             cd clinic-config/docker/masterdata
             docker-compose restart openmrs
           EOF
-        with:
-          wait-interval: 15
 
   notification:
     name: notification
