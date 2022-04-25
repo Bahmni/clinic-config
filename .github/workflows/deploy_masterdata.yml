@@ -20,10 +20,10 @@ jobs:
       - name: deploy clinic configuration
         run: |
           sudo ssh -T -o "StrictHostKeyChecking no" -i "bahmni-clinic-demo.pem" ec2-user@ec2-3-110-214-169.ap-south-1.compute.amazonaws.com <<EOF
-            cd clinic-config
-            git pull
-            cd docker/masterdata
-            docker restart masterdata-openmrs-1
+            rm -rf clinic-config
+            git clone https://github.com/BahmniIndiaDistro/clinic-config.git
+            cd clinic-config/docker/masterdata
+            docker-compose restart openmrs
           EOF
   notification:
     name: notification

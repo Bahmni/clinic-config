@@ -6,11 +6,17 @@ This repo represents configuration for India Clinics.
 
 ### CI
 
-Push to main would trigger the deploy.yml GHA that would deploy the latest
-config to clinic.bahmni-covid19.in environment (basically gha would SSH into the
-ec2 using the pem from repository secrets and perform git pull where the
+Push to main would trigger 2 yaml files.
+Common things done: Basically gha would SSH into the
+ec2 using the pem from repository secrets and perform git clone where the
 clinic_config directory is volume mounted on bahmni-web and openmrs containers
-as default_config). This is currently a temporary CI solution - we would
+as default_config
+
+This would deploy the latest config to clinic.bahmni-covid19.in environment.
+1) deploy_clinic_config.yml --> paths-ignored: masterdata config folders
+2) deploy_masterdata.yml --> paths-only: masterdata config folders
+
+This is currently a temporary CI solution - we would
 eventually migrate to K8s once we move to India AWS account.
 
 Note: any changes to docker-compose would not redeploy the containers on the
