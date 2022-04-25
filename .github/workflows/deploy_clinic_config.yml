@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'masterdata/**'
+      - 'docker/masterdata/**'
+
 jobs:
   deploy:
     name: Deploy
