@@ -118,7 +118,7 @@
                 SELECT count(*) from location_tag_map where location_tag_id IN (SELECT location_tag_id from location_tag where name="Bahmni Clinic");
             </sqlCheck>
         </preConditions>
-        <comment> Tag Bahmni Clinic location as Bahmni Clinic </comment>
+        <comment> Tag Bahmni Clinic location to Login Location </comment>
         <sql>
             SELECT location_tag_id INTO @location_tag_id FROM location_tag WHERE name = "Login Location" ;
             SELECT location_id INTO @location_id FROM location WHERE location.name="Bahmni Clinic" and description = "bahmni clinic";
@@ -130,4 +130,6 @@
     <include file ="addObsPathSplitterProperty.xml"/>
     <include file ="addMoreObsSplitterProperty.xml"/>
     <include file ="addMultiSelectObsSplitterProperty.xml"/>
+    <include file ="loginRolesAndPrivileges.xml"/>
+    <include file ="registrationAndSearchPrivileges.xml"/>
 </databaseChangeLog>

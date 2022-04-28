@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+     <changeSet id="bah-1571-20220427-1" author="Deepthi,Soorya">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT count(*) from location_tag_map where location_tag_id IN (SELECT location_tag_id from location_tag where name="Bahmni Clinic");
+            </sqlCheck>
+        </preConditions>
+        <comment> Add Visit Location Tag and map it to Bahmni Clinic Location </comment>
+        <sql>
+            INSERT INTO location_tag(name, description, creator, date_created, retired, uuid) VALUES ('Visit Location', 'Visit Location', 1, now(), 0, uuid());
+
+            SELECT location_tag_id INTO @visit_location_tag_id FROM location_tag WHERE name = "Visit Location" ;
+            SELECT location_id INTO @location_id FROM location WHERE location.name="Bahmni Clinic" and description = "bahmni clinic";
+
+            INSERT INTO location_tag_map(location_id, location_tag_id) VALUES(@location_id, @visit_location_tag_id);
+        </sql>
+    </changeSet>
+    <changeSet id="bah-1571-20220427-2" author="Deepthi,Soorya">
+        <comment>Create Registration-App role</comment>
+        <sql>
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Add Encounters');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'app:registration');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Concepts');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Encounters');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Patients');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get People');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Visits');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Visit Types');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'View Patients');
+        </sql>
+    </changeSet>
+</databaseChangeLog>
