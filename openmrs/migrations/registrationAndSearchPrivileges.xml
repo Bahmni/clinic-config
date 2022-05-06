@@ -36,4 +36,10 @@
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'View Patients');
         </sql>
     </changeSet>
+    <changeSet id="bah-1571-20220506-1" author="Deepthi,Soorya"> 
+        <comment> Add undisclosed option for the Gender dropdown </comment>
+        <sql>
+           UPDATE global_property SET property_value = '{"M":"Male", "F":"Female","O":"Other","U":"Undisclosed"}' WHERE property LIKE 'mrs.genders';
+        </sql>
+     </changeSet>
 </databaseChangeLog>
