@@ -42,4 +42,23 @@
            UPDATE global_property SET property_value = '{"M":"Male", "F":"Female","O":"Other","U":"Undisclosed"}' WHERE property LIKE 'mrs.genders';
         </sql>
      </changeSet>
+     <changeSet id="bah-1572-20220504-1" author="Deepthi,Soorya">
+        <comment> Add Identifier type ABC to patient_identifier_type and update global property  </comment>
+        <sql>
+            INSERT into idgen_identifier_source (uuid, name, description, identifier_type, date_created, creator) 
+            VALUES (uuid(), 'ABC', 'ID sequence source for patients in ABC', (select patient_identifier_type_id 
+            from patient_identifier_type where name = 'Bahmni Id'), now(), 1);
+
+            INSERT into idgen_seq_id_gen (id, next_sequence_value, base_character_set, first_identifier_base, prefix, 
+            suffix, min_length, max_length) VALUES ((select id from idgen_identifier_source where name = 'ABC'), 
+            200001, 0123456789, 200000, 'ABC', '', 4, 9);
+        </sql>
+    </changeSet>
+     <changeSet id="bah-1572-20220504-2" author="Deepthi,Soorya">
+        <comment>Create Role privilege to see create new patient button and auto generate Patient Identifiers</comment>
+        <sql>
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Add Patients');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Patient Identifiers');
+        </sql>
+    </changeSet>
 </databaseChangeLog>
