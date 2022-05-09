@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="bah-1571-20220427-1" author="Deepthi,Soorya">
+        <comment>Create FrontDesk role and respective privilege for logging into bahmni</comment>
+        <sql>
+            INSERT IGNORE INTO role VALUES('FrontDesk', 'Will give ability to login to the application', UUID());
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Users');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Providers');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Users');
+        </sql>
+    </changeSet>
+    <changeSet id="bah-1571-20220427-2" author="Deepthi,Soorya">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from users where system_id = 'registration'
+            </sqlCheck>
+        </preConditions>
+        <comment>Map registration users to FrontDesk role</comment>
+        <sql>
+            set @id = NULL;
+            select user_id from users where system_id='registration' into @id;
+            INSERT IGNORE INTO `user_role` VALUES (@id,'FrontDesk');
+        </sql>
+    </changeSet>
+</databaseChangeLog>
