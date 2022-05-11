@@ -61,4 +61,18 @@
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Patient Identifiers');
         </sql>
     </changeSet>
+     <changeSet id="bah-1573-20220509-1" author="Deepthi,Kavitha">
+        <comment>Register a patient with Phone Number and Alternate Phone Number </comment>
+        <sql>
+            INSERT into person_attribute_type (name,description,format,searchable,creator,date_created,retired,uuid) VALUES('primaryContact','Phone Number','java.lang.String',0,1,now(),0,uuid());
+            INSERT into person_attribute_type (name,description,format,searchable,creator,date_created,retired,uuid) VALUES('secondaryContact','Alternate Phone Number','java.lang.String',0,1,now(),0,uuid());
+        </sql>
+    </changeSet>
+     <changeSet id="bah-1573-20220511-1" author="Deepthi,Kavitha">
+        <comment>Retrieve the patient photo from the correct path after saving or updation of patient</comment>
+        <sql>
+            INSERT into global_property(property,property_value,uuid) VALUES("emr.personImagesDirectory","/home/bahmni/patient_images",uuid());
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>
