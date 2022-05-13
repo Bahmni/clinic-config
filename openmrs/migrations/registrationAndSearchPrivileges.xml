@@ -84,8 +84,9 @@
      <changeSet id="bah-1573-20220511-4" author="Clinic-Config">
         <comment>Remove givenNameLocal,middleNameLocal,familyNameLocal and relationship section from register patient page </comment>
         <sql>   
-            UPDATE relationship_type SET retired=1 WHERE relationship_type_id=1;
             UPDATE person_attribute_type SET retired=1 WHERE name='givenNameLocal';
+         <!--Inorder to test the below query for relationship_type table we need to remove relationship_type from openmrs manually for now.-->
+            UPDATE relationship_type SET retired=1 WHERE relationship_type_id=1;
         </sql>
     </changeSet>
 </databaseChangeLog>
