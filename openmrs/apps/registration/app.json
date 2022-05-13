@@ -16,8 +16,8 @@
             "familyName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
             "givenName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
             "middleName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
-            "primaryContact" : {"pattern" : "^([+]91[-]?|91|)?([1-9]{1}[0-9]{9})$", "errorMessage" : "Contact should be this in format: +91-xxxxxxxxxx | 91xxxxxxxxxx | xxxxxxxxxx | +91xxxxxxxxxx"},
-            "secondaryContact" : {"pattern" : "^([+]91[-]?|91|)?([1-9]{1}[0-9]{9})$", "errorMessage" : "Contact should be this in format: +91-xxxxxxxxxx | 91xxxxxxxxxx | xxxxxxxxxx | +91xxxxxxxxxx"}
+            "phoneNumber" : {"pattern" : "^([+]91[1-9]{1}[0-9]{9})$", "errorMessage" : "Phone Number should be 10 digits with prefix +91 eg:+91xxxxxxxxxx"},
+            "alternatePhoneNumber" : {"pattern" : "^([+]91[1-9]{1}[0-9]{9})$", "errorMessage" : "Phone Number should be 10 digits with prefix +91 eg:+91xxxxxxxxxx"}
         }
     }
 }
