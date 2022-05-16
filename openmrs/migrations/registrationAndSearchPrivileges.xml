@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-     <changeSet id="202205161232-registration" author="Clinic-config">
+    <changeSet id="202205161232-registrationLocation" author="Clinic-config">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 SELECT count(*) from location_tag_map where location_tag_id IN (SELECT location_tag_id from location_tag where name="Bahmni Clinic");
@@ -18,7 +18,10 @@
             SELECT location_tag_id INTO @visit_location_tag_id FROM location_tag WHERE name = "Visit Location" ;
             SELECT location_id INTO @location_id FROM location WHERE location.name="Bahmni Clinic" and description = "bahmni clinic";
             INSERT INTO location_tag_map(location_id, location_tag_id) VALUES(@location_id, @visit_location_tag_id);
-        
+        </sql>
+    </changeSet>
+    <changeSet id="202205160207-role-frontDesk" author="Clinic-config"> 
+        <sql>
             <!--Create Registration-App role-->
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Add Encounters');
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'app:registration');
@@ -29,7 +32,18 @@
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Visits');
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Visit Types');
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'View Patients');
-            
+
+             <!--Create Role privilege to see create new patient button and auto generate Patient Identifiers-->
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Add Patients');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Patient Identifiers');
+             
+            <!--Add privileges required to edit patient-->
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Patients');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Patient Identifiers'); 
+        </sql>           
+    </changeSet>
+    <changeSet id="202205160210-identifier" author="Clinic-config"> 
+        <sql>
             <!--Add Identifier type ABC to patient_identifier_type and update global property-->
             INSERT into idgen_identifier_source (uuid, name, description, identifier_type, date_created, creator) 
             VALUES (uuid(), 'ABC', 'ID sequence source for patients in ABC', (select patient_identifier_type_id 
@@ -38,32 +52,33 @@
             INSERT into idgen_seq_id_gen (id, next_sequence_value, base_character_set, first_identifier_base, prefix, 
             suffix, min_length, max_length) VALUES ((select id from idgen_identifier_source where name = 'ABC'), 
             200001, 0123456789, 200000, 'ABC', '', 4, 9);
-            
-            <!--Create Role privilege to see create new patient button and auto generate Patient Identifiers-->
-            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Add Patients');
-            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Patient Identifiers');
-            
-            <!--Add undisclosed option for the Gender dropdown-->
-            UPDATE global_property SET property_value = '{"M":"Male", "F":"Female","O":"Other","U":"Undisclosed"}' WHERE property LIKE 'mrs.genders';
-            
+        </sql>                     
+    </changeSet>   
+
+    <changeSet id="202205160216-patientAttributes" author="Clinic-config"> 
+        <sql>
             <!--Register a patient with Phone Number and Alternate Phone Number-->
             INSERT into person_attribute_type (name,description,format,searchable,creator,date_created,retired,uuid) VALUES('phoneNumber','Phone Number','java.lang.String',0,1,now(),0,uuid());
             INSERT into person_attribute_type (name,description,format,searchable,creator,date_created,retired,uuid) VALUES('alternatePhoneNumber','Alternate Phone Number','java.lang.String',0,1,now(),0,uuid());
             
-            <!--Retrieve the patient photo from the correct path after saving or updation of patient-->
-            INSERT into global_property(property,property_value,uuid) VALUES("emr.personImagesDirectory","/home/bahmni/patient_images",uuid());
-            
-            <!--Add privileges required to edit patient-->
-            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Patients');
-            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Patient Identifiers');
-            
             <!--Remove givenNameLocal,middleNameLocal,familyNameLocal and relationship section from register patient page-->
             UPDATE person_attribute_type SET retired=1 WHERE name='givenNameLocal';
-            
+        </sql> 
+    </changeSet>   
+    <changeSet id="202205160218-globalProperty" author="Clinic-config"> 
+        <sql>
+            <!--Add undisclosed option for the Gender dropdown-->
+            UPDATE global_property SET property_value = '{"M":"Male", "F":"Female","O":"Other","U":"Undisclosed"}' WHERE property LIKE 'mrs.genders'; 
+            <!--Retrieve the patient photo from the correct path after saving or updation of patient-->
+            INSERT into global_property(property,property_value,uuid) VALUES("emr.personImagesDirectory","/home/bahmni/patient_images",uuid());                  
+        </sql>  
+    </changeSet> 
+    <changeSet id="202205160349-relationshipType" author="Clinic-config" runAlways="true"> 
+        <sql>
             <!--Inorder to test the below query for relationship_type table we need to remove relationship_type from openmrs manually for now.-->
-            UPDATE relationship_type SET retired=1 WHERE relationship_type_id=1;
-        </sql>
-    </changeSet>
+            UPDATE relationship_type SET retired=1 WHERE relationship_type_id=1; 
+        </sql>  
+    </changeSet>        
 </databaseChangeLog>
 
 
