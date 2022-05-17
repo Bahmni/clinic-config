@@ -1,4 +1,6 @@
 {		
 	"REGISTRATION_SEARCH_CONFIG_KEY": "P<u>e</u>squisar",	
-	"REGISTRATION_CREATE_NEW_CONFIG_KEY":"Criar <u>N</u>ovo"
+	"REGISTRATION_CREATE_NEW_CONFIG_KEY":"Criar <u>N</u>ovo",
+	"NUTRITIONAL_VALUES_LOCALE_KEY": "Valores Nutricionais",
+	"FEE_INFORMATION_LOCALE_KEY": "Informa��o Livre"
 }		

@@ -1,3 +1,5 @@
 {"REGISTRATION_SEARCH_CONFIG_KEY": "S<u>e</u>arch",
-  "REGISTRATION_CREATE_NEW_CONFIG_KEY":"Create <u>N</u>ew"
+  "REGISTRATION_CREATE_NEW_CONFIG_KEY":"Create <u>N</u>ew",
+  "NUTRITIONAL_VALUES_LOCALE_KEY": "Nutritional Values",
+  "FEE_INFORMATION_LOCALE_KEY": "Fee Information"
 }

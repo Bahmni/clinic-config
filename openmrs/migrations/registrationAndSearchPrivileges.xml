@@ -78,7 +78,280 @@
             <!--Inorder to test the below query for relationship_type table we need to remove relationship_type from openmrs manually for now.-->
             UPDATE relationship_type SET retired=1 WHERE relationship_type_id=1; 
         </sql>  
-    </changeSet>        
+    </changeSet>
+    <changeSet id="202205171430-registration-second-page" author="Clinic-Config">
+        <comment>Add role_privilege, concepts, concept_set and concept_answer for registration 2nd page</comment>
+        <sql>   
+            <!-- Add required privileges for registration 2nd page -->   
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Visits');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Encounter Roles');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Visit Attribute Types');
+
+            <!-- Select query for concept_datatype -->
+            SELECT concept_datatype_id INTO @numeric_datatype_id FROM concept_datatype WHERE name = 'Numeric';
+            SELECT concept_datatype_id INTO @coded_datatype_id FROM concept_datatype WHERE name = 'Coded';
+            SELECT concept_datatype_id INTO @text_datatype_id FROM concept_datatype WHERE name = 'Text';
+            SELECT concept_datatype_id INTO @na_datatype_id FROM concept_datatype WHERE name = 'N/A';
+
+            <!-- Select query for concept_class -->
+            SELECT concept_class_id INTO @misc_class_id FROM concept_class WHERE name = 'Misc';
+            SELECT concept_class_id INTO @convset_class_id FROM concept_class WHERE name = 'ConvSet';
+
+            <!-- Add concept for Registration Fee -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@numeric_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid());
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Registration Fee' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Registration Fee' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+            
+            <!-- Add concept for Doctor -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@text_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Doctor' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Doctor' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            <!-- Add concept for Consultation Fee -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@numeric_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Consultation Fee' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Consultation Fee' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+
+            <!-- Add concept Fee Information and concept_set for Fee Information which contains Registration Fee, Doctor & Consultation Fee concepts-->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@na_datatype_id, @convset_class_id, 1, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Fee Information' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Fee Information' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            SELECT concept_id INTO @reg_fee_concept_id FROM concept_name where name = 'Registration Fee' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @doc_concept_id FROM concept_name where name = 'Doctor' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @cons_fee_concept_id FROM concept_name where name = 'Consultation Fee' AND concept_name_type = 'FULLY_SPECIFIED';
+
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @reg_fee_concept_id, 1, 1, now(), uuid());
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @doc_concept_id, 2, 1, now(), uuid());
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @cons_fee_concept_id, 3, 1, now(), uuid());
+
+            <!-- Add concept for Height (cm) -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@numeric_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid());
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Height (cm)' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Height (cm)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+
+            <!-- Add concept for Weight (Kg) -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@numeric_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Weight (Kg)' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Weight (Kg)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+
+            <!-- Add concept Nutritional Values and concept_set for Nutritional Values which contains Height & Weight concepts -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@numeric_datatype_id, @convset_class_id, 1, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Nutritional Values' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Nutritional Values' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            SELECT concept_id INTO @height_concept_id FROM concept_name where name = 'Height (cm)' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @weight_concept_id FROM concept_name where name = 'Weight (Kg)' AND concept_name_type = 'FULLY_SPECIFIED';
+
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @height_concept_id, 1, 1, now(), uuid());
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @weight_concept_id, 2, 1, now(), uuid());
+
+            <!-- Add concept for Systolic -->             
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@numeric_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid());
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Systolic' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Systolic' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+
+            <!-- Add concept for Diastolic -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@numeric_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Diastolic' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Diastolic' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+
+            <!-- Add concept for Sitting -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@na_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid());
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Sitting' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Sitting' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            <!-- Add concept for Supine -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@na_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Supine' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Supine' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            <!-- Add concept Posture and concept_answer for Posture which contains Sitting & Supine concepts -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@coded_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Posture' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Posture' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            SELECT concept_id INTO @sitting_concept_id FROM concept_name where name = 'Sitting' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @supine_concept_id FROM concept_name where name = 'Supine' AND concept_name_type = 'FULLY_SPECIFIED';
+
+            INSERT INTO concept_answer (concept_id,answer_concept, creator,date_created, sort_weight, uuid)
+            VALUES (@new_concept_id, @sitting_concept_id, 1, now(), 1,uuid());
+            INSERT INTO concept_answer (concept_id,answer_concept, creator,date_created, sort_weight, uuid)
+            VALUES (@new_concept_id, @supine_concept_id, 1, now(), 2,uuid());
+
+            <!-- Add concept BP and concept_set for Posture which contains Sitting & Supine concepts -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@na_datatype_id, @convset_class_id, 1, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'BP' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'BP' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            SELECT concept_id INTO @systolic_concept_id FROM concept_name where name = 'Systolic' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @diastolic_concept_id FROM concept_name where name = 'Diastolic' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @posture_concept_id FROM concept_name where name = 'Posture' AND concept_name_type = 'FULLY_SPECIFIED';
+            
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @systolic_concept_id, 1, 1, now(), uuid());
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @diastolic_concept_id, 2, 1, now(), uuid());
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @posture_concept_id, 3, 1, now(), uuid());
+
+            <!-- Add concept for Pulse -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@numeric_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid());
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Pulse (bpm)' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Pulse (bpm)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+
+            <!-- Add concept for SpO2 -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@numeric_datatype_id, @misc_class_id, 0, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'SpO2 (%)' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'SpO2 (%)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+
+            <!-- Add concept Vitals and concept_set for Vitals which contains Pulse & SpO2 concepts -->
+            INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
+            VALUES (@na_datatype_id, @misc_class_id, 1, 1, now(), 1, now(), uuid()); 
+
+            SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Vitals' , 'en', 1, now(), 'SHORT', uuid());
+
+            INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
+            VALUES (@new_concept_id, 'Vitals' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+
+            SELECT concept_id INTO @pulse_concept_id FROM concept_name where name = 'Pulse (bpm)' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @spo2_concept_id FROM concept_name where name = 'SpO2 (%)' AND concept_name_type = 'FULLY_SPECIFIED';
+
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @pulse_concept_id, 1, 1, now(), uuid());
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+            VALUES (@new_concept_id, @spo2_concept_id, 2, 1, now(), uuid());
+        </sql>
+    </changeSet>
 </databaseChangeLog>
 
 

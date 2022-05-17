@@ -1,4 +1,5 @@
 {
   "REGISTRATION_SEARCH_CONFIG_KEY": "<u>R</u>echerche",
-  "REGISTRATION_CREATE_NEW_CONFIG_KEY":"<u>C</u>réer nouveau"
+  "REGISTRATION_CREATE_NEW_CONFIG_KEY":"<u>C</u>réer nouveau",
+  "FEE_INFORMATION_LOCALE_KEY": "Informations sur les frais"
 }
