@@ -9,7 +9,7 @@
     <changeSet id="bah-1571-20220427-1" author="Deepthi,Soorya">
         <comment>Create FrontDesk role and respective privilege for logging into bahmni</comment>
         <sql>
-            INSERT IGNORE INTO role VALUES('FrontDesk', 'Will give ability to login to the application', UUID());
+            INSERT IGNORE INTO role VALUES('FrontDesk', 'User have ability to login and perform front desk operations(search patient, register patient etc..)', UUID());
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Users');
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Providers');
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Users');
