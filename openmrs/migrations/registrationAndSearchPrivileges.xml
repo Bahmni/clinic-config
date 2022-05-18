@@ -220,7 +220,7 @@
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
             VALUES (@new_concept_id, 'Systolic (mm Hg)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            INSERT INTO concept_numeric (concept_id, low_normal, hi_normal) VALUES(@new_concept_id, 110, 140);
+            INSERT INTO concept_numeric (concept_id, low_normal, hi_normal, low_absolute, hi_absolute) VALUES(@new_concept_id, 110, 140, 110, 140);
 
             <!-- Add concept for Diastolic -->
             INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
@@ -234,7 +234,7 @@
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
             VALUES (@new_concept_id, 'Diastolic (mm Hg)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            INSERT INTO concept_numeric (concept_id, low_normal, hi_normal) VALUES(@new_concept_id, 70, 85);
+            INSERT INTO concept_numeric (concept_id, low_normal, hi_normal, low_absolute, hi_absolute) VALUES(@new_concept_id, 70, 85, 70, 85);
 
             <!-- Add concept for Sitting -->
             INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
@@ -315,7 +315,7 @@
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
             VALUES (@new_concept_id, 'Pulse (bpm)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            INSERT INTO concept_numeric (concept_id, hi_normal, low_normal) VALUES(@new_concept_id, 72, 72);
+            INSERT INTO concept_numeric (concept_id, hi_normal, low_normal, hi_absolute, low_absolute) VALUES(@new_concept_id, 72, 72, 72, 72);
 
             <!-- Add concept for SpO2 -->
             INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
@@ -329,7 +329,7 @@
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
             VALUES (@new_concept_id, 'SpO2 (%)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            INSERT INTO concept_numeric (concept_id, low_normal) VALUES(@new_concept_id, 97);
+            INSERT INTO concept_numeric (concept_id, low_normal, low_absolute) VALUES(@new_concept_id, 97, 97);
 
             <!-- Add concept Vitals and concept_set for Vitals which contains Pulse & SpO2 concepts -->
             INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
