@@ -30,5 +30,32 @@
         "icon": "fa-patient-edit",
         "order": 1,
         "requiredPrivilege": "View Patients"
+    },
+    "NDHMIdentifierLookup": {
+        "id": "org.bahmni.registration.identifier.ndhmIdentifierSrc",
+        "extensionPointId": "org.bahmni.registration.identifier",
+        "type": "link",
+        "src": "/ndhm/index.html",
+        "extensionParams": {
+            "identifierType": [
+                "ABHA",
+                "ABHA Address"
+            ],
+            "nonEditable": [
+                "givenName",
+                "middleName",
+                "familyName",
+                "gender",
+                "birthDate",
+                "age"
+            ],
+            "linkDisplay": "Verify ABHA",
+            "addressMap": {
+                "city": "cityVillage",
+                "state": "stateProvince",
+                "postalCode": "postalCode",
+                "line": "address1"
+            }
+        }
     }
 }
