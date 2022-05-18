@@ -104,10 +104,10 @@
             SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
 
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
-            VALUES (@new_concept_id, 'Registration Fee' , 'en', 1, now(), 'SHORT', uuid());
+            VALUES (@new_concept_id, 'Registration Fee (INR)' , 'en', 1, now(), 'SHORT', uuid());
 
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
-            VALUES (@new_concept_id, 'Registration Fee' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+            VALUES (@new_concept_id, 'Registration Fee (INR)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
             INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
             
@@ -130,10 +130,10 @@
             SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
 
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
-            VALUES (@new_concept_id, 'Consultation Fee' , 'en', 1, now(), 'SHORT', uuid());
+            VALUES (@new_concept_id, 'Consultation Fee (INR)' , 'en', 1, now(), 'SHORT', uuid());
 
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
-            VALUES (@new_concept_id, 'Consultation Fee' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+            VALUES (@new_concept_id, 'Consultation Fee (INR)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
             INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
 
@@ -149,9 +149,9 @@
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
             VALUES (@new_concept_id, 'Fee Information' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            SELECT concept_id INTO @reg_fee_concept_id FROM concept_name where name = 'Registration Fee' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @reg_fee_concept_id FROM concept_name where name = 'Registration Fee (INR)' AND concept_name_type = 'FULLY_SPECIFIED';
             SELECT concept_id INTO @doc_concept_id FROM concept_name where name = 'Doctor' AND concept_name_type = 'FULLY_SPECIFIED';
-            SELECT concept_id INTO @cons_fee_concept_id FROM concept_name where name = 'Consultation Fee' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @cons_fee_concept_id FROM concept_name where name = 'Consultation Fee (INR)' AND concept_name_type = 'FULLY_SPECIFIED';
 
             INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
             VALUES (@new_concept_id, @reg_fee_concept_id, 1, 1, now(), uuid());
@@ -215,12 +215,12 @@
             SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
 
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
-            VALUES (@new_concept_id, 'Systolic' , 'en', 1, now(), 'SHORT', uuid());
+            VALUES (@new_concept_id, 'Systolic (mm Hg)' , 'en', 1, now(), 'SHORT', uuid());
 
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
-            VALUES (@new_concept_id, 'Systolic' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+            VALUES (@new_concept_id, 'Systolic (mm Hg)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+            INSERT INTO concept_numeric (concept_id, low_normal, hi_normal) VALUES(@new_concept_id, 110, 140);
 
             <!-- Add concept for Diastolic -->
             INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
@@ -229,12 +229,12 @@
             SELECT MAX(concept_id) INTO @new_concept_id FROM concept;
 
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
-            VALUES (@new_concept_id, 'Diastolic' , 'en', 1, now(), 'SHORT', uuid());
+            VALUES (@new_concept_id, 'Diastolic (mm Hg)' , 'en', 1, now(), 'SHORT', uuid());
 
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
-            VALUES (@new_concept_id, 'Diastolic' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
+            VALUES (@new_concept_id, 'Diastolic (mm Hg)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+            INSERT INTO concept_numeric (concept_id, low_normal, hi_normal) VALUES(@new_concept_id, 70, 85);
 
             <!-- Add concept for Sitting -->
             INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
@@ -292,8 +292,8 @@
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
             VALUES (@new_concept_id, 'BP' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            SELECT concept_id INTO @systolic_concept_id FROM concept_name where name = 'Systolic' AND concept_name_type = 'FULLY_SPECIFIED';
-            SELECT concept_id INTO @diastolic_concept_id FROM concept_name where name = 'Diastolic' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @systolic_concept_id FROM concept_name where name = 'Systolic (mm Hg)' AND concept_name_type = 'FULLY_SPECIFIED';
+            SELECT concept_id INTO @diastolic_concept_id FROM concept_name where name = 'Diastolic (mm Hg)' AND concept_name_type = 'FULLY_SPECIFIED';
             SELECT concept_id INTO @posture_concept_id FROM concept_name where name = 'Posture' AND concept_name_type = 'FULLY_SPECIFIED';
             
             INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
@@ -315,7 +315,7 @@
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
             VALUES (@new_concept_id, 'Pulse (bpm)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+            INSERT INTO concept_numeric (concept_id, hi_normal, low_normal) VALUES(@new_concept_id, 72, 72);
 
             <!-- Add concept for SpO2 -->
             INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
@@ -329,7 +329,7 @@
             INSERT INTO concept_name (concept_id, name, locale, creator, date_created, concept_name_type, uuid)
             VALUES (@new_concept_id, 'SpO2 (%)' , 'en', 1, now(), 'FULLY_SPECIFIED', uuid());
 
-            INSERT INTO concept_numeric (concept_id) VALUES(@new_concept_id);
+            INSERT INTO concept_numeric (concept_id, low_normal) VALUES(@new_concept_id, 97);
 
             <!-- Add concept Vitals and concept_set for Vitals which contains Pulse & SpO2 concepts -->
             INSERT INTO concept (datatype_id, class_id, is_set, creator, date_created, changed_by, date_changed, uuid)
