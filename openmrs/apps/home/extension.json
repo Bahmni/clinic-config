@@ -71,5 +71,15 @@
     "icon": "fa fa-hospital-o",
     "order": 15,
     "requiredPrivilege": "app:admin"
+  },
+  "labLite": {
+    "id": "bahmni.lab",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "translationKey": "MODULE_LABEL_LAB_ENTRY_KEY",
+    "url": "/lab",
+    "icon": "fa fa-flask",
+    "order": 15,
+    "requiredPrivilege": "app:lab-lite"
   }
 }

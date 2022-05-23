@@ -132,4 +132,5 @@
     <include file ="addMultiSelectObsSplitterProperty.xml"/>
     <include file ="loginRolesAndPrivileges.xml"/>
     <include file ="registrationAndSearchPrivileges.xml"/>
+    <include file ="addLabRoleWithPrivilege.xml"/>
 </databaseChangeLog>
