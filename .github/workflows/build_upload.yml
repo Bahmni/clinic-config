@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - ABDM-Infra
     paths-ignore:
       - '**.md'
 
