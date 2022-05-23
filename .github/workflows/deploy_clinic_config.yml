@@ -5,7 +5,7 @@ on:
       - main
     paths-ignore:
       - 'masterdata/**'
-      - 'docker/masterdata/**'
+      - 'package/docker/masterdata/**'
 
 jobs:
   deploy:

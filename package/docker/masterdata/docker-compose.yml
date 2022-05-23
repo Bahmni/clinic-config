@@ -42,7 +42,7 @@ services:
       test: ["CMD", "curl", "-f", "http://localhost:8080/openmrs/"]
       timeout: 20s
     volumes:
-      - ${BAHMNI_CONFIG_PATH:?}/docker/masterdata/modules/:/usr/local/tomcat/.OpenMRS/modules/ 
+      - ${BAHMNI_CONFIG_PATH:?}/package/docker/masterdata/modules/:/usr/local/tomcat/.OpenMRS/modules/
       - ${BAHMNI_CONFIG_PATH:?}/masterdata/configuration/:/usr/local/tomcat/.OpenMRS/configuration/
  
 

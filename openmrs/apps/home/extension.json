@@ -67,7 +67,7 @@
     "extensionPointId": "org.bahmni.home.dashboard",
     "type": "link",
     "translationKey": "MODULE_LABEL_NDHMHIU_KEY",
-    "url": "https://ndhm-dev.bahmni-covid19.in/hiuser",
+    "url": "/hiuser",
     "icon": "fa fa-hospital-o",
     "order": 15,
     "requiredPrivilege": "app:admin"
