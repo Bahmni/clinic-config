@@ -6,13 +6,21 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="Lab-Role-20220421" author="Priyanka, Aman">
+    <changeSet id="Lab-Role-20220421-1" author="Priyanka, Aman">
         <preConditions onFail="CONTINUE">
-            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM role where role = 'Lab'</sqlCheck>
+            <sqlCheck expectedResult="1">SELECT COUNT(*) FROM role where role = 'Lab'</sqlCheck>
+        </preConditions>
+        <comment>Add Lab role for users</comment>
+        <sql>
+        insert ignore into role values('Lab', 'Will give ability to see lab-lite module', UUID()); 
+        </sql>
+    </changeSet>
+    <changeSet id="Lab-Role-20220421-2" author="Priyanka, Aman">
+        <preConditions onFail="CONTINUE">
             <sqlCheck expectedResult="1">SELECT COUNT(*) FROM privilege where privilege = 'app:lab-lite'</sqlCheck>
         </preConditions>
-        <comment>Lab role with lab-lite privilege</comment>
-        <sql>insert ignore into role values('Lab', 'Will give ability to see lab-lite module', UUID()); 
+        <comment>Add Lab role for users</comment>
+        <sql>
         insert ignore into role_privilege values('Lab', 'app:lab-lite');
         </sql>
     </changeSet>

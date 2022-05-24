@@ -6,24 +6,15 @@ This repo represents configuration for India Clinics.
 
 ### CI
 
-Push to main would trigger 2 yaml files.
-Common things done: Basically gha would SSH into the
+Push to main would trigger gha. It does SSH into the
 ec2 using the pem from repository secrets and perform git clone where the
 clinic_config directory is volume mounted on bahmni-web and openmrs containers
-as default_config
+as default_config. Also a openmrs is restarted by docker.
 
-This would deploy the latest config to clinic.bahmni-covid19.in environment.
-1) deploy_clinic_config.yml --> paths-ignored: masterdata config folders
-2) deploy_masterdata.yml --> paths-only: masterdata config folders
-
-Added sleep in deploy_masterdata.yml to avoid Error: "No such file or directory" because workflow runs asynchronusly.
+This deploy_clinic_config.yml would deploy the latest config to clinic.bahmni-covid19.in environment.
 
 This is currently a temporary CI solution - we would
 eventually migrate to K8s once we move to India AWS account.
-
-Note: any changes to docker-compose would not redeploy the containers on the
-environment. You would still need to SSH into the EC2 box and manually restart
-the containers.
 
 ## References to openmrs-module-initializer for Bahmni
 

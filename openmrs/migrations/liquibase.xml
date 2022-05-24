@@ -122,7 +122,7 @@
         <sql>
             SELECT location_tag_id INTO @location_tag_id FROM location_tag WHERE name = "Login Location" ;
             SELECT location_id INTO @location_id FROM location WHERE location.name="Bahmni Clinic" and description = "bahmni clinic";
-            DELETE FROM location_tag_map WHERE location_tag_id = 1;
+            DELETE FROM location_tag_map WHERE location_tag_id = @location_tag_id;
             INSERT INTO location_tag_map(location_id, location_tag_id) VALUES(@location_id, @location_tag_id);
         </sql>
     </changeSet>
