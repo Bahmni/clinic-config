@@ -2,7 +2,14 @@
     "id": "bahmni.registration",
     "instanceOf":"bahmni.template.registration",
     "description": "Bahmni Patient Registration App",
+    "extensionPoints": [
+        {
+            "id": "org.bahmni.registration.identifier",
+            "description": "NDHM HealthID Verification"
+        }
+    ],
     "config" : {
+        "mandatoryPersonAttributes" : ["primaryContact"],
         "patientInformation": {},
         "defaultIdentifierPrefix": "ABC",
         "showMiddleName": true,
@@ -11,6 +18,7 @@
         "patientNameDisplayOrder": ["firstName", "middleName", "lastName"],
         "showSaveConfirmDialog": false,
         "showBirthTime": true,
+        "readOnlyExtraIdentifiers": ["ABHA","ABHA Address"],
         "fieldValidation" : {
             "email" : {"pattern" : "^(?=.{1,40}$)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,4})$", "errorMessage" : "Should be a valid email address"},
             "familyName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},

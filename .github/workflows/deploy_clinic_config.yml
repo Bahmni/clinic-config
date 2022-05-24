@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'masterdata/**'
-      - 'docker/masterdata/**'
 
 jobs:
   deploy:
@@ -22,6 +19,8 @@ jobs:
           sudo ssh -T -o "StrictHostKeyChecking no" -i "bahmni-clinic-demo.pem" ec2-user@ec2-3-110-214-169.ap-south-1.compute.amazonaws.com <<EOF
             rm -rf clinic-config
             git clone https://github.com/BahmniIndiaDistro/clinic-config.git
+            cd clinic-config/package/docker
+            docker-compose restart openmrs
           EOF
   notification:
     name: notification

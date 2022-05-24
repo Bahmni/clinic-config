@@ -22,10 +22,14 @@ services:
     environment:
       DB_DATABASE: ${OPENMRS_DB_NAME:?}
       DB_HOST: ${OPENMRS_DB_HOST:?}
-      DB_USERNAME: ${OPENMRS_DB_USERNAME:?}
-      DB_PASSWORD: ${OPENMRS_DB_PASSWORD:?}
+      DB_USERNAME: ${MYSQL_ROOT_USERNAME:?}
+      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD:?}
+      DB_ROOT_USERNAME: ${MYSQL_ROOT_USERNAME:?}
+      DB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?}
       DB_CREATE_TABLES: ${OPENMRS_DB_CREATE_TABLES}
       DB_AUTO_UPDATE: ${OPENMRS_DB_AUTO_UPDATE}
+      LOAD_DEMO_DATA: ${OPENMRS_LOAD_DEMO_DATA}
+      DB_DUMP_GZIP_URL: ${OPENMRS_DB_DUMP_GZIP_URL}
       MODULE_WEB_ADMIN: ${OPENMRS_MODULE_WEB_ADMIN}
       DEBUG: ${OPENMRS_DEBUG}
       OPENELIS_HOST: ${OPENELIS_HOST:?}
@@ -35,23 +39,21 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - 'openmrs-data:/usr/local/tomcat/.OpenMRS/modules'
+      # - 'openmrs-data:/usr/local/tomcat/.OpenMRS/modules'
       # - '${BAHMNI_OPENMRS_MODULES_PATH:?}/:/usr/local/tomcat/.OpenMRS/modules/'
       - '${BAHMNI_CONFIG_PATH:?}/:/etc/bahmni_config/'
+      - '${BAHMNI_CONFIG_PATH:?}/masterdata/configuration/:/usr/local/tomcat/.OpenMRS/configuration/'
       - 'bahmni-patient-images:/home/bahmni/patient_images'
       - 'bahmni-document-images:/home/bahmni/document_images'
     depends_on:
       - openmrsdb
 
   openmrsdb:
-    image: bahmni/openmrs-db:${OPENMRS_DB_IMAGE_TAG:?}
+    image: mysql:5.6
     restart: always
-    profiles: ['default', 'openmrs']
+    profiles: ["default","openmrs"]
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?}
-      MYSQL_DATABASE: ${OPENMRS_DB_NAME:?}
-      MYSQL_USER: ${OPENMRS_DB_USERNAME:?}
-      MYSQL_PASSWORD: ${OPENMRS_DB_PASSWORD:?}
     ports:
       - '3306:3306'
     volumes:

@@ -122,7 +122,7 @@
         <sql>
             SELECT location_tag_id INTO @location_tag_id FROM location_tag WHERE name = "Login Location" ;
             SELECT location_id INTO @location_id FROM location WHERE location.name="Bahmni Clinic" and description = "bahmni clinic";
-
+            DELETE FROM location_tag_map WHERE location_tag_id = 1;
             INSERT INTO location_tag_map(location_id, location_tag_id) VALUES(@location_id, @location_tag_id);
         </sql>
     </changeSet>
@@ -142,12 +142,11 @@
             INSERT INTO provider (person_id, identifier, creator, date_created, uuid, name) VALUES (@person_id, 'doctor', 1, now(), uuid(), 'doctor');
         </sql>
     </changeSet>
-
+    <include file ="addLabRoleWithPrivilege.xml"/>
     <include file ="addObsPathSplitterProperty.xml"/>
     <include file ="addMoreObsSplitterProperty.xml"/>
     <include file ="addMultiSelectObsSplitterProperty.xml"/>
     <include file ="loginRolesAndPrivileges.xml"/>
     <include file ="registrationAndSearchPrivileges.xml"/>
     <include file ="clinicalPrivileges.xml"/>
-    
 </databaseChangeLog>
