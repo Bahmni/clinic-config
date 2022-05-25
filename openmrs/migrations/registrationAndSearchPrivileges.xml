@@ -92,18 +92,32 @@
             UPDATE relationship_type SET retired=1;
         </sql>  
     </changeSet>       
-    <changeSet id="20220525-visit-types" author="Clinic-config">
+    <changeSet id="202205251830-visit-types" author="Clinic-config">
         <comment>configure OPD and EMERGENCY visit types</comment>
         <sql>
             UPDATE visit_type SET retired = 1 WHERE name in ("LAB VISIT","Special OPD","IPD","PHARMACY VISIT");
         </sql>
     </changeSet>
-    <changeSet id="20220525-delete-forms" author="Clinic-config">
+    <changeSet id="202205251830-delete-forms" author="Clinic-config">
         <comment>Remove forms</comment>
         <sql>
             DELETE FROM concept_set WHERE concept_set = 90 AND concept_id IN (SELECT concept_id FROM concept_name WHERE name IN ("Discharge Summary","Death Note","Delivery note","IMAM Program","ER General Notes","Operative Notes","Procedure Notes") AND concept_name_type = 'FULLY_SPECIFIED');
         </sql>
     </changeSet>  
+    <changeSet id="202205251830-update-concept-set" author="Clinic-config">
+        <comment>Update concept set</comment>
+        <sql>
+            UPDATE concept_set SET sort_weight = 1 WHERE concept_id = 130 AND concept_set = 126;
+        </sql>
+    </changeSet>  
+    <changeSet id="202205251830-update-address" author="Clinic-config">
+        <comment>Update concept set</comment>
+        <sql>
+            UPDATE address_hierarchy_level SET name="House number/Flat number" WHERE address_field="ADDRESS_1";
+            UPDATE address_hierarchy_level SET name="Locality/Sector" WHERE address_field="ADDRESS_2";
+            UPDATE address_hierarchy_level SET name="Pin Code" WHERE address_field="ADDRESS_3";
+        </sql>
+    </changeSet>
 </databaseChangeLog>
 
 

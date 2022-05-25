@@ -65,7 +65,7 @@
         "extensionParams": {
             "conceptName": "Nutritional Values",
             "translationKey": "NUTRITIONAL_VALUES_LOCALE_KEY",
-            "conceptNames": ["Height (cm)", "Weight (Kg)"],
+            "conceptNames": ["Height", "Weight"],
             "required":true,
             "showLatest": true
         },
@@ -90,7 +90,6 @@
         "type": "config",
         "extensionParams": {
             "conceptName": "Vitals",
-            "conceptNames": ["BP","Pulse (bpm)","SpO2 (%)"],
             "required": false
         },
         "order": 2,
