@@ -97,7 +97,13 @@
         <sql>
             UPDATE visit_type SET retired = 1 WHERE name in ("LAB VISIT","Special OPD","IPD","PHARMACY VISIT");
         </sql>
-    </changeSet>    
+    </changeSet>
+    <changeSet id="20220525-delete-forms" author="Clinic-config">
+        <comment>Remove forms</comment>
+        <sql>
+            DELETE FROM concept_set WHERE concept_set = 90 AND concept_id IN (SELECT concept_id FROM concept_name WHERE name IN ("Discharge Summary","Death Note","Delivery note","IMAM Program","ER General Notes","Operative Notes","Procedure Notes") AND concept_name_type = 'FULLY_SPECIFIED');
+        </sql>
+    </changeSet>  
 </databaseChangeLog>
 
 
