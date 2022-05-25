@@ -6,7 +6,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <changeSet id="202205161232-registrationLocation" author="Clinic-config">
+    <changeSet id="202205251232-registrationLocation" author="Clinic-config">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 SELECT count(*) from location_tag_map where location_tag_id IN (SELECT location_tag_id from location_tag where name="Bahmni Clinic");
@@ -53,14 +53,14 @@
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Visit Attribute Types');
         </sql>           
     </changeSet>
-    <changeSet id="202205160210-identifier" author="Clinic-config"> 
+    <changeSet id="202205250210-identifier" author="Clinic-config"> 
         <sql>
             <!--Add Identifier type ABC to patient_identifier_type and update global property-->
-            INSERT into idgen_identifier_source (uuid, name, description, identifier_type, date_created, creator) 
+            INSERT IGNORE into idgen_identifier_source (uuid, name, description, identifier_type, date_created, creator) 
             VALUES (uuid(), 'ABC', 'ID sequence source for patients in ABC', (select patient_identifier_type_id 
             from patient_identifier_type where name = 'Patient Identifier'), now(), 1);
             
-            INSERT into idgen_seq_id_gen (id, next_sequence_value, base_character_set, first_identifier_base, prefix, 
+            INSERT IGNORE into idgen_seq_id_gen (id, next_sequence_value, base_character_set, first_identifier_base, prefix, 
             suffix, min_length, max_length) VALUES ((select id from idgen_identifier_source where name = 'ABC'), 
             200001, 0123456789, 200000, 'ABC', '', 4, 9);
         </sql>                     
