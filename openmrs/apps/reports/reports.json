@@ -1,0 +1,25 @@
+{
+    "visitReport": {
+        "name": "Visit Report",
+        "type": "visits",
+        "requiredPrivilege": "app:reports",
+        "config": {
+            "forDataAnalysis": true,
+            "patientAttributes": [
+                "phoneNumber"
+            ],
+            "visitAttributes": [
+                "Visit Status"
+            ],
+            "excludeColumns": ["Date Of Admission","Date Of Discharge","Patient Id","Visit Id"]
+        }
+    },
+    "OPD/EmergencyVisitCount": {
+        "name": "OPD/Emergency Visit Count",
+        "type": "MRSGeneric",
+        "requiredPrivilege": "app:reports",
+        "config": {
+            "sqlPath": "/etc/bahmni_config/reports/sql/visitCount.sql"
+        }
+    }
+}

@@ -14,10 +14,11 @@
         "defaultIdentifierPrefix": "ABC",
         "showMiddleName": true,
         "showLastName": true,
+        "defaultVisitType":"OPD",
         "isLastNameMandatory": true,
         "patientNameDisplayOrder": ["firstName", "middleName", "lastName"],
         "showSaveConfirmDialog": false,
-        "showBirthTime": true,
+        "showBirthTime": false,
         "readOnlyExtraIdentifiers": ["ABHA","ABHA Address"],
         "fieldValidation" : {
             "email" : {"pattern" : "^(?=.{1,40}$)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,4})$", "errorMessage" : "Should be a valid email address"},

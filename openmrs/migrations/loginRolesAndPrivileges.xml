@@ -28,4 +28,26 @@
             INSERT IGNORE INTO `user_role` VALUES (@id,'FrontDesk');
         </sql>
     </changeSet>
+     <changeSet id="bah-1577-20220427-1" author="Clinic-config">
+        <comment>Create Doctor role and respective privilege for logging into bahmni</comment>
+        <sql>
+            INSERT IGNORE INTO role VALUES('Doctor', 'User have ability to login and access registration and clinical modules and perform registration and clinical operations(search patient, register patient, see the search results in clinical queues)', UUID());
+            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Edit Users');
+            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Get Providers');
+            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Get Users');
+        </sql>
+    </changeSet>
+    <changeSet id="bah-1577-20220517-2" author="Clinic-config">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from users where system_id = 'doctor'
+            </sqlCheck>
+        </preConditions>
+        <comment>Map clinical users to Doctor role</comment>
+        <sql>
+            set @id = NULL;
+            select user_id from users where system_id='doctor' into @id;
+            INSERT IGNORE INTO `user_role` VALUES (@id,'Doctor');
+        </sql>
+    </changeSet>
 </databaseChangeLog>
