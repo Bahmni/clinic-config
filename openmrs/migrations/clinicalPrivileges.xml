@@ -12,7 +12,7 @@
             INSERT IGNORE INTO role_privilege VALUES('Doctor', 'app:clinical');
             INSERT IGNORE INTO role_role VALUES('FrontDesk','Doctor');
             INSERT IGNORE INTO role_privilege VALUES('Doctor', 'app:reports');
-            INSERT IGNORE INTO role_role VALUES('Doctor','Clinical-App');
+            INSERT IGNORE INTO role_role VALUES('Clinical-App','Doctor');
         </sql>           
     </changeSet>
 </databaseChangeLog>
