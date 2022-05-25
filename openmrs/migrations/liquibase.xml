@@ -112,7 +112,7 @@
             INSERT INTO location (name, description, retired, uuid, date_created, creator) VALUES ('Bahmni Clinic', 'bahmni clinic', FALSE, uuid(), NOW(), 1);
         </sql>
     </changeSet>
-    <changeSet id="bah-1570-20220427-3" author="Deepthi,Soorya">
+    <changeSet id="bah-1570-20220525-3" author="Deepthi,Soorya">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 SELECT count(*) from location_tag_map where location_tag_id IN (SELECT location_tag_id from location_tag where name="Bahmni Clinic");

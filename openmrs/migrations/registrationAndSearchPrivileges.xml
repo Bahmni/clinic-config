@@ -20,7 +20,7 @@
             INSERT INTO location_tag_map(location_id, location_tag_id) VALUES(@location_id, @visit_location_tag_id);
         </sql>
     </changeSet>
-    <changeSet id="202205160207-role-frontDesk" author="Clinic-config"> 
+    <changeSet id="202205250207-role-frontDesk" author="Clinic-config"> 
         <sql>
             <!--Create Registration-App role-->
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Add Encounters');
@@ -66,17 +66,17 @@
         </sql>                     
     </changeSet>   
 
-    <changeSet id="202205160216-patientAttributes" author="Clinic-config"> 
+    <changeSet id="202205250216-patientAttributes" author="Clinic-config"> 
         <sql>
             <!--Register a patient with Phone Number and Alternate Phone Number-->
-            INSERT into person_attribute_type (name,description,format,searchable,creator,date_created,retired,uuid) VALUES('phoneNumber','Phone Number','java.lang.String',0,1,now(),0,uuid());
-            INSERT into person_attribute_type (name,description,format,searchable,creator,date_created,retired,uuid) VALUES('alternatePhoneNumber','Alternate Phone Number','java.lang.String',0,1,now(),0,uuid());
+            INSERT IGNORE into person_attribute_type (name,description,format,searchable,creator,date_created,retired,uuid) VALUES('phoneNumber','Phone Number','java.lang.String',0,1,now(),0,uuid());
+            INSERT IGNORE into person_attribute_type (name,description,format,searchable,creator,date_created,retired,uuid) VALUES('alternatePhoneNumber','Alternate Phone Number','java.lang.String',0,1,now(),0,uuid());
             
             <!--Remove givenNameLocal,middleNameLocal,familyNameLocal and relationship section from register patient page-->
             UPDATE person_attribute_type SET retired=1 WHERE name in ('givenNameLocal','familyNameLocal','middleNameLocal','caste','class','secondaryContact','primaryRelative','secondaryIdentifier','landHolding','debt','distanceFromCenter','isUrban','cluster','RationCard','familyIncome');
         </sql> 
     </changeSet>   
-    <changeSet id="202205160218-globalProperty" author="Clinic-config" runAlways="true"> 
+    <changeSet id="202205250218-globalProperty" author="Clinic-config" runAlways="true"> 
         <sql>
             <!--Add undisclosed option for the Gender dropdown-->
             UPDATE global_property SET property_value = '{"M":"Male", "F":"Female","O":"Other","U":"Undisclosed"}' WHERE property LIKE 'mrs.genders'; 
@@ -86,7 +86,7 @@
             <!-- INSERT into global_property(property,property_value,uuid) VALUES("emr.personImagesDirectory","/home/bahmni/patient_images",uuid());                   -->
         </sql>  
     </changeSet> 
-    <changeSet id="202205160349-relationshipType" author="Clinic-config" runAlways="true"> 
+    <changeSet id="202205250349-relationshipType" author="Clinic-config" runAlways="true"> 
         <sql>
             <!--Inorder to test the below query for relationship_type table we need to remove relationship_type from openmrs manually for now.-->
             UPDATE relationship_type SET retired=1;
