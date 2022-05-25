@@ -49,7 +49,7 @@
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Observations');
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Concept Sources');
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Visits');
-            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Encounter roles'); 
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Encounter Roles'); 
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Visit Attribute Types');
         </sql>           
     </changeSet>
@@ -81,6 +81,7 @@
             <!--Add undisclosed option for the Gender dropdown-->
             UPDATE global_property SET property_value = '{"M":"Male", "F":"Female","O":"Other","U":"Undisclosed"}' WHERE property LIKE 'mrs.genders'; 
             UPDATE global_property SET property_value = '' WHERE property LIKE 'bahmni.extraPatientIdentifierTypes';
+            UPDATE global_property SET property_value = 'ReasonForDeath' WHERE property = 'concept.reasonForDeath';
             <!--Retrieve the patient photo from the correct path after saving or updation of patient-->
             <!-- INSERT into global_property(property,property_value,uuid) VALUES("emr.personImagesDirectory","/home/bahmni/patient_images",uuid());                   -->
         </sql>  
