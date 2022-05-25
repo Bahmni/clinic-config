@@ -9,27 +9,8 @@
    
     <changeSet id="202205160207-role-doctor" author="Clinic-config"> 
         <sql>
-            <!--Create Doctor-App role-->
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Add Encounters');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'app:registration');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Get Concepts');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Get Encounters');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Get Patients');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Get People');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Get Visits');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Get Visit Types');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'View Patients');
-            
-             <!--Create Role privilege to see create new patient button and auto generate Patient Identifiers-->
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Add Patients');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Edit Patient Identifiers');
-             
-            <!--Add privileges required to edit patient-->
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Edit Patients');
-            INSERT IGNORE INTO role_privilege VALUES('Doctor', 'Get Patient Identifiers'); 
-            
-            <!--Privilege required to access the clinical module-->
             INSERT IGNORE INTO role_privilege VALUES('Doctor', 'app:clinical');
+            INSERT IGNORE INTO role_role VALUES('FrontDesk','Doctor');
         </sql>           
     </changeSet>
 </databaseChangeLog>

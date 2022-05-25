@@ -40,6 +40,17 @@
             <!--Add privileges required to edit patient-->
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Patients');
             INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Patient Identifiers'); 
+
+            <!--Add privileges required for registration second page-->
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Add Visits');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Observations');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Add Observations');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Encounters');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Observations');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Concept Sources');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Edit Visits');
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Encounter roles'); 
+            INSERT IGNORE INTO role_privilege VALUES('FrontDesk', 'Get Visit Attribute Types');
         </sql>           
     </changeSet>
     <changeSet id="202205160210-identifier" author="Clinic-config"> 
@@ -62,13 +73,14 @@
             INSERT into person_attribute_type (name,description,format,searchable,creator,date_created,retired,uuid) VALUES('alternatePhoneNumber','Alternate Phone Number','java.lang.String',0,1,now(),0,uuid());
             
             <!--Remove givenNameLocal,middleNameLocal,familyNameLocal and relationship section from register patient page-->
-            UPDATE person_attribute_type SET retired=1 WHERE name='givenNameLocal';
+            UPDATE person_attribute_type SET retired=1 WHERE name in ('givenNameLocal','familyNameLocal','middleNameLocal','caste','class','secondaryContact','primaryRelative','secondaryIdentifier','landHolding','debt','distanceFromCenter','isUrban','cluster','RationCard','familyIncome');
         </sql> 
     </changeSet>   
-    <changeSet id="202205160218-globalProperty" author="Clinic-config"> 
+    <changeSet id="202205160218-globalProperty" author="Clinic-config" runAlways="true"> 
         <sql>
             <!--Add undisclosed option for the Gender dropdown-->
             UPDATE global_property SET property_value = '{"M":"Male", "F":"Female","O":"Other","U":"Undisclosed"}' WHERE property LIKE 'mrs.genders'; 
+            UPDATE global_property SET property_value = '' WHERE property LIKE 'bahmni.extraPatientIdentifierTypes';
             <!--Retrieve the patient photo from the correct path after saving or updation of patient-->
             <!-- INSERT into global_property(property,property_value,uuid) VALUES("emr.personImagesDirectory","/home/bahmni/patient_images",uuid());                   -->
         </sql>  
@@ -76,9 +88,15 @@
     <changeSet id="202205160349-relationshipType" author="Clinic-config" runAlways="true"> 
         <sql>
             <!--Inorder to test the below query for relationship_type table we need to remove relationship_type from openmrs manually for now.-->
-            UPDATE relationship_type SET retired=1 WHERE relationship_type_id=1; 
+            UPDATE relationship_type SET retired=1;
         </sql>  
-    </changeSet>        
+    </changeSet>       
+    <changeSet id="20220525-visit-types" author="Clinic-config">
+        <comment>configure OPD and EMERGENCY visit types</comment>
+        <sql>
+            UPDATE visit_type SET retired = 1 WHERE name in ("LAB VISIT","Special OPD","IPD","PHARMACY VISIT");
+        </sql>
+    </changeSet>    
 </databaseChangeLog>
 
 
