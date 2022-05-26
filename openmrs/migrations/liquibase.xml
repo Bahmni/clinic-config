@@ -142,6 +142,27 @@
             INSERT INTO provider (person_id, identifier, creator, date_created, uuid, name) VALUES (@person_id, 'doctor', 1, now(), uuid(), 'doctor');
         </sql>
     </changeSet>
+    <changeSet id="202205261830-update-concept-numeric" author="Clinic-config">
+        <comment>Update concept numeric</comment>
+        <sql>
+           UPDATE concept_numeric SET hi_normal = NULL, low_normal = NULL WHERE concept_id IN (
+            (SELECT concept_id FROM concept_name WHERE name IN ("Pulse","Temperature","RR","SPO2","Systolic","Diastolic")
+            AND concept_name_type = 'FULLY_SPECIFIED')); 
+        </sql>
+    </changeSet>
+    <changeSet id="202205260710-update-units" author="Clinic-config">
+        <comment>Add units for height, weight and registration fees</comment>
+        <sql>
+            SELECT concept_id INTO @height_id FROM concept_name WHERE name = "HEIGHT" AND concept_name_type = 'FULLY_SPECIFIED';
+            UPDATE concept_numeric SET units = "cm" WHERE concept_id = @height_id;
+
+            SELECT concept_id INTO @weight_id FROM concept_name WHERE name = "WEIGHT" AND concept_name_type = 'FULLY_SPECIFIED';
+            UPDATE concept_numeric SET units = "kg" WHERE concept_id = @weight_id;
+            
+            SELECT concept_id INTO @reg_fees_id FROM concept_name WHERE name = "REGISTRATION FEES" AND concept_name_type = 'FULLY_SPECIFIED';
+            UPDATE concept_numeric SET units = "INR" WHERE concept_id = @reg_fees_id;
+        </sql>
+    </changeSet>
     <include file ="addLabRoleWithPrivilege.xml"/>
     <include file ="addObsPathSplitterProperty.xml"/>
     <include file ="addMoreObsSplitterProperty.xml"/>
