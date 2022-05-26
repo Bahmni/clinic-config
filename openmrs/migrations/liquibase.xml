@@ -145,7 +145,7 @@
     <changeSet id="202205261830-update-concept-numeric" author="Clinic-config">
         <comment>Update concept numeric</comment>
         <sql>
-           UPDATE concept_numeric SET hi_normal = NULL AND low_normal = NULL WHERE concept_id IN (
+           UPDATE concept_numeric SET hi_normal = NULL, low_normal = NULL WHERE concept_id IN (
             (SELECT concept_id FROM concept_name WHERE name IN ("Pulse","Temperature","RR","SPO2","Systolic","Diastolic")
             AND concept_name_type = 'FULLY_SPECIFIED')); 
         </sql>
