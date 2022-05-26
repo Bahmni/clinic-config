@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   proxy:
-    image: 'bahmni/proxy:${PROXY_IMAGE_TAG:?}'
+    image: bahmniindiadistro/bahmni-proxy:${PROXY_IMAGE_TAG:?}
     volumes:
       #   - ${CERTIFICATE_PATH}:/etc/tls
       - 'bahmni-patient-images:/home/bahmni/patient_images'
@@ -18,7 +18,7 @@ services:
 
   openmrs:
     profiles: ['default', 'openmrs']
-    image: bahmni/openmrs:${OPENMRS_IMAGE_TAG:?}
+    image: bahmniindiadistro/bahmni-openmrs:${OPENMRS_IMAGE_TAG}
     environment:
       DB_DATABASE: ${OPENMRS_DB_NAME:?}
       DB_HOST: ${OPENMRS_DB_HOST:?}
@@ -60,7 +60,7 @@ services:
       - 'openmrsdbdata:/var/lib/mysql'
 
   bahmni-web:
-    image: bahmni/bahmni-web:${BAHMNI_WEB_IMAGE_TAG:?}
+    image: bahmniindiadistro/bahmni-web:${BAHMNI_WEB_IMAGE_TAG:?}
     profiles: ['default', 'openmrs']
     volumes:
       #- "${BAHMNI_APPS_PATH:?}/ui/app/:/usr/local/apache2/htdocs/bahmni"
