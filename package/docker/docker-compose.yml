@@ -68,7 +68,7 @@ services:
       - '${BAHMNI_CONFIG_PATH:?}/:/usr/local/apache2/htdocs/bahmni_config/'
 
   reports:
-    image: bahmni/reports:${REPORTS_IMAGE_TAG:?}
+    image: bahmniindiadistro/reports:${REPORTS_IMAGE_TAG:?}
     profiles: ["default","reports"]
     environment:
       OPENMRS_DB_HOST: ${OPENMRS_DB_HOST:?}

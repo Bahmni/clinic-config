@@ -8,9 +8,6 @@
             "patientAttributes": [
                 "phoneNumber"
             ],
-            "visitAttributes": [
-                "Visit Status"
-            ],
             "excludeColumns": ["Date Of Admission","Date Of Discharge","Patient Id","Visit Id"]
         }
     },
