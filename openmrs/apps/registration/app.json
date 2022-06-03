@@ -27,13 +27,6 @@
             "middleName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
             "phoneNumber" : {"pattern" : "^([+]91[1-9]{1}[0-9]{9})$", "errorMessage" : "Phone Number should be 10 digits with prefix +91 eg:+91xxxxxxxxxx"},
             "alternatePhoneNumber" : {"pattern" : "^([+]91[1-9]{1}[0-9]{9})$", "errorMessage" : "Phone Number should be 10 digits with prefix +91 eg:+91xxxxxxxxxx"}
-        },
-        "patientSearch": { 
-            "customAttributes": {
-                "label": "Phone Number",
-                "placeholder": "Phone Number",
-                "fields": ["phoneNumber","alternatePhoneNumber"]
-            }
         }
     }
 }

@@ -1,0 +1,8 @@
+<config>
+  <globalProperties>
+    <globalProperty>
+      <property>mrs.genders</property>
+      <value>{"M":"Male", "F":"Female","O":"Other","U":"Undisclosed"}</value>
+    </globalProperty>
+  </globalProperties>
+</config>
