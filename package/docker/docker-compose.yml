@@ -101,8 +101,60 @@ services:
       MYSQL_USER: ${REPORTS_DB_USERNAME:?}
       MYSQL_PASSWORD: ${REPORTS_DB_PASSWORD:?}
 
+  db:
+    container_name: db
+    image: postgres:${POSTGRES_IMAGE_TAG:?}
+    environment:
+      - POSTGRES_USER=${HIP_DB_USER:?}
+      - POSTGRES_PASSWORD=${HIP_DB_PASSWORD:?}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+  rabbitmq:
+    image: rabbitmq:${RABBITMQ_IMAGE_TAG:?}
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+  otp:
+    image: bahmniindiadistro/otp-service:${OTP_SERVICE_IMAGE_TAG:?}
+    container_name: otp
+    depends_on:
+      - db
+    environment:
+      whitelisted:numbers: ""
+
+  hip:
+    container_name: hip
+    image: bahmniindiadistro/hip:${HIP_IMAGE_TAG:?}
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+      - otp
+      - rabbitmq
+    volumes:
+      - ./:/shared
+    environment:
+      Gateway:clientSecret: ${HIP_SECRET:?}
+      Gateway:clientId: ${HIP_CLIENTID:?}
+      Gateway:url: ${ABDM_GATEWAY_URL:?}
+      OpenMrs:url: ${OPENMRS_URL:?}
+      OpenMrs:password: ${OPENMRS_PASSWORD:?}
+      Gateway:cmSuffix: ${ABDM_CONSENT_MANAGEMENT_SUFFIX:?}
+      OtpService:BaseUrl: ${HIP_OTP_SERVICE_URL:?}
+      hip:url: ${HIP_URL:?}
+      HEALTH_CHECK_DURATION: ${HIP_OPENMRS_HEALTH_CHECK_DURATION:?}
+      Cors:allowedOrigins: ${HIP_CORS_ALLOWED_ORIGIN:?}
+      Hip-Service:Url: ${HIP_URL:?}
+      Bahmni:Id: ${HIP_ID:?}
+      ConnectionStrings:DefaultConnection: Host=${HIP_DB_HOST:?};Port=${HIP_DB_PORT:?};Username=${HIP_DB_USER:?};Password=${HIP_DB_PASSWORD:?};Database=${HIP_DB_NAME:?};
+
 volumes:
   openmrs-data:
   openmrsdbdata:
   bahmni-patient-images:
   bahmni-document-images:
+  postgresql:
+  postgresql_data:
