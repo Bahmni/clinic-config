@@ -85,6 +85,7 @@
             INSERT INTO location_tag_map(location_id, location_tag_id) VALUES(@location_id, @location_tag_id);
         </sql>
     </changeSet>
+    <!-- 
     <changeSet id="bah-1570-20220427-1" author="Deepthi,Soorya">
     	<preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
@@ -101,7 +102,6 @@
             INSERT INTO provider (person_id, identifier, creator, date_created, uuid, name) VALUES (@person_id, 'registration', 1, now(), uuid(), 'registration');
         </sql>
     </changeSet>
-    <!-- 
     <changeSet id="bah-1570-20220427-2" author="Deepthi,Soorya">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
