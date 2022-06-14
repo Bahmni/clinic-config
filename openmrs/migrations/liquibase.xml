@@ -85,6 +85,7 @@
             INSERT INTO location_tag_map(location_id, location_tag_id) VALUES(@location_id, @location_tag_id);
         </sql>
     </changeSet>
+    <!-- 
     <changeSet id="bah-1570-20220427-1" author="Deepthi,Soorya">
     	<preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
@@ -162,12 +163,12 @@
             SELECT concept_id INTO @reg_fees_id FROM concept_name WHERE name = "REGISTRATION FEES" AND concept_name_type = 'FULLY_SPECIFIED';
             UPDATE concept_numeric SET units = "INR" WHERE concept_id = @reg_fees_id;
         </sql>
-    </changeSet>
+    </changeSet> -->
     <include file ="addLabRoleWithPrivilege.xml"/>
     <include file ="addObsPathSplitterProperty.xml"/>
     <include file ="addMoreObsSplitterProperty.xml"/>
     <include file ="addMultiSelectObsSplitterProperty.xml"/>
-    <include file ="loginRolesAndPrivileges.xml"/>
+    <!-- <include file ="loginRolesAndPrivileges.xml"/>
     <include file ="registrationAndSearchPrivileges.xml"/>
-    <include file ="clinicalPrivileges.xml"/>
+    <include file ="clinicalPrivileges.xml"/> -->
 </databaseChangeLog>
