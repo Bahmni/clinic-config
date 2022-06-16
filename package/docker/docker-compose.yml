@@ -49,11 +49,14 @@ services:
       - openmrsdb
 
   openmrsdb:
-    image: mysql:5.6
+    image: ${OPENMRS_DB_IMAGE_NAME:?}
     restart: always
-    profiles: ["default","openmrs"]
+    profiles: [ "default","openmrs","implementer-interface" ]
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?}
+      MYSQL_DATABASE: ${OPENMRS_DB_NAME:?}
+      MYSQL_USER: ${OPENMRS_DB_USERNAME:?}
+      MYSQL_PASSWORD: ${OPENMRS_DB_PASSWORD:?}
     ports:
       - '3306:3306'
     volumes:

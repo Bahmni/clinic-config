@@ -19,4 +19,21 @@
             INSERT INTO provider (person_id, identifier, creator, date_created, uuid, name) VALUES (@person_id, 'registration', 1, now(), uuid(), 'registration');
         </sql>
     </changeSet>
+    <!--This is a temporary changeset-->
+    <changeSet id="bah-1577-20220517-1" author="Clinic-config">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from users where username='dr_neha';
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding bahmni-user</comment>
+        <sql>
+            SET @puuid = uuid();
+            INSERT INTO person(gender, birthdate_estimated, dead, creator, date_created, uuid) VALUES('F', 0, 0, 1, now(), @puuid);
+            SELECT person_id INTO @person_id from person where uuid = @puuid;
+            INSERT INTO person_name(person_id, preferred, given_name, family_name, creator, date_created, uuid) VALUES(@person_id, 1, 'neha', 'bahmni-user', 1, now(), @puuid);
+            INSERT INTO users(system_id, creator, date_created, person_id, uuid, username, password, salt) VALUES ('doctor', 1, now(),@person_id, uuid(), 'dr_neha', 'e28e3ae84c66bfba6b2c50a406567f3e34fea1d76b17c006931571fe5d940f6c6b81e49cf8ea5e0adfca19fe3beb68d8ad79f7c3812e92b8d502a9afcf2029b2', '1c9d7e94aeeb7a2459ef45ed200b2944582e0e7088d75f9b57a3644861ea766c20a269b3fe2eadaff1bc445ecfbd9bd3c0c550dfd813de48d39423cd3d1a8b10');
+            INSERT INTO provider (person_id, identifier, creator, date_created, uuid, name) VALUES (@person_id, 'doctor', 1, now(), uuid(), 'doctor');
+        </sql>
+    </changeSet>
 </databaseChangeLog>
