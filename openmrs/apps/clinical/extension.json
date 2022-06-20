@@ -4,7 +4,8 @@
     "extensionPointId": "org.bahmni.patient.search",
     "type": "config",
     "extensionParams": {
-      "translationKey": "MODULE_LABEL_ALL_KEY"
+      "translationKey": "MODULE_LABEL_ALL_KEY",
+      "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
     },
     "label": "All",
     "order": 5,
