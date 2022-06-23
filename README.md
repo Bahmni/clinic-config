@@ -1,6 +1,6 @@
 # Bahmni Clinic configuration and data.
 
-### [![Bahmni Config](https://github.com/BahmniIndiaDistro/clinic-config/actions/workflows/deploy.yml/badge.svg)](https://github.com/BahmniIndiaDistro/clinic-config/actions/workflows/deploy.yml)
+### [![Bahmni Config](https://github.com/BahmniIndiaDistro/clinic-config/actions/workflows/build_upload.yml/badge.svg)](https://github.com/BahmniIndiaDistro/clinic-config/actions/workflows/build_upload.yml)
 
 This repo represents configuration for India Clinics.
 
@@ -15,9 +15,9 @@ https://github.com/CRUDEM/openmrs-config-hsc
 
 https://github.com/Siko099/openmrs-config-uganda
 
-## Steps to follow for openmrs initializer to load masterdata
+## Steps to follow for openmrs initializer to load masterdata (docker-compose can be invoked from bahmni-india-package)
 
-Step 1: **cd package/docker**
+Step 1: Volume mount **masterdata/configuration** folder in your openmrs service of docker-compose.yml.
 
 Step 2: Make sure we have CSV's with respective folder names inside **masterdata/configuration** folder
 
@@ -27,7 +27,7 @@ Step 2: Make sure we have CSV's with respective folder names inside **masterdata
         ├── privileges/
         ├── roles/
 
-Step 3: **docker-compose up -d**
+Step 3: Starting up openmrs docker can load up openmrs initializer
 
 Step 4: Login to openmrs https://localhost/openmrs
 
