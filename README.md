@@ -15,28 +15,7 @@ https://github.com/CRUDEM/openmrs-config-hsc
 
 https://github.com/Siko099/openmrs-config-uganda
 
-## Steps to follow for openmrs initializer to load masterdata [ For developement purpose ]
-
-Step 1: docker-compose can be invoked from bahmni-india-package [repo](https://github.com/BahmniIndiaDistro/bahmni-india-package).
-
-Step 2: Make sure you have **openmrs-initializer-module** in modules directory. If not **copy openmrs-initializer-module** into your openmrs modules.
-
-Step 3: Volume mount **masterdata/configuration** folder in your openmrs service of docker-compose.yml.
-
-Step 4: Make sure we have CSV's with respective folder names inside **masterdata/configuration** folder
-
-    configuration/
-        ├── addresshierarchy/
-        ├── locations/
-        ├── privileges/
-        ├── roles/
-
-Step 5: Starting up openmrs docker would load up openmrs initializer
-
-Step 6: Login to openmrs https://localhost/openmrs
-
-    Username:admin
-    Password:Admin123
+## Steps to follow for openmrs initializer to load masterdata [ Link ](https://github.com/BahmniIndiaDistro/bahmni-india-package/blob/main/README.md)
 
 ### Note:
 
