@@ -1,6 +1,6 @@
 # Bahmni Clinic configuration and data.
 
-### [![Bahmni Config](https://github.com/BahmniIndiaDistro/clinic-config/actions/workflows/deploy.yml/badge.svg)](https://github.com/BahmniIndiaDistro/clinic-config/actions/workflows/deploy.yml)
+### [![Bahmni Config](https://github.com/BahmniIndiaDistro/clinic-config/actions/workflows/build_upload.yml/badge.svg)](https://github.com/BahmniIndiaDistro/clinic-config/actions/workflows/build_upload.yml)
 
 This repo represents configuration for India Clinics.
 
@@ -15,25 +15,8 @@ https://github.com/CRUDEM/openmrs-config-hsc
 
 https://github.com/Siko099/openmrs-config-uganda
 
-## Steps to follow for openmrs initializer to load masterdata
+## Steps to follow for openmrs initializer to load masterdata [ Link ](https://github.com/BahmniIndiaDistro/bahmni-india-package/blob/main/README.md)
 
-Step 1: **cd package/docker**
-
-Step 2: Make sure we have CSV's with respective folder names inside **masterdata/configuration** folder
-
-    configuration/
-        ├── addresshierarchy/
-        ├── locations/
-        ├── privileges/
-        ├── roles/
-
-Step 3: **docker-compose up -d**
-
-Step 4: Login to openmrs https://localhost/openmrs
-
-    Username:admin
-    Password:Admin123
-
-###Note:
+### Note:
 
     All the liquibase changesets in **masterdata/configuration** are only added temporarily for testing.
