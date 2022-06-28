@@ -49,13 +49,7 @@
                 "birthDate",
                 "age"
             ],
-            "linkDisplay": "Verify ABHA",
-            "addressMap": {
-                "city": "cityVillage",
-                "state": "stateProvince",
-                "postalCode": "postalCode",
-                "line": "address1"
-            }
+            "linkDisplay": "Verify ABHA"
         }
     },
     "nutritionalValues":{
