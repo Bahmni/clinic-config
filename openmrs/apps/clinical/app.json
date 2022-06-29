@@ -15,6 +15,14 @@
                 "durationRequired": false,
                 "allowAddMore": true
             }
+        },
+        "patientContext": {
+            "personAttributes": [
+                "phoneNumber"
+            ],
+            "additionalPatientIdentifiers": [
+                "ABHA Address"
+            ]
         }
     }
 }
