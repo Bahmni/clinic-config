@@ -51,11 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     steps:
-      - name: Success
+      - name: Deploy notification
         if: ${{ needs.deploy.result == 'success' }}
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":":large_green_circle:  Clinic config is packaged and bahmni-india-package is triggered "}' ${{ secrets.SLACK_WEBHOOK_URL }}
-      - name: Failure
-        if: ${{ needs.deploy.result == 'failure' }}
-        run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":":red_circle: Failed to package clinic-config and trigger bahmni-india-package "}' ${{ secrets.SLACK_WEBHOOK_URL }}
