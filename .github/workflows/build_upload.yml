@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - BAH-1606
     paths-ignore:
       - '**.md'
 
@@ -42,3 +43,18 @@ jobs:
             cat trigger_response.txt
             exit 1
           fi
+  notification:
+    name: notification
+    needs:
+      - build-upload-artifact
+      - trigger-dependent-repos
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy success notification
+        if: ${{ needs.deploy.result == 'success' }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":":large_green_circle:  Clinic config is packaged and bahmni-india-package is triggered "}' ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: Deploy failure notification
+        if: ${{ needs.deploy.result != 'success' }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":":red_circle: Failed to package clinic-config and trigger bahmni-india-package "}' ${{ secrets.SLACK_WEBHOOK_URL }}
