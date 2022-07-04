@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - BAH-1606
     paths-ignore:
       - '**.md'
 
