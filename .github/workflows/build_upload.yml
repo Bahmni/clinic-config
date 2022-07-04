@@ -15,7 +15,7 @@ jobs:
     name: Build and Upload
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v
+      - uses: actions/checkout@v2
       - name: Generate Artifact
         run: ./package/package.sh
       - name: Upload Artifact
