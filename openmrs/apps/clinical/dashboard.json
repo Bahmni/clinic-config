@@ -1,5 +1,5 @@
-{  
-    "general":{  
+{
+    "general":{
         "translationKey":"DASHBOARD_TAB_GENERAL_KEY",
         "displayByDefault":true,
         "maxRecentlyViewedPatients":10,
@@ -17,11 +17,11 @@
                     "countyDistrict"
                 ]
             },
-            "navigationLinksControl":{  
+            "navigationLinksControl":{
                 "translationKey":"DASHBOARD_TITLE_NAVIGATION_LINKS_CONTROL_KEY",
                 "type":"navigationLinksControl",
                 "displayOrder":2,
-                "showLinks":[  
+                "showLinks":[
                     "home",
                     "visit",
                     "registration",
@@ -115,6 +115,29 @@
                     }
                 }
             },
+            "secondVitals":{
+                "translationKey":"DASHBOARD_TITLE_SECOND_VITALS_KEY",
+                "type":"second vitals",
+                "isObservation":true,
+                "displayOrder":6,
+                "dashboardConfig":{
+                    "showDetailsButton":true,
+                    "conceptNames":[
+                        "Second Vitals"
+                    ],
+                    "numberOfVisits":2
+                },
+                "expandedViewConfig":{
+                    "conceptNames":[
+                        "Second Vitals"
+                    ],
+                    "numberOfVisits":2,
+                    "showDetailsButton":true,
+                    "pivotTable":{
+
+                    }
+                }
+            },
             "visits":{
                 "translationKey":"DASHBOARD_TITLE_VISITS_KEY",
                 "type":"visits",
@@ -155,13 +178,13 @@
                     "template": "<patient-appointments-dashboard section='config' patient='patient'></patient-appointments-dashboard>"
                 }
             },
-            "nutritionalValues":{  
+            "nutritionalValues":{
                 "translationKey":"DASHBOARD_TITLE_NUTRITIONAL_VALUES_KEY",
                 "type":"vitals",
                 "isObservation":true,
                 "displayOrder":10,
-                "dashboardConfig":{  
-                    "conceptNames":[  
+                "dashboardConfig":{
+                    "conceptNames":[
                         "HEIGHT",
                         "Weight",
                         "BMI Data",
@@ -208,6 +231,19 @@
                 },
                 "formGroup": [ ],
                 "translationKey": "Display and Edit Forms (2.0)"
+            },
+            "patientDocument":{
+                "type":"historyAndExamination",
+                "isObservation":true,
+                "displayType":"Half-Page",
+                "dashboardConfig":{
+                    "showGroupDateTime":false,
+                    "conceptNames":[
+                        "Prescription","Discharge Summary","Radiology Report","Referral Documents"
+                    ]
+                },
+                "displayOrder":6,
+                "title":"Patient Document"
             }
         }
     }
