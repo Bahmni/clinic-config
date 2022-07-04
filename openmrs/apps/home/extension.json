@@ -71,5 +71,15 @@
     "icon": "fa fa-flask",
     "order": 15,
     "requiredPrivilege": "app:lab-lite"
+  },
+  "patientDocumentUpload": {
+    "id": "bahmni.patient.document.upload",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "translationKey": "MODULE_LABEL_PATIENT_DOCUMENTS_KEY",
+    "url": "../document-upload/?encounterType=Patient Document&topLevelConcept=Patient Document&defaultOption=Patient file",
+    "icon": "icon-bahmni-documents",
+    "order": 6,
+    "requiredPrivilege": "app:patient-documents"
   }
 }
