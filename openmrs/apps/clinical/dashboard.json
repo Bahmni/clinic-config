@@ -239,7 +239,7 @@
                 "dashboardConfig":{
                     "showGroupDateTime":false,
                     "conceptNames":[
-                        "Prescription","Discharge Summary","Radiology Report","Referral Documents"
+                        "Prescription","Discharge Summary","Radiology Report","Referral Documents","Patient File"
                     ]
                 },
                 "displayOrder":6,
