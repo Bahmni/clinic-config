@@ -68,7 +68,7 @@
             "labResults":{
                 "translationKey":"DASHBOARD_TITLE_LAB_RESULTS_KEY",
                 "type":"labOrders",
-                "displayOrder":4,
+                "displayOrder":5,
                 "dashboardConfig":{
                     "title":null,
                     "numberOfVisits":6,
@@ -87,7 +87,7 @@
                 "translationKey":"DASHBOARD_TITLE_VITALS_KEY",
                 "type":"vitals",
                 "isObservation":true,
-                "displayOrder":5,
+                "displayOrder":9,
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
@@ -119,7 +119,7 @@
                 "translationKey":"DASHBOARD_TITLE_SECOND_VITALS_KEY",
                 "type":"second vitals",
                 "isObservation":true,
-                "displayOrder":6,
+                "displayOrder":21,
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
@@ -141,7 +141,7 @@
             "visits":{
                 "translationKey":"DASHBOARD_TITLE_VISITS_KEY",
                 "type":"visits",
-                "displayOrder":7,
+                "displayOrder":4,
                 "dashboardConfig":{
                     "title":null,
                     "maximumNoOfVisits":8,
@@ -152,7 +152,7 @@
                 "translationKey":"DASHBOARD_TITLE_HISTORY_AND_EXAMINATIONS_KEY",
                 "type":"vitals",
                 "isObservation":true,
-                "displayOrder":8,
+                "displayOrder":7,
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
@@ -172,7 +172,7 @@
             },
             "patientAppointments": {
                 "type": "custom",
-                "displayOrder": 9,
+                "displayOrder": 10 ,
                 "config": {
                     "title": "DASHBOARD_TITLE_APPOINTMENTS_KEY",
                     "template": "<patient-appointments-dashboard section='config' patient='patient'></patient-appointments-dashboard>"
@@ -182,7 +182,7 @@
                 "translationKey":"DASHBOARD_TITLE_NUTRITIONAL_VALUES_KEY",
                 "type":"vitals",
                 "isObservation":true,
-                "displayOrder":10,
+                "displayOrder":6,
                 "dashboardConfig":{
                     "conceptNames":[
                         "HEIGHT",
@@ -194,43 +194,15 @@
                     "numberOfVisits":2
                 }
             },
-            "Forms-2.0": {
-                "type": "formsV2",
-                "displayOrder": 11,
+            "formsDisplay": {
+                "type": "forms",
+                "displayOrder": 8,
                 "dashboardConfig": {
                     "title": null,
-                    "maximumNoOfVisits": 1
+                    "maximumNoOfVisits": 10
                 },
                 "formGroup": [ ],
-                "translationKey": "DASHBOARD_TITLE_FORMS2_DISPLAY_CONTROL_KEY"
-            },
-            "Form 2 Obs To Obs": {
-                "displayType": "Half-Page",
-                "translationKey": "DASHBOARD_TITLE_FORMS2_OBS_TO_OBS_DISPLAY_CONTROL_KEY",
-                "type": "obsToObsFlowSheet",
-                "dashboardConfig": {
-                    "numberOfVisits": 1,
-                    "formNames": [],
-                    "groupByConcept": "",
-                    "isEditable": true,
-                    "conceptNames": []
-                },
-                "expandedViewConfig": {
-                    "formNames": [],
-                    "isEditable": true,
-                    "groupByConcept": "",
-                    "conceptNames": []
-                }
-            },
-            "forms2Validations": {
-                "type": "formsV2",
-                "displayOrder": 12,
-                "dashboardConfig": {
-                    "title": null,
-                    "maximumNoOfVisits": 5
-                },
-                "formGroup": [ ],
-                "translationKey": "Display and Edit Forms (2.0)"
+                "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
             },
             "patientDocument":{
                 "type":"historyAndExamination",
@@ -242,7 +214,7 @@
                         "Prescription","Discharge Summary","Radiology Report","Referral Documents","Patient File"
                     ]
                 },
-                "displayOrder":6,
+                "displayOrder":11,
                 "title":"Patient Document"
             }
         }
