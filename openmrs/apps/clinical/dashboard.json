@@ -25,7 +25,8 @@
                     "home",
                     "visit",
                     "registration",
-                    "visitAttribute"
+                    "visitAttribute",
+                    "labLite"
                 ]
             },
             "diagnosis":{
