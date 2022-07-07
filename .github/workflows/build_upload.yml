@@ -42,3 +42,18 @@ jobs:
             cat trigger_response.txt
             exit 1
           fi
+  notification:
+    name: notification
+    needs:
+      - build-upload-artifact
+      - trigger-dependent-repos
+    runs-on: ubuntu-latest
+    steps:
+      - name: success notification
+        if: ${{ needs.build-upload-artifact.result == 'success' && needs.trigger-dependent-repos.result == 'success' }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":":large_green_circle: Clinic config is packaged and bahmni-india-package is triggered"}' ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: failure notification
+        if: ${{ needs.build-upload-artifact.result != 'success' || needs.trigger-dependent-repos.result != 'success' }}
+        run: |
+            curl -X POST -H 'Content-type: application/json' --data '{"text":":red_circle: Failed to package clinic-config and trigger bahmni-india-package "}' ${{ secrets.SLACK_WEBHOOK_URL }}
