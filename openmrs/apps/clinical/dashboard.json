@@ -25,7 +25,8 @@
                     "home",
                     "visit",
                     "registration",
-                    "visitAttribute"
+                    "visitAttribute",
+                    "labLite"
                 ]
             },
             "diagnosis":{
@@ -119,7 +120,7 @@
                 "translationKey":"DASHBOARD_TITLE_SECOND_VITALS_KEY",
                 "type":"second vitals",
                 "isObservation":true,
-                "displayOrder":21,
+                "displayOrder":11,
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
@@ -172,7 +173,7 @@
             },
             "patientAppointments": {
                 "type": "custom",
-                "displayOrder": 10 ,
+                "displayOrder": 21 ,
                 "config": {
                     "title": "DASHBOARD_TITLE_APPOINTMENTS_KEY",
                     "template": "<patient-appointments-dashboard section='config' patient='patient'></patient-appointments-dashboard>"
@@ -214,7 +215,7 @@
                         "Prescription","Discharge Summary","Radiology Report","Referral Documents","Patient File"
                     ]
                 },
-                "displayOrder":11,
+                "displayOrder":10,
                 "title":"Patient Document"
             }
         }
