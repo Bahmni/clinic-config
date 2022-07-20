@@ -1,0 +1,2 @@
+Uuid,Void/Retire,Mapping source,Mapping code,Metadata class name,Metadata uuid,_order:1000
+,,org.openmrs.module.emrapi,emr.primaryIdentifierType,org.openmrs.PatientIdentifierType,81433852-3f10-11e4-adec-0800271c1b75,
