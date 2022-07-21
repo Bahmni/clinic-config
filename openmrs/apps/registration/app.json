@@ -34,6 +34,10 @@
                 "placeholder": "Phone Number",
                 "fields": ["phoneNumber","alternatePhoneNumber"]
             }
+        },
+        "addressHierarchy": {
+            "showAddressFieldsTopDown": false,
+            "strictAutocompleteFromLevel": "postalCode"
         }
     }
 }
