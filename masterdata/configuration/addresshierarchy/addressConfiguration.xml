@@ -20,7 +20,7 @@
       <requiredInHierarchy>false</requiredInHierarchy>
     </addressComponent>
     <addressComponent>
-      <field>ADDRESS_3</field>
+      <field>City_village</field>
       <nameMapping>City/Village</nameMapping>
       <sizeMapping>40</sizeMapping>
       <requiredInHierarchy>false</requiredInHierarchy>

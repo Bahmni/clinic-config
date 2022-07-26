@@ -8,7 +8,15 @@
             "patientAttributes": [
                 "phoneNumber"
             ],
-            "excludeColumns": ["Date Of Admission","Date Of Discharge","Patient Id","Visit Id"]
+            "patientAddresses": [
+                "City_Village",
+                "County_District",
+                "State_Province"
+            ],
+            "visitAttributes": [
+                "Visit Status"
+            ],
+            "excludeColumns": ["Date Of Admission","Date Of Discharge","Patient Id","Visit Id","New patient visit"]
         }
     },
     "OPD/EmergencyVisitCount": {
