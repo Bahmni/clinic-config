@@ -1,22 +1,10 @@
 {
-    "visitReport": {
-        "name": "Visit Report",
-        "type": "visits",
+    "ClinicVisitReport": {
+        "name": "Clinic Visit Report",
+        "type": "MRSGeneric",
         "requiredPrivilege": "app:reports",
         "config": {
-            "forDataAnalysis": true,
-            "patientAttributes": [
-                "phoneNumber"
-            ],
-            "patientAddresses": [
-                "City_Village",
-                "County_District",
-                "State_Province"
-            ],
-            "visitAttributes": [
-                "Visit Status"
-            ],
-            "excludeColumns": ["Date Of Admission","Date Of Discharge","Patient Id","Visit Id","New patient visit"]
+            "sqlPath": "/etc/bahmni_config/reports/sql/clinicVisits.sql"
         }
     },
     "OPD/EmergencyVisitCount": {
