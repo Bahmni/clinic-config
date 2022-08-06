@@ -211,9 +211,21 @@
                 "displayType":"Half-Page",
                 "dashboardConfig":{
                     "showGroupDateTime":false,
+                    "isObservationForImages":true,
+                    "persistOrderOfObsDateTime":true,
                     "conceptNames":[
                         "Prescription","Discharge Summary","Radiology Report","Referral Documents","Patient File"
                     ]
+                },
+                "expandedViewConfig":{
+                    "showGroupDateTime":false,
+                    "persistOrderOfObsDateTime":true,
+                    "isObservationForImages":true,
+                    "conceptNames":[
+                        "Prescription","Discharge Summary","Radiology Report","Referral Documents","Patient File"
+                    ],
+                    "pivotTable":{
+                    }
                 },
                 "displayOrder":10,
                 "title":"Patient Document"
