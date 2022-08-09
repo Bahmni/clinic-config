@@ -4,5 +4,9 @@
       <property>emrapi.visitExpireHours</property>
       <value>24</value>
     </globalProperty>
+    <globalProperty>
+      <property>emr.personImagesDirectory</property>
+      <value>/home/bahmni/patient_images</value>
+    </globalProperty>
   </globalProperties>
 </config>
