@@ -19,7 +19,7 @@
         "patientNameDisplayOrder": ["firstName", "middleName", "lastName"],
         "showSaveConfirmDialog": false,
         "showBirthTime": false,
-        "whatsAppMessage": "Thank you for registering at Bahmni Clinic. Please note your Patient Registration Number: {patientId,name,gender,age}. For any queries call us on +919876543210. Clinic Timings: All weekdays, 10 am - 7 pm. Weekends closed.",
+        "whatsAppMessage": "Thank you for registering at Bahmni Clinic. Please note your Patient Registration Number: #patientId, #name, #gender, #age. For any queries call us on +919876543210. Clinic Timings: All weekdays, 10 am - 7 pm. Weekends closed.",
         "enableWhatsAppButton": true,
         "readOnlyExtraIdentifiers": ["ABHA","ABHA Address"],
         "fieldValidation" : {
