@@ -2,7 +2,7 @@
   <globalProperties>
     <globalProperty>
       <property>emrapi.visitExpireHours</property>
-      <value>24</value>
+      <value>0</value>
     </globalProperty>
     <globalProperty>
       <property>emr.personImagesDirectory</property>
