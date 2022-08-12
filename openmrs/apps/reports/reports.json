@@ -15,6 +15,14 @@
             "sqlPath": "/etc/bahmni_config/reports/sql/visitCount.sql"
         }
     },
+    "followUpReport": {
+        "name": "List of Patients to follow up",
+        "type": "MRSGeneric",
+        "requiredPrivilege": "app:reports",
+        "config": {
+            "sqlPath": "/etc/bahmni_config/reports/sql/followUp.sql"
+        }
+    },
     "RegisteredPatientReport": {
         "name": "Registered Patient Report",
         "type": "MRSGeneric",
