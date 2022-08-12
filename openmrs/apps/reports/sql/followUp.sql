@@ -15,4 +15,4 @@ FROM patient_appointment pa
    LEFT JOIN (select paMobile.person_id as 'pMobilePersonId', paMobile.value AS 'phoneNumber' from person_attribute paMobile
    JOIN person_attribute_type patMobile ON patMobile.name = "phoneNumber" AND patMobile.retired IS FALSE
     AND patMobile.person_attribute_type_id = paMobile.person_attribute_type_id) AS pMobile ON pa.patient_id = pMobile.pMobilePersonId
-WHERE pa.status = 'Scheduled' and pa.start_date_time BETWEEN '#startDate#' AND '#endDate#' ORDER BY pa.start_date_time DESC;
+WHERE pa.status = 'Scheduled' and pa.start_date_time BETWEEN CONVERT_TZ('#startDate#','+5:30','+00:00') AND CONVERT_TZ(ADDDATE('#endDate#', INTERVAL 1 DAY),'+5:30','+00:00') ORDER BY pa.start_date_time DESC;
