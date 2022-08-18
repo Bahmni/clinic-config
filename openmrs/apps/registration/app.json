@@ -9,7 +9,7 @@
         }
     ],
     "config" : {
-        "mandatoryPersonAttributes" : ["primaryContact"],
+        "mandatoryPersonAttributes" : ["phoneNumber"],
         "patientInformation": {},
         "defaultIdentifierPrefix": "ABC",
         "showMiddleName": true,
