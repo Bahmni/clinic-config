@@ -205,6 +205,18 @@
                 "formGroup": [ ],
                 "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
             },
+
+            "forms-2.0": {
+                "type": "formsV2",
+                "displayOrder": 12,
+                "dashboardConfig": {
+                    "title": null,
+                    "maximumNoOfVisits": 10
+                },
+                "formGroup": [ "Death Note"],
+                "translationKey": "Edit Forms (2.0)"
+            },
+
             "patientDocument":{
                 "type":"historyAndExamination",
                 "isObservation":true,
