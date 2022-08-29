@@ -213,7 +213,7 @@
                     "title": null,
                     "maximumNoOfVisits": 10
                 },
-                "formGroup": [ "Death Note"],
+                "formGroup": [ "Death Note", "Orthopaedic Examination"],
                 "translationKey": "Edit Forms (2.0)"
             },
 
