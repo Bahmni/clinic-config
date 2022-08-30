@@ -3,3 +3,4 @@ Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Descript
 1599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,,,Probable cause of death,,Patient's probable cause of death from interview with family member or other non-medical personnel as part of death registry questionnaire. ,,,,Question,Coded,,Intrapartum maternal death;Antepartum Maternal Death;Postpartum Maternal Death;Postoperative Death;Natural Death Reportable to Medicolegal Authority;Natural Death;Other generic;,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000008,,,Range of Motion,,,,,,Misc,Text,,,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000009,,,Radiographic Examination,,,,,,Misc,Text,,,,,,,,,,,
+229e556d-42f2-4a77-81f5-38e93bc819c4,,,Temperature,Temperature,Patient's temperature in Fahrenheit,,,,Misc,Numeric,,,,Yes,F,,,98.6,98.6,,

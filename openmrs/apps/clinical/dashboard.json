@@ -95,7 +95,7 @@
                         "Pulse",
                         "Arterial blood oxygen saturation (pulse oximeter)",
                         "Respiratory rate",
-                        "Temperature (c)",
+                        "Temperature",
                         "Systolic blood pressure",
                         "Diastolic blood pressure",
                         "Body position"
@@ -107,7 +107,7 @@
                         "Pulse",
                         "Arterial blood oxygen saturation (pulse oximeter)",
                         "Respiratory rate",
-                        "Temperature (c)",
+                        "Temperature",
                         "Systolic blood pressure",
                         "Diastolic blood pressure",
                         "Body position"
