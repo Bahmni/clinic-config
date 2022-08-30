@@ -225,7 +225,11 @@
                     "title": null,
                     "maximumNoOfVisits": 10
                 },
-                "formGroup": [ "Death Note", "Orthopaedic Examination", "Malaria"],
+                "formGroup": [ "Death Note",
+                                "Orthopaedic Examination",
+                                "Diabetes Intake",
+                                "Malaria"
+                             ],
                 "translationKey": "Edit Forms (2.0)"
             },
 
