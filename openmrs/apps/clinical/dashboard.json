@@ -92,13 +92,25 @@
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
-                        "Vitals"
+                        "Pulse",
+                        "Arterial blood oxygen saturation (pulse oximeter)",
+                        "Respiratory rate",
+                        "Temperature",
+                        "Systolic blood pressure",
+                        "Diastolic blood pressure",
+                        "Body position"
                     ],
                     "numberOfVisits":2
                 },
                 "expandedViewConfig":{
                     "conceptNames":[
-                        "Vitals"
+                        "Pulse",
+                        "Arterial blood oxygen saturation (pulse oximeter)",
+                        "Respiratory rate",
+                        "Temperature",
+                        "Systolic blood pressure",
+                        "Diastolic blood pressure",
+                        "Body position"
                     ],
                     "numberOfVisits":2,
                     "showDetailsButton":true,
