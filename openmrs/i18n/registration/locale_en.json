@@ -3,5 +3,7 @@
   "OBS_ABNORMAL_TRANSLATE_KEY":"Abnormal",
   "NUTRITIONAL_VALUES_LOCALE_KEY": "Nutritional Values",
   "FEE_INFORMATION_LOCALE_KEY": "Fee Information",
+  "FILE_UPLOAD_MUST_BE_IMAGE": "File uploaded must be an image",
+  "FILE_UPLOAD_MUST_BE_LESS_THAN": "File size should be less than",
   "REGISTRATION_WHATSAPP_MESSAGE": "Thank you for registering at Bahmni Clinic. Please note your Patient Registration Details: #patientId, #name, #gender, #age. For any queries call us on +919876543210. Clinic Timings: All weekdays, 10 am - 7 pm. Weekends closed."
 }
