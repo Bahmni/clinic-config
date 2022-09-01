@@ -228,8 +228,9 @@
                 "formGroup": [ "Death Note",
                                 "Orthopaedic Examination",
                                 "Diabetes Intake",
+                                "Diabetes Progress",
                                 "Malaria"
-                             ],
+                            ],
                 "translationKey": "Edit Forms (2.0)"
             },
 
