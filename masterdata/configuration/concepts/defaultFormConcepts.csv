@@ -21,4 +21,4 @@ Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Descript
 9bb0795c-4ff0-0305-1990-000000000017,,,"Malaria, Source",Source,,,,,Misc,Coded,,ACD - Active Case Detection;PCD - Passive Case Detection;,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000018,,,Foot examination,Foot examination,,,,,Misc,Text,,,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000019,,,Last eye exam date,Last eye exam date,,,,,Misc,Date,,,,,,,,,,,
-229e556d-42f2-4a77-81f5-38e93bc819c4,,,Temperature,Temperature,Patient's temperature in Fahrenheit,,,,Misc,Numeric,,,,Yes,F,,,98.6,98.6,,
+9bb0795c-4ff0-0305-1990-000000000020,,,Temperature,Temperature,Patient's temperature in Fahrenheit,,,,Misc,Numeric,,,,Yes,F,,,98.6,98.6,,
