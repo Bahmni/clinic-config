@@ -203,4 +203,15 @@
             UPDATE concept set retired = TRUE where version is null and concept_id = @concept_id;
         </sql>
     </changeSet>
+    <changeSet id="202209011351" author="Bindu">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from scheduler_task_config where name = 'OpenElis Patient  Atom Feed Failed Event Task' and schedulable_class = 'org.bahmni.module.elisatomfeedclient.api.task.OpenElisPatientFeedFailedEventsTask' and  start_on_startup = 1 and started = 1;
+            </sqlCheck>
+        </preConditions>
+        <comment> Disable 'OpenElis Patient  Atom Feed Failed Event Task' scheduler task as clinical-config doesn't have openelis module </comment>
+        <sql>
+            UPDATE scheduler_task_config set start_on_startup=FALSE, started=FALSE where name = 'OpenElis Patient  Atom Feed Failed Event Task' and schedulable_class = 'org.bahmni.module.elisatomfeedclient.api.task.OpenElisPatientFeedFailedEventsTask';
+        </sql>
+    </changeSet>
 </databaseChangeLog>
