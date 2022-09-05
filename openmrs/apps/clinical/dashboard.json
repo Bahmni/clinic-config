@@ -92,6 +92,8 @@
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
+                        "Height (cm)",
+                        "Weight (kg)",
                         "Pulse",
                         "Arterial blood oxygen saturation (pulse oximeter)",
                         "Respiratory rate",
