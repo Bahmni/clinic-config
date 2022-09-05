@@ -12,7 +12,7 @@
       <property>emrapi.sqlSearch.activePatients</property>
       <value>select distinct concat(pn.given_name," ", ifnull(pn.family_name,"")) as name,
 	primaryIdentifier.identifier as identifier,
-	IF(extraIdentifier.identifier IS NULL OR extraIdentifier.identifier = '', primaryIdentifier.identifier, extraIdentifier.identifier) as abhaIdentifier,
+	IF(extraIdentifier.identifier IS NULL OR extraIdentifier.identifier = '', primaryIdentifier.identifier, extraIdentifier.identifier) as "extraIdentifierVal",
 	concat("",p.uuid) as uuid,
 	concat("",v.uuid) as activeVisitUuid,
 	IF(va.value_reference = "Admitted", "true", "false") as hasBeenAdmitted 

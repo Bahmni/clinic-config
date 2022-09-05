@@ -7,7 +7,7 @@
         }
     ],
     "config": {
-		"preferAbhaIdInSearchResults": true,
+		"preferExtraIdInSearchResults": true,
         "conceptSetUI": {
             "Chief Complaint Data": {
                 "autocomplete":true,
