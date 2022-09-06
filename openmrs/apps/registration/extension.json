@@ -50,7 +50,13 @@
                 "age"
             ],
             "linkDisplay": "Verify ABHA",
-            "contact": "phoneNumber"
+            "contact": "phoneNumber",
+            "addressMap": {
+                "city": "cityVillage",
+                "state": "stateProvince",
+                "postalCode": "postalCode",
+                "line": "address1"
+           }
         }
     },
     "nutritionalValues":{
