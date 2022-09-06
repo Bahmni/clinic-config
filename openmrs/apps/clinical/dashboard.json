@@ -238,7 +238,8 @@
                                 "Diabetes Intake",
                                 "Diabetes Progress",
                                 "Malaria",
-                                "History and Examination"
+                                "History and Examination",
+                                "Vitals"
                             ],
                 "translationKey": "Edit Forms (2.0)"
             },
