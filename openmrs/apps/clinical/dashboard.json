@@ -169,13 +169,21 @@
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
-                        "History and Examination"
+                        "Chief Complaint Data",
+                        "History of present illness",
+                        "Smoking status",
+                        "Consultation Images",
+                        "Patient Video"
                     ],
                     "numberOfVisits":2
                 },
                 "expandedViewConfig":{
                     "conceptNames":[
-                        "History and Examination"
+                        "Chief Complaint Data",
+                        "History of present illness",
+                        "Smoking status",
+                        "Consultation Images",
+                        "Patient Video"
                     ],
                     "numberOfVisits":2,
                     "showDetailsButton":true,
@@ -229,7 +237,8 @@
                                 "Orthopaedic Examination",
                                 "Diabetes Intake",
                                 "Diabetes Progress",
-                                "Malaria"
+                                "Malaria",
+                                "History and Examination"
                             ],
                 "translationKey": "Edit Forms (2.0)"
             },
