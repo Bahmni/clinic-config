@@ -214,4 +214,19 @@
             UPDATE scheduler_task_config set start_on_startup=FALSE, started=FALSE where name = 'OpenElis Patient  Atom Feed Failed Event Task' and schedulable_class = 'org.bahmni.module.elisatomfeedclient.api.task.OpenElisPatientFeedFailedEventsTask';
         </sql>
     </changeSet>
+    <changeSet id="BAH-2231-202209060305" author="Clinic-Config" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from concept_reference_source where name='SNOMED' ;
+            </sqlCheck>
+            <sqlCheck expectedResult="1">
+                select count(*) from concept_reference_source where name='SNOMED-CT' ;
+            </sqlCheck>
+        </preConditions>
+        <comment>Update HL7 Code for Concept Reference Terms SNOMED and SNOMED-CT to fix drug validation error</comment>
+        <sql>
+            UPDATE concept_reference_source set hl7_code = null, description = 'Old SNOMED Duration Source from Bahmni', retired = 1 where name = 'SNOMED';
+            UPDATE concept_reference_source set hl7_code = 'SCT', description = 'SNOMED Duration Source' where name = 'SNOMED-CT';
+        </sql>
+    </changeSet>
 </databaseChangeLog>
