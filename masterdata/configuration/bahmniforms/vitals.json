@@ -2,7 +2,7 @@
   "formJson": {
     "name": "Vitals",
     "uuid": "85f773f8-e2f3-45d7-927f-f60c95d8f7e7",
-    "version": "1",
+    "version": "2",
     "published": true,
     "resources": [
       {
