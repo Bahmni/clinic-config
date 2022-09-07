@@ -8,5 +8,10 @@
       <property>emr.personImagesDirectory</property>
       <value>/home/bahmni/patient_images</value>
     </globalProperty>
+    <globalProperty>
+      <property>order.durationUnitsConceptUuid</property>
+      <value>1732AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</value>
+      <description>Global property pointing to duration units concept set</description>
+    </globalProperty>
   </globalProperties>
 </config>
