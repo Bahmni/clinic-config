@@ -22,6 +22,8 @@ Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Descript
 9bb0795c-4ff0-0305-1990-000000000018,,,Foot examination,Foot examination,,,,,Misc,Text,,,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000019,,,Last eye exam date,Last eye exam date,,,,,Misc,Date,,,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000020,,,Temperature,Temperature,Patient's temperature in Fahrenheit,,,,Misc,Numeric,,,,Yes,F,,,40,140,,
+9bb0795c-4ff0-0305-1990-000000000024,,,"Hypertension, Hypertensive Emergency 12 Months",Hypertensive Emergency or Cardiac Hospitalization in 12 Months,,,,,Misc,Boolean,,,,,,,,,,,
+9bb0795c-4ff0-0305-1990-000000000025,,,"Hypertension, Hypertensive Emergency Cause",Hypertensive Emergency or Cardiac Hospitalization For,,,,,Misc,Coded,,Hypertension;Congestive Heart Failure;Myocardial infarction;Chest Pain,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000021,,,Registration Fee,Registration Fee,,,,,Misc,Numeric,,,,TRUE,INR,,,,,,
 9bb0795c-4ff0-0305-1990-000000000022,,,Doctor Name,Doctor Name,,,,,Misc,Text,,,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000023,,,Consultation Fee,Consultation Fee,,,,,Misc,Numeric,,,,TRUE,INR,,,,,,
