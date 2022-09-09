@@ -251,7 +251,7 @@
         </preConditions>
         <comment>Retire Bahmni Diagnosis concepts</comment>
         <sql>
-            UPDATE concept set retired = TRUE where version = 'BAHMNI-CORE-1.0';
+            UPDATE concept SET retired = TRUE WHERE version = 'BAHMNI-CORE-1.0';
         </sql>
     </changeSet>
 </databaseChangeLog>
