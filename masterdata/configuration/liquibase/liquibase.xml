@@ -245,7 +245,7 @@
         <preConditions onFail="MARK_RAN">
             <not>
                 <sqlCheck expectedResult="0">
-                    select * from concept where version = 'BAHMNI-CORE-1.0';
+                    SELECT COUNT(*) FROM concept WHERE version = 'BAHMNI-CORE-1.0' AND retired = FALSE;
                 </sqlCheck>
             </not>
         </preConditions>
