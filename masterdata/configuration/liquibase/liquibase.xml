@@ -241,4 +241,17 @@
             <where> name = 'SNOMED-CT'</where>
         </update>
     </changeSet>
+    <changeSet id="BAH-2253-202209091317" author="Rohit" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select * from concept where version = 'BAHMNI-CORE-1.0';
+                </sqlCheck>
+            </not>
+        </preConditions>
+        <comment>Retire Bahmni Diagnosis concepts</comment>
+        <sql>
+            UPDATE concept set retired = TRUE where version = 'BAHMNI-CORE-1.0';
+        </sql>
+    </changeSet>
 </databaseChangeLog>
