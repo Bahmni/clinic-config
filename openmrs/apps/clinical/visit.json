@@ -17,13 +17,13 @@
                     "groupBy": "encounters",
                     "obsConcepts": [
                         "Pulse",
-                        "Diastolic",
-                        "Systolic",
+                        "Diastolic blood pressure",
+                        "Systolic blood pressure",
                         "Temperature",
-                        "RR",
-                        "SPO2",
-                        "Height",
-                        "WEIGHT",
+                        "Respiratory rate",
+                        "Arterial blood oxygen saturation (pulse oximeter)",
+                        "Height (cm)",
+                        "Weight (kg)",
                         "M/C Days"
                     ],
                     "labConcepts": ""
