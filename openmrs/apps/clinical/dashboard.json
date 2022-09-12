@@ -255,7 +255,8 @@
                                 "History and Examination",
                                 "Vitals",
                                 "Hypertension Intake",
-                                "Second Vitals"
+                                "Second Vitals",
+                                "Hypertension Progress"
                             ],
                 "translationKey": "Edit Forms (2.0)"
             },

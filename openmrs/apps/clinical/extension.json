@@ -78,7 +78,7 @@
       "default": true
     },
     "order": 1,
-    "requiredPrivilege": "app:clinical:history"
+    "requiredPrivilege": "app:clinical"
   },
   "bahmniClinicalConceptSetGroupObservationsVitals": {
     "id": "bahmni.clinical.conceptSetGroup.observations.vitals",
