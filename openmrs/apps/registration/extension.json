@@ -59,7 +59,7 @@
         "type": "forms",
         "extensionParams": {
             "formName": "Registration Details",
-            "conceptNames": [""],
+            "conceptNames": ["Height (cm)","Weight (Kg)","Body mass index"],
             "showLatest": true
         },
         "order": 3,
