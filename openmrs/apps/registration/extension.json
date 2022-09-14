@@ -54,6 +54,7 @@
             "addressMap": {
                 "city": "cityVillage",
                 "state": "stateProvince",
+                "district": "countyDistrict",
                 "postalCode": "postalCode",
                 "line": "address1"
            }
