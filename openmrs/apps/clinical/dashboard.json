@@ -92,13 +92,27 @@
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
-                        "Vitals"
+                        "Height (cm)",
+                        "Weight (kg)",
+                        "Pulse",
+                        "Arterial blood oxygen saturation (pulse oximeter)",
+                        "Respiratory rate",
+                        "Temperature",
+                        "Systolic blood pressure",
+                        "Diastolic blood pressure",
+                        "Body position"
                     ],
                     "numberOfVisits":2
                 },
                 "expandedViewConfig":{
                     "conceptNames":[
-                        "Vitals"
+                        "Pulse",
+                        "Arterial blood oxygen saturation (pulse oximeter)",
+                        "Respiratory rate",
+                        "Temperature",
+                        "Systolic blood pressure",
+                        "Diastolic blood pressure",
+                        "Body position"
                     ],
                     "numberOfVisits":2,
                     "showDetailsButton":true,
@@ -157,13 +171,21 @@
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
-                        "History and Examination"
+                        "Chief Complaint Data",
+                        "History of present illness",
+                        "Smoking status",
+                        "Consultation Images",
+                        "Patient Video"
                     ],
                     "numberOfVisits":2
                 },
                 "expandedViewConfig":{
                     "conceptNames":[
-                        "History and Examination"
+                        "Chief Complaint Data",
+                        "History of present illness",
+                        "Smoking status",
+                        "Consultation Images",
+                        "Patient Video"
                     ],
                     "numberOfVisits":2,
                     "showDetailsButton":true,
@@ -205,6 +227,27 @@
                 "formGroup": [ ],
                 "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
             },
+
+            "forms-2.0": {
+                "type": "formsV2",
+                "displayOrder": 12,
+                "dashboardConfig": {
+                    "title": null,
+                    "maximumNoOfVisits": 10
+                },
+                "formGroup": [ "Death Note",
+                                "Orthopaedic Examination",
+                                "Diabetes Intake",
+                                "Diabetes Progress",
+                                "Malaria",
+                                "History and Examination",
+                                "Vitals",
+                                "Hypertension Intake",
+                                "Hypertension Progress"
+                            ],
+                "translationKey": "Edit Forms (2.0)"
+            },
+
             "patientDocument":{
                 "type":"historyAndExamination",
                 "isObservation":true,

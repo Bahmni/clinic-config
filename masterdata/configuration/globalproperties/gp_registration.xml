@@ -8,7 +8,7 @@
       <property>emr.personImagesDirectory</property>
       <value>/home/bahmni/patient_images</value>
     </globalProperty>
-	<globalProperty>
+  	<globalProperty>
       <property>emrapi.sqlSearch.activePatients</property>
       <value>select distinct concat(pn.given_name," ", ifnull(pn.family_name,"")) as name,
 	primaryIdentifier.identifier as identifier,
@@ -27,12 +27,17 @@ from visit v
 		left outer JOIN (SELECT ei.patient_id, ei.identifier 
 			FROM patient_identifier ei 
 				join patient_identifier_type pit on ei.identifier_type = pit.patient_identifier_type_id 
-				join global_property gp on gp.property="bahmni.extraPatientIdentifierTypes" and gp.property_value=pit.uuid) extraIdentifier 
+				join global_property gp on gp.property="bahmni.extraPatientIdentifierTypes" and pit.uuid=left(gp.property_value, 36)) extraIdentifier 
 		ON v.patient_id = extraIdentifier.patient_id 
         join location l on l.uuid = ${visit_location_uuid} and v.location_id = l.location_id
         left outer join visit_attribute va on va.visit_id = v.visit_id and va.attribute_type_id = (
           select visit_attribute_type_id from visit_attribute_type where name="Admission Status") and va.voided = 0 
-where v.date_stopped is null AND v.voided = 0</value>
+where v.date_stopped is null AND v.voided = 0;</value>
+    </globalProperty>
+    <globalProperty>
+      <property>order.durationUnitsConceptUuid</property>
+      <value>1732AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</value>
+      <description>Global property pointing to duration units concept set</description>
     </globalProperty>
   </globalProperties>
 </config>
