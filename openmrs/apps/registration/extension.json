@@ -66,7 +66,7 @@
         "type": "forms",
         "extensionParams": {
             "formName": "Registration Details",
-            "conceptNames": [""],
+            "conceptNames": ["Height (cm)","Weight (Kg)","Body mass index","BMI Status"],
             "showLatest": true
         },
         "order": 3,
