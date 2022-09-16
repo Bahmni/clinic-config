@@ -50,7 +50,14 @@
                 "age"
             ],
             "linkDisplay": "Verify ABHA",
-            "contact": "phoneNumber"
+            "contact": "phoneNumber",
+            "addressMap": {
+                "city": "cityVillage",
+                "state": "stateProvince",
+                "district": "countyDistrict",
+                "postalCode": "postalCode",
+                "line": "address1"
+           }
         }
     },
     "registrationSecondPage":{
