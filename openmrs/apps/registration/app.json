@@ -9,7 +9,7 @@
         }
     ],
     "config" : {
-        "mandatoryPersonAttributes" : ["primaryContact"],
+        "mandatoryPersonAttributes" : ["phoneNumber"],
         "patientInformation": {},
         "defaultIdentifierPrefix": "ABC",
         "showMiddleName": true,
@@ -19,6 +19,10 @@
         "patientNameDisplayOrder": ["firstName", "middleName", "lastName"],
         "showSaveConfirmDialog": false,
         "showBirthTime": false,
+        "enableDashboardRedirect": true,
+        "dashboardUrl": "/bahmni/clinical/index.html#/default/patient/{{patientUuid}}/dashboard",
+        "whatsAppMessage": "REGISTRATION_WHATSAPP_MESSAGE",
+        "enableWhatsAppButton": true,
         "readOnlyExtraIdentifiers": ["ABHA","ABHA Address"],
         "fieldValidation" : {
             "email" : {"pattern" : "^(?=.{1,40}$)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,4})$", "errorMessage" : "Should be a valid email address"},

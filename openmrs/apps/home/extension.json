@@ -50,7 +50,7 @@
     "url": "/atomfeed-console",
     "icon": "fa fa-terminal",
     "order": 5,
-    "requiredPrivilege": "app:admin"
+    "requiredPrivilege": "app:atomfeed-console"
   },
   "ndhmHIU": {
     "id": "bahmni.ndhm.hiu",
@@ -91,5 +91,26 @@
     "icon": "fa fa-calendar",
     "order": 9,
     "requiredPrivilege": "app:appointments"
+  },
+  "admin": {
+    "id": "bahmni.admin",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "translationKey": "MODULE_LABEL_ADMIN_KEY",
+    "url": "../admin/#/dashboard/home",
+    "icon": "icon-bahmni-admin",
+    "order": 7,
+    "requiredPrivilege": "app:admin"
+  },
+  "abdmRegistration": {
+    "id": "bahmni.abdm.register",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "translationKey": "MODULE_LABEL_ABDM_REGISTER_KEY",
+    "url": "https://healthidsbx.abdm.gov.in/facility/generate",
+    "icon": "fa fa-leanpub",
+    "order": 9,
+    "target": "_blank",
+    "requiredPrivilege": "app:registration"
   }
 }
