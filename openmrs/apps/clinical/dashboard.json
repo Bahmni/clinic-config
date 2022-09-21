@@ -229,20 +229,10 @@
                     "numberOfVisits":2
                 }
             },
-            "formsDisplay": {
-                "type": "forms",
-                "displayOrder": 8,
-                "dashboardConfig": {
-                    "title": null,
-                    "maximumNoOfVisits": 10
-                },
-                "formGroup": [ ],
-                "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
-            },
 
             "forms-2.0": {
                 "type": "formsV2",
-                "displayOrder": 12,
+                "displayOrder": 8,
                 "dashboardConfig": {
                     "title": null,
                     "maximumNoOfVisits": 10
@@ -258,7 +248,7 @@
                                 "Second Vitals",
                                 "Hypertension Progress"
                             ],
-                "translationKey": "Edit Forms (2.0)"
+                "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
             },
 
             "patientDocument":{
