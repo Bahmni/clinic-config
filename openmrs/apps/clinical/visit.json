@@ -8,6 +8,125 @@
             "logo": "../images/bahmniLogo.png"
         },
         "defaultSections": true,
+        "customPrint": true,
+        "printInvestigations": true,
+        "printOrders": true,
+        "printMedicines": true,
+        "printDiagnosis": true,
+        "printConditions": false,
+        "printSections": {
+            "patientInformation": {
+                "configType": "patientInformation",
+                "printOrder": 1,
+                "config": {
+                    "title": "PatientInformation",
+                    "visitAttributes": ["Speciality"],
+                    "obsConcepts": ["Consultant Information", "List of Consultants"],
+                    "persistOrderOfVisits": false,
+                    "templateUrlName": ""
+                }
+            },
+            "vitalsInformation": {
+                "configType": "observation",
+                "printOrder": 2,
+                "config": {
+                    "title": "Vitals",
+                    "visitAttributes": [],
+                    "obsConcepts": ["Height (cm)",
+                        "Weight (kg)",
+                        "Pulse",
+                        "Arterial blood oxygen saturation (pulse oximeter)",
+                        "Respiratory rate",
+                        "Temperature",
+                        "Systolic blood pressure",
+                        "Diastolic blood pressure",
+                        "Body position"],
+                    "persistOrderOfVisits": false,
+                    "templateUrlName": "vitals"
+                }
+            },
+            "consultationInformation": {
+                "configType": "observation",
+                "printOrder": 3,
+                "sectionToAppendObs": true,
+                "config": {
+                    "title": "Consultation Notes",
+                    "visitAttributes": [],
+                    "obsConcepts": ["Chief Complaint Data",
+                        "History of present illness",
+                        "Smoking status",
+                        "Consultation Images",
+                        "Patient Video"],
+                    "persistOrderOfVisits": false,
+                    "templateUrlName": "consultationNotes"
+                }
+            },
+            "visitDiagnosis":{
+                "configType": "diagnosis",
+                "printOrder": 4,
+                "config": {
+                    "translationKey" : "DASHBOARD_TITLE_DIAGNOSIS_KEY",
+                    "showCertainty": true,
+                    "showOrder": false,
+                    "showDetailsButton": true
+                }
+            },
+            "visitConditions": {
+                "title": "Conditions",
+                "configType": "conditionsList",
+                "printOrder": 5,
+                "config": { }
+            },
+            "visitPacsOrders": {
+                "configType":"pacsOrders",
+                "printOrder": 6,
+                "config":{
+                    "orderType": "Radiology Order",
+                    "translationKey": "PACS_ORDERS_VISIT_PAGE_KEY"
+                }
+            },
+            "labInvestigations":{
+                "configType": "investigationResult",
+                "printOrder": 7,
+                "config": {
+                    "translationKey":"LAB_INVESTIGATION",
+                    "showChart": true,
+                    "showTable": false,
+                    "showNormalLabResults": true,
+                    "showCommentsExpanded": true,
+                    "showAccessionNotes": true,
+                    "numberOfVisits": 1,
+                    "initialAccessionCount": 1,
+                    "latestAccessionCount": 1
+                }
+            },
+            "visitTreatments": {
+                "configType": "treatment",
+                "printOrder": 8,
+                "config": {
+                    "translationKey": "Treatments",
+                    "showFlowSheet": true,
+                    "showListView": true,
+                    "showOtherActive": false,
+                    "showDetailsButton": false,
+                    "showRoute": true,
+                    "showDrugForm": false,
+                    "showProvider":false,
+                    "numberOfVisits": 1
+                }
+            },
+            "followupInformation": {
+                "configType": "followup",
+                "printOrder": 9,
+                "config": {
+                    "title": "Follow-up",
+                    "visitAttributes": [],
+                    "obsConcepts": ["Follow Up Visit"],
+                    "persistOrderOfVisits": false,
+                    "templateUrlName": "followup"
+                }
+            }
+        },
         "sections": {
             "pivotTable":{
                 "type": "pivotTable",
