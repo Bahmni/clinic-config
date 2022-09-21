@@ -15,6 +15,14 @@
             "sqlPath": "/etc/bahmni_config/reports/sql/visitCount.sql"
         }
     },
+    "missedAppointmentsReport": {
+        "name": "Missed Appointments Report",
+        "type": "MRSGeneric",
+        "requiredPrivilege": "app:reports",
+        "config": {
+            "sqlPath": "/etc/bahmni_config/reports/sql/missedAppointments.sql"
+        }
+    },
     "followUpReport": {
         "name": "List of Patients to follow up",
         "type": "MRSGeneric",
