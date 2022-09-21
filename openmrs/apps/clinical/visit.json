@@ -10,10 +10,11 @@
         "defaultSections": true,
         "customPrint": true,
         "printInvestigations": true,
-        "printOrders": true,
+        "printOrders": false,
         "printMedicines": true,
         "printDiagnosis": true,
         "printConditions": false,
+        "conceptsExcluded": ["Fee Information","BMI Status Data","BMI STATUS"],
         "printSections": {
             "patientInformation": {
                 "configType": "patientInformation",
