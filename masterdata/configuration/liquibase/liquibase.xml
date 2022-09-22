@@ -95,7 +95,7 @@
                 
             </sqlCheck>
         </preConditions>
-        <comment>Update start time for auto close visit schedular</comment>
+        <comment>Update start time for auto close visit scheduler</comment>
         <sql>
             UPDATE scheduler_task_config SET start_time = "2022-09-21 14:30:00" where name = "Close Stale Visits Task";
             <!-- The start_time should be in UTC format(14:30:00) (so that auto close of visit will be done at 8pm IST )-->
