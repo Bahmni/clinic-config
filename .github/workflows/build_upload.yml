@@ -9,6 +9,8 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+'
     paths-ignore:
       - "**.md"
+  repository_dispatch:
+    types: ["hip-module-trigger"]
 
 jobs:
   docker-build-publish:
@@ -23,6 +25,11 @@ jobs:
           wget -q https://raw.githubusercontent.com/Bahmni/bahmni-infra-utils/main/setArtifactVersion.sh && chmod +x setArtifactVersion.sh
           ./setArtifactVersion.sh
           rm setArtifactVersion.sh
+      - name: Download hip module omod
+        run: |
+          sh .github/download_artifact.sh openmrs-module-hip Package ${{secrets.BAHMNI_PAT}} .
+          mkdir -p openmrs/omods
+          mv resources/hipmodule-omod-*.omod openmrs/omods/
       - name: Docker - Login
         uses: docker/login-action@v1
         with:
