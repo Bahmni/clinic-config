@@ -35,7 +35,7 @@
         "id": "org.bahmni.registration.identifier.ndhmIdentifierSrc",
         "extensionPointId": "org.bahmni.registration.identifier",
         "type": "link",
-        "src": "/ndhm/index.html",
+        "src": "/abha-verification/index.html",
         "extensionParams": {
             "identifierType": [
                 "ABHA",
