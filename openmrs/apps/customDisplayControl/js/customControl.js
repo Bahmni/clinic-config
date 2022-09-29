@@ -42,6 +42,23 @@ angular.module('bahmni.common.displaycontrol.custom')
             let timezoneOffsetMinutes = new Date().getTimezoneOffset();
             return Bahmni.Common.Util.DateUtil.addMinutes(Bahmni.Common.Util.DateUtil.parse(dateTimeInUtc), -timezoneOffsetMinutes);
         }
+        var transformDate = function (appointmentDate) {
+            let appointmentDay = appointmentDate[0]
+            let appointmentMonth = appointmentDate[1]
+            let appointmentYear = appointmentDate[2]
+            return Bahmni.Common.Util.DateUtil.formatDateWithoutTime(
+                new Date(appointmentYear, appointmentMonth - 1, appointmentDay),
+            )
+        }
+
+        var transformToLocalTime = function (appointmentDate, slotTime) {
+            let slotTimeInLocalTimeZone = getUpdatedDateTimeInLocalTimeZone(
+                Bahmni.Common.Util.DateUtil.formatDateWithTime(
+                    appointmentDate + ' ' + slotTime,
+                ),
+            )
+            return Bahmni.Common.Util.DateUtil.formatTime(slotTimeInLocalTimeZone)
+        }
         $q.all([getUpcomingAppointments(), getPastAppointments()]).then(function (response) {
             $scope.upcomingAppointments = response[0].data;
             $scope.upcomingAppointmentsUUIDs = [];
@@ -63,19 +80,23 @@ angular.module('bahmni.common.displaycontrol.custom')
             $scope.upcomingAppointmentsHeadings = _.keys($scope.upcomingAppointments[0]);
             $scope.pastAppointments = response[1].data;
             for (let i = 0; i < $scope.pastAppointments.length; i++) {
-                let appointmentDateParts = $scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_DATE_KEY.split("/");
-                let appointmentDay = appointmentDateParts[0];
-                let appointmentMonth = appointmentDateParts[1];
-                let appointmentYear = appointmentDateParts[2];
-                let appointmentDate = Bahmni.Common.Util.DateUtil.formatDateWithoutTime(new Date(appointmentYear, appointmentMonth - 1, appointmentDay));
-                let slotStartTime = $scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_SLOT_KEY.split("-")[0].trim();
-                let slotEndTime = $scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_SLOT_KEY.split("-")[1].trim();
-                let slotStartTimeInLocalTimeZone = getUpdatedDateTimeInLocalTimeZone(Bahmni.Common.Util.DateUtil.formatDateWithTime(appointmentDate + " " + slotStartTime));
-                let slotEndTimeInLocalTimeZone = getUpdatedDateTimeInLocalTimeZone(Bahmni.Common.Util.DateUtil.formatDateWithTime(appointmentDate + " " + slotEndTime));
-                let updatedSlotStartTime = Bahmni.Common.Util.DateUtil.formatTime(slotStartTimeInLocalTimeZone);
-                let updatedSlotEndTime = Bahmni.Common.Util.DateUtil.formatTime(slotEndTimeInLocalTimeZone);
-                $scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_SLOT_KEY = updatedSlotStartTime + " - " + updatedSlotEndTime;
-                $scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_DATE_KEY = Bahmni.Common.Util.DateUtil.formatDateWithoutTime(slotStartTimeInLocalTimeZone);
+                const appointmentDate =
+                    transformDate($scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_DATE_KEY.split('/'))
+
+                let slotStartTime = transformToLocalTime(
+                    appointmentDate,
+                    $scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_SLOT_KEY.split('-')[0].trim()
+                )
+
+                let slotEndTime = transformToLocalTime(
+                    appointmentDate,
+                    $scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_SLOT_KEY.split('-')[1].trim()
+                )
+
+                $scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_SLOT_KEY =
+                    slotStartTime + ' - ' + slotEndTime
+                $scope.pastAppointments[i].DASHBOARD_APPOINTMENTS_DATE_KEY =
+                    appointmentDate
             }
             $scope.pastAppointmentsHeadings = _.keys($scope.pastAppointments[0]);
         });
