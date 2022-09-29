@@ -4,7 +4,6 @@ on:
     branches:
       - master
       - 'release-*'
-      - BAH-2367
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
     paths-ignore:
@@ -13,14 +12,14 @@ on:
     types: ["hip-module-trigger"]
 
 jobs:
-  docker-build-publish:
-    name: Docker Build & Publish
+  build-publish-docker-helm:
+    name: Build & Publish Docker Image & Helm Chart
     runs-on: ubuntu-latest
     env:
       HELM_CHART_PATH: package/helm/clinic-config
     steps:
       - uses: actions/checkout@v2
-      - name: Set artifact version
+      - name: Set env.ARTIFACT_VERSION
         run: |
           wget -q https://raw.githubusercontent.com/Bahmni/bahmni-infra-utils/main/setArtifactVersion.sh && chmod +x setArtifactVersion.sh
           ./setArtifactVersion.sh
