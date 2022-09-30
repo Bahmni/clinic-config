@@ -18,7 +18,8 @@
     "extensionParams": {
       "searchHandler": "emrapi.sqlSearch.activePatients",
       "translationKey": "MODULE_LABEL_ACTIVE_KEY",
-      "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+      "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard",
+      "searchColumns": ["identifier", "name", "extraIdentifierVal"]
     },
     "label": "Active",
     "order": 1,
