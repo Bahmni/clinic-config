@@ -246,7 +246,8 @@
                                 "Vitals",
                                 "Hypertension Intake",
                                 "Second Vitals",
-                                "Hypertension Progress"
+                                "Hypertension Progress",
+                                "Follow Up"
                             ],
                 "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
             },
