@@ -57,8 +57,12 @@
                 "district": "countyDistrict",
                 "postalCode": "postalCode",
                 "line": "address1"
-           }
-        }
+            }
+        },
+        "extensionButtons": [{
+            "id" : "patientQueue",
+            "display" : "Patient Queue"
+        }]
     },
     "registrationSecondPage":{
         "id": "bahmni.registration.conceptSetGroup.registrationSecondPage",
