@@ -46,5 +46,13 @@
         "config": {
             "sqlPath": "/etc/bahmni_config/reports/sql/notifiableDiseases.sql"
         }
+    },
+    "DiagnosisCountReport": {
+        "name": "Diagnosis Count Report",
+        "type": "MRSGeneric",
+        "requiredPrivilege": "app:reports",
+        "config": {
+            "sqlPath": "/etc/bahmni_config/reports/sql/diagnosisCount.sql"
+        }
     }
 }
