@@ -1,23 +1,20 @@
 import org.apache.commons.lang.StringUtils
-import org.hibernate.Query
-import org.hibernate.SessionFactory;
 import org.openmrs.Obs;
-import org.openmrs.Patient;
-import org.openmrs.Concept;
 import org.openmrs.Encounter;
 import org.openmrs.module.bahmniemrapi.encountertransaction.contract.BahmniObservation
-import org.openmrs.util.OpenmrsUtil;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.bahmniemrapi.obscalculator.ObsValueCalculator;
 import org.openmrs.module.bahmniemrapi.encountertransaction.contract.BahmniEncounterTransaction
 import org.openmrs.module.emrapi.encounter.domain.EncounterTransaction;
 
-import org.joda.time.LocalDate;
-import org.joda.time.Months;
-
 public class BahmniObsValueCalculator implements ObsValueCalculator {
 
     static Map<BahmniObservation, BahmniObservation> obsParentMap = new HashMap<BahmniObservation, BahmniObservation>();
+    static final String HEIGHT_CONCEPT_NAME = "Height (cm)";
+    static final String WEIGHT_CONCEPT_NAME = "Weight (kg)";
+    static final String BMI_CONCEPT_NAME = "Body Mass Index";
+    static final String BMI_ERROR_MESSAGE = "Please enter valid Height and Weight";
+    static final int MAX_BMI_VALUE = 100;
 
     public void run(BahmniEncounterTransaction bahmniEncounterTransaction) {
         calculateAndAdd(bahmniEncounterTransaction)
@@ -26,10 +23,8 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
     static def calculateAndAdd(BahmniEncounterTransaction bahmniEncounterTransaction) {
         Collection<BahmniObservation> observations = bahmniEncounterTransaction.getObservations()
 
-        def nowAsOfEncounter = bahmniEncounterTransaction.getEncounterDateTime() != null ? bahmniEncounterTransaction.getEncounterDateTime() : new Date()
-
-        BahmniObservation heightObservation = find("Height (cm)", observations, null)
-        BahmniObservation weightObservation = find("Weight (kg)", observations, null)
+        BahmniObservation heightObservation = find(HEIGHT_CONCEPT_NAME, observations, null)
+        BahmniObservation weightObservation = find(WEIGHT_CONCEPT_NAME, observations, null)
         BahmniObservation parent = null
 
         if (hasValue(heightObservation) || hasValue(weightObservation)) {
@@ -39,8 +34,8 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
                 Set<Obs> latestObsOfEncounter = encounter.getObsAtTopLevel(true)
                 latestObsOfEncounter.each { Obs latestObs ->
                     for (Obs groupMember : latestObs.groupMembers) {
-                        heightObs = heightObs ? heightObs : (groupMember.concept.getName().name.equalsIgnoreCase("Height (cm)") ? groupMember : null)
-                        weightObs = weightObs ? weightObs : (groupMember.concept.getName().name.equalsIgnoreCase("Weight (kg)") ? groupMember : null)
+                        heightObs = heightObs ? heightObs : (groupMember.concept.getName().name.equalsIgnoreCase(HEIGHT_CONCEPT_NAME) ? groupMember : null)
+                        weightObs = weightObs ? weightObs : (groupMember.concept.getName().name.equalsIgnoreCase(WEIGHT_CONCEPT_NAME) ? groupMember : null)
                     }
                 }
                 if (isSameObs(heightObservation, heightObs) && isSameObs(weightObservation, weightObs)) {
@@ -48,7 +43,7 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
                 }
             }
 
-            BahmniObservation bmiObservation = find("Body Mass Index", observations, null)
+            BahmniObservation bmiObservation = find(BMI_CONCEPT_NAME, observations, null)
 
             parent = obsParent(heightObservation, parent)
             parent = obsParent(weightObservation, parent)
@@ -67,7 +62,7 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
                 return
             }
 
-            bmiObservation = bmiObservation ?: createObs("Body Mass Index", parent, bahmniEncounterTransaction, obsDatetime) as BahmniObservation
+            bmiObservation = bmiObservation ?: createObs(BMI_CONCEPT_NAME, parent, bahmniEncounterTransaction, obsDatetime) as BahmniObservation
             def bmi = bmi(height, weight)
             bmiObservation.setValue(bmi)
 
@@ -120,8 +115,8 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
         Double heightInMeters = height / 100
         Double value = weight / (heightInMeters * heightInMeters)
         def bmiValue = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue()
-        if(bmiValue > 100){
-            throw new IllegalArgumentException("Please enter valid Height and Weight")
+        if(bmiValue > MAX_BMI_VALUE){
+            throw new IllegalArgumentException(BMI_ERROR_MESSAGE)
         }
         return bmiValue
     };
@@ -139,5 +134,4 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
         }
         return null
     }
-
 }
