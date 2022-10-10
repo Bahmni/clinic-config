@@ -92,6 +92,17 @@
     "order": 2,
     "requiredPrivilege": "app:clinical"
   },
+  "bahmniClinicalConceptSetGroupObservationsFollowUp": {
+    "id": "bahmni.clinical.conceptSetGroup.observations.FollowUp",
+    "extensionPointId": "org.bahmni.clinical.conceptSetGroup.observations",
+    "type": "config",
+    "extensionParams": {
+      "default": true,
+      "formName": "Follow Up"
+    },
+    "order": 3,
+    "requiredPrivilege": "app:clinical"
+  },
   "bahmniClinicalBillingTreatment": {
     "id": "bahmni.clinical.billing.treatment",
     "extensionPointId": "org.bahmni.clinical.consultation.board",
