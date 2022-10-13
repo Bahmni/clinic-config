@@ -278,5 +278,19 @@
                 "title":"Patient Document"
             }
         }
+    },
+    "print": {
+        "translationKey": "DASHBOARD_TAB_PRINT",
+        "maxRecentlyViewedPatients": 10,
+        "sections": {
+            "patientAppointments": {
+                "type": "custom",
+                "displayOrder": 1 ,
+                "config": {
+                    "title": "Certificates Print",
+                    "template": "<patient-print-dashboard section='config' patient='patient'></patient-print-dashboard>"
+                }
+            }
+        }
     }
 }

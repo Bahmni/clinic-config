@@ -85,5 +85,8 @@
   "DASHBOARD_NO_UPCOMING_APPOINTMENTS_KEY": "No upcoming appointments",
   "DASHBOARD_TELECON_KEY": "Teleconsultation",
   "phoneNumber": "Phone No",
-  "ABHA Address":"ABHA ID"
+  "ABHA Address":"ABHA ID",
+
+  "DASHBOARD_TAB_PRINT": "Print",
+  "UNDER_TREATMENT_CERTIFICATE": "Under Treatment Certificate"
 }

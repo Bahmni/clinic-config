@@ -1,0 +1,10 @@
+@page {
+    margin-left: 0.2cm;
+    margin-right: 0.2cm;
+    margin-top: 0.2cm;
+    margin-bottom: 0.2cm;
+}
+
+.no-print {
+    display: none;
+}

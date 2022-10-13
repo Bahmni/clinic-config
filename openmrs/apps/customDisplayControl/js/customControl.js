@@ -124,3 +124,20 @@ angular.module('bahmni.common.displaycontrol.custom')
         template: '<ng-include src="contentUrl"/>'
     };
 }]);
+
+angular.module('bahmni.common.displaycontrol.custom')
+    .directive('patientPrintDashboard', ['$http', '$q', '$window','appService', function ($http, $q, $window, appService) {
+        var link = function ($scope) {
+            $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/underTreatmentCertificate.html";
+            $scope.today = new Date();
+        };
+        return {
+            restrict: 'E',
+            link: link,
+            scope: {
+                patient: "=",
+                section: "="
+            },
+            template: '<ng-include src="contentUrl"/>'
+        };
+    }]);
