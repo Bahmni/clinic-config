@@ -8,8 +8,6 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+'
     paths-ignore:
       - "**.md"
-  repository_dispatch:
-    types: ["hip-module-trigger"]
 
 jobs:
   build-publish-docker-helm:
@@ -24,11 +22,6 @@ jobs:
           wget -q https://raw.githubusercontent.com/Bahmni/bahmni-infra-utils/main/setArtifactVersion.sh && chmod +x setArtifactVersion.sh
           ./setArtifactVersion.sh
           rm setArtifactVersion.sh
-      - name: Download hip module omod
-        run: |
-          sh .github/download_artifact.sh openmrs-module-hip Package ${{secrets.BAHMNI_PAT}} .
-          mkdir -p openmrs/omods
-          mv resources/hipmodule-omod-*.omod openmrs/omods/
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
