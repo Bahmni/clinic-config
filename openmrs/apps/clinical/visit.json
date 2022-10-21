@@ -87,16 +87,13 @@
                 }
             },
             "diagnosis":{
-                "translationKey":"DASHBOARD_TITLE_DIAGNOSIS_KEY",
                 "type":"diagnosis",
+                "translationKey":"DASHBOARD_TITLE_DIAGNOSIS_KEY",
                 "displayOrder":3,
                 "config": {
-                    "data":{}
-                },
-                "hideVisitDate": true,
-                "patientAttributes":[],
-                "viewName":"../common/displaycontrols/dashboard/views/sections/diagnosis.html",
-                "id":"Diagnoses"
+                    "hideVisitDate": true,
+                    "showCertainty": true
+                }
             },
             "labOrders": {
                 "type": "labOrders",
