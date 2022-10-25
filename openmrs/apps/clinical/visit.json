@@ -29,14 +29,6 @@
                     "labConcepts": ""
                 }
             },
-            "pacsOrders":{
-                "type":"pacsOrders",
-                "displayOrder": 1,
-                "translationKey": "PACS_ORDERS_VISIT_PAGE_KEY",
-                "config":{
-                    "orderType": "Radiology Order"
-                }
-            },
             "conditions": {
                 "title": "Conditions",
                 "type": "conditionsList",
@@ -45,137 +37,98 @@
             }
         }
     },
-    "dischargeSummary":{
-        "translationKey": "DASHBOARD_TAB_DISCHARGE_SUMMARY_KEY",
+    "patientSummary": {
+        "translationKey": "DASHBOARD_TAB_PATIENT_SUMMARY_KEY",
+        "displayByDefault": true,
         "printing": {
             "title": "Bahmni",
-            "header": "Discharge Summary",
+            "header": "Patient Visit Summary",
             "logo": "../images/bahmniLogo.png"
         },
         "sections": {
-            "PatientInformation":{
+            "Patient Information": {
                 "type": "patientInformation",
                 "displayOrder": 0,
                 "config": {
-                    "title": "PatientInformation",
-                    "patientAttributes": ["caste", "class", "education", "occupation", "debt", "distanceFromCenter", "isUrban", "cluster","RationCard", "familyIncome"],
-                    "addressFields": ["address1", "address2", "cityVillage", "countyDistrict"]
+                    "translationKey": "VISIT_TITLE_PATIENT_INFORMATION"
                 }
             },
-            "admissionDetails":{
-                "type": "admissionDetails",
-                "displayOrder": 1,
+            "vitals":{
+                "type":"vitals",
+                "translationKey":"DASHBOARD_TITLE_VITALS_KEY",
+                "displayOrder":1,
+                "config":{
+                    "conceptNames":[
+                        "Height (cm)",
+                        "Weight (kg)",
+                        "Pulse",
+                        "Arterial blood oxygen saturation (pulse oximeter)",
+                        "Respiratory rate",
+                        "Temperature",
+                        "Systolic blood pressure",
+                        "Diastolic blood pressure",
+                        "Body position"
+                    ],
+                    "numberOfVisits":1
+                }
+            },
+            "consultationNotes":{
+                "type":"consultationNotes",
+                "translationKey":"DASHBOARD_TITLE_CONSULTATION_NOTES_KEY",
+                "displayOrder":2,
+                "config":{
+                    "conceptNames":[
+                        "Chief Complaint Data",
+                        "History of present illness",
+                        "Smoking status",
+                        "Consultation Note"
+                    ],
+                    "numberOfVisits":2
+                }
+            },
+            "diagnosis":{
+                "translationKey":"DASHBOARD_TITLE_DIAGNOSIS_KEY",
+                "type":"diagnosis",
+                "displayOrder":3,
                 "config": {
-                    "showDetailsButton": true,
-                    "translationKey": "DISCHARGE_SUMMARY_ADMISSION_DETAILS_KEY"
-
-                }
+                    "data":{}
+                },
+                "hideVisitDate": true,
+                "patientAttributes":[],
+                "viewName":"../common/displaycontrols/dashboard/views/sections/diagnosis.html",
+                "id":"Diagnoses"
             },
-            "weightInitial":{
-                "type": "observation",
-                "displayOrder": 2,
-                "translationKey":"DISCHARGE_SUMMARY_AT_ADMISSION_KEY",
-                "config": {
-                    "conceptNames": ["WEIGHT"],
-                    "scope": "initial"
-                }
-            },
-            "weightLatest": {
-                "type": "observation",
-                "displayOrder": 3,
-                "translationKey":"DISCHARGE_SUMMARY_AT_DISCHARGE_KEY",
-                "config": {
-                    "conceptNames": ["WEIGHT"],
-                    "scope": "latest"
-                }
-            },
-            "diagnoses":{
-                "type": "diagnosis",
+            "labOrders": {
+                "type": "labOrders",
                 "displayOrder": 4,
                 "config": {
-                    "translationKey" : "DISCHARGE_SUMMARY_DIAGNOSIS_KEY",
-                    "showCertainty": false,
-                    "showOrder": false,
-                    "showDetailsButton": true
-                }
-            },
-            "clinicalNotes":{
-                "type": "observation",
-                "displayOrder": 5,
-                "translationKey": "DISCHARGE_SUMMARY_CLINICAL_NOTES_KEY",
-                "config": {
-                    "conceptNames": [
-                        "History and Examination Notes",
-                        "Discharge Summary",
-                        "Lab Investigation Notes",
-                        "Radiology Notes",
-                        "Other Notes"
-                    ],
-                    "scope": "latest",
-                    "numberOfVisits": "1"
-                }
-            },
-            "labInvestigations":{
-                "type": "investigationResult",
-                "displayOrder": 6,
-                "config": {
-                    "translationKey":"LAB_INVESTIGATION",
+                    "translationKey": "VISIT_TITLE_LAB_ORDERS_KEY",
                     "showChart": true,
                     "showTable": false,
-                    "showNormalLabResults": true,
-                    "showCommentsExpanded": true,
+                    "showOrders": true,
+                    "showNormalLabResults": false,
+                    "showCommentsExpanded": false,
                     "showAccessionNotes": true,
                     "numberOfVisits": 10,
-                    "initialAccessionCount": 1,
-                    "latestAccessionCount": 1
+                    "showDetailsButton": false,
+                    "hideVisitDate": true
                 }
             },
-            "Treatments": {
-                "type": "treatment",
-                "displayOrder": 6,
-                "config": {
-                    "translationKey": "VISIT_TITLE_TREATMENTS_KEY",
-                    "showFlowSheet": true,
-                    "showListView": true,
-                    "showOtherActive": false,
-                    "showDetailsButton": true,
-                    "showRoute": true,
-                    "showDrugForm": true,
-                    "showProvider":false
-                }
-            },
-            "adviceOnDischarge":{
-                "type": "observation",
-                "displayOrder": 8,
-                "translationKey":"DISCHARGE_SUMMARY_ADVICE_ON_DISCHARGE_KEY",
-                "config": {
-                    "conceptNames": [
-                        "Additional Advice on Discharge",
-                        "Follow up Date",
-                        "Discharge Summary, Plan for follow up"
-                    ],
-                    "scope": "latest"
+            "prescriptions":{
+                "translationKey":"DASHBOARD_TITLE_PRESCRIPTIONS_KEY",
+                "type":"prescription",
+                "displayOrder":5,
+                "hideVisitDate": true,
+                "config":{
+                    "hideVisitDate": true,
+                    "showFlowSheet":true,
+                    "showListView":true,
+                    "showRoute":true,
+                    "showDrugForm":true,
+                    "numberOfVisits":5,
+                    "showOtherActive":true
                 }
             }
         }
-    },
-    "orders":{
-      "translationKey": "DASHBOARD_TAB_ORDERS_KEY",
-      "sections": {
-          "Radiology Orders": {
-              "type": "order",
-              "displayOrder": 0,
-              "translationKey": "Radiology Orders",
-              "config": {
-                  "translationKey": "Radiology Orders",
-                  "name": "ordersControl",
-                  "orderType": "Radiology Order",
-                  "conceptNames": [
-                      "Summary"
-                  ]
-              }
-          }
-      }
-
     }
 }
