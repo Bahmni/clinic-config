@@ -128,15 +128,149 @@ angular.module('bahmni.common.displaycontrol.custom')
 angular.module('bahmni.common.displaycontrol.custom')
     .directive('patientPrintDashboard', ['$http', '$q', '$window','appService', function ($http, $q, $window, appService) {
         var link = function ($scope) {
-            $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/underTreatmentCertificate.html";
+            var formNames = ["Under Treatment Certificate"];
+            $scope.formFields = {
+                "Under Treatment Certificate" : ["Treatment plan (text)", "Medication duration", "Duration units"]
+            }
+            $scope.formFieldValues = {};
+                $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/underTreatmentCertificate.html";
             $scope.today = new Date();
+            $scope.loggedInUser = $scope.$root.currentUser;
+            $scope.registeredClinicName = '';
+            $scope.registeredClinicAddress = '';
+            $scope.printCertificate = function (printId) {
+                let printContents, styles;
+                printContents = document.getElementById(printId).innerHTML;
+                // styles = document.getElementById('print-certificate-styles');
+                styles = '<link id="print-certificate-styles" rel="stylesheet" href="/bahmni_config/openmrs/apps/customDisplayControl/styles/print.css"/>';
+                var frame1 = document.createElement('iframe');
+                frame1.name = "frame1";
+                frame1.style.position = "absolute";
+                frame1.style.top = "-1000000px";
+                document.body.appendChild(frame1);
+                var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+                frameDoc.document.open();
+                frameDoc.document.write('<html><head>');
+                frameDoc.document.write(`${styles}</head><body>`);
+                frameDoc.document.write(printContents);
+                frameDoc.document.write('</body></html>');
+                frameDoc.document.close();
+                setTimeout(function () {
+                    window.frames["frame1"].focus();
+                    window.frames["frame1"].print();
+                    document.body.removeChild(frame1);
+                }, 500);
+                return false;
+            }
+
+            var getLoggedInUser = function () {
+                var params = {
+                    v: "full",
+                    q: $scope.loggedInUser.username
+                };
+                return $http.get('/openmrs/ws/rest/v1/provider', {
+                    method: "GET",
+                    params: params,
+                    withCredentials: true
+                });
+            };
+            $scope.registrationNumber = '';
+            $scope.doctorName = '';
+            var getVisits = function () {
+                var params = {
+                    v: "custom:(uuid,visitType,startDatetime,stopDatetime,location,encounters:(uuid))",
+                    includeInactive: true,
+                    patient: $scope.patient.uuid
+                };
+                return $http.get('/openmrs/ws/rest/v1/visit', {
+                    method: "GET",
+                    params: params,
+                    withCredentials: true
+                });
+            };
+            var getObservationsByVisitId= function (visitId) {
+                var params = {
+                    visitUuid: visitId,
+                    patient: $scope.patient.uuid
+                };
+                return $http.get('/openmrs/ws/rest/v1/bahmnicore/observations', {
+                    method: "GET",
+                    params: params,
+                    withCredentials: true
+                });
+            };
+            var getClinicLocation= function () {
+                var params = {
+                    operator: "ALL",
+                    s: "byTags",
+                    tags: 'Facility',
+                    v: 'default'
+                };
+                return $http.get('/openmrs/ws/rest/v1/location', {
+                    method: "GET",
+                    params: params,
+                    withCredentials: true
+                });
+            };
+            var getLatestEncounterForForm = function (observationList) {
+                observationList.sort((b, a) => sortDate(a["encounterDateTime"], b["encounterDateTime"]));
+                var latestEncounterId = observationList[0]["encounterUuid"];
+               return  observationList.filter(item => item["encounterUuid"] === latestEncounterId)
+            }
+            var  sortDate = function (a, b) {
+                return (a === null && b === null) ? 0
+                    : (a === null) ? 1
+                        : (b === null) ? -1
+                            : (a > b)
+                                ? 1 : ((b) > a) ? -1 : 0;
+            }
+
+            var mciRegistrationField = 'MCI Number'
+            $q.all([getLoggedInUser(), getVisits(), getClinicLocation()]).then(function (response) {
+                var data = response[0].data;
+                var observationData = response[1].data;
+                var locationsData = response[2].data;
+                var personDetails;
+                if(data.results.length > 0) {
+                    personDetails = data.results.find(provider => provider.uuid = $scope.loggedInUser.uuid);
+                    if(personDetails) {
+                        $scope.doctorName = personDetails.person.display
+
+                        var mciAttribute = personDetails.attributes.find(attribute =>
+                            attribute.attributeType.display === mciRegistrationField
+                        );
+                        if(mciAttribute) {
+                            $scope.registrationNumber = mciAttribute.value;
+                        }
+                    }
+                }
+                if (observationData.results.length > 0) {
+                    var visitId = observationData.results[0].uuid
+                    $q.all([getObservationsByVisitId(visitId)]).then(function (visitResponse) {
+                        var observationsValue = visitResponse[0].data;
+                        console.log(observationsValue)
+                        if (observationsValue.length > 0) {
+                            var formObservations = formNames.map(form => { var formObservation = {}; (getLatestEncounterForForm(observationsValue.filter(item => item.formFieldPath.includes(form))).forEach(eachObservation => (formObservation[eachObservation.concept.name] = (isNaN(eachObservation.valueAsString) ?  eachObservation.valueAsString: parseFloat(eachObservation.valueAsString)  )))); return formObservation});
+                            console.log(formObservations);
+                            $scope.formFieldValues = formObservations;
+                        }
+                    });
+                }
+                if(locationsData.results.length > 0 ) {
+                    var location = locationsData.results[0];
+                    $scope.registeredClinicName = location.name;
+                    $scope.registeredClinicAddress = `${location.address1}, ${location.address2}, ${location.cityVillage}, ${location.countyDistrict}. postal code: ${location.postalCode}`
+
+                }
+            });
         };
         return {
             restrict: 'E',
             link: link,
             scope: {
                 patient: "=",
-                section: "="
+                section: "=",
+                observation: "=?"
             },
             template: '<ng-include src="contentUrl"/>'
         };

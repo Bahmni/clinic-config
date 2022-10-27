@@ -247,7 +247,8 @@
                                 "Hypertension Intake",
                                 "Second Vitals",
                                 "Hypertension Progress",
-                                "Follow Up"
+                                "Follow Up",
+                                "Under Treatment Certificate"
                             ],
                 "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
             },

@@ -1,20 +1,22 @@
-<link rel="stylesheet" href="/bahmni_config/openmrs/apps/customDisplayControl/styles/print.css"/>
+<link id="print-certificate-styles" rel="stylesheet" href="/bahmni_config/openmrs/apps/customDisplayControl/styles/print.css"/>
 
 <section class="app-dashboard-integration">
     <h2 class="section-title"><span style="border-bottom: 1px solid white;">{{ section.title | titleTranslate}}</span>
     </h2>
 
     <ul style="font-size: 14px;color: #000000">
-        <li style="background-color:#ddd;padding-top:3px;padding-bottom:3px">
+        <li class="display-title">
             <span style="padding-left: 10px"> {{::"UNDER_TREATMENT_CERTIFICATE" | translate}} </span>
+            <button ng-click="printCertificate('under-treatment')" class="print-button">Print</button>
         </li>
     </ul>
     <ul class="form-field">
         <li>{{::"DASHBOARD_NO_UPCOMING_APPOINTMENTS_KEY" | translate}}</li>
     </ul>
     <ul style="font-size: 14px;color: #000000">
-        <li style="background-color:#ddd;padding-top:3px;padding-bottom:3px">
-            <span style="padding-left: 10px"> {{::"UNDER_TREATMENT_CERTIFICATE" | translate}} </span>
+        <li class="display-title">
+            <span style="padding-left: 10px"> {{::"FITNESS_CERTIFICATE" | translate}} </span>
+            <button ng-click="printCertificate('fitness-certificate')" class="print-button">Print</button>
         </li>
     </ul>
     <ul class="form-field">
@@ -23,7 +25,7 @@
 </section>
 
 <div id="under-treatment" class="no-print">
-    <div class="row">
+    <div class="row space-between">
         <div class="left">
             <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
                        style="width: 24mm; height: 30mm; "/></span>
@@ -31,46 +33,86 @@
         <div class="right">
            <span>
               <h1 style="text-align: center;">
-                {{ "REGISTRATION_INSTITUTE_NAME_TEXT_KEY" | translate }}
+                {{ registeredClinicName  }}
               </h1>
              <span>
               <h5 style="text-align: center;">
-                {{ "REGISTRATION_INSTITUTE_ADDRESS" | translate }}
+                {{ registeredClinicAddress}}
               </h5>
               </span>
           </span>
-            <hr>
         </div>
     </div>
-    <div class="row">
+    <hr>
+    <div>
         <span class="label"><h3 style="text-align: center; font-size: xx-large">Under Treatment Certificate</h3></span>
     </div>
-    <br><br>
-
-    <div class="row">
+    <div >
         <div style="text-align: left;">
             <span class="label">Date:</span>
             <span>{{today | date:'dd/MM/yyyy'}} </span> </br>
             <span class="label">Patient Registration No:</span>
             <span>{{patient.identifier}}</span>
         </div>
-        <br>
         <div>
             <font size="3">
                 <h3 style="text-align: center; margin-bottom: 20px">WHOME IT MAY CONCERN</h3>
                 <p style="text-align: justify;">This is to inform that<b> {{patient.givenName}} {{patient.middleName}}
                     {{patient.familyName}}</b> Age: {{patient.age || "0"}} years, is undergoing treatment for
-                    <span treatment patient="patient"></span>.
+                    <span treatment patient="patient">{{formFieldValues[0]["Treatment plan (text)"]}}</span>.
                 </p>
                 <p style="margin-top: 10px">She has been advised to take bed rest for <span duration
-                                                                                            patient="patient">.</span>
+                                                                                            patient="patient">{{formFieldValues[0]["Medication duration"]+ " " +  formFieldValues[0]["Duration units"] }}</span>
                 </p>
                 <p style="margin-top: 20px">Regards</p>
-                <p>&nbsp;</p><br>
-                <p><b>Dr.Rekha Thote</b></p>
-                <p>&nbsp;</p><br>
-                <p>Reg.No. 80265 </p>
+                <p><b>{{doctorName}}</b></p>
+                <p>Reg.No. {{registrationNumber}} </p>
+            </font>
+        </div>
+    </div>
+</div>
 
+<div id="fitness-certificate" class="no-print">
+    <div class="row space-between">
+        <div class="left">
+            <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
+                       style="width: 24mm; height: 30mm; "/></span>
+        </div>
+        <div class="right">
+           <span>
+              <h1 style="text-align: center;">
+                {{ registeredClinicName  }}
+              </h1>
+             <span>
+              <h5 style="text-align: center;">
+                {{ registeredClinicAddress}}
+              </h5>
+              </span>
+          </span>
+        </div>
+    </div>
+    <hr>
+
+    <div >
+        <span class="label"><h3 style="text-align: center;">Fitness Certificate</h3></span>
+    </div>
+    <div >
+        <div style="text-align: left;">
+            <span class="label">Date:</span>
+            <span>{{today | date:'dd/MM/yyyy'}} </span> </br>
+            <span class="label">Patient Registration No:</span>
+            <span>{{patient.identifier}}</span>
+        </div>
+        <div>
+            <font size="3">
+                <h3 style="text-align: center;">WHOME IT MAY CONCERN</h3>
+                <p style="text-align: justify;">This is to inform that<b> {{patient.givenName}} {{patient.middleName}}
+                    {{patient.familyName}}</b> Age: {{patient.age.years || "0"}} years, was undergoing treatment for
+                    <span treatment patient="patient">{{formFieldValues[0]["Treatment plan (text)"]}}</span>. {{patient.middleName || patient.givenName}} is now fit to resume daily
+                    activities. </p>
+                <p style="margin-top: 20px">Regards</p>
+                <p><b>{{doctorName}}</b></p>
+                <p>Reg.No. {{registrationNumber}} </p>
             </font>
         </div>
     </div>
