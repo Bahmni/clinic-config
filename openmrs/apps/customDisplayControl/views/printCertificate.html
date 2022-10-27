@@ -10,17 +10,12 @@
             <button ng-click="printCertificate('under-treatment')" class="print-button">Print</button>
         </li>
     </ul>
-    <ul class="form-field">
-        <li>{{::"DASHBOARD_NO_UPCOMING_APPOINTMENTS_KEY" | translate}}</li>
-    </ul>
+    <hr class="break-line">
     <ul style="font-size: 14px;color: #000000">
         <li class="display-title">
             <span style="padding-left: 10px"> {{::"FITNESS_CERTIFICATE" | translate}} </span>
             <button ng-click="printCertificate('fitness-certificate')" class="print-button">Print</button>
         </li>
-    </ul>
-    <ul class="form-field">
-        <li>{{::"DASHBOARD_NO_UPCOMING_APPOINTMENTS_KEY" | translate}}</li>
     </ul>
 </section>
 
@@ -61,7 +56,7 @@
                     {{patient.familyName}}</b> Age: {{patient.age || "0"}} years, is undergoing treatment for
                     <span treatment patient="patient">{{formFieldValues[0]["Treatment plan (text)"]}}</span>.
                 </p>
-                <p style="margin-top: 10px">She has been advised to take bed rest for <span duration
+                <p style="margin-top: 10px">They have been advised to take bed rest for <span duration
                                                                                             patient="patient">{{formFieldValues[0]["Medication duration"]+ " " +  formFieldValues[0]["Duration units"] }}</span>
                 </p>
                 <p style="margin-top: 20px">Regards</p>
@@ -108,7 +103,8 @@
                 <h3 style="text-align: center;">WHOME IT MAY CONCERN</h3>
                 <p style="text-align: justify;">This is to inform that<b> {{patient.givenName}} {{patient.middleName}}
                     {{patient.familyName}}</b> Age: {{patient.age.years || "0"}} years, was undergoing treatment for
-                    <span treatment patient="patient">{{formFieldValues[0]["Treatment plan (text)"]}}</span>. {{patient.middleName || patient.givenName}} is now fit to resume daily
+                    <span treatment patient="patient">{{formFieldValues[0]["Treatment plan (text)"]}}</span>. {{patient.givenName}} {{patient.middleName}}
+                    {{patient.familyName}} is now fit to resume daily
                     activities. </p>
                 <p style="margin-top: 20px">Regards</p>
                 <p><b>{{doctorName}}</b></p>

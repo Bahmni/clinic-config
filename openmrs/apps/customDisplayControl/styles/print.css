@@ -1,7 +1,9 @@
 @page {
     margin: 0.7cm;
 }
-
+.break-line {
+    margin: 1px;
+}
 .no-print {
     height: 0;
     overflow: hidden;

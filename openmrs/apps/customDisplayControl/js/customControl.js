@@ -133,7 +133,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                 "Under Treatment Certificate" : ["Treatment plan (text)", "Medication duration", "Duration units"]
             }
             $scope.formFieldValues = {};
-                $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/underTreatmentCertificate.html";
+                $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/printCertificate.html";
             $scope.today = new Date();
             $scope.loggedInUser = $scope.$root.currentUser;
             $scope.registeredClinicName = '';
