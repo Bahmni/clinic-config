@@ -23,19 +23,20 @@
 </section>
 
 <div id="under-treatment" class="no-print">
-    <div class="row space-between">
-        <div class="left">
+    <div class="row space-centre position-relative">
+        <div class="left position-absolute">
             <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
-                       style="width: 24mm; height: 30mm; "/></span>
+                       style="width: 24mm;"/></span>
         </div>
         <div class="right">
            <span>
-              <h1 style="text-align: center;">
+              <h1 class="name" style="text-align: center;">
                 {{ registeredClinicName  }}
               </h1>
              <span>
-              <h5 style="text-align: center;">
-                {{ registeredClinicAddress}}
+              <h5 class="name" style="text-align: center;">
+                {{ registeredClinicAddress}} <br>
+                  {{postalAddress}}
               </h5>
               </span>
           </span>
@@ -62,28 +63,29 @@
                 <p style="margin-top: 10px">They have been advised to take bed rest for <span duration
                                                                                             patient="patient">{{formFieldValues[0]["Rest duration"]}}</span>
                 </p>
-                <p style="margin-top: 20px">Regards</p>
-                <p><b>{{doctorName}}</b></p>
-                <p>Reg.No. {{registrationNumber}} </p>
+                <p class="signature"style="margin-top: 20px">Regards,</p>
+                <p class="signature"><b>{{doctorName}},</b></p>
+                <p class="signature">Reg.No. {{registrationNumber}}. </p>
             </font>
         </div>
     </div>
 </div>
 
 <div id="fitness-certificate" class="no-print">
-    <div class="row space-between">
-        <div class="left">
+    <div class="row space-centre position-relative ">
+        <div class="left position-absolute">
             <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
-                       style="width: 24mm; height: 30mm; "/></span>
+                       style="width: 24mm; "/></span>
         </div>
         <div class="right">
            <span>
-              <h1 style="text-align: center;">
+              <h1 class="name" style="text-align: center;">
                 {{ registeredClinicName  }}
               </h1>
              <span>
-              <h5 style="text-align: center;">
-                {{ registeredClinicAddress}}
+              <h5 class="name" style="text-align: center;">
+                {{ registeredClinicAddress}} <br>
+                  {{postalAddress}}
               </h5>
               </span>
           </span>
@@ -101,18 +103,18 @@
             <span class="label">Patient Registration No:</span>
             <span>{{patient.identifier}}</span>
         </div>
-        <div>
+        <div class="content-body">
             <font size="3">
-                <h3 style="text-align: center;">WHOME IT MAY CONCERN</h3>
+                <h3 style="text-align: center;">WHOM IT MAY CONCERN</h3>
                 <p style="text-align: justify;">This is to inform that<b> {{patient.givenName}} {{patient.middleName}}
                     {{patient.familyName}}</b> Age: {{patient.age || "0"}} years, was undergoing treatment for
                     <span treatment patient="patient">{{formFieldValues[0]["Treatment plan"]}}</span>.
                     {{patient.givenName}} {{patient.middleName}}
                     {{patient.familyName}} is now fit to resume daily
                     activities. </p>
-                <p style="margin-top: 20px">Regards</p>
-                <p><b>{{doctorName}}</b></p>
-                <p>Reg.No. {{registrationNumber}} </p>
+                <p class="signature" style="margin-top: 20px">Regards,</p>
+                <p class="signature"><b>{{doctorName}},</b></p>
+                <p class="signature">Reg.No. {{registrationNumber}}. </p>
             </font>
         </div>
     </div>

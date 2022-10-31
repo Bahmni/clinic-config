@@ -8,7 +8,11 @@
     height: 0;
     overflow: hidden;
 }
-
+.print-wrap {
+    max-width: 21cm;
+    padding: 10px 40px 0;
+    margin: 0 auto;
+}
 li.display-title {
     display: flex;
     justify-content: space-between;
@@ -26,4 +30,31 @@ button.print-button {
 }
 .row.space-between {
     justify-content: space-between;
+}
+.row.space-centre {
+    justify-content: center;
+}
+.float-left {
+ float: left;
+}
+.float-right {
+    float: right;
+}
+.position-relative {
+    position: relative;
+}
+.position-absolute {
+    position: absolute;
+    left: 0;
+}
+h1.name {
+    margin: 0 ;
+}
+h5.name {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.signature {
+    margin-bottom: 2px;
+    margin-top: 2px;
 }

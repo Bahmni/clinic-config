@@ -130,15 +130,13 @@ angular.module('bahmni.common.displaycontrol.custom')
         var link = function ($scope) {
             var formNames = ["Under Treatment Certificate"];
             $scope.printControl={"Under Treatment Certificate":true};
-            $scope.formFields = {
-                "Under Treatment Certificate" : ["Treatment plan (text)", "Medication duration", "Duration units"]
-            }
             $scope.formFieldValues = {};
                 $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/printCertificate.html";
             $scope.today = new Date();
             $scope.loggedInUser = $scope.$root.currentUser;
             $scope.registeredClinicName = '';
             $scope.registeredClinicAddress = '';
+            $scope.postalAddress = '';
             $scope.printCertificate = function (printId) {
                 let printContents, styles;
                 printContents = document.getElementById(printId).innerHTML;
@@ -152,7 +150,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                 var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
                 frameDoc.document.open();
                 frameDoc.document.write('<html><head>');
-                frameDoc.document.write(`${styles}</head><body>`);
+                frameDoc.document.write(`<div class="print-wrap">${styles}</div></head><body>`);
                 frameDoc.document.write(printContents);
                 frameDoc.document.write('</body></html>');
                 frameDoc.document.close();
@@ -231,7 +229,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                                 ? 1 : ((b) > a) ? -1 : 0;
             }
 
-            var mciRegistrationField = 'MCI Number'
+            var mciRegistrationField = 'MCI Reg Number';
             $q.all([getLoggedInUser(), getVisits(), getClinicLocation()]).then(function (response) {
                 var data = response[0].data;
                 var observationData = response[1].data;
@@ -277,7 +275,8 @@ angular.module('bahmni.common.displaycontrol.custom')
                     console.log("location.address2 value is....", location.address2);
                     console.log("location.cityVillage value is....", location.cityVillage);
                      console.log("location.countyDistrict value is....", location.countyDistrict);
-                    $scope.registeredClinicAddress = `${location.address1}, ${location.address2}, ${location.cityVillage}, ${location.countyDistrict}. postal code: ${location.postalCode}`
+                    $scope.registeredClinicAddress = `${location.address1}, ${location.address2}, ${location.cityVillage}, ${location.countyDistrict}.`
+                    $scope.postalAddress = `Postal Code: ${location.postalCode}`
 
                 }
             });
