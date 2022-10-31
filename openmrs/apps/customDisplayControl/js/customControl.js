@@ -235,18 +235,14 @@ angular.module('bahmni.common.displaycontrol.custom')
                 var observationData = response[1].data;
                 var locationsData = response[2].data;
                 var personDetails;
-                console.log('data.results.length value....', data.results.length);
 
                 if(data.results.length > 0) {
                     personDetails = data.results.find(provider => provider.uuid = $scope.loggedInUser.uuid);
-                console.log('inside data results >0 and patientdetails are...', personDetails);
                     if(personDetails) {
                         $scope.doctorName = personDetails.person.display
-                        console.log("personDetails.person.age....", personDetails);
                         var mciAttribute = personDetails.attributes.find(attribute =>
                             attribute.attributeType.display === mciRegistrationField
                         );
-                        console.log("MCI attribute value is.....", mciAttribute);
                         if(mciAttribute) {
                             $scope.registrationNumber = mciAttribute.value;
                         }
@@ -256,25 +252,15 @@ angular.module('bahmni.common.displaycontrol.custom')
                     var visitId = observationData.results[0].uuid
                     $q.all([getObservationsByVisitId(visitId)]).then(function (visitResponse) {
                         var observationsValue = visitResponse[0].data;
-                        console.log(observationsValue)
-                         console.log("$scope.print control value..out if", $scope.printControl);
                         if (observationsValue.length > 0) {
                             var formObservations = formNames.map(form => { var formObservation = {}; (getLatestEncounterForForm(observationsValue.filter(item => item.formFieldPath.includes(form)),form).forEach(eachObservation => (formObservation[eachObservation.concept.name] = (isNaN(eachObservation.valueAsString) ?  eachObservation.valueAsString: parseFloat(eachObservation.valueAsString)  )))); return formObservation});
-                            console.log(formObservations);
-                            console.log("$scope.print control value..", $scope.printControl);
                             $scope.formFieldValues = formObservations;
                         }
-                         console.log("$scope.print control value..after if", $scope.printControl);
                     });
                 }
                 if(locationsData.results.length > 0 ) {
                     var location = locationsData.results[0];
                     $scope.registeredClinicName = location.name;
-                    console.log("location.name value is....", location.name);
-                    console.log("location.address1 value is....", location.address1);
-                    console.log("location.address2 value is....", location.address2);
-                    console.log("location.cityVillage value is....", location.cityVillage);
-                     console.log("location.countyDistrict value is....", location.countyDistrict);
                     $scope.registeredClinicAddress = `${location.address1}, ${location.address2}, ${location.cityVillage}, ${location.countyDistrict}.`
                     $scope.postalAddress = `Postal Code: ${location.postalCode}`
 
