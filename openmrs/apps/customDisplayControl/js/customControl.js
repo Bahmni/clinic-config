@@ -217,7 +217,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                 if(observationList.length ==0){
                  return observationList;
                                 }
-                 $scope.printControl[formName]=observationList.length!=0;
+                 $scope.printControl[formName]=observationList.length===0;
                 observationList.sort((b, a) => sortDate(a["encounterDateTime"], b["encounterDateTime"]));
 
                 var latestEncounterId = observationList[0]["encounterUuid"];
