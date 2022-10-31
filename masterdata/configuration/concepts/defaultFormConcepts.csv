@@ -35,4 +35,7 @@ Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Descript
 9bb0795c-4ff0-0305-1990-000000000031,,,Breech,Breech,,,,,Misc,N/A,,,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000032,,,Transverse,Transverse,,,,,Misc,N/A,,,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000033,,,P/A Presenting Part,P/A Presenting Part,,,,,Misc,Coded,,Cephalic;Breech;Transverse,,,,,,,,,
-
+9bb0795c-4ff0-0305-1990-000000000034,,,Injection,,,,,,Misc,N/A,,,,,,,,,,,
+9bb0795c-4ff0-0305-1990-000000000035,,,Drops,,,,,,Misc,N/A,,,,,,,,,,,
+9bb0795c-4ff0-0305-1990-000000000036,,,Jelly,,,,,,Misc,N/A,,,,,,,,,,,
+9bb0795c-4ff0-0305-1990-000000000037,,,Pessary,,,,,,Misc,N/A,,,,,,,,,,,
