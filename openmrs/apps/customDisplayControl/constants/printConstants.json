@@ -1,0 +1,5 @@
+{
+  "formNames": ["Under Treatment Certificate"],
+  "printControls": {"Under Treatment Certificate":true},
+  "doctorRegistrationFieldValue": "MCI Reg Number"
+}

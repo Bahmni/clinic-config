@@ -127,9 +127,22 @@ angular.module('bahmni.common.displaycontrol.custom')
 
 angular.module('bahmni.common.displaycontrol.custom')
     .directive('patientPrintDashboard', ['$http', '$q', '$window','appService', function ($http, $q, $window, appService) {
-        var link = function ($scope) {
-            var formNames = ["Under Treatment Certificate"];
-            $scope.printControl={"Under Treatment Certificate":true};
+        var link = async function ($scope) {
+            var request = {
+                method: 'get',
+                url: appService.configBaseUrl() + "/customDisplayControl/constants/printConstants.json",
+                dataType: 'json',
+                contentType: "application/json"
+            };
+            await $http(request)
+                .success(function (jsonData) {
+                    $scope.printConstants = jsonData;
+                })
+                .error(function () {
+
+                });
+            var {formNames, printControls,  doctorRegistrationFieldValue} = $scope.printConstants;
+            $scope.printControl = printControls;
             $scope.formFieldValues = {};
             $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/printCertificate.html";
             $scope.today = new Date();
@@ -139,7 +152,9 @@ angular.module('bahmni.common.displaycontrol.custom')
             $scope.postalAddress = '';
             $scope.registrationNumber = '';
             $scope.doctorName = '';
-            var mciRegistrationField = 'MCI Reg Number';
+
+            $scope.printConstants = {};
+
 
             $scope.printCertificate = function (printId) {
                 let printContents, styles;
@@ -189,7 +204,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                     withCredentials: true
                 });
             };
-            var getObservationsByVisitId= function (visitId) {
+            var getObservationsByVisitId = function (visitId) {
                 var params = {
                     visitUuid: visitId,
                     patient: $scope.patient.uuid
@@ -200,7 +215,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                     withCredentials: true
                 });
             };
-            var getClinicLocation= function () {
+            var getClinicLocation = function () {
                 var params = {
                     operator: "ALL",
                     s: "byTags",
@@ -213,17 +228,17 @@ angular.module('bahmni.common.displaycontrol.custom')
                     withCredentials: true
                 });
             };
-            var getLatestEncounterForForm = function (observationList,formName) {
-                if(observationList.length ==0){
-                 return observationList;
-                                }
-                 $scope.printControl[formName]=observationList.length===0;
+            var getLatestEncounterForForm = function (observationList, formName) {
+                if (observationList.length == 0) {
+                    return observationList;
+                }
+                $scope.printControl[formName] = observationList.length === 0;
                 observationList.sort((b, a) => sortDate(a["encounterDateTime"], b["encounterDateTime"]));
 
                 var latestEncounterId = observationList[0]["encounterUuid"];
-               return  observationList.filter(item => item["encounterUuid"] === latestEncounterId);
+                return observationList.filter(item => item["encounterUuid"] === latestEncounterId);
             }
-            var  sortDate = function (a, b) {
+            var sortDate = function (a, b) {
                 return (a === null && b === null) ? 0
                     : (a === null) ? 1
                         : (b === null) ? -1
@@ -237,14 +252,14 @@ angular.module('bahmni.common.displaycontrol.custom')
                 var locationsData = response[2].data;
                 var personDetails;
 
-                if(data.results.length > 0) {
+                if (data.results.length > 0) {
                     personDetails = data.results.find(provider => provider.uuid = $scope.loggedInUser.uuid);
-                    if(personDetails) {
+                    if (personDetails) {
                         $scope.doctorName = personDetails.person.display
                         var mciAttribute = personDetails.attributes.find(attribute =>
-                            attribute.attributeType.display === mciRegistrationField
+                            attribute.attributeType.display === doctorRegistrationFieldValue
                         );
-                        if(mciAttribute) {
+                        if (mciAttribute) {
                             $scope.registrationNumber = mciAttribute.value;
                         }
                     }
@@ -254,12 +269,16 @@ angular.module('bahmni.common.displaycontrol.custom')
                     $q.all([getObservationsByVisitId(visitId)]).then(function (visitResponse) {
                         var observationsValue = visitResponse[0].data;
                         if (observationsValue.length > 0) {
-                            var formObservations = formNames.map(form => { var formObservation = {}; (getLatestEncounterForForm(observationsValue.filter(item => item.formFieldPath.includes(form)),form).forEach(eachObservation => (formObservation[eachObservation.concept.name] = (isNaN(eachObservation.valueAsString) ?  eachObservation.valueAsString: parseFloat(eachObservation.valueAsString)  )))); return formObservation});
+                            var formObservations = formNames.map(form => {
+                                var formObservation = {};
+                                (getLatestEncounterForForm(observationsValue.filter(item => item.formFieldPath.includes(form)), form).forEach(eachObservation => (formObservation[eachObservation.concept.name] = (isNaN(eachObservation.valueAsString) ? eachObservation.valueAsString : parseFloat(eachObservation.valueAsString)))));
+                                return formObservation
+                            });
                             $scope.formFieldValues = formObservations;
                         }
                     });
                 }
-                if(locationsData.results.length > 0 ) {
+                if (locationsData.results.length > 0) {
                     var location = locationsData.results[0];
                     $scope.registeredClinicName = location.name;
                     $scope.registeredClinicAddress = `${location.address1}, ${location.address2}, ${location.cityVillage}, ${location.countyDistrict}.`
