@@ -35,7 +35,7 @@
         "id": "org.bahmni.registration.identifier.ndhmIdentifierSrc",
         "extensionPointId": "org.bahmni.registration.identifier",
         "type": "link",
-        "src": "/ndhm/index.html",
+        "src": "/abha-verification/index.html",
         "extensionParams": {
             "identifierType": [
                 "ABHA",
@@ -57,8 +57,12 @@
                 "district": "countyDistrict",
                 "postalCode": "postalCode",
                 "line": "address1"
-           }
-        }
+            }
+        },
+        "extensionButtons": [{
+            "id" : "patientQueue",
+            "display" : "Patient Queue"
+        }]
     },
     "registrationSecondPage":{
         "id": "bahmni.registration.conceptSetGroup.registrationSecondPage",
