@@ -101,7 +101,7 @@
   "CERTIFICATE_SUBJECT_4": "They have been advised to take bed rest for ",
   "CERTIFICATE_SUBJECT_5": "years, was undergoing treatment for",
   "CERTIFICATE_SUBJECT_6": "is now fit to resume daily activities.",
-  "AGE_LABEL": "Age:",
+  "AGE_LABEL": "Age: {{patient.age || '0'}}",
   "REGARDS_LABEL": "Regards,",
   "REG_NO_LABEL": "Reg.No."
 
