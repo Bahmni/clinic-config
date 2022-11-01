@@ -24,7 +24,7 @@ from
           		JOIN concept_view pcv ON pcv.concept_id = parent.concept_id AND pcv.concept_full_name = 'Visit Diagnoses'
           		LEFT JOIN obs AS child ON child.obs_group_id = parent.obs_id AND child.voided = FALSE
           		JOIN concept_name AS certainty ON certainty.concept_id = child.value_coded 
-          			AND (certainty.name = 'Confirmed diagnosis' || certainty.name = 'Presumed diagnosis') 
+          			AND (certainty.name = 'Confirmed' || certainty.name = 'Presumed')
           			AND certainty.concept_name_type = 'FULLY_SPECIFIED'
           		WHERE parent.voided IS FALSE) AS certaintyObs ) group by diagnosis.value_coded)
                
@@ -44,6 +44,5 @@ from
    AND patient_conditions.voided = FALSE AND person.voided = FALSE group by patient_conditions.condition_coded
    )) as diagnosisObs
 
-JOIN concept_set cs on cs.concept_id = diagnosisObs.value_coded
-JOIN concept_name cn on cn.concept_id = cs.concept_id AND diagnosisObs.value_coded = cn.concept_id
+JOIN concept_name cn on cn.concept_id = diagnosisObs.value_coded
 AND cn.concept_name_type = 'FULLY_SPECIFIED' AND cn.locale = 'en' AND cn.voided = FALSE group by cn.name;
