@@ -9,7 +9,7 @@
         <li class="display-title">
             <span style="padding-left: 10px"> {{::"UNDER_TREATMENT_CERTIFICATE" | translate}} </span>
             <button ng-click="printCertificate('under-treatment')" class="print-button"
-                    ng-disabled="printControl['Under Treatment and Fitness Certificate']">Print
+                    ng-disabled="printControl['Under Treatment and Fitness Certificate']">{{::"PRINT_BUTTON" | translate}}
             </button>
         </li>
         <ul  class="form-field">
@@ -19,7 +19,7 @@
     <ul style="font-size: 14px;color: #000000">
         <li class="display-title">
             <span style="padding-left: 10px"> {{::"FITNESS_CERTIFICATE" | translate}} </span>
-            <button ng-click="printCertificate('fitness-certificate')" class="print-button"  ng-disabled="printControl['Under Treatment and Fitness Certificate']">Print</button>
+            <button ng-click="printCertificate('fitness-certificate')" class="print-button"  ng-disabled="printControl['Under Treatment and Fitness Certificate']">{{::"PRINT_BUTTON" | translate}}</button>
         </li>
         <ul  class="form-field">
             <li>{{::"NAVIGATE_TO_UNDER_TREATMENT_CERTIFICATE_FORM" | translate}}</li>
@@ -49,28 +49,28 @@
     </div>
     <hr>
     <div>
-        <span class="label"><h3 style="text-align: center; font-size: xx-large">Under Treatment Certificate</h3></span>
+        <span class="label"><h3 style="text-align: center; font-size: xx-large">{{::"UNDER_TREATMENT_CERTIFICATE" | translate}}</h3></span>
     </div>
     <div>
         <div style="text-align: left;">
-            <span class="label">Date:</span>
+            <span class="label">{{::"DATE_LABEL" | translate}}</span>
             <span>{{today | date:'dd/MM/yyyy'}} </span> </br>
-            <span class="label">Patient Registration No:</span>
+            <span class="label">{{::"PATIENT_REGISTRATION_NO_LABEL" | translate}}</span>
             <span>{{patient.identifier}}</span>
         </div>
         <div>
             <font size="3">
-                <h3 style="text-align: center; margin-bottom: 20px">WHOM IT MAY CONCERN</h3>
-                <p style="text-align: justify;">This is to inform that<b> {{patient.givenName}} {{patient.middleName}}
-                    {{patient.familyName}}</b> Age: {{patient.age || "0"}} years, is undergoing treatment for
+                <h3 style="text-align: center; margin-bottom: 20px">{{::"CERTIFICATE_SUBJECT_1" | translate}}</h3>
+                <p style="text-align: justify;">{{::"CERTIFICATE_SUBJECT_2" | translate}}<b> {{patient.givenName}} {{patient.middleName}}
+                    {{patient.familyName}}</b> {{::"AGE_LABEL" | translate}} {{patient.age || "0"}} {{::"CERTIFICATE_SUBJECT_3" | translate}}
                     <span treatment patient="patient">{{formFieldValues[0]["Treatment plan"]}}</span>.
                 </p>
-                <p style="margin-top: 10px">They have been advised to take bed rest for <span duration
+                <p style="margin-top: 10px">{{::"CERTIFICATE_SUBJECT_4" | translate}}<span duration
                                                                                             patient="patient">{{formFieldValues[0]["Rest duration"]}}</span>
                 </p>
-                <p class="signature"style="margin-top: 20px">Regards,</p>
+                <p class="signature"style="margin-top: 20px">{{::"REGARDS_LABEL" | translate}}</p>
                 <p class="signature"><b>{{doctorName}},</b></p>
-                <p class="signature">Reg.No. {{registrationNumber}}. </p>
+                <p class="signature">{{::"REG_NO_LABEL" | translate}} {{registrationNumber}}. </p>
             </font>
         </div>
     </div>
@@ -99,27 +99,26 @@
     <hr>
 
     <div>
-        <span class="label"><h3 style="text-align: center;">Fitness Certificate</h3></span>
+        <span class="label"><h3 style="text-align: center;">{{::"FITNESS_CERTIFICATE" | translate}}</h3></span>
     </div>
     <div>
         <div style="text-align: left;">
-            <span class="label">Date:</span>
+            <span class="label">{{::"DATE_LABEL" | translate}}</span>
             <span>{{today | date:'dd/MM/yyyy'}} </span> </br>
-            <span class="label">Patient Registration No:</span>
+            <span class="label">{{::"PATIENT_REGISTRATION_NO_LABEL" | translate}}</span>
             <span>{{patient.identifier}}</span>
         </div>
         <div class="content-body">
             <font size="3">
-                <h3 style="text-align: center;">WHOM IT MAY CONCERN</h3>
-                <p style="text-align: justify;">This is to inform that<b> {{patient.givenName}} {{patient.middleName}}
-                    {{patient.familyName}}</b> Age: {{patient.age || "0"}} years, was undergoing treatment for
+                <h3 style="text-align: center;">{{::"CERTIFICATE_SUBJECT_1" | translate}}</h3>
+                <p style="text-align: justify;">{{::"CERTIFICATE_SUBJECT_2" | translate}}<b> {{patient.givenName}} {{patient.middleName}}
+                    {{patient.familyName}}</b> Age: {{patient.age || "0"}} {{::"CERTIFICATE_SUBJECT_5" | translate}}
                     <span treatment patient="patient">{{formFieldValues[0]["Treatment plan"]}}</span>.
                     {{patient.givenName}} {{patient.middleName}}
-                    {{patient.familyName}} is now fit to resume daily
-                    activities. </p>
-                <p class="signature" style="margin-top: 20px">Regards,</p>
+                    {{patient.familyName}}  {{::"CERTIFICATE_SUBJECT_6" | translate}}</p>
+                <p class="signature" style="margin-top: 20px">{{::"REGARDS_LABEL" | translate}}</p>
                 <p class="signature"><b>{{doctorName}},</b></p>
-                <p class="signature">Reg.No. {{registrationNumber}}. </p>
+                <p class="signature">{{::"REG_NO_LABEL" | translate}} {{registrationNumber}}. </p>
             </font>
         </div>
     </div>
