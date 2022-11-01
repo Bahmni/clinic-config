@@ -131,16 +131,19 @@ angular.module('bahmni.common.displaycontrol.custom')
             var formNames = ["Under Treatment Certificate"];
             $scope.printControl={"Under Treatment Certificate":true};
             $scope.formFieldValues = {};
-                $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/printCertificate.html";
+            $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/printCertificate.html";
             $scope.today = new Date();
             $scope.loggedInUser = $scope.$root.currentUser;
             $scope.registeredClinicName = '';
             $scope.registeredClinicAddress = '';
             $scope.postalAddress = '';
+            $scope.registrationNumber = '';
+            $scope.doctorName = '';
+            var mciRegistrationField = 'MCI Reg Number';
+
             $scope.printCertificate = function (printId) {
                 let printContents, styles;
                 printContents = document.getElementById(printId).innerHTML;
-                // styles = document.getElementById('print-certificate-styles');
                 styles = '<link id="print-certificate-styles" rel="stylesheet" href="/bahmni_config/openmrs/apps/customDisplayControl/styles/print.css"/>';
                 var frame1 = document.createElement('iframe');
                 frame1.name = "frame1";
@@ -173,8 +176,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                     withCredentials: true
                 });
             };
-            $scope.registrationNumber = '';
-            $scope.doctorName = '';
+
             var getVisits = function () {
                 var params = {
                     v: "custom:(uuid,visitType,startDatetime,stopDatetime,location,encounters:(uuid))",
@@ -229,7 +231,6 @@ angular.module('bahmni.common.displaycontrol.custom')
                                 ? 1 : ((b) > a) ? -1 : 0;
             }
 
-            var mciRegistrationField = 'MCI Reg Number';
             $q.all([getLoggedInUser(), getVisits(), getClinicLocation()]).then(function (response) {
                 var data = response[0].data;
                 var observationData = response[1].data;
