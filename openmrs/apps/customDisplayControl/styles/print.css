@@ -31,6 +31,11 @@ button.print-button {
 .row.space-between {
     justify-content: space-between;
 }
+.fill_in_blank {
+display: inline-block;
+border-bottom: 1px solid;
+width: 30px;
+}
 .row.space-centre {
     justify-content: center;
 }

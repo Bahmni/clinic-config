@@ -103,6 +103,14 @@
   "CERTIFICATE_SUBJECT_6": "is now fit to resume daily activities.",
   "AGE_LABEL": "Age:",
   "REGARDS_LABEL": "Regards,",
-  "REG_NO_LABEL": "Reg.No."
-
+  "REG_NO_LABEL": "Reg.No.",
+  "ADMISSION_CERTIFICATE": "Admission Certificate",
+  "REFERRAL LETTER": "Referral Letter",
+  "REFERRAL_LETTER_HEADER1":"TICKET OF REFERRAL OF A PATIENT TO HOSPITAL",
+  "REFERRAL_LETTER_HEADER2":"DEPARTMENT OF HEALTH",
+  "REFERRAL_LETTER_HEADER3":"PART A",
+  "REFERRAL_LETTER_HEADER4":"To be filled by medical practitioner referring a patient to hospital.",
+  "REFERRAL_LETTER_SUBJECT1":"Referral, to _________________________________Hospital",
+  "NAVIGATE_TO_ADMISSION_CERTIFICATE_FORM": "Consultation > Observation forms > Admission Certificate.",
+  "NAVIGATE_TO_REFERRAL_LETTER_FORM": "Consultation > Observation forms > Referral Letter."
 }

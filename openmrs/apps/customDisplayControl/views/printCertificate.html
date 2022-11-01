@@ -25,6 +25,28 @@
             <li>{{::"NAVIGATE_TO_UNDER_TREATMENT_CERTIFICATE_FORM" | translate}}</li>
         </ul>
     </ul>
+    <hr class="break-line">
+    <ul style="font-size: 14px;color: #000000">
+        <li class="display-title">
+            <span style="padding-left: 10px"> {{::"ADMISSION_CERTIFICATE" | translate}} </span>
+            <button ng-click="printCertificate('admission-certificate')" class="print-button" ng-disabled="printControl['Admission Letter']">{{::"PRINT_BUTTON" | translate}}
+            </button>
+        </li>
+        <ul  class="form-field">
+            <li>{{::"NAVIGATE_TO_ADMISSION_CERTIFICATE_FORM" | translate}}</li>
+        </ul>
+    </ul>
+    <hr class="break-line">
+    <ul style="font-size: 14px;color: #000000">
+        <li class="display-title">
+            <span style="padding-left: 10px"> {{::"REFERRAL LETTER" | translate}} </span>
+            <button ng-click="printCertificate('referral-letter')" class="print-button"ng-disabled="printControl['Referral letter']">{{::"PRINT_BUTTON" | translate}}</button>
+        </li>
+        <ul  class="form-field">
+            <li>{{::"NAVIGATE_TO_REFERRAL_LETTER_FORM" | translate}}</li>
+        </ul>
+    </ul>
+
 </section>
 
 <div id="under-treatment" class="no-print">
@@ -122,5 +144,122 @@
             </font>
         </div>
     </div>
+    <div id="admission-certificate" class="no-print">
+        <div class="row space-between">
+            <div class="left">
+        <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
+                   style="width: 24mm; height: 30mm; "/></span>
+            </div>
+            <div style="text-align: left;">
+       <span>
+          <h1>{{ registeredClinicName }}</h1>
+       </span>
+                <span>
+          <h4>{{ registeredClinicAddress}}</h4>
+      </span>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <span class="label"><h3 style="text-align: center;">Admission Certificate</h3></span>
+        </div>
+        <div>
+            <div style="text-align: right;">
+                <span class="label">Date:</span>
+                <span>{{today | date:'dd/MM/yyyy'}} </span> </br>
+                <span class="label">Patient Registration No:</span>
+                <span>{{patient.identifier}}</span>
+            </div>
+            <div>
+                <font size="3">
+                    <p style="margin-top: 20px">To,</p>
+                    <span>{{formFieldValues[1]["Referring to Hospital"]}}</span>
+                    <p style="text-align: justify;">Kindly admit<b> {{patient.givenName}} {{patient.middleName}}
+                        {{patient.familyName}}</b> Age: {{patient.age || "0"}} years, under Dr.{{doctorName}}
+                    <p style="margin-top: 20px">Special Instructions:<span Special Instructions>{{formFieldValues[1]["Special Instructions"]}}</span>
+                    </p>
 
+                    <p style="margin-top: 20px">Thank you!</p>
+                    <p><b>DR.{{doctorName}}</b></p>
+                    <p>Reg.No. {{registrationNumber}} </p>
+                </font>
+            </div>
+        </div>
+    </div>
+    <!----referral letter--->
+    <div id="referral-letter" class="no-print">
+        <div class="row space-between">
+            <div class="left">
+        <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
+                   style="width: 24mm; height: 30mm; "/></span>
+            </div>
+            <div style="text-align: center;">
+       <span>
+          <h2>{{ ::"REFERRAL_LETTER_HEADER1" | translate }}</h2>
+       </span>
+                <span>
+          <h3>{{ ::"REFERRAL_LETTER_HEADER2" |translate}}</h3>
+      </span>
+                <span>
+          <h4>{{ ::"REFERRAL_LETTER_HEADER3" |translate}}</h4>
+      </span>
+                <div>
+                    <span class="label"><h5 style="text-align: center;">{{ ::"REFERRAL_LETTER_HEADER4" |translate}}</h5></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="left">
+            <span class="label"><h5 style="text-align: left;">{{ ::"REFERRAL_LETTER_SUBJECT1" |translate}}</h5></span><br>
+        </div>
+        <hr>
+        <div class="left">
+            <span class="label"><h5 style="text-align: left;">Name of patient <span class="fill_in_blank" style="width:150px"></span>Age:<span class="fill_in_blank"></span> </h5></span>
+
+        </div>
+        <div class="left">
+            <span class="label"><h5 style="text-align: left;">Address of patient ______________________________________________________Tel.No<sub>(if any)</sub>____________________</h5></span>
+        </div>
+        <div class="left">
+            <span class="label"><h5 style="text-align: left;">______________________________________________________________________</h5></span>
+        </div>
+        <div class="left">
+            <span class="label"><h5 style="text-align: left;">Name and address of nearest relative ______________________________________Tel.No<sub>(if any)</sub>____________________</h5></span>
+
+        </div>
+        <div class="left">
+            <span class="label"><h5 style="text-align: left;"> _______________________________________________________________________</h5></span>
+        </div>
+        <div class="left">
+            <span class="label"><h5 style="text-align: left;"> _______________________________________________________________________</h5></span>
+        </div>
+        <div class="left">
+            <span class="label"><h5 style="text-align: left;">Referred for_____________________________________________________________</h5></span>
+        </div>
+        <div class="left">
+            <span class="label"><h5 style="text-align: left;">________________________________________________________________________</h5></span>
+        </div>
+        <div class="left">
+            <p style="text-align: left;">Relevant clinical history<span Relevant clinical history>{{formFieldValues[2]["Relevant clinical history"]}}</span>
+            </p>
+        </div>
+
+        <!--<div>
+            <div>
+                <font size="3">
+                    <p style="margin-top: 20px">To,</p>
+                    <span>{{formFieldValues[1]["Referring to Hospital"]}}</span>
+                    <p style="text-align: justify;">Kindly admit<b> {{patient.givenName}} {{patient.middleName}}
+                        {{patient.familyName}}</b> Age: {{patient.age || "0"}} years, under Dr.{{doctorName}}
+                    <p style="margin-top: 20px">Special Instructions:<span Special Instructions>{{formFieldValues[1]["Special Instructions"]}}</span>
+                    </p>
+
+                    <p style="margin-top: 20px">Thank you!</p>
+                    <p><b>DR.{{doctorName}}</b></p>
+                    <p>Reg.No. {{registrationNumber}} </p>
+                </font>
+            </div>
+        </div>-->
+    </div>
 </div>
