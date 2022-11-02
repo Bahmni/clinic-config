@@ -9,6 +9,7 @@
     "config": {
 		"preferExtraIdInSearchResults": true,
         "allowAdhocTeleConsultation": true,
+        "defaultVisitType":"OPD",
         "teleConsultationDomain": "meet.jit.si",
         "conceptSetUI": {
             "Chief Complaint Data": {
