@@ -39,3 +39,5 @@ Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Descript
 9bb0795c-4ff0-0305-1990-000000000035,,,Drops,,,,,,Misc,N/A,,,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000036,,,Jelly,,,,,,Misc,N/A,,,,,,,,,,,
 9bb0795c-4ff0-0305-1990-000000000037,,,Pessary,,,,,,Misc,N/A,,,,,,,,,,,
+9bb0795c-4ff0-0305-1990-000000000038,,,Treatment plan,,,,,,Misc,Text,,,,,,,,,,,
+9bb0795c-4ff0-0305-1990-000000000039,,,Rest duration,,,,,,Misc,Text,,,,,,,,,,,

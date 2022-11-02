@@ -248,7 +248,8 @@
                                 "Second Vitals",
                                 "Hypertension Progress",
                                 "Follow Up",
-                                "Obstetrics and Gynaecology"
+                                "Obstetrics and Gynaecology",
+                                "Under Treatment and Fitness Certificate"
                             ],
                 "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
             },
@@ -277,6 +278,20 @@
                 },
                 "displayOrder":10,
                 "title":"Patient Document"
+            }
+        }
+    },
+    "print": {
+        "translationKey": "DASHBOARD_TAB_PRINT",
+        "maxRecentlyViewedPatients": 10,
+        "sections": {
+            "patientAppointments": {
+                "type": "custom",
+                "displayOrder": 1 ,
+                "config": {
+                    "title": "Certificates Print",
+                    "template": "<patient-print-dashboard section='config' patient='patient'></patient-print-dashboard>"
+                }
             }
         }
     }

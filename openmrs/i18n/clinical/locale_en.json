@@ -86,5 +86,19 @@
   "DASHBOARD_NO_UPCOMING_APPOINTMENTS_KEY": "No upcoming appointments",
   "DASHBOARD_TELECON_KEY": "Teleconsultation",
   "phoneNumber": "Phone No",
-  "ABHA Address":"ABHA ID"
+  "ABHA Address":"ABHA ID",
+
+  "DASHBOARD_TAB_PRINT": "Print",
+  "UNDER_TREATMENT_CERTIFICATE": "Under Treatment Certificate",
+  "FITNESS_CERTIFICATE": "Fitness Certificate",
+  "NAVIGATE_TO_UNDER_TREATMENT_CERTIFICATE_FORM" : "Consultation > Observation forms > Under Treatment and Fitness Certificate.",
+  "PRINT_BUTTON": "Print",
+  "DATE_LABEL": "Date:",
+  "PATIENT_REGISTRATION_NO_LABEL": "Patient Registration No:",
+  "CERTIFICATE_SUBJECT_1": "WHOM IT MAY CONCERN",
+  "UNDER_TREATMENT_CERTIFICATE_BODY_CONTENT": "This is to inform that <b> {{patient.givenName}} {{patient.middleName}} {{patient.familyName}} </b> Age: {{patient.age || '0'}} years, is undergoing treatment for {{treatment}}. They have been advised to take bed rest for {{restDuration}}.",
+  "FITNESS_CERTIFICATE_BODY_CONTENT": "This is to inform that <b> {{patient.givenName}} {{patient.middleName}} {{patient.familyName}} </b> Age: {{patient.age || '0'}} years, was undergoing treatment for {{treatment}}. {{patient.givenName}} {{patient.middleName}} {{patient.familyName}} is now fit to resume daily activities.",
+  "REGARDS_LABEL": "Regards,",
+  "REG_NO_LABEL": "Reg.No."
+
 }
