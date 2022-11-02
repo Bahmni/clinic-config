@@ -106,6 +106,8 @@
                 },
                 "expandedViewConfig":{
                     "conceptNames":[
+                        "Height (cm)",
+                        "Weight (kg)",
                         "Pulse",
                         "Arterial blood oxygen saturation (pulse oximeter)",
                         "Respiratory rate",
@@ -119,49 +121,23 @@
                     "pivotTable":{
                         "numberOfVisits":"10",
                         "groupBy":"encounters",
+                        "type": "pivotTable",
+                        "title": "Vitals Flowsheet",
                         "obsConcepts":[
-                            "Weight",
-                            "Vitals"
+                            "Height (cm)",
+                            "Weight (kg)",
+                            "Pulse",
+                            "Arterial blood oxygen saturation (pulse oximeter)",
+                            "Respiratory rate",
+                            "Temperature",
+                            "Systolic blood pressure",
+                            "Diastolic blood pressure",
+                            "Body position"
                         ],
                         "drugConcepts":[
                         ],
                         "labConcepts":[
                         ]
-                    }
-                }
-            },
-            "secondVitals":{
-                "translationKey":"DASHBOARD_TITLE_SECOND_VITALS_KEY",
-                "type":"second vitals",
-                "isObservation":true,
-                "displayOrder":11,
-                "dashboardConfig":{
-                    "showDetailsButton":true,
-                    "conceptNames":[
-                        "Pulse",
-                        "Arterial blood oxygen saturation (pulse oximeter)",
-                        "Respiratory rate",
-                        "Temperature",
-                        "Systolic blood pressure",
-                        "Diastolic blood pressure",
-                        "Body position"
-                    ],
-                    "numberOfVisits":2
-                },
-                "expandedViewConfig":{
-                    "conceptNames":[
-                        "Pulse",
-                        "Arterial blood oxygen saturation (pulse oximeter)",
-                        "Respiratory rate",
-                        "Temperature",
-                        "Systolic blood pressure",
-                        "Diastolic blood pressure",
-                        "Body position"
-                    ],
-                    "numberOfVisits":2,
-                    "showDetailsButton":true,
-                    "pivotTable":{
-
                     }
                 }
             },
