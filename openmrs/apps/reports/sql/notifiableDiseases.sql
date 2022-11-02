@@ -37,7 +37,7 @@ FROM patient pt
                                                                                                      AND child.voided IS FALSE
                                                                                        JOIN concept_name AS certainty
                                                                                             ON certainty.concept_id = child.value_coded AND
-                                                                                               (certainty.name = 'Confirmed diagnosis' || certainty.name = 'Presumed diagnosis') AND
+                                                                                               (certainty.name = 'Confirmed' || certainty.name = 'Presumed') AND
                                                                                                certainty.concept_name_type = 'FULLY_SPECIFIED'
                                                                               WHERE parent.voided IS FALSE) AS certaintyObs
                                     )
