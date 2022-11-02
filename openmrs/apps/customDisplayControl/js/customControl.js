@@ -128,6 +128,7 @@ angular.module('bahmni.common.displaycontrol.custom')
 angular.module('bahmni.common.displaycontrol.custom')
     .directive('patientPrintDashboard', ['$http', '$q', '$window','appService', function ($http, $q, $window, appService) {
         var link = async function ($scope) {
+            $scope.printConstants = {};
             var request = {
                 method: 'get',
                 url: appService.configBaseUrl() + "/customDisplayControl/constants/printConstants.json",
@@ -153,7 +154,7 @@ angular.module('bahmni.common.displaycontrol.custom')
             $scope.registrationNumber = '';
             $scope.doctorName = '';
 
-            $scope.printConstants = {};
+
 
 
             $scope.printCertificate = function (printId) {

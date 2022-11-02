@@ -83,12 +83,7 @@
         <div>
             <font size="3">
                 <h3 style="text-align: center; margin-bottom: 20px">{{::"CERTIFICATE_SUBJECT_1" | translate}}</h3>
-                <p style="text-align: justify;">{{::"CERTIFICATE_SUBJECT_2" | translate}}<b> {{patient.givenName}} {{patient.middleName}}
-                    {{patient.familyName}}</b> {{::"AGE_LABEL" | translate}} {{patient.age || "0"}} {{::"CERTIFICATE_SUBJECT_3" | translate}}
-                    <span treatment patient="patient">{{formFieldValues[0]["Treatment plan"]}}</span>.
-                </p>
-                <p style="margin-top: 10px">{{::"CERTIFICATE_SUBJECT_4" | translate}}<span duration
-                                                                                            patient="patient">{{formFieldValues[0]["Rest duration"]}}</span>
+                <p style="text-align: justify;"  translate="UNDER_TREATMENT_CERTIFICATE_BODY_CONTENT" translate-values="{patient:{{patient}}, treatment: formFieldValues[0]['Treatment plan'], restDuration : formFieldValues[0]['Rest duration']}">
                 </p>
                 <p class="signature"style="margin-top: 20px">{{::"REGARDS_LABEL" | translate}}</p>
                 <p class="signature"><b>{{doctorName}},</b></p>
@@ -133,11 +128,7 @@
         <div class="content-body">
             <font size="3">
                 <h3 style="text-align: center;">{{::"CERTIFICATE_SUBJECT_1" | translate}}</h3>
-                <p style="text-align: justify;">{{::"CERTIFICATE_SUBJECT_2" | translate}}<b> {{patient.givenName}} {{patient.middleName}}
-                    {{patient.familyName}}</b> Age: {{patient.age || "0"}} {{::"CERTIFICATE_SUBJECT_5" | translate}}
-                    <span treatment patient="patient">{{formFieldValues[0]["Treatment plan"]}}</span>.
-                    {{patient.givenName}} {{patient.middleName}}
-                    {{patient.familyName}}  {{::"CERTIFICATE_SUBJECT_6" | translate}}</p>
+                <p style="text-align: justify;"translate="FITNESS_CERTIFICATE_BODY_CONTENT" translate-values="{patient:{{patient}}, treatment: formFieldValues[0]['Treatment plan']}"></p>
                 <p class="signature" style="margin-top: 20px">{{::"REGARDS_LABEL" | translate}}</p>
                 <p class="signature"><b>{{doctorName}},</b></p>
                 <p class="signature">{{::"REG_NO_LABEL" | translate}} {{registrationNumber}}. </p>
