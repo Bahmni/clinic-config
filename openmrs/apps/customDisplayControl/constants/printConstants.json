@@ -1,5 +1,5 @@
 {
-  "formNames": ["Under Treatment and Fitness Certificate","Admission Letter"],
+  "formNames": ["Under Treatment and Fitness Certificate","Admission Letter","Referral letter"],
   "printControls": {"Under Treatment and Fitness Certificate":true,"Admission Letter":true,"Referral letter":true},
   "doctorRegistrationFieldValue": "MCI Reg Number",
   "providerIdentifier": "doctor"
