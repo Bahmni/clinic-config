@@ -2,42 +2,37 @@
       href="/bahmni_config/openmrs/apps/customDisplayControl/styles/print.css"/>
 
 <section class="app-dashboard-integration">
-    <h2 class="section-title"><span style="border-bottom: 1px solid white;">{{ section.title | titleTranslate}}</span>
+    <h2 class="section-title"><span class="section-border">{{ section.title | titleTranslate}}</span>
     </h2>
 
-    <ul style="font-size: 14px;color: #000000">
+    <ul class="display-title-container">
         <li class="display-title">
-            <span style="padding-left: 10px"> {{::"UNDER_TREATMENT_CERTIFICATE" | translate}} </span>
+            <span class="pl-1"> {{::"UNDER_TREATMENT_CERTIFICATE" | translate}} </span>
             <button ng-click="printCertificate('under-treatment')" class="print-button"
-                    ng-disabled="printControl['Under Treatment and Fitness Certificate']">{{::"PRINT_BUTTON" |
-                translate}}
+                    ng-disabled="printControl['Under Treatment and Fitness Certificate']">{{::"PRINT_BUTTON" | translate}}
             </button>
         </li>
-        <ul class="form-field">
+        <ul  class="form-field">
             <li>{{::"NAVIGATE_TO_UNDER_TREATMENT_CERTIFICATE_FORM" | translate}}</li>
         </ul>
     </ul>
-    <ul style="font-size: 14px;color: #000000">
+    <ul class="display-title-container">
         <li class="display-title">
-            <span style="padding-left: 10px"> {{::"FITNESS_CERTIFICATE" | translate}} </span>
-            <button ng-click="printCertificate('fitness-certificate')" class="print-button"
-                    ng-disabled="printControl['Under Treatment and Fitness Certificate']">{{::"PRINT_BUTTON" |
-                translate}}
-            </button>
+            <span class="pl-1"> {{::"FITNESS_CERTIFICATE" | translate}} </span>
+            <button ng-click="printCertificate('fitness-certificate')" class="print-button"  ng-disabled="printControl['Under Treatment and Fitness Certificate']">{{::"PRINT_BUTTON" | translate}}</button>
         </li>
-        <ul class="form-field">
+        <ul  class="form-field">
             <li>{{::"NAVIGATE_TO_UNDER_TREATMENT_CERTIFICATE_FORM" | translate}}</li>
         </ul>
     </ul>
     <hr class="break-line">
-    <ul style="font-size: 14px;color: #000000">
+    <ul class="display-title-container">
         <li class="display-title">
-            <span style="padding-left: 10px"> {{::"ADMISSION_CERTIFICATE" | translate}} </span>
-            <button ng-click="printCertificate('admission-certificate')" class="print-button"
-                    ng-disabled="printControl['Admission Letter']">{{::"PRINT_BUTTON" | translate}}
+            <span class="pl-1"> {{::"ADMISSION_CERTIFICATE" | translate}} </span>
+            <button ng-click="printCertificate('admission-certificate')" class="print-button" ng-disabled="printControl['Admission Letter']">{{::"PRINT_BUTTON" | translate}}
             </button>
         </li>
-        <ul class="form-field">
+        <ul  class="form-field">
             <li>{{::"NAVIGATE_TO_ADMISSION_CERTIFICATE_FORM" | translate}}</li>
         </ul>
     </ul>
@@ -60,15 +55,15 @@
     <div class="row space-centre position-relative">
         <div class="left position-absolute">
             <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
-                       style="width: 24mm;"/></span>
+                      class="clinic-logo"/></span>
         </div>
         <div class="right">
            <span>
-              <h1 class="name" style="text-align: center;">
+              <h1 class="name text-center">
                 {{ registeredClinicName  }}
               </h1>
              <span>
-              <h5 class="name" style="text-align: center;">
+              <h5 class="name text-center">
                 {{ registeredClinicAddress}} <br>
                   {{postalAddress}}
               </h5>
@@ -78,10 +73,10 @@
     </div>
     <hr>
     <div>
-        <span class="label"><h3 style="text-align: center; font-size: xx-large">{{::"UNDER_TREATMENT_CERTIFICATE" | translate}}</h3></span>
+        <span class="label"><h3 class="text-center large-font">{{::"UNDER_TREATMENT_CERTIFICATE" | translate}}</h3></span>
     </div>
     <div>
-        <div style="text-align: left;">
+        <div class="text-left">
             <span class="label">{{::"DATE_LABEL" | translate}}</span>
             <span>{{today | date:'dd/MM/yyyy'}} </span> </br>
             <span class="label">{{::"PATIENT_REGISTRATION_NO_LABEL" | translate}}</span>
@@ -89,10 +84,10 @@
         </div>
         <div>
             <font size="3">
-                <h3 style="text-align: center; margin-bottom: 20px">{{::"CERTIFICATE_SUBJECT_1" | translate}}</h3>
-                <p style="text-align: justify;"  translate="UNDER_TREATMENT_CERTIFICATE_BODY_CONTENT" translate-values="{patient:{{patient}}, treatment: formFieldValues[0]['Treatment plan'], restDuration : formFieldValues[0]['Rest duration']}">
+                <h3 class="text-center mb-2" >{{::"CERTIFICATE_SUBJECT_1" | translate}}</h3>
+                <p class="text-justify"  translate="UNDER_TREATMENT_CERTIFICATE_BODY_CONTENT" translate-values="{patient:{{patient}}, treatment: formFieldValues[0]['Treatment plan'], restDuration : formFieldValues[0]['Rest duration']}">
                 </p>
-                <p class="signature" style="margin-top: 20px">{{::"REGARDS_LABEL" | translate}}</p>
+                <p class="signature mt-2">{{::"REGARDS_LABEL" | translate}}</p>
                 <p class="signature"><b>{{doctorName}},</b></p>
                 <p class="signature">{{::"REG_NO_LABEL" | translate}} {{registrationNumber}}. </p>
             </font>
@@ -104,15 +99,15 @@
     <div class="row space-centre position-relative ">
         <div class="left position-absolute">
             <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
-                       style="width: 24mm; "/></span>
+                       class="clinic-logo"/></span>
         </div>
         <div class="right">
            <span>
-              <h1 class="name" style="text-align: center;">
+              <h1 class="name text-center" >
                 {{ registeredClinicName  }}
               </h1>
              <span>
-              <h5 class="name" style="text-align: center;">
+              <h5 class="name text-center">
                 {{ registeredClinicAddress}} <br>
                   {{postalAddress}}
               </h5>
@@ -123,10 +118,10 @@
     <hr>
 
     <div>
-        <span class="label"><h3 style="text-align: center;">{{::"FITNESS_CERTIFICATE" | translate}}</h3></span>
+        <span class="label"><h3 class="text-center">{{::"FITNESS_CERTIFICATE" | translate}}</h3></span>
     </div>
     <div>
-        <div style="text-align: left;">
+        <div class="text-left">
             <span class="label">{{::"DATE_LABEL" | translate}}</span>
             <span>{{today | date:'dd/MM/yyyy'}} </span> </br>
             <span class="label">{{::"PATIENT_REGISTRATION_NO_LABEL" | translate}}</span>
@@ -134,10 +129,9 @@
         </div>
         <div class="content-body">
             <font size="3">
-                <h3 style="text-align: center;">{{::"CERTIFICATE_SUBJECT_1" | translate}}</h3>
-                <p style="text-align: justify;" translate="FITNESS_CERTIFICATE_BODY_CONTENT"
-                   translate-values="{patient:{{patient}}, treatment: formFieldValues[0]['Treatment plan']}"></p>
-                <p class="signature" style="margin-top: 20px">{{::"REGARDS_LABEL" | translate}}</p>
+                <h3 class="text-center">{{::"CERTIFICATE_SUBJECT_1" | translate}}</h3>
+                <p class="text-justify" translate="FITNESS_CERTIFICATE_BODY_CONTENT" translate-values="{patient:{{patient}}, treatment: formFieldValues[0]['Treatment plan']}"></p>
+                <p class="signature mt-2" >{{::"REGARDS_LABEL" | translate}}</p>
                 <p class="signature"><b>{{doctorName}},</b></p>
                 <p class="signature">{{::"REG_NO_LABEL" | translate}} {{registrationNumber}}. </p>
             </font>
@@ -147,15 +141,15 @@
         <div class="row space-centre position-relative ">
             <div class="left position-absolute">
             <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
-                       style="width: 24mm; "/></span>
+                       class="clinic-logo"/></span>
             </div>
             <div class="right">
            <span>
-              <h1 class="name" style="text-align: center;">
+              <h1 class="name text-center">
                 {{ registeredClinicName  }}
               </h1>
              <span>
-              <h5 class="name" style="text-align: center;">
+              <h5 class="name text-center">
                 {{ registeredClinicAddress}} <br>
                   {{postalAddress}}
               </h5>
@@ -165,10 +159,10 @@
         </div>
         <hr>
         <div>
-            <span class="label"><h3 style="text-align: center;">{{::"ADMISSION_CERTIFICATE" | translate}}</h3></span>
+            <span class="label"><h3 class="text-center">{{::"ADMISSION_CERTIFICATE" | translate}}</h3></span>
         </div>
         <div>
-            <div style="text-align: right;">
+            <div class="text-right">
                 <span class="label">{{::"DATE_LABEL" | translate}}</span>
                 <span>{{today | date:'dd/MM/yyyy'}} </span> </br>
                 <span class="label">{{::"PATIENT_REGISTRATION_NO_LABEL" | translate}}</span>
@@ -177,10 +171,9 @@
             <div>
                 <font size="3">
 
-                    <p style="text-align: justify;" translate="ADMISSION_CERTIFICATE_BODY_CONTENT"
-                       translate-values="{patient:{{patient}},doctorName:doctorName, referredToHospital: formFieldValues[1]['Referring to Hospital'], comments: formFieldValues[1]['Comments']}"></p>
+                    <p class="text-justify" translate="ADMISSION_CERTIFICATE_BODY_CONTENT" translate-values="{patient:{{patient}},doctorName:doctorName, referredToHospital: formFieldValues[1]['Referring to Hospital'], comments: formFieldValues[1]['Comments']}"></p>
 
-                    <p style="margin-top: 20px">{{::"THANKYOU_LABEL" | translate}}</p>
+                    <p class="mt-2">{{::"THANKYOU_LABEL" | translate}}</p>
                     <p class="signature"><b>{{doctorName}},</b></p>
                     <p class="signature">{{::"REG_NO_LABEL" | translate}} {{registrationNumber}}. </p>
                 </font>

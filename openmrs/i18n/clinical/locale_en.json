@@ -101,7 +101,7 @@
   "REGARDS_LABEL": "Regards,",
   "REG_NO_LABEL": "Reg.No.",
   "ADMISSION_CERTIFICATE": "Admission Certificate",
-  "ADMISSION_CERTIFICATE_BODY_CONTENT": "<div style='margin-top: 20px'>To,</div> <span>{{referredToHospital}}</span><p style='text-align: justify;'>Kindly admit<b> {{patient.givenName}} {{patient.middleName}}{{patient.familyName}}</b> Age: {{patient.age || '0'}} years, under Dr.{{doctorName}}<p style='margin-top: 20px'>Comments:<span> {{comments}}</span></p>",
+  "ADMISSION_CERTIFICATE_BODY_CONTENT": "<div class='mt-2'>To,</div> <span>{{referredToHospital}}</span><p class='text-justify'>Kindly admit<b> {{patient.givenName}} {{patient.middleName}}{{patient.familyName}}</b> Age: {{patient.age || '0'}} years, under Dr.{{doctorName}}<p class='mt-2'>Comments:<span> {{comments}}</span></p>",
   "THANKYOU_LABEL": "Thank you!",
   "NAVIGATE_TO_ADMISSION_CERTIFICATE_FORM": "Consultation > Observation forms > Admission Certificate.",
   "REFERRAL LETTER": "Referral Letter",
