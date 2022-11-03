@@ -142,7 +142,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                 .error(function () {
 
                 });
-            var {formNames, printControls,  doctorRegistrationFieldValue} = $scope.printConstants;
+            var {formNames, printControls,  doctorRegistrationFieldValue, providerIdentifier} = $scope.printConstants;
             $scope.printControl = printControls;
             $scope.formFieldValues = {};
             $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/printCertificate.html";
@@ -184,7 +184,7 @@ angular.module('bahmni.common.displaycontrol.custom')
             var getLoggedInUser = function () {
                 var params = {
                     v: "full",
-                    q: $scope.loggedInUser.username
+                    q: providerIdentifier
                 };
                 return $http.get('/openmrs/ws/rest/v1/provider', {
                     method: "GET",
@@ -254,7 +254,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                 var personDetails;
 
                 if (data.results.length > 0) {
-                    personDetails = data.results.find(provider => provider.uuid = $scope.loggedInUser.uuid);
+                    personDetails = data.results.find(provider => provider.person.uuid == $scope.loggedInUser.person.uuid);
                     if (personDetails) {
                         $scope.doctorName = personDetails.person.display
                         var mciAttribute = personDetails.attributes.find(attribute =>

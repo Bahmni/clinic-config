@@ -31,6 +31,11 @@ button.print-button {
 .row.space-between {
     justify-content: space-between;
 }
+.fill_in_blank {
+display: inline-block;
+border-bottom: 1px solid;
+width: 30px;
+}
 .row.space-centre {
     justify-content: center;
 }
@@ -57,4 +62,38 @@ h5.name {
 .signature {
     margin-bottom: 2px;
     margin-top: 2px;
+}
+.mt-2 {
+    margin-top: 20px;
+}
+.mb-2 {
+    margin-bottom: 20px;
+}
+.text-justify{
+    text-align: justify;
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+.section-border {
+    border-bottom: 1px solid white;
+}
+.display-title-container {
+    font-size: 14px;
+    color: #000000;
+}
+.pl-1 {
+    padding-left: 10px;
+}
+.clinic-logo {
+    width: 24mm;
+}
+.large-font {
+    font-size: xx-large
 }
