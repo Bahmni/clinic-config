@@ -34,7 +34,7 @@ button.print-button {
 .fill_in_blank {
 display: inline-block;
 border-bottom: 1px solid;
-width: 30px;
+width: 150px;
 }
 .row.space-centre {
     justify-content: center;
@@ -96,4 +96,13 @@ h5.name {
 }
 .large-font {
     font-size: xx-large
+}
+.align-top {
+    vertical-align: text-top;
+}
+.w-100{
+    width: 100%;
+}
+.container {
+  align-items: flex-start;
 }

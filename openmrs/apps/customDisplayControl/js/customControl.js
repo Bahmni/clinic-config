@@ -142,7 +142,9 @@ angular.module('bahmni.common.displaycontrol.custom')
                 .error(function () {
 
                 });
-            var {formNames, printControls,  doctorRegistrationFieldValue, providerIdentifier} = $scope.printConstants;
+            var {formNames, printControls,  doctorRegistrationFieldValue, providerIdentifier, patientAddress} = $scope.printConstants;
+
+            $scope.patientAddress = {Line1:"",Line2:""};
             $scope.printControl = printControls;
             $scope.formFieldValues = {};
             $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/printCertificate.html";
@@ -154,8 +156,13 @@ angular.module('bahmni.common.displaycontrol.custom')
             $scope.registrationNumber = '';
             $scope.doctorName = '';
 
+             console.log("$scope.patient value..", $scope.patient);
+            console.log("$scope.patient value only address..", $scope.patient.address);
+            console.log("$scope.patient value only address..", $scope.patient.address);
 
+            var buildAddress=function(regAddress,fieldValues){
 
+            }
 
             $scope.printCertificate = function (printId) {
                 let printContents, styles;
@@ -269,13 +276,16 @@ angular.module('bahmni.common.displaycontrol.custom')
                     var visitId = observationData.results[0].uuid
                     $q.all([getObservationsByVisitId(visitId)]).then(function (visitResponse) {
                         var observationsValue = visitResponse[0].data;
+                        console.log("observation value..", observationsValue);
                         if (observationsValue.length > 0) {
                             var formObservations = formNames.map(form => {
                                 var formObservation = {};
-                                (getLatestEncounterForForm(observationsValue.filter(item => item.formFieldPath.includes(form)), form).forEach(eachObservation => (formObservation[eachObservation.concept.name] = (isNaN(eachObservation.valueAsString) ? eachObservation.valueAsString : parseFloat(eachObservation.valueAsString)))));
+                                (getLatestEncounterForForm(observationsValue.filter(item => item.formFieldPath && item.formFieldPath.includes(form)), form).forEach(eachObservation => (formObservation[eachObservation.concept.name] = (isNaN(eachObservation.valueAsString) ? eachObservation.valueAsString : parseFloat(eachObservation.valueAsString)))));
                                 return formObservation
                             });
                             $scope.formFieldValues = formObservations;
+                            console.log("$scope.formFieldValues .....", $scope.formFieldValues);
+
                         }
                     });
                 }
@@ -284,10 +294,11 @@ angular.module('bahmni.common.displaycontrol.custom')
                     $scope.registeredClinicName = location.name;
                     $scope.registeredClinicAddress = `${location.address1}, ${location.address2}, ${location.cityVillage}, ${location.countyDistrict}.`
                     $scope.postalAddress = `Postal Code: ${location.postalCode}`
-
+                    console.log('postal address froms scope...', $scope.postalAddress);
                 }
             });
         };
+
         return {
             restrict: 'E',
             link: link,

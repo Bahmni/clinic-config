@@ -185,18 +185,24 @@
         <div class="row space-centre position-relative">
             <div class="left position-absolute">
             <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
-                       style="width: 24mm;"/></span>
+                       class="clinic-logo"/></span>
             </div>
             <div class="right">
            <span>
-              <h1 class="name" style="text-align: center;">
-                {{ registeredClinicName  }}
-              </h1>
+              <h3 class="name text-center"
+                translate="REFERRAL_LETTER_HEADER1">
+              </h3>
+               <h3 class="name text-center"
+                   translate="REFERRAL_LETTER_HEADER2">
+              </h3>
+               <h3 class="name text-center"
+                   translate="REFERRAL_LETTER_HEADER3">
+              </h3>
              <span>
-              <h5 class="name" style="text-align: center;">
-                {{ registeredClinicAddress}} <br>
-                  {{postalAddress}}
-              </h5>
+              <h4 class="name text-center"
+                  translate="REFERRAL_LETTER_HEADER4">
+
+              </h4>
               </span>
           </span>
             </div>
@@ -204,49 +210,44 @@
         <hr>
 
         <div class="left">
-            <span class="label"><h5
-                    style="text-align: left;" translate="REFERRAL_LETTER_SUBJECT1"></h5></span><br>
+            <span class="label"><p
+                    class="text-left" translate="REFERRAL_LETTER_SUBJECT1"
+                    translate-values="{patient:{{patient}}, referredto:formFieldValues[2]['Referred to']}"></p></span><br>
+
         </div>
         <hr>
+        <p class="text-left" translate="REFERRAL_LETTER_SUBJECT2"
+            translate-values="{patient:{{patient}}}"></p>
+
         <div class="left">
-            <span class="label"><h5 style="text-align: left;"translate="REFERRAL_LETTER_SUBJECT2"></h5></span>
+            <span class="label"><p class="text-left" translate="REFERRAL_LETTER_SUBJECT3"
+            translate-values="{patient:{{patient}}}"></p></span>
+        </div>
+        <div class="left">
+            <span class="label"><p class="text-left" translate="REFERRAL_LETTER_SUBJECT4"
+                                   translate-values="{patientAddress:patientAddress}"></p></span>
+        </div>
+        <div class="left">
+            <span class="label"><p
+                    class="text-left" translate="REFERRAL_LETTER_SUBJECT5"
+                    translate-values="{patient:{{patient}}, reasonForReferral:formFieldValues[2]['Reason for referral (text)']}"></p></span><br>
 
         </div>
         <div class="left">
-            <span class="label"><h5 style="text-align: left;"translate="REFERRAL_LETTER_SUBJECT3"></h5></span>
+            <p class="text-left" translate="REFERRAL_LETTER_SUBJECT7"
+               translate-values="{patient:{{patient}}, relevantClinicalHistory:formFieldValues[2]['Relevant clinical history']}"></p>
         </div>
         <div class="left">
-            <span class="label"><h5 style="text-align: left;"translate="REFERRAL_LETTER_SUBJECT4"></h5></span>
+            <p class="text-left" translate="REFERRAL_LETTER_SUBJECT8"
+               translate-values="{patient:{{patient}}, treatmentOrObservations:formFieldValues[2]['Treatment provided']}"></p>
         </div>
-        <div class="left">
-            <span class="label"><h5 style="text-align: left;"translate="REFERRAL_LETTER_SUBJECT5"></h5></span>
+        <div class="right">
+            <span class="label"><p class="text-right" translate="REFERRAL_LETTER_SUBJECT9"></p></span>
 
         </div>
-        <div class="left">
-            <span class="label"><h5 style="text-align: left;"translate="REFERRAL_LETTER_SUBJECT4">></h5></span>
-        </div>
-        <div class="left">
-            <span class="label"><h5 style="text-align: left;"translate="REFERRAL_LETTER_SUBJECT4"></h5></span>
-        </div>
-        <div class="left">
-            <span class="label"><h5 style="text-align: left;"translate="REFERRAL_LETTER_SUBJECT6"></h5></span>
-        </div>
-        <div class="left">
-            <span class="label"><h5 style="text-align: left;"translate="REFERRAL_LETTER_SUBJECT4"></h5></span>
-        </div>
-        <div class="left">
-            <p style="text-align: left;" translate="REFERRAL_LETTER_SUBJECT7"
-               translate-values="{patient:{{patient}}, relevantCinicalHistory:formFieldValues[2]['Relevant clinical history']}"></p>
-        </div>
-        <div class="left">
-            <p style="text-align: left;" translate="REFERRAL_LETTER_SUBJECT8"
-               translate-values="{patient:{{patient}}, relevantCinicalHistory:formFieldValues[2]['Relevant clinical history']}"></p>
-        </div>
         <div class="right">
-            <span class="label"><h5 style="text-align: right;"translate="REFERRAL_LETTER_SUBJECT9"></h5></span>
-        </div>
-        <div class="right">
-            <span class="label"><h5 style="text-align: right;"translate="REFERRAL_LETTER_SUBJECT10"></h5></span>
+            <span class="label">{{::"DATE_LABEL" | translate}}</span>
+            <span>{{today | date:'dd/MM/yyyy'}} </span>
         </div>
     </div>
 </div>
