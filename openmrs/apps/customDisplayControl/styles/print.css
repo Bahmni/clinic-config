@@ -54,10 +54,11 @@ width: 150px;
 }
 h1.name {
     margin: 0 ;
+
 }
 h5.name {
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 .signature {
     margin-bottom: 2px;
@@ -105,4 +106,8 @@ h5.name {
 }
 .container {
   align-items: flex-start;
+}
+.w-70 {
+    width: 70%;
+    margin :auto;
 }

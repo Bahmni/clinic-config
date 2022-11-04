@@ -52,20 +52,23 @@
 </section>
 
 <div id="under-treatment" class="no-print">
-    <div class="row space-centre position-relative">
+    <div class="row space-centre position-relative ">
         <div class="left position-absolute">
             <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
-                      class="clinic-logo"/></span>
+                       class="clinic-logo"/></span>
         </div>
         <div class="right">
            <span>
-              <h1 class="name text-center">
+
+               <h1 class="name text-center" >
                 {{ registeredClinicName  }}
               </h1>
              <span>
-              <h5 class="name text-center">
-                {{ registeredClinicAddress}} <br>
-                  {{postalAddress}}
+              <h5 class="name text-center w-100">
+                <div class = 'w-70'>
+                  {{ registeredClinicAddress}}
+
+                  </div>
               </h5>
               </span>
           </span>
@@ -103,20 +106,22 @@
         </div>
         <div class="right">
            <span>
-              <h1 class="name text-center" >
+
+               <h1 class="name text-center" >
                 {{ registeredClinicName  }}
               </h1>
              <span>
-              <h5 class="name text-center">
-                {{ registeredClinicAddress}} <br>
-                  {{postalAddress}}
+              <h5 class="name text-center w-100">
+                <div class = 'w-70'>
+                  {{ registeredClinicAddress}}
+
+                  </div>
               </h5>
               </span>
           </span>
         </div>
     </div>
     <hr>
-
     <div>
         <span class="label"><h3 class="text-center">{{::"FITNESS_CERTIFICATE" | translate}}</h3></span>
     </div>
@@ -145,13 +150,16 @@
             </div>
             <div class="right">
            <span>
-              <h1 class="name text-center">
+
+               <h1 class="name text-center" >
                 {{ registeredClinicName  }}
               </h1>
              <span>
-              <h5 class="name text-center">
-                {{ registeredClinicAddress}} <br>
-                  {{postalAddress}}
+              <h5 class="name text-center w-100">
+                <div class = 'w-70'>
+                  {{ registeredClinicAddress}}
+
+                  </div>
               </h5>
               </span>
           </span>
@@ -182,50 +190,47 @@
     </div>
     <!----referral letter--->
     <div id="referral-letter" class="no-print">
-        <div class="row space-centre position-relative">
+
+        <div class="row space-centre position-relative ">
             <div class="left position-absolute">
             <span><img src="/bahmni_config/openmrs/apps/customDisplayControl/images/bahmniLogo.png"
                        class="clinic-logo"/></span>
             </div>
             <div class="right">
            <span>
-              <h3 class="name text-center"
-                translate="REFERRAL_LETTER_HEADER1">
-              </h3>
-               <h3 class="name text-center"
-                   translate="REFERRAL_LETTER_HEADER2">
-              </h3>
-               <h3 class="name text-center"
-                   translate="REFERRAL_LETTER_HEADER3">
-              </h3>
-             <span>
-              <h4 class="name text-center"
-                  translate="REFERRAL_LETTER_HEADER4">
 
-              </h4>
+               <h1 class="name text-center" >
+                {{ registeredClinicName  }}
+              </h1>
+             <span>
+              <h5 class="name text-center w-100">
+                <div class = 'w-70'>
+                  {{ registeredClinicAddress}}
+
+                  </div>
+              </h5>
               </span>
           </span>
             </div>
         </div>
-        <hr>
 
+        <hr>
+        <div>
+            <span class="label"><h3 class="text-center">{{::"REFERRAL_LETTER" | translate}}</h3></span>
+        </div>
         <div class="left">
             <span class="label"><p
                     class="text-left" translate="REFERRAL_LETTER_SUBJECT1"
                     translate-values="{patient:{{patient}}, referredto:formFieldValues[2]['Referred to']}"></p></span><br>
 
         </div>
-        <hr>
+
         <p class="text-left" translate="REFERRAL_LETTER_SUBJECT2"
             translate-values="{patient:{{patient}}}"></p>
 
         <div class="left">
             <span class="label"><p class="text-left" translate="REFERRAL_LETTER_SUBJECT3"
-            translate-values="{patientAddress:{{patientAddress}}}"></p></span>
-        </div>
-        <div class="left">
-            <span class="label"><p class="text-left" translate="REFERRAL_LETTER_SUBJECT4"
-                                   translate-values="{patientAddress:patientAddress}"></p></span>
+            translate-values="{patient:{{patient}},patientAddress:{{patientAddress}}}"></p></span>
         </div>
         <div class="left">
             <span class="label"><p

@@ -292,4 +292,18 @@
             "org.openmrs.customdatatype.datatype.FreeTextDatatype", 0, 1, NOW(), 0, "07421454-e196-422d-a7c3-a045ffc5fac7");
         </sql>
     </changeSet>
+    <changeSet id="BAH-2184-location-attribute-type-20221104" author="Clinic-Config">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT count(*) FROM location_attribute_type where name="Print Certificate Header";
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding location attribute type of Print Certificate Header</comment>
+        <sql>
+            INSERT INTO location_attribute_type (name, description, datatype, min_occurs, creator, date_created,
+            retired, uuid)
+            VALUES ("Print Certificate Header","Clinical address for print certificates.",
+            "org.openmrs.customdatatype.datatype.FreeTextDatatype", 0, 1, NOW(), 0, "07421454-e196-422d-a7c3-a045ffc5fac8");
+        </sql>
+    </changeSet>
 </databaseChangeLog>
