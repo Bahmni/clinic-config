@@ -163,8 +163,8 @@ angular.module('bahmni.common.displaycontrol.custom')
             var buildAddress= function(regAddress,fieldValues){
                 var addressValue = '';
                 fieldValues.forEach((eachField, i) => {
-                    if(eachField) {
-                        addressValue += ((i ===0 ) ? '' : ', ') + eachField;
+                    if(regAddress[eachField]) {
+                        addressValue += ((i ===0 ) ? '' : ', ') + regAddress[eachField];
                     }
                 });
                 return addressValue;
