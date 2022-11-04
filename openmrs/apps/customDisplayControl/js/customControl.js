@@ -144,7 +144,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                 });
             var {formNames, printControls,  doctorRegistrationFieldValue, providerIdentifier, patientAddress} = $scope.printConstants;
 
-            $scope.patientAddress = {Line1:"",Line2:""};
+            $scope.patientAddress = {line1:"",line2:""};
             $scope.printControl = printControls;
             $scope.formFieldValues = {};
             $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/printCertificate.html";
@@ -160,10 +160,17 @@ angular.module('bahmni.common.displaycontrol.custom')
             console.log("$scope.patient value only address..", $scope.patient.address);
             console.log("$scope.patient value only address..", $scope.patient.address);
 
-            var buildAddress=function(regAddress,fieldValues){
-
+            var buildAddress= function(regAddress,fieldValues){
+                var addressValue = '';
+                fieldValues.forEach((eachField, i) => {
+                    if(eachField) {
+                        addressValue += ((i ===0 ) ? '' : ', ') + eachField;
+                    }
+                });
+                return addressValue;
             }
-
+            $scope.patientAddress.line1 = buildAddress($scope.patient.address, patientAddress.line1)
+            $scope.patientAddress.line2 = buildAddress($scope.patient.address, patientAddress.line2)
             $scope.printCertificate = function (printId) {
                 let printContents, styles;
                 printContents = document.getElementById(printId).innerHTML;
