@@ -103,5 +103,19 @@
   "ADMISSION_CERTIFICATE": "Admission Certificate",
   "ADMISSION_CERTIFICATE_BODY_CONTENT": "<div class='mt-2'>To,</div> <span>{{referredToHospital}}</span><p class='text-justify'>Kindly admit<b> {{patient.givenName}} {{patient.middleName}}{{patient.familyName}}</b> Age: {{patient.age || '0'}} years, under Dr.{{doctorName}}<p class='mt-2'>Comments:<span> {{comments}}</span></p>",
   "THANKYOU_LABEL": "Thank you!",
-  "NAVIGATE_TO_ADMISSION_CERTIFICATE_FORM": "Consultation > Observation forms > Admission Certificate."
+  "NAVIGATE_TO_ADMISSION_CERTIFICATE_FORM": "Consultation > Observation forms > Admission Certificate.",
+  "NAVIGATE_TO_REFERRAL_LETTER_FORM": "Consultation > Observation forms > Referral Letter.",
+  "REFERRAL_LETTER": "Referral Letter",
+  "REFERRAL_LETTER_REFERRAL_TO":"Referral to:",
+  "REFERRAL_LETTER_HOSPITAL": "Hospital",
+  "REFERRAL_LETTER_NAME_OF_PATIENT": "Name of patient:",
+  "REFERRAL_LETTER_AGE": "Age:" ,
+  "REFERRAL_LETTER_YEARS": "years",
+  "REFERRAL_ADDRESS_LABEL": "Address of patient: ",
+  "REFERRAL_TEL_NO_LABEL": " Tel.No: ",
+  "REFERRAL_LETTER_REASON_FOR_REFERRAL": "Reason for referral: ",
+  "REFERRAL_LETTER_RELEVANT_CLINICAL_HISTORY":"Relevant Clinical History: ",
+  "REFERRAL_LETTER_TREATMENT":"Treatment/Observations: ",
+  "REFERRAL_SIGNATURE": "Signature: "
+
 }

@@ -34,7 +34,7 @@ button.print-button {
 .fill_in_blank {
 display: inline-block;
 border-bottom: 1px solid;
-width: 30px;
+width: 150px;
 }
 .row.space-centre {
     justify-content: center;
@@ -54,10 +54,11 @@ width: 30px;
 }
 h1.name {
     margin: 0 ;
+
 }
 h5.name {
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 .signature {
     margin-bottom: 2px;
@@ -96,4 +97,17 @@ h5.name {
 }
 .large-font {
     font-size: xx-large
+}
+.align-top {
+    vertical-align: text-top;
+}
+.w-100{
+    width: 100%;
+}
+.container {
+  align-items: flex-start;
+}
+.w-70 {
+    width: 70%;
+    margin :auto;
 }

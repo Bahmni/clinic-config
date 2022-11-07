@@ -142,7 +142,9 @@ angular.module('bahmni.common.displaycontrol.custom')
                 .error(function () {
 
                 });
-            var {formNames, printControls,  doctorRegistrationFieldValue, providerIdentifier} = $scope.printConstants;
+            var {formNames, printControls,  doctorRegistrationFieldValue, providerIdentifier, patientAddress, addressAndLocationAttributes} = $scope.printConstants;
+
+            $scope.patientAddress = {line1:"",line2:""};
             $scope.printControl = printControls;
             $scope.formFieldValues = {};
             $scope.contentUrl = appService.configBaseUrl() + "/customDisplayControl/views/printCertificate.html";
@@ -150,13 +152,21 @@ angular.module('bahmni.common.displaycontrol.custom')
             $scope.loggedInUser = $scope.$root.currentUser;
             $scope.registeredClinicName = '';
             $scope.registeredClinicAddress = '';
-            $scope.postalAddress = '';
             $scope.registrationNumber = '';
             $scope.doctorName = '';
-
-
-
-
+            var buildAddress= function(regAddress,fieldValues){
+                var addressValue = '';
+                var count = 0;
+                fieldValues.forEach((eachField) => {
+                    if(regAddress[eachField]) {
+                        addressValue += ((count ===0 ) ? '' : ', ') + regAddress[eachField];
+                        count++;
+                    }
+                });
+                return addressValue;
+            }
+            $scope.patientAddress.line1 = buildAddress($scope.patient.address, patientAddress.line1)
+            $scope.patientAddress.line2 = buildAddress($scope.patient.address, patientAddress.line2)
             $scope.printCertificate = function (printId) {
                 let printContents, styles;
                 printContents = document.getElementById(printId).innerHTML;
@@ -221,13 +231,23 @@ angular.module('bahmni.common.displaycontrol.custom')
                     operator: "ALL",
                     s: "byTags",
                     tags: 'Facility',
-                    v: 'default'
+                    v: 'full'
                 };
                 return $http.get('/openmrs/ws/rest/v1/location', {
                     method: "GET",
                     params: params,
                     withCredentials: true
                 });
+            };
+            var getAttributeValue = function (attributeList,attributeFieldValue) {
+                 var selectedAttribute = attributeList.find(attribute =>
+                                            attribute.attributeType.display === attributeFieldValue
+                                        );
+                                        if (selectedAttribute) {
+                                            return selectedAttribute.value;
+                                        }
+                                        return "";
+
             };
             var getLatestEncounterForForm = function (observationList, formName) {
                 if (observationList.length == 0) {
@@ -256,13 +276,9 @@ angular.module('bahmni.common.displaycontrol.custom')
                 if (data.results.length > 0) {
                     personDetails = data.results.find(provider => provider.person.uuid == $scope.loggedInUser.person.uuid);
                     if (personDetails) {
-                        $scope.doctorName = personDetails.person.display
-                        var mciAttribute = personDetails.attributes.find(attribute =>
-                            attribute.attributeType.display === doctorRegistrationFieldValue
-                        );
-                        if (mciAttribute) {
-                            $scope.registrationNumber = mciAttribute.value;
-                        }
+                        $scope.doctorName = personDetails.person.display;
+                       $scope.registrationNumber = getAttributeValue(personDetails.attributes, doctorRegistrationFieldValue);
+
                     }
                 }
                 if (observationData.results.length > 0) {
@@ -272,22 +288,22 @@ angular.module('bahmni.common.displaycontrol.custom')
                         if (observationsValue.length > 0) {
                             var formObservations = formNames.map(form => {
                                 var formObservation = {};
-                                (getLatestEncounterForForm(observationsValue.filter(item => item.formFieldPath.includes(form)), form).forEach(eachObservation => (formObservation[eachObservation.concept.name] = (isNaN(eachObservation.valueAsString) ? eachObservation.valueAsString : parseFloat(eachObservation.valueAsString)))));
+                                (getLatestEncounterForForm(observationsValue.filter(item => item.formFieldPath && item.formFieldPath.includes(form)), form).forEach(eachObservation => (formObservation[eachObservation.concept.name] = (isNaN(eachObservation.valueAsString) ? eachObservation.valueAsString : parseFloat(eachObservation.valueAsString)))));
                                 return formObservation
                             });
                             $scope.formFieldValues = formObservations;
+
                         }
                     });
                 }
                 if (locationsData.results.length > 0) {
                     var location = locationsData.results[0];
                     $scope.registeredClinicName = location.name;
-                    $scope.registeredClinicAddress = `${location.address1}, ${location.address2}, ${location.cityVillage}, ${location.countyDistrict}.`
-                    $scope.postalAddress = `Postal Code: ${location.postalCode}`
-
+                    $scope.registeredClinicAddress = getAttributeValue(location.attributes, addressAndLocationAttributes);
                 }
             });
         };
+
         return {
             restrict: 'E',
             link: link,
