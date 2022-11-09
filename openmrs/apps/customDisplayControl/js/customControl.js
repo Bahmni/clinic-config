@@ -247,7 +247,7 @@ angular.module('bahmni.common.displaycontrol.custom')
             };
             var getAttributeValue = function (attributeList,attributeFieldValue) {
                  var selectedAttribute = attributeList.find(attribute =>
-                                            attribute.attributeType.display === attributeFieldValue
+                                            (!attribute.voided) && attribute.attributeType.display === attributeFieldValue
                                         );
                                         if (selectedAttribute) {
                                             return selectedAttribute.value;
