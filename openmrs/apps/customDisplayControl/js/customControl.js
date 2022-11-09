@@ -159,11 +159,17 @@ angular.module('bahmni.common.displaycontrol.custom')
                 var count = 0;
                 fieldValues.forEach((eachField) => {
                     if(regAddress[eachField]) {
-                        addressValue += ((count ===0 ) ? '' : ', ') + regAddress[eachField];
+                        addressValue += ((count ===0 ) ? '' : ', ') + capitalizeFirstLetter(regAddress[eachField]);
                         count++;
                     }
                 });
                 return addressValue;
+            }
+            var capitalizeFirstLetter = function (str) {
+                if(!isNaN(str)) {
+                    return str;
+                }
+                return str[0].toUpperCase() + str.slice(1).toLowerCase();
             }
             $scope.patientAddress.line1 = buildAddress($scope.patient.address, patientAddress.line1)
             $scope.patientAddress.line2 = buildAddress($scope.patient.address, patientAddress.line2)
