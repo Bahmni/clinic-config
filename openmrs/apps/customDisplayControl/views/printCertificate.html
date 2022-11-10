@@ -179,7 +179,7 @@
             <div>
                 <font size="3">
 
-                    <p class="text-justify" translate="ADMISSION_CERTIFICATE_BODY_CONTENT" translate-values="{patient:{{patient}},doctorName:doctorName, referredToHospital: formFieldValues[1]['Referring to Hospital'], comments: formFieldValues[1]['Comments']}"></p>
+                    <p class="text-justify" translate="ADMISSION_CERTIFICATE_BODY_CONTENT" translate-values="{patient:{{patient}},ReferredtoDoctor: formFieldValues[1]['Referred to Doctor'], referredToHospital: formFieldValues[1]['Referring to Hospital'], comments: formFieldValues[1]['Comments']}"></p>
 
                     <p class="mt-2">{{::"THANKYOU_LABEL" | translate}}</p>
                     <p class="signature"><b>{{doctorName}},</b></p>
@@ -220,7 +220,7 @@
         </div>
         <div class="left">
             <span class="label"><p
-                    class="text-left" >{{::"REFERRAL_LETTER_REFERRAL_TO" | translate}} {{formFieldValues[2]['Referred to']}} {{::"REFERRAL_LETTER_HOSPITAL" | translate}}</p></span><br>
+                    class="text-left" >{{::"REFERRAL_LETTER_REFERRAL_TO" | translate}} {{formFieldValues[2]['Referred to']}} </p></span><br>
 
         </div>
 
