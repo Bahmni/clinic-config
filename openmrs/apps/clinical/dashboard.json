@@ -17,6 +17,36 @@
                     "countyDistrict"
                 ]
             },
+          "flowsheet": {
+            "type": "flowSheet",
+            "title": "Vitals Flow Sheet",
+            "dashboardConfig": {
+              "numberOfVisits": "5",
+              "groupBy": "obstime",
+              "obsConcepts": [
+                "Pulse",
+                "Arterial blood oxygen saturation (pulse oximeter)",
+                "Respiratory rate",
+                "Temperature",
+                "Systolic blood pressure",
+                "Diastolic blood pressure",
+                "Body position"
+              ]
+            },
+            "expandedViewConfig": {
+              "numberOfVisits": "10",
+              "groupBy": "obstime",
+              "obsConcepts": [
+                "Pulse",
+                "Arterial blood oxygen saturation (pulse oximeter)",
+                "Respiratory rate",
+                "Temperature",
+                "Systolic blood pressure",
+                "Diastolic blood pressure",
+                "Body position"
+              ]
+            }
+          },
             "navigationLinksControl":{
                 "translationKey":"DASHBOARD_TITLE_NAVIGATION_LINKS_CONTROL_KEY",
                 "type":"navigationLinksControl",
