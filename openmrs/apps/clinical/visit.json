@@ -14,7 +14,7 @@
                 "displayOrder": 0,
                 "title": "Vitals Flowsheet",
                 "config": {
-                    "groupBy": "encounters",
+                    "groupBy": "obstime",
                     "obsConcepts": [
                         "Pulse",
                         "Diastolic blood pressure",
