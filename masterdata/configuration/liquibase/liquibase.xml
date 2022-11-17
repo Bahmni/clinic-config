@@ -306,4 +306,12 @@
             "org.openmrs.customdatatype.datatype.LongFreeTextDatatype", "org.openmrs.web.attribute.handler.LongFreeTextTextareaHandler", 0, 1, NOW(), 0, "07421454-e196-422d-a7c3-a045ffc5fac9");
         </sql>
     </changeSet>
+    <changeSet id="BAH-2558-17112022" author="Clinic-Config">
+        <comment>Update concepts with class Test to LabTest</comment>
+        <sql>
+            UPDATE concept c, concept_class cc
+            SET c.class_id = (SELECT concept_class_id FROM concept_class WHERE concept_class.name = 'LabTest')
+            WHERE c.class_id = cc.concept_class_id AND cc.name = 'Test';
+        </sql>
+    </changeSet>
 </databaseChangeLog>
