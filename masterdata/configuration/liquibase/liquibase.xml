@@ -306,21 +306,4 @@
             "org.openmrs.customdatatype.datatype.FreeTextDatatype", 0, 1, NOW(), 0, "07421454-e196-422d-a7c3-a045ffc5fac8");
         </sql>
     </changeSet>
-    <changeSet id="BAH-1773-labtests-20221107" author="Clinic-Config">
-        <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="0">
-                select count(cc.concept_class_id) from order_type_class_map join order_type on order_type_class_map.order_type_id = order_type.order_type_id
-                join concept_class cc on order_type_class_map.concept_class_id = cc.concept_class_id where cc.name='Test';
-            </sqlCheck>
-        </preConditions>
-        <comment>Associating Test concept classes to Lab Order order type</comment>
-        <sql>
-            set @order_type_id = '';
-            set @class_test_id = '';
-
-            select order_type_id into @order_type_id from order_type where name = 'Lab Order';
-            select concept_class_id into @class_test_id from concept_class where name = 'Test';
-            insert into order_type_class_map(order_type_id, concept_class_id) values(@order_type_id,@class_test_id);
-        </sql>
-    </changeSet>
 </databaseChangeLog>
