@@ -56,10 +56,6 @@
             "doseUnits": "Tablet(s)",
             "route": "Oral"
           },
-          "Eye drop": {
-            "doseUnits": "Drop",
-            "route": "Ophthalmic"
-          },
           "Gas": {
             "route": "Inhalation"
           },
