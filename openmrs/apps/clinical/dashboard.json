@@ -17,6 +17,37 @@
                     "countyDistrict"
                 ]
             },
+          "flowsheet": {
+            "type": "flowSheet",
+            "title": "Vitals Flow Sheet",
+            "displayOrder":12,
+            "dashboardConfig": {
+              "numberOfVisits": "5",
+              "groupBy": "obstime",
+              "obsConcepts": [
+                "Pulse",
+                "Arterial blood oxygen saturation (pulse oximeter)",
+                "Respiratory rate",
+                "Temperature",
+                "Systolic blood pressure",
+                "Diastolic blood pressure",
+                "Body position"
+              ]
+            },
+            "expandedViewConfig": {
+              "numberOfVisits": "10",
+              "groupBy": "obstime",
+              "obsConcepts": [
+                "Pulse",
+                "Arterial blood oxygen saturation (pulse oximeter)",
+                "Respiratory rate",
+                "Temperature",
+                "Systolic blood pressure",
+                "Diastolic blood pressure",
+                "Body position"
+              ]
+            }
+          },
             "navigationLinksControl":{
                 "translationKey":"DASHBOARD_TITLE_NAVIGATION_LINKS_CONTROL_KEY",
                 "type":"navigationLinksControl",
@@ -84,87 +115,7 @@
                     "numberOfVisits":10
                 }
             },
-            "vitals":{
-                "translationKey":"DASHBOARD_TITLE_VITALS_KEY",
-                "type":"vitals",
-                "isObservation":true,
-                "displayOrder":9,
-                "dashboardConfig":{
-                    "showDetailsButton":true,
-                    "conceptNames":[
-                        "Height (cm)",
-                        "Weight (kg)",
-                        "Pulse",
-                        "Arterial blood oxygen saturation (pulse oximeter)",
-                        "Respiratory rate",
-                        "Temperature",
-                        "Systolic blood pressure",
-                        "Diastolic blood pressure",
-                        "Body position"
-                    ],
-                    "numberOfVisits":2
-                },
-                "expandedViewConfig":{
-                    "conceptNames":[
-                        "Pulse",
-                        "Arterial blood oxygen saturation (pulse oximeter)",
-                        "Respiratory rate",
-                        "Temperature",
-                        "Systolic blood pressure",
-                        "Diastolic blood pressure",
-                        "Body position"
-                    ],
-                    "numberOfVisits":2,
-                    "showDetailsButton":true,
-                    "pivotTable":{
-                        "numberOfVisits":"10",
-                        "groupBy":"encounters",
-                        "obsConcepts":[
-                            "Weight",
-                            "Vitals"
-                        ],
-                        "drugConcepts":[
-                        ],
-                        "labConcepts":[
-                        ]
-                    }
-                }
-            },
-            "secondVitals":{
-                "translationKey":"DASHBOARD_TITLE_SECOND_VITALS_KEY",
-                "type":"second vitals",
-                "isObservation":true,
-                "displayOrder":11,
-                "dashboardConfig":{
-                    "showDetailsButton":true,
-                    "conceptNames":[
-                        "Pulse",
-                        "Arterial blood oxygen saturation (pulse oximeter)",
-                        "Respiratory rate",
-                        "Temperature",
-                        "Systolic blood pressure",
-                        "Diastolic blood pressure",
-                        "Body position"
-                    ],
-                    "numberOfVisits":2
-                },
-                "expandedViewConfig":{
-                    "conceptNames":[
-                        "Pulse",
-                        "Arterial blood oxygen saturation (pulse oximeter)",
-                        "Respiratory rate",
-                        "Temperature",
-                        "Systolic blood pressure",
-                        "Diastolic blood pressure",
-                        "Body position"
-                    ],
-                    "numberOfVisits":2,
-                    "showDetailsButton":true,
-                    "pivotTable":{
 
-                    }
-                }
-            },
             "visits":{
                 "translationKey":"DASHBOARD_TITLE_VISITS_KEY",
                 "type":"visits",
@@ -207,7 +158,7 @@
             },
             "patientAppointments": {
                 "type": "custom",
-                "displayOrder": 21 ,
+                "displayOrder": 11 ,
                 "config": {
                     "title": "DASHBOARD_TITLE_APPOINTMENTS_KEY",
                     "template": "<patient-appointments-dashboard section='config' patient='patient'></patient-appointments-dashboard>"
@@ -249,7 +200,10 @@
                                 "Hypertension Progress",
                                 "Follow Up",
                                 "Obstetrics and Gynaecology",
-                                "Under Treatment and Fitness Certificate"
+                                "Under Treatment and Fitness Certificate",
+                                "Referral letter",
+                                "Admission Letter"
+
                             ],
                 "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
             },
