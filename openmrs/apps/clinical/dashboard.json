@@ -22,7 +22,7 @@
             "title": "Vitals Flow Sheet",
             "displayOrder":12,
             "dashboardConfig": {
-              "numberOfVisits": "5",
+              "latestCount": "5",
               "groupBy": "obstime",
               "obsConcepts": [
                 "Pulse",
@@ -34,8 +34,8 @@
                 "Body position"
               ]
             },
-            "expandedViewConfig": {
-              "numberOfVisits": "10",
+            "allFlowSheetDetails": {
+              "latestCount": "10",
               "groupBy": "obstime",
               "obsConcepts": [
                 "Pulse",
