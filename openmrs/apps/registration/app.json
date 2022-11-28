@@ -23,7 +23,6 @@
         "dashboardUrl": "/bahmni/clinical/index.html#/default/patient/{{patientUuid}}/dashboard",
         "registrationMessage": "REGISTRATION_MESSAGE",
         "enableWhatsAppButton": true,
-        "enableRegistrationSMSAlert": true,
         "clinicName": "Bahmni",
         "readOnlyExtraIdentifiers": ["ABHA","ABHA Address"],
         "fieldValidation" : {
