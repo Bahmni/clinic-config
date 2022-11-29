@@ -21,7 +21,6 @@
     "enableCalendarView": true,
     "isServiceOnAppointmentEditable": false,
     "enableResetAppointmentStatuses": ["CheckedIn"],
-    "enableAppointmentBookingSMSAlert": true,
     "smsAttribute": "phoneNumber",
     "clinicName": "Bahmni",
     "appointmentBookingMessage":"APPOINTMENT_BOOKING_MESSAGE",
