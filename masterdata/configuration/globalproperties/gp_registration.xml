@@ -39,5 +39,9 @@ where v.date_stopped is null AND v.voided = 0;</value>
       <value>1732AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</value>
       <description>Global property pointing to duration units concept set</description>
     </globalProperty>
+    <globalProperty>
+      <property>sms.enableRegistrationSMSAlert</property>
+      <value>false</value>
+    </globalProperty>
   </globalProperties>
 </config>
