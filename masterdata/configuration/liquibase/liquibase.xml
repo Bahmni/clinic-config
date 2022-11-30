@@ -306,17 +306,12 @@
             "org.openmrs.customdatatype.datatype.LongFreeTextDatatype", "org.openmrs.web.attribute.handler.LongFreeTextTextareaHandler", 0, 1, NOW(), 0, "07421454-e196-422d-a7c3-a045ffc5fac9");
         </sql>
     </changeSet>
-    <changeSet id="BAH-2558-17112022-updated" author="Clinic-Config">
+    <changeSet id="BAH-2558-17112022" author="Clinic-Config">
         <comment>Update concepts with class Test to LabTest</comment>
         <sql>
-            UPDATE concept c
-            JOIN concept_reference_map rmap ON c.concept_id = rmap.concept_id and c.retired = FALSE
-            JOIN concept_reference_term rterm ON rmap.concept_reference_term_id = rterm.concept_reference_term_id
-            JOIN concept_reference_source rsource ON rsource.concept_source_id = rterm.concept_source_id
-            JOIN concept_class cc ON c.class_id = cc.concept_class_id AND cc.name = 'Test'
-            SET
-            c.class_id = (SELECT concept_class_id from concept_class WHERE concept_class.name = 'LabTest')
-            WHERE c.class_id = cc.concept_class_id and cc.name = 'Test' AND rsource.name= 'CIEL';
+            UPDATE concept c, concept_class cc
+            SET c.class_id = (SELECT concept_class_id FROM concept_class WHERE concept_class.name = 'LabTest')
+            WHERE c.class_id = cc.concept_class_id AND cc.name = 'Test';
         </sql>
     </changeSet>
 </databaseChangeLog>
