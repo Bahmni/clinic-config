@@ -43,5 +43,9 @@ where v.date_stopped is null AND v.voided = 0;</value>
       <property>sms.enableRegistrationSMSAlert</property>
       <value>false</value>
     </globalProperty>
+    <globalProperty>
+      <property>clinic.helpDeskNumber</property>
+      <value>+919999999999</value>
+    </globalProperty>
   </globalProperties>
 </config>

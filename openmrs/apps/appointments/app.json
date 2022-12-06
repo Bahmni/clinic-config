@@ -21,6 +21,10 @@
     "enableCalendarView": true,
     "isServiceOnAppointmentEditable": false,
     "enableResetAppointmentStatuses": ["CheckedIn"],
+    "smsAttribute": "phoneNumber",
+    "appointmentBookingMessage":"APPOINTMENT_BOOKING_MESSAGE",
+    "recurringAppointmentBookingMessage": "RECURRING_APPOINTMENT_BOOKING_MESSAGE",
+    "teleconsultationAppointmentBookingMessage": "TELECONSULTATION_APPOINTMENT_BOOKING_MESSAGE",
     "colorsForAppointmentService": [
       "#006400",
       "#DC143C",
