@@ -2,7 +2,7 @@
   <globalProperties>
     <globalProperty>
       <property>sms.enableAppointmentBookingSMSAlert</property>
-      <value>true</value>
+      <value>false</value>
     </globalProperty>
   </globalProperties>
 </config>
