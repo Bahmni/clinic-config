@@ -171,10 +171,10 @@
                 "displayOrder":6,
                 "dashboardConfig":{
                     "conceptNames":[
-                        "HEIGHT",
-                        "Weight",
-                        "BMI Data",
-                        "BMI Status Data"
+                        "Height (cm)",
+                        "Weight (kg)",
+                        "Body mass index",
+                        "BMI Status"
                     ],
                     "showDetailsButton":true,
                     "numberOfVisits":2
