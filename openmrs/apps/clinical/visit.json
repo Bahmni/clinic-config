@@ -34,6 +34,16 @@
                 "type": "conditionsList",
                 "displayOrder": 2,
                 "config": { }
+            },
+            "radiologyOrderControl":  {
+                "type": "order",
+                "title": "Radiology Order",
+                "config": {
+                    "title": "Radiology Order",
+                    "name": "ordersControl",
+                    "orderType": "Radiology Order",
+                    "conceptNames":[ ]
+                }
             }
         }
     },
@@ -109,6 +119,16 @@
                     "numberOfVisits": 10,
                     "showDetailsButton": false,
                     "hideVisitDate": true
+                }
+            },
+            "radiologyOrderControl":  {
+                "type": "order",
+                "title": "Radiology Order",
+                "config": {
+                    "title": "Radiology Order",
+                    "name": "ordersControl",
+                    "orderType": "Radiology Order",
+                    "conceptNames":[ ]
                 }
             },
             "prescriptions":{
