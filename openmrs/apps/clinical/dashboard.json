@@ -97,6 +97,19 @@
                     "showDetailsButton":true
                 }
             },
+          "radiologyOrders":{
+                "orderType":"Radiology Order",
+                "type":"ordersControl",
+                "translationKey":"DASHBOARD_TITLE_RADIOLOGY_ORDERS_KEY",
+                "displayOrder":12,
+                "dashboardConfig":{
+                  "conceptNames":[
+                    "Summary"
+                  ],
+                  "numberOfVisits":4
+                }
+          },
+
             "labResults":{
                 "translationKey":"DASHBOARD_TITLE_LAB_RESULTS_KEY",
                 "type":"labOrders",
