@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - BAH-2668
       - 'release-*'
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
@@ -11,7 +10,8 @@ on:
       - package/docker/resources/omrs*.sql
       - package/docker/resources/configuration_checksums.zip
       - package/docker/configdb.Dockerfile
-
+  workflow_dispatch:
+    
 jobs:
   build-publish-docker:
     name: Build & Publish Docker Image
@@ -28,8 +28,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-      - name: Decompress DB Dump
-        run: gunzip package/docker/resources/omrs*.gz
+      - name: Decompress Files
+        run: |
+          gunzip package/docker/resources/omrs*.gz
+          unzip package/docker/resources/configuration_checksums.zip -d package/docker/resources/
       - name: Docker - Build and push
         uses: docker/build-push-action@v3
         with:
