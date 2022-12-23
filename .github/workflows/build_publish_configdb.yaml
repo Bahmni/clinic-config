@@ -8,7 +8,7 @@ on:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
     paths: 
-      - package/docker/resources/omrs*.sql
+      - package/docker/resources/omrs*.gz
       - package/docker/resources/configuration_checksums.zip
       - package/docker/configdb.Dockerfile
   workflow_dispatch:
