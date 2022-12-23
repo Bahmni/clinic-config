@@ -11,6 +11,7 @@ on:
       - package/docker/resources/omrs*.gz
       - package/docker/resources/configuration_checksums.zip
       - package/docker/configdb.Dockerfile
+      - .github/workflows/build_publish_configdb.yaml
   workflow_dispatch:
     
 jobs:
