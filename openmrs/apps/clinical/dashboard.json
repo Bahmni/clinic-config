@@ -103,9 +103,7 @@
                 "translationKey":"DASHBOARD_TITLE_RADIOLOGY_ORDERS_KEY",
                 "displayOrder":12,
                 "dashboardConfig":{
-                  "conceptNames":[
-                    "Summary"
-                  ],
+                  "conceptNames":[],
                   "numberOfVisits":4
                 }
           },
