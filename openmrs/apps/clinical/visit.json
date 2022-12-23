@@ -145,6 +145,17 @@
                     "numberOfVisits":5,
                     "showOtherActive":true
                 }
+            },
+            "followUp": {
+                "type": "followUp",
+                "translationKey": "DASHBOARD_TITLE_FOLLOWUP_KEY",
+                "displayOrder":6,
+                "config": {
+                    "conceptNames":[
+                        "Return visit date",
+                        "Reason for visit"
+                    ]
+                }
             }
         }
     }
