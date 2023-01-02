@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - 'release-*'
+      - BAH-2744
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
     paths: 
@@ -11,6 +12,8 @@ on:
       - package/docker/resources/configuration_checksums.zip
       - package/docker/configdb.Dockerfile
       - .github/workflows/build_publish_configdb.yaml
+      - package/docker/resources/mysql:5.6/*
+      - package/docker/configdb.mysql5.6.Dockerfile
   workflow_dispatch:
     
 jobs:
@@ -33,10 +36,19 @@ jobs:
         run: |
           gunzip package/docker/resources/omrs*.gz
           unzip package/docker/resources/configuration_checksums.zip -d package/docker/resources/
-      - name: Docker - Build and push
+          gunzip package/docker/resources/mysql:5.6/omrs*.gz
+          unzip package/docker/resources/mysql:5.6/configuration_checksums.zip -d package/docker/resources/mysql:5.6/
+      - name: Docker - Build and push with mysql 5.7
         uses: docker/build-push-action@v3
         with:
           context: .
           file: package/docker/configdb.Dockerfile
           push: true
-          tags: bahmni/openmrs-db:${{env.ARTIFACT_VERSION}},bahmni/openmrs-db:clinic-config
+          tags: bahmni/openmrs-db:${{env.ARTIFACT_VERSION}},bahmni/openmrs-db:clinic-config-mysql5.7
+      - name: Docker - Build and push with mysql 5.6
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: package/docker/configdb.mysql5.6.Dockerfile
+          push: true
+          tags: bahmni/openmrs-db:${{env.ARTIFACT_VERSION}},bahmni/openmrs-db:clinic-config-mysql5.6
