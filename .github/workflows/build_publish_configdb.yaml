@@ -7,9 +7,7 @@ on:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
     paths: 
-      - package/docker/resources/omrs*.gz
-      - package/docker/resources/configuration_checksums.zip
-      - package/docker/configdb.Dockerfile
+      - package/docker/configdb*
       - .github/workflows/build_publish_configdb.yaml
   workflow_dispatch:
     
@@ -29,14 +27,17 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-      - name: Decompress Files
-        run: |
-          gunzip package/docker/resources/omrs*.gz
-          unzip package/docker/resources/configuration_checksums.zip -d package/docker/resources/
-      - name: Docker - Build and push
+      - name: Docker - Build and push with mysql 5.7
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: package/docker/configdb.Dockerfile
+          file: package/docker/configdb.mysql5.7.Dockerfile
           push: true
-          tags: bahmni/openmrs-db:${{env.ARTIFACT_VERSION}},bahmni/openmrs-db:clinic-config
+          tags: bahmni/openmrs-db:mysql5.7-${{env.ARTIFACT_VERSION}},bahmni/openmrs-db:clinic-config-mysql5.7
+      - name: Docker - Build and push with mysql 5.6
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: package/docker/configdb.mysql5.6.Dockerfile
+          push: true
+          tags: bahmni/openmrs-db:mysql5.6-${{env.ARTIFACT_VERSION}},bahmni/openmrs-db:clinic-config-mysql5.6
