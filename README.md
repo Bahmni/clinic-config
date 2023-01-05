@@ -28,6 +28,9 @@ Step 4: Starting up docker would load up openmrs initializer
 
 Step 5: On every change in masterdata folder of clinic-config restart openmrs service by running `docker-compose restart openmrs`
 
-### Note:
+### **Note:**
 
-    All the liquibase changesets in **masterdata/configuration** are only added temporarily for testing.
+1. All the liquibase changesets in **masterdata/configuration** are only added temporarily for testing.
+
+
+2. Backup of OpenMRS DB with pre-loaded CIEL Concepts and checksums of masterdata/configuration are maintained in [bahmni-scripts](https://github.com/Bahmni/bahmni-scripts/tree/master/demo/db-backups/1.0.0-lite) repository
