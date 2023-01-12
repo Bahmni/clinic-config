@@ -60,7 +60,7 @@
     "url": "/hiuser",
     "icon": "fa fa-hospital-o",
     "order": 6,
-    "requiredPrivilege": "app:clinical"
+    "requiredPrivilege": "app:abdm"
   },
   "labLite": {
     "id": "bahmni.lab",
@@ -111,6 +111,6 @@
     "icon": "fa fa-leanpub",
     "order": 9,
     "target": "_blank",
-    "requiredPrivilege": "app:registration"
+    "requiredPrivilege": "app:abdm"
   }
 }
