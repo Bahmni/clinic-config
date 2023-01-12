@@ -49,7 +49,21 @@
                 "birthDate",
                 "age"
             ],
-            "linkDisplay": "Verify ABHA",
+            "buttons": [
+                {
+                    "action" : "verifyABHA",
+                    "display" : "Verify ABHA"
+                },
+                {
+                    "action" : "patientQueue",
+                    "display" : "Patient Queue"
+                },
+                {
+                    "action" : "createABHA",
+                    "display" : "Create ABHA",
+                    "link": "Or"
+                }
+            ],
             "contact": "phoneNumber",
             "addressMap": {
                 "city": "cityVillage",
@@ -58,11 +72,7 @@
                 "postalCode": "postalCode",
                 "line": "address1"
             }
-        },
-        "extensionButtons": [{
-            "id" : "patientQueue",
-            "display" : "Patient Queue"
-        }]
+        }
     },
     "registrationSecondPage":{
         "id": "bahmni.registration.conceptSetGroup.registrationSecondPage",
