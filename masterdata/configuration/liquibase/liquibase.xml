@@ -306,7 +306,7 @@
             "org.openmrs.customdatatype.datatype.LongFreeTextDatatype", "org.openmrs.web.attribute.handler.LongFreeTextTextareaHandler", 0, 1, NOW(), 0, "07421454-e196-422d-a7c3-a045ffc5fac9");
         </sql>
     </changeSet>
-    <changeSet id="Reports-user-1612023-BAH-1911-cc" author="cc">
+    <changeSet id="Reports-user-1612023-BAH-1911-cc" author="bahmni">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 select count(*) from users where username='reports-user';
@@ -330,6 +330,9 @@
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 select count(*) from role where role = 'Reports-App';
+            </sqlCheck>
+            <sqlCheck expectedResult="1">
+                select count(*) from users where username='reports-user';
             </sqlCheck>
         </preConditions>
         <comment>Map 'reports-user' user to new roles</comment>
