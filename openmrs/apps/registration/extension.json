@@ -38,7 +38,7 @@
         "src": "/abha-verification/index.html",
         "extensionParams": {
             "identifierType": [
-                "ABHA",
+                "ABHA Number",
                 "ABHA Address"
             ],
             "nonEditable": [
