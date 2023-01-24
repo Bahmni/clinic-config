@@ -1,4 +1,13 @@
 {
   "REGISTRATION_SEARCH_CONFIG_KEY": "<u>R</u>echerche",
-  "REGISTRATION_CREATE_NEW_CONFIG_KEY":"<u>C</u>réer nouveau"
+  "REGISTRATION_CREATE_NEW_CONFIG_KEY": "<u>C</u>réer nouveau",
+  "REGISTRATION_PRINT_REG_CARD_KEY": "Print carte d'enregistrement",
+  "REGISTRATION_BRING_CARD_TEXT_KEY": "Il est très important d'apporter la carte à l'hôpital.",
+  "REGISTRATION_TAKE_MEDICINES_TEXT_KEY": "Prendre des médicaments selon les instructions du médecin .",
+  "REGISTRATION_TIMINGS_TEXT_KEY": "Horaires d'inscription sont de 8 heures et demie-12h00 .",
+  "REGISTRATION_OPD_DAYS_TEXT_KEY": "Jours OPD sont le lundi , mercredi, vendredi .",
+  "REGISTRATION_SUNDAYS_HOLIDAY_TEXT_KEY": "Les dimanches sont les jours fériés.",
+  "REGISTRATION_SMOKING_INJURIOUS_TEXT_KEY": "Fumeurs , le tabac à chiquer peut causer le cancer , les maladies cardiaques et asthama .",
+  "REGISTRATION_INSTITUTE_REGISTERED_TEXT_KEY": "(Enregistré)",
+  "CLINICAL_YEARS_TRANSLATION_KEY": "années"
 }
