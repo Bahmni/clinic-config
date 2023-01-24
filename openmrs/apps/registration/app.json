@@ -19,7 +19,7 @@
         "patientNameDisplayOrder": ["firstName", "middleName", "lastName"],
         "showSaveConfirmDialog": false,
         "showBirthTime": false,
-        "enableDashboardRedirect": true,
+        "enableDashboardRedirect": false,
         "dashboardUrl": "/bahmni/clinical/index.html#/default/patient/{{patientUuid}}/dashboard",
         "registrationMessage": "REGISTRATION_MESSAGE",
         "enableWhatsAppButton": true,
