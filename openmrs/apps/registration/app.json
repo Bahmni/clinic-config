@@ -24,6 +24,13 @@
         "registrationMessage": "REGISTRATION_MESSAGE",
         "enableWhatsAppButton": true,
         "readOnlyExtraIdentifiers": ["ABHA","ABHA Address"],
+        "printOptions": [
+            {
+                "translationKey": "REGISTRATION_PRINT_REG_CARD_KEY",
+                "templateUrl": "/bahmni_config/openmrs/apps/registration/registrationCardLayout/print.html",
+                "shortcutKey": "p"
+            }
+        ],
         "fieldValidation" : {
             "email" : {"pattern" : "^(?=.{1,40}$)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,4})$", "errorMessage" : "Should be a valid email address"},
             "familyName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},

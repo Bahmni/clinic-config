@@ -1,4 +1,13 @@
 {		
 	"REGISTRATION_SEARCH_CONFIG_KEY": "P<u>e</u>squisar",	
-	"REGISTRATION_CREATE_NEW_CONFIG_KEY":"Criar <u>N</u>ovo"
+	"REGISTRATION_CREATE_NEW_CONFIG_KEY": "Criar <u>N</u>ovo",
+	"REGISTRATION_PRINT_REG_CARD_KEY": "<u>I</u>mprimir Cartão Registro",
+	"REGISTRATION_BRING_CARD_TEXT_KEY": "É muito importante trazer o cartão para o hospital.",	
+	"REGISTRATION_TAKE_MEDICINES_TEXT_KEY": "Tomar medicamentos de acordo com as instruções do médico.",	
+	"REGISTRATION_TIMINGS_TEXT_KEY": "Horário de inscrição é das 8h30 às 12:00.",	
+	"REGISTRATION_OPD_DAYS_TEXT_KEY" : "Dias de AMB são Segunda, Quarta, Sexta.",	
+	"REGISTRATION_SUNDAYS_HOLIDAY_TEXT_KEY": "Domingos são feriados.",	
+	"REGISTRATION_SMOKING_INJURIOUS_TEXT_KEY" : "Fumar e marcar tabaco pode causar câncer, doenças cardíacas e asma.",		
+	"REGISTRATION_INSTITUTE_REGISTERED_TEXT_KEY": "(Registrado)",		
+	"CLINICAL_YEARS_TRANSLATION_KEY": "anos"
 }		
