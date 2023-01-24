@@ -21,6 +21,7 @@
         "showBirthTime": false,
         "enableDashboardRedirect": false,
         "dashboardUrl": "/bahmni/clinical/index.html#/default/patient/{{patientUuid}}/dashboard",
+        "afterVisitSaveForwardUrl": "/bahmni/registration/index.html#/search",
         "registrationMessage": "REGISTRATION_MESSAGE",
         "enableWhatsAppButton": true,
         "readOnlyExtraIdentifiers": ["ABHA","ABHA Address"],
