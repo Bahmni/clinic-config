@@ -45,7 +45,7 @@
                     </td>
                     <td class="print-table-right-header">
                         <h3>
-                        {{ "REGISTRATION_INSTITUTE_NAME_TEXT_KEY" | translate }}
+                            {{ location.name }}
                         </h3>
                         <h3 class="print-center">{{ "REGISTRATION_INSTITUTE_REGISTERED_TEXT_KEY" |  translate }}</h3>
                     </td>
@@ -56,7 +56,7 @@
                 </tr>
                 <tr>
                     <td colspan="3" class="print-center registrationCard-location">
-                    {{ "REGISTRATION_INSTITUTE_ADDRESS" | translate }}
+                        {{ location.address }}
                     </td>
                 </tr>
             </table>
@@ -105,7 +105,12 @@
                         <span class="card-text">Address</span>
                     </td>
                     <td class="registrationCard-details-seperator"> :  </td>
-                    <td>{{patient.address.cityVillage}}, {{patient.address.countyDistrict}} - {{patient.address.postalCode}}</td>
+                    <td>
+                        {{ (!patient.address.cityVillage && !patient.address.countyDistrict && !patient.address.postalCode) ? " - " : 
+                            (patient.address.cityVillage && patient.address.countyDistrict ? ([patient.address.cityVillage, patient.address.countyDistrict].join(", ")) 
+                            : (patient.address.cityVillage ? patient.address.cityVillage : patient.address.countyDistrict ? patient.address.countyDistrict : "")) }}
+                        {{ patient.address.postalCode ? " - "+patient.address.postalCode : "" }}
+                    </td>
                 </tr>
                 </tbody>
             </table>

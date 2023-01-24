@@ -7,9 +7,7 @@
 	"REGISTRATION_TIMINGS_TEXT_KEY": "Hor�rio de inscri��o � das 8h30 �s 12:00.",	
 	"REGISTRATION_OPD_DAYS_TEXT_KEY" : "Dias de AMB s�o Segunda, Quarta, Sexta.",	
 	"REGISTRATION_SUNDAYS_HOLIDAY_TEXT_KEY": "Domingos s�o feriados.",	
-	"REGISTRATION_SMOKING_INJURIOUS_TEXT_KEY": "Fumar e marcar tabaco pode causar c�ncer, doen�as card�acas e asma.",	
-	"REGISTRATION_INSTITUTE_NAME_TEXT_KEY": "Cl�nica M�dica",	
+	"REGISTRATION_SMOKING_INJURIOUS_TEXT_KEY": "Fumar e marcar tabaco pode causar c�ncer, doen�as card�acas e asma.",		
 	"REGISTRATION_INSTITUTE_REGISTERED_TEXT_KEY": "(Registrado)",	
-	"REGISTRATION_INSTITUTE_ADDRESS": "Cidade - Pa�s",	
 	"CLINICAL_YEARS_TRANSLATION_KEY": "anos"
 }		
