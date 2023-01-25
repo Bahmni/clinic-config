@@ -1,0 +1,12 @@
+<config>
+  <globalProperties>
+    <globalProperty>
+      <property>sms.enablePrescriptionSMSAlert</property>
+      <value>false</value>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.enablePrescriptionEmailAlert</property>
+      <value>false</value>
+    </globalProperty>
+  </globalProperties>
+</config>
