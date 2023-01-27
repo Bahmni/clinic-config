@@ -5,7 +5,7 @@
       <value>false</value>
     </globalProperty>
     <globalProperty>
-      <property>sms.enablePrescriptionEmailAlert</property>
+      <property>email.enablePrescriptionEmailAlert</property>
       <value>false</value>
     </globalProperty>
   </globalProperties>
