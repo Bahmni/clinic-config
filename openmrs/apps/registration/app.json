@@ -33,14 +33,14 @@
         ],
         "fieldValidation" : {
             "email" : {"pattern" : "^(?=.{1,40}$)(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,4})$", "errorMessage" : "Should be a valid email address"},
-            "familyName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
-            "givenName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
-            "middleName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "Should contain characters"},
+            "familyName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "The last name should contain only alphabets without space."},
+            "givenName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "The first name should contain only alphabets without space."},
+            "middleName" : {"pattern" : "[a-zA-Z]{0,}", "errorMessage" : "The Middle name should contain only alphabets without space."},
             "phoneNumber" : {"pattern" : "^([+]91[1-9]{1}[0-9]{9})$", "errorMessage" : "Phone Number should be 10 digits with prefix +91 eg:+91xxxxxxxxxx"},
             "alternatePhoneNumber" : {"pattern" : "^([+]91[1-9]{1}[0-9]{9})$", "errorMessage" : "Phone Number should be 10 digits with prefix +91 eg:+91xxxxxxxxxx"},
-            "address1":{"pattern":"^[a-zA-Z0-9\\s'-/]{1,}", "errorMessage":"Should contain at least 1 character"},
-            "address2":{"pattern":"^[a-zA-Z0-9\\s,'-./]{2,}", "errorMessage":"Should contain at least 2 characters"},
-            "cityVillage":{"pattern":"^[a-zA-Z0-9\\s,'-./]{2,}", "errorMessage":"Should contain at least 2 characters"}
+            "address1":{"pattern":"^[a-zA-Z0-9\\s'-/]{1,}", "errorMessage":"Only Alphanumerics and following special characters are allowed. Special characters - [ '-/]"},
+            "address2":{"pattern":"^[a-zA-Z0-9\\s,'-./]{2,}", "errorMessage":"Only Alphanumerics and following special characters are allowed. Special characters - [ ,'-./]"},
+            "cityVillage":{"pattern":"^[a-zA-Z0-9\\s,'-./]{2,}", "errorMessage":"Only Alphanumerics and following special characters are allowed. Special characters - [ ,'-./]"}
         },
         "patientSearch": { 
             "customAttributes": {
