@@ -24,7 +24,7 @@
         "afterVisitSaveForwardUrl": "/bahmni/registration/index.html#/search",
         "registrationMessage": "REGISTRATION_MESSAGE",
         "enableWhatsAppButton": true,
-        "readOnlyExtraIdentifiers": ["ABHA","ABHA Address"],
+        "readOnlyExtraIdentifiers": ["ABHA Number","ABHA Address"],
         "printOptions": [
             {
                 "translationKey": "REGISTRATION_PRINT_REG_CARD_KEY",
