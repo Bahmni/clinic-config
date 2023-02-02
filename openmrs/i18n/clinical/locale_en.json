@@ -117,6 +117,6 @@
   "REFERRAL_LETTER_REASON_FOR_REFERRAL": "Reason for referral: ",
   "REFERRAL_LETTER_RELEVANT_CLINICAL_HISTORY":"Relevant Clinical History: ",
   "REFERRAL_LETTER_TREATMENT":"Treatment/Observations: ",
-  "REFERRAL_SIGNATURE": "Signature: "
-
+  "REFERRAL_SIGNATURE": "Signature: ",
+  "SMS_LANGUAGE": "en"
 }

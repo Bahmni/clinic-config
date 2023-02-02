@@ -27,6 +27,7 @@
             "additionalPatientIdentifiers": [
                 "ABHA Address"
             ]
-        }
+        },
+        "smsLanguage": "SMS_LANGUAGE"
     }
 }

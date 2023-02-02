@@ -1,11 +1,11 @@
 <config>
   <globalProperties>
     <globalProperty>
-      <property>sms.enablePrescriptionSMSAlert</property>
+      <property>bahmni.enableSMSPrescriptionOption</property>
       <value>false</value>
     </globalProperty>
     <globalProperty>
-      <property>email.enablePrescriptionEmailAlert</property>
+      <property>bahmni.enableEmailPrescriptionOption</property>
       <value>false</value>
     </globalProperty>
   </globalProperties>
