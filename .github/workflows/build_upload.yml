@@ -32,7 +32,7 @@ jobs:
           file: package/docker/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: deepti1598/clinic-config:${{env.ARTIFACT_VERSION}},deepti1598/clinic-config:1.0.0-12
+          tags: deepti1598/clinic-config:${{env.ARTIFACT_VERSION}},deepti1598/clinic-config:latest
 
       - name: Pull Bahmni Default Config Helm Chart
         run: |
