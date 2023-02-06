@@ -1,4 +1,6 @@
 Uuid,Void/Retire,Name,Description,_version:1
 ,,OPD,Visit for Out patient,
 ,,EMERGENCY,Visit for emergency patients ,
-,True,LAB VISIT,Visits for lab visit by patient when the tests are not ordered through OpenMRS,
+,,IPD,Visit for In patients,
+,,PHARMACY,Visit for Pharmacy patients,
+,,LAB,Lab visit,
