@@ -39,7 +39,7 @@
             "phoneNumber" : {"pattern" : "^([+]91[1-9]{1}[0-9]{9})$", "errorMessage" : "Phone Number should be 10 digits with prefix +91 eg:+91xxxxxxxxxx"},
             "alternatePhoneNumber" : {"pattern" : "^([+]91[1-9]{1}[0-9]{9})$", "errorMessage" : "Phone Number should be 10 digits with prefix +91 eg:+91xxxxxxxxxx"},
             "address1":{"pattern":"^[a-zA-Z0-9\\s'\\-\\/]{1,}", "errorMessage":"Only Alphanumerics and following special characters are allowed. Special characters - [ '-/]"},
-            "address2":{"pattern":"^[a-zA-Z0-9\\s,'\\-.\\/]{2,}", "errorMessage":"Only Alphanumerics and following special characters are allowed. Special characters - [ ,'-./]"},
+            "address2":{"pattern":"^[a-zA-Z0-9\\s,'\\-.\\/]{1,}", "errorMessage":"Only Alphanumerics and following special characters are allowed. Special characters - [ ,'-./]"},
             "cityVillage":{"pattern":"^[a-zA-Z0-9\\s,'\\-.\\/]{2,}", "errorMessage":"Only Alphanumerics and following special characters are allowed. Special characters - [ ,'-./]"}
         },
         "patientSearch": { 
