@@ -71,7 +71,8 @@
                 "district": "countyDistrict",
                 "postalCode": "postalCode",
                 "line": "address1"
-            }
+            },
+            "requiredPrivilege": "app:abdm"
         }
     },
     "registrationSecondPage":{
