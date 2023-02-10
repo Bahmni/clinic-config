@@ -34,3 +34,5 @@ Step 5: On every change in masterdata folder of clinic-config restart openmrs se
 
 
 2. Backup of OpenMRS DB with pre-loaded CIEL Concepts and checksums of masterdata/configuration are maintained in [bahmni-scripts](https://github.com/Bahmni/bahmni-scripts/tree/master/demo/db-backups/1.0.0-lite) repository
+
+3. Whenever we are loading the CIEL zip for the first time we would need a restart of openmrs to retire duplicate diagnosis concepts from CIEL
