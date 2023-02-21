@@ -70,7 +70,10 @@
                 "state": "stateProvince",
                 "district": "countyDistrict",
                 "postalCode": "postalCode",
-                "line": "address1"
+                "line": [
+                    "address1",
+                    "address2"
+                ]
             },
             "requiredPrivilege": "app:abdm"
         }
