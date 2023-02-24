@@ -341,4 +341,57 @@
             INSERT IGNORE INTO user_role VALUES (@id, 'Reports-App');
         </sql>
     </changeSet>
+    <changeSet id="Diagnosis-certainity-confirmed-202302231844" author="Clinic-Config">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(c.concept_id) from concept c
+                join concept_name cn on cn.concept_id = c.concept_id
+                where cn.concept_name_type = 'FULLY_SPECIFIED' and cn.name = 'Confirmed' and c.retired=0; 
+            </sqlCheck>
+        </preConditions>
+        <comment>Update confirmed concept uuid</comment>
+        <sql>
+            select c.concept_id into @id from concept c
+            join concept_name cn on cn.concept_id = c.concept_id
+            where cn.concept_name_type = 'FULLY_SPECIFIED' and cn.name = 'Confirmed' and c.retired=0; 
+            
+            UPDATE concept SET uuid='05cc34b3-3b14-11ed-bc7b-0242ac1d0002' where concept_id = @id;
+            
+            
+        </sql>
+    </changeSet>
+    <changeSet id="Diagnosis-certainity-presumed-202302231844" author="Clinic-Config">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(c.concept_id)  from concept c
+                join concept_name cn on cn.concept_id = c.concept_id
+                where cn.concept_name_type = 'FULLY_SPECIFIED' and cn.name = 'Presumed' and c.retired=0; 
+            </sqlCheck>
+        </preConditions>
+        <comment>Update presumed concept uuid</comment>
+        <sql>
+            select c.concept_id into @id from concept c
+            join concept_name cn on cn.concept_id = c.concept_id
+            where cn.concept_name_type = 'FULLY_SPECIFIED' and cn.name = 'Presumed' and c.retired=0; 
+            
+            UPDATE concept SET uuid='05cbc66c-3b14-11ed-bc7b-0242ac1d0002' where concept_id = @id;
+        </sql>
+    </changeSet>
+    <changeSet id="Diagnosis-certainity-202302231844" author="Clinic-Config">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(c.concept_id)  from concept c
+                join concept_name cn on cn.concept_id = c.concept_id
+                where cn.concept_name_type = 'FULLY_SPECIFIED' and cn.name = 'Diagnosis Certainty' and c.retired=0; 
+            </sqlCheck>
+        </preConditions>
+        <comment>Update presumed concept uuid</comment>
+        <sql>
+            select c.concept_id into @id from concept c
+            join concept_name cn on cn.concept_id = c.concept_id
+            where cn.concept_name_type = 'FULLY_SPECIFIED' and cn.name = 'Diagnosis Certainty' and c.retired=0; 
+            
+            UPDATE concept SET uuid='05cad0e2-3b14-11ed-bc7b-0242ac1d0002' where concept_id = @id;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
