@@ -28,14 +28,14 @@
       "link": "/openelis"
     },
     {
-      "enabled": false,
+      "enabled": true,
       "name": "odoo",
       "title": "Stock Inventory & Billing",
       "logo": "/bahmni/images/bills.png",
       "linkPrefix": "erp"
     },
     {
-      "enabled": true,
+      "enabled": false,
       "name": "crater",
       "title": "Payment & Billing",
       "logo": "/bahmni/images/bills.png",
