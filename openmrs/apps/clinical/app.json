@@ -27,11 +27,6 @@
             "additionalPatientIdentifiers": [
                 "ABHA Address"
             ]
-        },
-        "encounterAttributes": {
-            "encounterType": [
-                "Consultation"
-            ]
         }
     }
 }

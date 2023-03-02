@@ -45,6 +45,11 @@
                     "conceptNames":[ ]
                 }
             }
+        },
+        "encounterContext": {
+            "filterEncounterTypes": [
+                "Consultation"
+            ]
         }
     },
     "patientSummary": {
@@ -157,6 +162,11 @@
                     ]
                 }
             }
+        },
+        "encounterContext": {
+            "filterEncounterTypes": [
+                "Consultation"
+            ]
         }
     }
 }
