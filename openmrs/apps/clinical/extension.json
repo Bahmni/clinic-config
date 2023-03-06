@@ -127,6 +127,17 @@
     "icon": "icon-user-md",
     "order": 6,
     "requiredPrivilege": "app:clinical:ordersTab"
+  },
+  "disposition": {
+    "id": "bahmni.clinical.consultation.disposition",
+    "extensionPointId": "org.bahmni.clinical.consultation.board",
+    "type": "link",
+    "label": "Disposition",
+    "translationKey":"DISPOSITION_BOARD_LABEL_KEY",
+    "url": "disposition",
+    "icon": "fa-user-md",
+    "order": 3,
+    "requiredPrivilege": "app:clinical:dispositionTab"
   }
   
 }
