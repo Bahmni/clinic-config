@@ -112,5 +112,16 @@
     "order": 9,
     "target": "_blank",
     "requiredPrivilege": "app:abdm"
+  },
+  "bahmniIpd": {
+    "id": "bahmni.ipd",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "translationKey": "MODULE_LABEL_BED_MANAGEMENT_KEY",
+    "label": "InPatient",
+    "url": "../bedmanagement/#/home",
+    "icon": "fa-bed",
+    "order": 7,
+    "requiredPrivilege": "app:adt"
   }
 }
