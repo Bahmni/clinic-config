@@ -106,7 +106,7 @@
                 "orderType":"Radiology Order",
                 "type":"ordersControl",
                 "translationKey":"DASHBOARD_TITLE_RADIOLOGY_ORDERS_KEY",
-                "displayOrder":12,
+                "displayOrder":13,
                 "dashboardConfig":{
                   "conceptNames":[],
                   "numberOfVisits":4
@@ -248,6 +248,11 @@
                 },
                 "displayOrder":10,
                 "title":"Patient Document"
+            },
+            "disposition": {
+                "title": "Disposition",
+                "type":"disposition",
+                "numberOfVisits": 14
             }
         }
     },
