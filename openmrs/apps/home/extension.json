@@ -123,5 +123,15 @@
     "icon": "fa-bed",
     "order": 7,
     "requiredPrivilege": "app:adt"
+  },
+  "bahmniOT": {
+    "id": "bahmni.ot",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "translationKey": "Operation Theatre",
+    "url": "../ot/",
+    "icon": "fa-hospital-o",
+    "order": 9,
+    "requiredPrivilege": "app:ot"
   }
 }
