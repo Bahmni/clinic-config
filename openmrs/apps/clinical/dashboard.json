@@ -71,7 +71,7 @@
             "conditions": {
                 "translationKey":"CONDITION_LIST_DISPLAY_CONTROL_TITLE",
                 "type": "conditionsList",
-                "displayOrder": 2
+                "displayOrder": 9
             },
             "treatments":{
                 "translationKey":"DASHBOARD_TITLE_TREATMENTS_KEY",
@@ -252,7 +252,14 @@
             "disposition": {
                 "title": "Disposition",
                 "type":"disposition",
-                "numberOfVisits": 14
+                "numberOfVisits": 2,
+                "displayOrder": 14
+            },
+            "admissionDetails": {
+                "title": "Admission Details",
+                "translationKey":"DASHBOARD_TITLE_ADMISSION_DETAILS_KEY",
+                "type": "admissionDetails",
+                "displayOrder": 15 
             }
         }
     },
