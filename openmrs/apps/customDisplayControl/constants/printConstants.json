@@ -4,5 +4,5 @@
   "doctorRegistrationFieldValue": "MCI Reg Number",
   "providerIdentifier": "doctor",
   "patientAddress": {"line1": ["address1","address2","address3"], "line2": ["cityVillage","countyDistrict","stateProvince","postalCode"]},
-  "addressAndLocationAttributes": "Address Header"
+  "addressAndLocationAttributes": "Print Header"
 }

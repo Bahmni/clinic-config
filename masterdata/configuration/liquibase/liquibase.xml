@@ -293,18 +293,18 @@
         </sql>
     </changeSet>
 
-    <changeSet id="BAH-2534-location-attribute-type-20230317-2922" author="Clinic-Config">
+    <changeSet id="BAH-2534-location-attribute-type-202303201129-2922" author="Clinic-Config">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
-                SELECT count(*) FROM location_attribute_type where name="Address Header";
+                SELECT count(*) FROM location_attribute_type where name="Print Header";
             </sqlCheck>
         </preConditions>
-        <comment>Adding location attribute type Address Header</comment>
+        <comment>Adding location attribute type print Header</comment>
         <sql>
             INSERT INTO location_attribute_type (name, description, datatype, preferred_handler, min_occurs, creator, date_created,
             retired, uuid)
-            VALUES ("Address Header","Clinical address",
-            "org.openmrs.customdatatype.datatype.LongFreeTextDatatype", "org.openmrs.web.attribute.handler.LongFreeTextTextareaHandler", 0, 1, NOW(), 0, "6eba7e47-e1d5-4463-a2a7-7c1ee21c6029");
+            VALUES ("Print Header","Clinical address",
+            "org.openmrs.customdatatype.datatype.LongFreeTextDatatype", "org.openmrs.web.attribute.handler.LongFreeTextTextareaHandler", 0, 1, NOW(), 0, "6cd01df8-4418-4079-95bf-9716413dc8f5");
         </sql>
     </changeSet>
     <changeSet id="Reports-user-1612023-BAH-1911-cc" author="bahmni">
