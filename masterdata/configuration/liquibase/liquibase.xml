@@ -303,7 +303,7 @@
         <sql>
             INSERT INTO location_attribute_type (name, description, datatype, preferred_handler, min_occurs, creator, date_created,
             retired, uuid)
-            VALUES ("Print Header","Clinical address",
+            VALUES ("Print Header","Clinical address used on header for any print",
             "org.openmrs.customdatatype.datatype.LongFreeTextDatatype", "org.openmrs.web.attribute.handler.LongFreeTextTextareaHandler", 0, 1, NOW(), 0, "6cd01df8-4418-4079-95bf-9716413dc8f5");
         </sql>
     </changeSet>
