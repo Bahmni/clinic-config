@@ -3,4 +3,6 @@ Uuid,Void/Retire,Name,Description,Parent,Attribute|id_prefix,Tags,Address 1,Addr
 ,,General Ward,,,,Admission Location;Login Location; Visit Location; Facility,,,,,,,,,,,
 ,,Labour Ward,,,,Admission Location;Login Location; Visit Location; Facility,,,,,,,,,,,
 ,,ICU,,,,Admission Location;Login Location; Visit Location; Facility,,,,,,,,,,,
-,,OT,Operation Theater,,,Operation Theater; Facility,,,,,,,,,,,
+,,OT-1,Operation Theater,,,Operation Theater; Facility,,,,,,,,,,,
+,,OT-2,Operation Theater,,,Operation Theater; Facility,,,,,,,,,,,
+,,Cath Lab,Operation Theater,,,Operation Theater; Facility,,,,,,,,,,,
