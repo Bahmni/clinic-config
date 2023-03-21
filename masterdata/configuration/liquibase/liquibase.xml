@@ -292,18 +292,19 @@
             "org.openmrs.customdatatype.datatype.FreeTextDatatype", 0, 1, NOW(), 0, "07421454-e196-422d-a7c3-a045ffc5fac7");
         </sql>
     </changeSet>
-    <changeSet id="BAH-2534-location-attribute-type-20221108" author="Clinic-Config">
+
+    <changeSet id="BAH-2534-location-attribute-type-202303201129-2922" author="Clinic-Config">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
-                SELECT count(*) FROM location_attribute_type where name="Certificate Header";
+                SELECT count(*) FROM location_attribute_type where name="Print Header";
             </sqlCheck>
         </preConditions>
-        <comment>Adding location attribute type of  Certificate Header</comment>
+        <comment>Adding location attribute type print Header</comment>
         <sql>
             INSERT INTO location_attribute_type (name, description, datatype, preferred_handler, min_occurs, creator, date_created,
             retired, uuid)
-            VALUES ("Certificate Header","Clinical address for print certificates.",
-            "org.openmrs.customdatatype.datatype.LongFreeTextDatatype", "org.openmrs.web.attribute.handler.LongFreeTextTextareaHandler", 0, 1, NOW(), 0, "07421454-e196-422d-a7c3-a045ffc5fac9");
+            VALUES ("Print Header","Clinical address used on header for any print",
+            "org.openmrs.customdatatype.datatype.LongFreeTextDatatype", "org.openmrs.web.attribute.handler.LongFreeTextTextareaHandler", 0, 1, NOW(), 0, "6cd01df8-4418-4079-95bf-9716413dc8f5");
         </sql>
     </changeSet>
     <changeSet id="Reports-user-1612023-BAH-1911-cc" author="bahmni">
