@@ -142,7 +142,7 @@ angular.module('bahmni.common.displaycontrol.custom')
                 .error(function () {
 
                 });
-            var {formNames, printControls,  doctorRegistrationFieldValue, providerIdentifier, patientAddress, addressAndLocationAttributes} = $scope.printConstants;
+            var {formNames, printControls,  doctorRegistrationFieldValue, providerIdentifier, practitionerType, patientAddress, addressAndLocationAttributes} = $scope.printConstants;
 
             $scope.patientAddress = {line1:"",line2:""};
             $scope.printControl = printControls;
@@ -199,8 +199,8 @@ angular.module('bahmni.common.displaycontrol.custom')
 
             var getLoggedInUser = function () {
                 var params = {
-                    v: "full",
-                    q: providerIdentifier
+                    v: "full"
+
                 };
                 return $http.get('/openmrs/ws/rest/v1/provider', {
                     method: "GET",
@@ -279,14 +279,17 @@ angular.module('bahmni.common.displaycontrol.custom')
                 var locationsData = response[2].data;
                 var personDetails;
 
-                if (data.results.length > 0) {
-                    personDetails = data.results.find(provider => provider.person.uuid == $scope.loggedInUser.person.uuid);
-                    if (personDetails) {
-                        $scope.doctorName = personDetails.person.display;
-                       $scope.registrationNumber = getAttributeValue(personDetails.attributes, doctorRegistrationFieldValue);
+               if (data.results.length > 0) {
+                   personDetails = data.results.find(provider => provider.person.uuid == $scope.loggedInUser.person.uuid);
+                   var doctor = personDetails.attributes.find(attribute => (attribute.display.includes($scope.printConstants.practitionerType) && attribute.display.includes($scope.printConstants.providerIdentifier)));
+                   if (personDetails) {
+                       if(doctor){
+                       $scope.doctorName = personDetails.person.display;
+                       }
+                      $scope.registrationNumber = getAttributeValue(personDetails.attributes, doctorRegistrationFieldValue);
+                   }
+               }
 
-                    }
-                }
                 if (observationData.results.length > 0) {
                     var visitId = observationData.results[0].uuid
                     $q.all([getObservationsByVisitId(visitId)]).then(function (visitResponse) {
