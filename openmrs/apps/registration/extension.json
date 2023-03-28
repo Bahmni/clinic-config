@@ -31,6 +31,53 @@
         "order": 1,
         "requiredPrivilege": "View Patients"
     },
+    "NDHMIdentifierLookup": {
+        "id": "org.bahmni.registration.identifier.ndhmIdentifierSrc",
+        "extensionPointId": "org.bahmni.registration.identifier",
+        "type": "link",
+        "src": "/abha-verification/index.html",
+        "extensionParams": {
+            "identifierType": [
+                "ABHA Number",
+                "ABHA Address"
+            ],
+            "nonEditable": [
+                "givenName",
+                "middleName",
+                "familyName",
+                "gender",
+                "birthDate",
+                "age"
+            ],
+            "buttons": [
+                {
+                    "action" : "verifyABHA",
+                    "display" : "Verify ABHA"
+                },
+                {
+                    "action" : "patientQueue",
+                    "display" : "Patient Queue"
+                },
+                {
+                    "action" : "createABHA",
+                    "display" : "Create ABHA",
+                    "link": "Or"
+                }
+            ],
+            "contact": "phoneNumber",
+            "addressMap": {
+                "city": "cityVillage",
+                "state": "stateProvince",
+                "district": "countyDistrict",
+                "postalCode": "postalCode",
+                "line": [
+                    "address1",
+                    "address2"
+                ]
+            },
+            "requiredPrivilege": "app:abdm"
+        }
+    },
     "registrationSecondPage":{
         "id": "bahmni.registration.conceptSetGroup.registrationSecondPage",
         "extensionPointId": "org.bahmni.registration.conceptSetGroup.observations",
