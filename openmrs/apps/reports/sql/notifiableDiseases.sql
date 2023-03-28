@@ -3,7 +3,7 @@ SELECT
     IF(extraIdentifier.identifier IS NULL OR extraIdentifier.identifier = "",
         primaryIdentifier.identifier, extraIdentifier.identifier)                       AS "Patient Id",
     concat(pn.given_name, " ", ifnull(pn.family_name, ""))                              AS "Patient Name",
-    pa.value                                                                            AS 'Contact',
+    pa.value                                                                            AS 'Phone Number',
     cn.name                                                                             AS 'Diagnosis',
     DATE_FORMAT(CONVERT_TZ(diagnosisObs.obs_datetime,'+00:00','+5:30'), "%d-%b-%Y")     AS "Date of Diagnosis"
 FROM patient pt
@@ -19,8 +19,8 @@ FROM patient pt
                           JOIN patient_identifier_type pit ON ei.identifier_type = pit.patient_identifier_type_id AND pit.retired is FALSE
                           JOIN global_property gp ON gp.property='bahmni.extraPatientIdentifierTypes' AND INSTR (gp.property_value, pit.uuid)) extraIdentifier
                           ON pt.patient_id = extraIdentifier.patient_id
-         LEFT OUTER JOIN person_attribute pa ON pa.person_id = p.person_id AND pa.voided is FALSE
-         LEFT OUTER JOIN person_attribute_type pat ON pat.person_attribute_type_id = pa.person_attribute_type_id AND pat.name = 'phoneNumber' AND pat.retired is FALSE
+          LEFT OUTER JOIN person_attribute_type pat on pat.name = 'phoneNumber' AND pat.retired is FALSE
+          LEFT OUTER JOIN person_attribute pa ON pa.person_id = p.person_id AND pat.person_attribute_type_id = pa.person_attribute_type_id and pa.voided is FALSE
          JOIN (SELECT  diagnosis.value_coded, diagnosis.person_id,
                        diagnosis.obs_datetime from obs AS diagnosis
                        JOIN concept_view AS cv
