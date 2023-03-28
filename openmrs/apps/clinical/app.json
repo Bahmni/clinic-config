@@ -23,9 +23,6 @@
         "patientContext": {
             "personAttributes": [
                 "phoneNumber"
-            ],
-            "additionalPatientIdentifiers": [
-                "ABHA Address"
             ]
         }
     }

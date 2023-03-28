@@ -2,12 +2,6 @@
     "id": "bahmni.registration",
     "instanceOf":"bahmni.template.registration",
     "description": "Bahmni Patient Registration App",
-    "extensionPoints": [
-        {
-            "id": "org.bahmni.registration.identifier",
-            "description": "NDHM HealthID Verification"
-        }
-    ],
     "config" : {
         "mandatoryPersonAttributes" : ["phoneNumber"],
         "patientInformation": {},
@@ -23,7 +17,6 @@
         "dashboardUrl": "/bahmni/clinical/index.html#/default/patient/{{patientUuid}}/dashboard",
         "registrationMessage": "REGISTRATION_MESSAGE",
         "enableWhatsAppButton": true,
-        "readOnlyExtraIdentifiers": ["ABHA Number","ABHA Address"],
         "printOptions": [
             {
                 "translationKey": "REGISTRATION_PRINT_REG_CARD_KEY",
