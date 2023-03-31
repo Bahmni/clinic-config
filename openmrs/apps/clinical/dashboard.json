@@ -218,7 +218,8 @@
                                 "Obstetrics and Gynaecology",
                                 "Under Treatment and Fitness Certificate",
                                 "Referral letter",
-                                "Admission Letter"
+                                "Admission Letter",
+                                "Immunization Incident Record"
 
                             ],
                 "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
