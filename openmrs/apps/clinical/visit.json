@@ -8,6 +8,7 @@
             "logo": "../images/bahmniLogo.png"
         },
         "defaultSections": true,
+        "defaultSectionsExcludes": ["admissionDetails"],
         "sections": {
             "pivotTable":{
                 "type": "pivotTable",
