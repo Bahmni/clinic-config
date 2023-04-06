@@ -341,7 +341,7 @@
             start_time, start_time_pattern, repeat_interval, start_on_startup, started,
             created_by, date_created, changed_by, date_changed, last_execution_time, uuid )
             VALUES ('OpenMRS event offset marker task', NULL, 'org.openmrs.module.atomfeed.scheduler.tasks.EventRecordsNumberOffsetMarkerTask',
-            '2014-01-14 00:00:00','MM/dd/yyyy HH:mm:ss',86400, 1, 1,
+            '2023-04-06 00:00:00','MM/dd/yyyy HH:mm:ss',86400, 1, 1,
             1, now(), NULL, NULL, NULL, uuid());
         </sql>
     </changeSet>
