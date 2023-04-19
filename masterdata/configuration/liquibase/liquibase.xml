@@ -329,7 +329,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="BAH-2934-20230323-bahmni-atomfeed-offset-marker" author="bahmni">
+    <changeSet id="BAH-2934-20230412-bahmni-atomfeed-offset-marker" author="bahmni">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 SELECT COUNT(*) FROM scheduler_task_config where schedulable_class = 'org.openmrs.module.atomfeed.scheduler.tasks.EventRecordsNumberOffsetMarkerTask'
