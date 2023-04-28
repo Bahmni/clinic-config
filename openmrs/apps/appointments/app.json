@@ -20,6 +20,7 @@
     "enableServiceTypes": false,
     "enableCalendarView": true,
     "isServiceOnAppointmentEditable": false,
+    "enableDetailedSummaryView": true,
     "enableResetAppointmentStatuses": ["CheckedIn"],
     "smsAttribute": "phoneNumber",
     "appointmentBookingMessage":"APPOINTMENT_BOOKING_MESSAGE",

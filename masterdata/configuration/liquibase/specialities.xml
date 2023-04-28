@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="ETHIOPIA_CONFIG_SPECIALITIES_PROCEDURE_202304261320" author="Kavitha">
+        <comment>Create PROCEDURE to add specialities</comment>
+        <sql>
+            DROP PROCEDURE IF EXISTS add_new_speciality;
+        </sql>
+        <sqlFile splitStatements="false" path="configuration/liquibase/addSpecialities.sql"/>
+    </changeSet>
+    
+    <changeSet id="ETHIOPIA_CONFIG_ADD_SPECIALITIES_202304261320" author="Kavitha">
+        <comment>Adding new specialities to Appointment Scheduling</comment>
+        <sql>
+            CALL add_new_speciality("Orthopaedics",NOW(),1,UUID());
+            CALL add_new_speciality("Plastics",NOW(),1,UUID());
+            CALL add_new_speciality("ENT",NOW(),1,UUID());
+            CALL add_new_speciality("Paediatrics",NOW(),1,UUID());
+            CALL add_new_speciality("Neuro",NOW(),1,UUID());
+            CALL add_new_speciality("Radiology",NOW(),1,UUID());
+            CALL add_new_speciality("General",NOW(),1,UUID());
+            CALL add_new_speciality("Physiotherapy",NOW(),1,UUID());
+            CALL add_new_speciality("Occupational Therapy",NOW(),1,UUID());
+            CALL add_new_speciality("Speech Therapy",NOW(),1,UUID());
+            CALL add_new_speciality("Prosthetics and Orthotics",NOW(),1,UUID());
+            CALL add_new_speciality("Nutrition",NOW(),1,UUID());
+            CALL add_new_speciality("Anesthesia",NOW(),1,UUID());
+            CALL add_new_speciality("Other",NOW(),1,UUID());
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
