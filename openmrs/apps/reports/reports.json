@@ -54,5 +54,26 @@
         "config": {
             "sqlPath": "/etc/bahmni_config/openmrs/apps/reports/sql/diagnosisCount.sql"
         }
+    },
+    "BloodPressureReports": {
+        "name": "Blood Pressure Reports",
+        "type": "observations",
+        "requiredPrivilege": "app:reports",
+        "config": {
+            "patientAttributes": ["primaryContact"],
+            "visitAttributes": ["Visit Status"],
+            "showVisitInfo": true,
+            "showProvider": true,
+            "programsToFilter": [],
+            "conceptNamesToFilter": ["Systolic blood pressure","Diastolic blood pressure"],
+            "conceptValuesToFilter":[],
+            "conceptClassesToFilter": [],
+            "locationTagsToFilter": ["Login Location"],
+            "applyDateRangeFor": "obsDate",
+            "encounterPerRow": false,
+            "forDataAnalysis": true,
+            "preferredColumns": ["Patient Identifier","Patient Name","Age","phoneNumber"],
+            "excludeColumns": ["Location Name","Birthdate","Gender","Program Name","Program Enrollment Date","Program End Date","Patient Created","Parent Concept",	"primaryContact", "Obs Group Id","Order Id"	]
+        }
     }
 }
