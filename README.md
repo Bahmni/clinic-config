@@ -36,3 +36,13 @@ Step 5: On every change in masterdata folder of clinic-config restart openmrs se
 2. Backup of OpenMRS DB with pre-loaded CIEL Concepts and checksums of masterdata/configuration are maintained in [bahmni-scripts](https://github.com/Bahmni/bahmni-scripts/tree/master/demo/db-backups/1.0.0-lite) repository
 
 3. Whenever we are loading the CIEL zip for the first time we would need a restart of openmrs to retire duplicate diagnosis concepts from CIEL
+
+
+### Transifex for Language Translations:
+
+Currently, both clinic-config and default-config sharing the same transifex configuration.
+This need to fixed in the future, have to create separate configuration for clinic-config. Because, these are technically different config folders. They may have same files right now, but as time progresses, they can easily deviate.
+
+For now, we need to be careful, that we always add a UNIQUE KEY across default-config and clinic-config. Also note that, for the same Key+English string, the translation in other languages returned by transifex will be the same across default-config or clinic-config, since the **memory** is the same for transifex.
+
+[Dev Notes for translating Bahmni](https://bahmni.atlassian.net/wiki/spaces/BAH/pages/41287695/Dev+Notes+for+Translating+Bahmni)
