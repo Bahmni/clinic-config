@@ -266,7 +266,7 @@
             delete from role_privilege where role = 'SuperAdmin' and privilege = 'app:adt';
         </sql>
     </changeSet>
-    <changeSet id="BAH-2348-202305151300" author="Clinic-Config">
+    <changeSet id="BAH-2348-202305181800" author="Clinic-Config">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 select count(*) from global_property where property = 'locale.allowed.list';
@@ -274,7 +274,7 @@
         </preConditions>
         <comment>Update Allowed Locale</comment>
         <update tableName = "global_property">
-            <column name = "property_value" value = "en, es, fr, it, pt_BR, zh" />
+            <column name = "property_value" value = "en, es, fr, it, pt_BR, zh, hi" />
             <where> property = 'locale.allowed.list'</where>
         </update>
     </changeSet>

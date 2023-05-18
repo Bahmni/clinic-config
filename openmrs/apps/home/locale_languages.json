@@ -3,5 +3,6 @@
   {"code": "fr", "nativeName": "Français"},
   {"code": "it", "nativeName": "Italiano"},
   {"code": "pt_BR", "nativeName": "Português"},
-  {"code": "zh", "nativeName": "中文"}]
+  {"code": "zh", "nativeName": "中文"},
+  {"code": "hi", "nativeName": "Hindi"}]
 }
