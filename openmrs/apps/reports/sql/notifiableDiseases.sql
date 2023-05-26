@@ -5,7 +5,7 @@ SELECT
     concat(pn.given_name, " ", ifnull(pn.family_name, ""))                              AS "Patient Name",
     pa.value                                                                            AS 'Phone Number',
     cn.name                                                                             AS 'Diagnosis',
-    DATE_FORMAT(CONVERT_TZ(diagnosisObs.obs_datetime,'+00:00','+5:30'), "%d-%b-%Y")     AS "Date of Diagnosis"
+    DATE_FORMAT(diagnosisObs.obs_datetime, "%d-%b-%Y")                                  AS "Date of Diagnosis"
 FROM patient pt
          JOIN person p ON p.person_id = pt.patient_id AND p.voided is FALSE
          JOIN person_name pn ON pn.person_id = p.person_id AND pn.voided is FALSE
@@ -25,7 +25,7 @@ FROM patient pt
                        diagnosis.obs_datetime from obs AS diagnosis
                        JOIN concept_view AS cv
                             ON cv.concept_id = diagnosis.value_coded AND cv.concept_class_name = 'Diagnosis' AND
-                               cast(CONVERT_TZ(diagnosis.obs_datetime,'+00:00','+5:30') AS DATE) BETWEEN '#startDate#' AND '#endDate#'  AND diagnosis.voided = 0
+                               cast(diagnosis.obs_datetime AS DATE) BETWEEN '#startDate#' AND '#endDate#'  AND diagnosis.voided = 0
                                 AND diagnosis.obs_group_id IN (
                                     SELECT DISTINCT certaintyObs.obs_id from (
                                                                               SELECT DISTINCT parent.obs_id
@@ -47,7 +47,7 @@ FROM patient pt
                            patient_conditions.date_created AS obs_datetime
                     FROM conditions patient_conditions
                     WHERE patient_conditions.clinical_status = 'ACTIVE'
-                          AND cast(CONVERT_TZ(patient_conditions.date_created,'+00:00','+5:30') AS DATE) BETWEEN '#startDate#' AND '#endDate#'                                                                                                                                                                        AND voided = FALSE
+                          AND cast(patient_conditions.date_created AS DATE) BETWEEN '#startDate#' AND '#endDate#'                                                                                                                                                                        AND voided = FALSE
                ) as diagnosisObs on diagnosisObs.person_id = p.person_id
          JOIN concept_name notifiableDisease on notifiableDisease.name = 'Notifiable Disease'
               AND notifiableDisease.concept_name_type = 'FULLY_SPECIFIED' AND notifiableDisease.voided = false

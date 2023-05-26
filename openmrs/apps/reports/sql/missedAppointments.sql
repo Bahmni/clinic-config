@@ -5,7 +5,7 @@ SELECT DISTINCT
 		IF(pn.family_name IS NULL OR pn.family_name = '', '', pn.family_name)) AS "Patient Name", 
 	 TIMESTAMPDIFF(YEAR, p.birthdate, CURDATE()) AS "Age", 
 	 p.gender AS 'Gender', 
-	 DATE_FORMAT(convert_tz(start_date_time,'+00:00','+05:30'), "%d/%m/%Y %h:%i %p") AS 'Missed Appointment Date', 
+	 DATE_FORMAT(start_date_time, "%d/%m/%Y %h:%i %p") AS 'Missed Appointment Date', 
 	 app_service.name AS 'Missed Appointment Service', 
 	 concat(ppn.given_name, ' ', IF(ppn.family_name IS NULL OR ppn.family_name = '', '', ppn.family_name)) AS "Provider Name", 
 	 pMobile.phoneNumber AS 'Phone Number', 
@@ -28,4 +28,4 @@ FROM patient_appointment pa
 	LEFT JOIN provider pr ON pr.provider_id = pap.provider_id AND (pr.retired IS FALSE or pr.retired IS null) 
 	LEFT JOIN person pp ON pp.person_id = pr.person_id AND pp.voided IS FALSE 
     LEFT JOIN person_name ppn ON ppn.person_id = pp.person_id AND ppn.voided IS FALSE 
-WHERE pa.status = 'Missed' and cast(CONVERT_TZ(pa.start_date_time,'+00:00','+5:30') AS DATE) BETWEEN '#startDate#' AND '#endDate#' ORDER BY pa.start_date_time DESC; 
+WHERE pa.status = 'Missed' and cast(pa.start_date_time AS DATE) BETWEEN '#startDate#' AND '#endDate#' ORDER BY pa.start_date_time DESC; 
