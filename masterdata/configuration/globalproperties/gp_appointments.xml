@@ -4,23 +4,5 @@
       <property>sms.enableAppointmentBookingSMSAlert</property>
       <value>false</value>
     </globalProperty>
-    <globalProperty>
-      <property>bahmni.appointmentReminderSMSTemplate</property>
-      <value>This is a reminder for upcoming Appointment for {0}:{1}\non Date:{2},for {3} at
-        {4}.\nFor any queries call us on {5}</value>
-    </globalProperty>
-    <globalProperty>
-      <property>bahmni.appointmentReminderSMSTemplateWithoutProvider</property>
-      <value>This is a reminder for upcoming Appointment for {0}:{1}\non Date:{2},for {3} at
-        {4}.\nFor any queries call us on {5}</value>
-    </globalProperty>
-    <globalProperty>
-      <property>sms.enableAppointmentReminderSMSAlert</property>
-      <value>false</value>
-    </globalProperty>
-    <globalProperty>
-      <property>clinic.clinicName</property>
-      <value>Bahmni</value>
-    </globalProperty>
   </globalProperties>
 </config>
