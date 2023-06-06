@@ -5,7 +5,7 @@ SELECT DISTINCT
 	 TIMESTAMPDIFF(YEAR, p.birthdate, CURDATE()) AS "Age",
 	 p.gender AS 'Gender',
 	 pMobile.phoneNumber AS 'Phone Number',
-     DATE_FORMAT(CONVERT_TZ(start_date_time,'+00:00','+5:30'), "%d/%m/%Y %h:%i %p") AS 'Appointment Time'
+     DATE_FORMAT(start_date_time, "%d/%m/%Y %h:%i %p") AS 'Appointment Time'
 FROM patient_appointment pa
    JOIN appointment_service app_service
     ON app_service.appointment_service_id = pa.appointment_service_id AND app_service.voided IS FALSE
@@ -15,4 +15,4 @@ FROM patient_appointment pa
    LEFT JOIN (select paMobile.person_id as 'pMobilePersonId', paMobile.value AS 'phoneNumber' from person_attribute paMobile
    JOIN person_attribute_type patMobile ON patMobile.name = "phoneNumber" AND patMobile.retired IS FALSE
     AND patMobile.person_attribute_type_id = paMobile.person_attribute_type_id) AS pMobile ON pa.patient_id = pMobile.pMobilePersonId
-WHERE pa.status = 'Scheduled' and cast(CONVERT_TZ(pa.start_date_time,'+00:00','+5:30') AS DATE) BETWEEN '#startDate#' AND '#endDate#' ORDER BY pa.start_date_time DESC;
+WHERE pa.status = 'Scheduled' and cast(pa.start_date_time AS DATE) BETWEEN '#startDate#' AND '#endDate#' ORDER BY pa.start_date_time DESC;
