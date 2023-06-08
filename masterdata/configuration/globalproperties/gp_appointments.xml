@@ -7,18 +7,16 @@
     <globalProperty>
       <property>bahmni.appointmentReminderSMSTemplate</property>
       <value>This is a reminder for upcoming Appointment for {0}:{1}\non Date:{2},with {3} for {4} at {5}.\nFor any queries call us on {6}</value>
+      <description>Global property of message to send as appointment reminder</description>
     </globalProperty>
     <globalProperty>
       <property>bahmni.appointmentReminderSMSTemplateWithoutProvider</property>
       <value>This is a reminder for upcoming Appointment for {0}:{1}\non Date:{2},for {3} at {4}.\nFor any queries call us on {5}</value>
+      <description>Global property of message to send as appointment reminder without providers</description>
     </globalProperty>
     <globalProperty>
       <property>sms.enableAppointmentReminderSMSAlert</property>
       <value>false</value>
-    </globalProperty>
-    <globalProperty>
-      <property>clinic.clinicName</property>
-      <value>Bahmni</value>
     </globalProperty>
   </globalProperties>
 </config>
