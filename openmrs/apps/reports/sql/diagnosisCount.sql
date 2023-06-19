@@ -16,7 +16,7 @@ from
    JOIN person on diagnosis.person_id = person.person_id AND person.voided = FALSE
    JOIN concept_view AS cv
    ON cv.concept_id = diagnosis.value_coded AND cv.concept_class_name = 'Diagnosis' AND
-   cast(CONVERT_TZ(diagnosis.obs_datetime,'+00:00','+5:30') AS DATE) BETWEEN '#startDate#' AND '#endDate#' 
+   cast(diagnosis.obs_datetime AS DATE) BETWEEN '#startDate#' AND '#endDate#' 
    AND diagnosis.voided = 0 AND diagnosis.obs_group_id IN (
 			SELECT DISTINCT certaintyObs.obs_id from (
       	  		SELECT DISTINCT parent.obs_id
@@ -40,7 +40,7 @@ from
    FROM conditions patient_conditions
    JOIN person on patient_conditions.patient_id = person.person_id
    WHERE patient_conditions.clinical_status = 'ACTIVE'
-   AND cast(CONVERT_TZ(patient_conditions.date_created,'+00:00','+5:30') AS DATE) BETWEEN '#startDate#' AND '#endDate#' 
+   AND cast(patient_conditions.date_created AS DATE) BETWEEN '#startDate#' AND '#endDate#' 
    AND patient_conditions.voided = FALSE AND person.voided = FALSE group by patient_conditions.condition_coded
    )) as diagnosisObs
 

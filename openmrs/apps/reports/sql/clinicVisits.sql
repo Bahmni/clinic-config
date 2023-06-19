@@ -4,10 +4,10 @@ SELECT
   floor(DATEDIFF(DATE(v.date_started), p.birthdate) / 365)                  AS "Age",
   DATE_FORMAT(p.birthdate, "%d-%b-%Y")                                      AS "Birthdate",
   p.gender                                                                  AS "Gender",
-  DATE_FORMAT(CONVERT_TZ(p.date_created,'+00:00','+5:30'), "%d-%b-%Y")      AS "Patient Created Date",
+  DATE_FORMAT(p.date_created, "%d-%b-%Y")                                   AS "Patient Created Date",
   vt.name                                                                   AS "Visit type",
-  DATE_FORMAT(CONVERT_TZ(v.date_started,'+00:00','+5:30'), "%d-%b-%Y")      AS "Date started",
-  DATE_FORMAT(CONVERT_TZ(v.date_stopped,'+00:00','+5:30'), "%d-%b-%Y")      AS "Date stopped",
+  DATE_FORMAT(v.date_started, "%d-%b-%Y")                                   AS "Date started",
+  DATE_FORMAT(v.date_stopped, "%d-%b-%Y")                                   AS "Date stopped",
   GROUP_CONCAT(DISTINCT(IF(pat.name = "phoneNumber",pa.value, NULL)))       AS "Phone number",
   paddress.city_village                                                     AS "City/Village",
   paddress.state_province                                                   AS "State",
@@ -24,5 +24,5 @@ FROM visit v
   LEFT OUTER JOIN person_attribute pa ON pa.person_id = p.person_id AND pa.voided is FALSE
   LEFT OUTER JOIN person_attribute_type pat ON pat.person_attribute_type_id = pa.person_attribute_type_id AND pat.retired is FALSE
   WHERE v.voided is FALSE
-  AND cast(CONVERT_TZ(v.date_started,'+00:00','+5:30') AS DATE) BETWEEN '#startDate#' AND '#endDate#'
+  AND cast(v.date_started AS DATE) BETWEEN '#startDate#' AND '#endDate#'
 GROUP BY v.visit_id;
