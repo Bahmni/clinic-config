@@ -4,7 +4,7 @@ SELECT
   concat(pn.given_name, " ", ifnull(pn.family_name, ""))                                                                                  AS "Patient Name",
   floor(DATEDIFF(NOW(), p.birthdate) / 365)                                                                                               AS "Age",
   p.gender                                                                                                                                AS "Gender",
-  DATE_FORMAT(CONVERT_TZ(pt.date_created,'+00:00','+5:30'), "%d-%b-%Y")                                                                   AS "Registration Date"
+  DATE_FORMAT(pt.date_created, "%d-%b-%Y")                                                                   AS "Registration Date"
 
 FROM patient pt
   JOIN person p ON p.person_id = pt.patient_id AND p.voided is FALSE
@@ -21,4 +21,4 @@ FROM patient pt
 		ON pt.patient_id = extraIdentifier.patient_id
   CROSS JOIN (SELECT @rownum := 0) AS dummy
   WHERE pt.voided is FALSE
-  AND cast(CONVERT_TZ(pt.date_created,'+00:00','+5:30') AS DATE) BETWEEN '#startDate#' AND '#endDate#';
+  AND cast(pt.date_created AS DATE) BETWEEN '#startDate#' AND '#endDate#';
