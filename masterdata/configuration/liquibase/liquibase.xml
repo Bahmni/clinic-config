@@ -23,7 +23,7 @@
         <comment>Create System SMS role and respective privilege for logging into bahmni by system</comment>
         <sql>
         INSERT IGNORE INTO role VALUES('System-SMS', 'Role added for system user to send sms to authenticate in case of reporting session', UUID()); 
-        INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Send Sms');
+        INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Send SMS');
         INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Get Providers');
         INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Edit Users');
         INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Get Users');
