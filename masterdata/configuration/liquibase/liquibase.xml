@@ -19,21 +19,18 @@
             INSERT INTO provider (person_id, identifier, creator, date_created, uuid, name) VALUES (@person_id, 'registration', 1, now(), uuid(), 'registration');
         </sql>
     </changeSet>
-    <changeSet id="bah-2962-20230629" author="Anubhav" runAlways="true">
+    <changeSet id="BAH-2962-20230629" author="Anubhav" runAlways="true">
         <comment>Create System SMS role and respective privilege for logging into bahmni by system</comment>
         <sql>
         INSERT IGNORE INTO role VALUES('System-SMS', 'Role added for system user to send sms to authenticate in case of reporting session', UUID()); 
         INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Send Sms');
-        </sql>
-    </changeSet>  <changeSet id="bah-2962-20230629" author="Anubhav" runAlways="true">
-        <comment>Create System SMS role and respective privilege for logging into bahmni by system</comment>
-        <sql>
-        INSERT IGNORE INTO role VALUES('System-SMS', 'Role added for system user to send sms to authenticate in case of reporting session', UUID()); 
-        INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Send Sms');
+        INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Get Providers');
+        INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Edit Users');
+        INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Get Users');
         </sql>
     </changeSet>
 
-    <changeSet id="bah-2962-20230629-1" author="Anubhav" runAlways="true">
+    <changeSet id="BAH-2962-20230629-1" author="Anubhav" runAlways="true">
     	<preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 select count(*) from users where username='systemuser';
@@ -47,10 +44,10 @@
             INSERT INTO person_name(person_id, preferred, given_name, family_name, creator, date_created, uuid) VALUES(@person_id, 1, 'System', 'SMS', 1, now(), @puuid);
             INSERT INTO users(system_id, creator, date_created, person_id, uuid, username, password, salt) VALUES ('SystemUser', 1, now(),@person_id, uuid(), 'systemuser', 'e28e3ae84c66bfba6b2c50a406567f3e34fea1d76b17c006931571fe5d940f6c6b81e49cf8ea5e0adfca19fe3beb68d8ad79f7c3812e92b8d502a9afcf2029b2', '1c9d7e94aeeb7a2459ef45ed200b2944582e0e7088d75f9b57a3644861ea766c20a269b3fe2eadaff1bc445ecfbd9bd3c0c550dfd813de48d39423cd3d1a8b10');
             INSERT INTO provider (person_id, identifier, creator, date_created, uuid, name) VALUES (@person_id, 'systemuser', 1, now(), uuid(), 'SystemUser');
-        </sql>
+         </sql>
     </changeSet>
 
-    <changeSet id="bah-2962-20230629-2" author="Anubhav" runAlways="true">
+    <changeSet id="BAH-2962-20230629-2" author="Anubhav" runAlways="true">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 select count(*) from role where role = 'System-SMS';
