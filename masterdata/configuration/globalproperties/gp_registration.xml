@@ -52,7 +52,7 @@ where v.date_stopped is null AND v.voided = 0;</value>
       <value>Mon-Fri (09:00-22:00), Sat-Sun CLOSED</value>
     </globalProperty>
     <globalProperty>
-      <property>bahmni.registrationSMSTemplate</property>
+      <property>sms.registrationSMSTemplate</property>
       <value>Thank you for registering at {0}. Please note your Patient Registration Details-{1}, name:{2}, {3}, {4} years\nFor any queries call us on {5}. Clinic Timings: {6}</value>
     </globalProperty>
     <globalProperty>
