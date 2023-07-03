@@ -6,13 +6,33 @@
     </globalProperty>
     <globalProperty>
       <property>sms.appointmentReminderSMSTemplate</property>
-      <value>This is a reminder for upcoming Appointment for {0}:{1}\non Date:{2},with {3} for {4} at {5}.\nFor any queries call us on {6}</value>
+      <value>This is a reminder for upcoming Appointment for {patientName}:{identifier}\non Date:{date} for {service} at {clinicName}.</value>
       <description>Global property of message to send as appointment reminder</description>
     </globalProperty>
     <globalProperty>
-      <property>sms.appointmentReminderSMSTemplateWithoutProvider</property>
-      <value>This is a reminder for upcoming Appointment for {0}:{1}\non Date:{2},for {3} at {4}.\nFor any queries call us on {5}</value>
-      <description>Global property of message to send as appointment reminder without providers</description>
+      <property>sms.helpdeskTemplate</property>
+      <value>For any queries call us on {helpdeskNumber}.</value>
+      <description>Global property to be used to fetch helpdesk template</description>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.providersTemplate</property>
+      <value>Your appointment is booked with {providerName}.</value>
+      <description>Global property to be used to fetch providers template</description>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.appointmentBookingSMSTemplate</property>
+      <value>Appointment for {patientName}, {identifier} on {date} for {service} is booked at {clinicName}.</value>
+      <description>Global property of message to send when appointment booking is done</description>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.teleconsultationLinkTemplate</property>
+      <value>As you have chosen to book a teleconsultation-appointment click on the link {teleconsultationLink} on {date} to join the consultation.</value>
+      <description>Global property to be used to fetch teleconsultation template</description>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.recurringAppointmentTemplate</property>
+      <value>A recurring appointment for {patientName}, {identifier} for {service} is booked for every {recurringPeriod} {recurringType} at {clinicName}. Your next appointment is at {date}.</value>
+      <description>Global property for appointment recurring template</description>
     </globalProperty>
     <globalProperty>
       <property>sms.enableAppointmentReminderSMSAlert</property>
