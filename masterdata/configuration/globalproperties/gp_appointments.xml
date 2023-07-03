@@ -38,5 +38,17 @@
       <property>sms.enableAppointmentReminderSMSAlert</property>
       <value>false</value>
     </globalProperty>
+	<globalProperty>
+		<property>bahmni.sms.timezone</property>
+		<value>IST</value>
+	</globalProperty>
+	<globalProperty>
+	<property>bahmni.sms.url</property>
+	<value>http://sms-service:8080/notification/sms</value>
+	</globalProperty>
+	<globalProperty>
+		<property>bahmni.sms.dateformat</property>
+		<value>dd-MM-yyyy' Time 'HH:mm</value>
+	</globalProperty>
   </globalProperties>
 </config>
