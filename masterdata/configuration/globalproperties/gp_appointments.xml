@@ -6,7 +6,7 @@
     </globalProperty>
     <globalProperty>
       <property>sms.appointmentReminderSMSTemplate</property>
-      <value>This is a reminder for upcoming Appointment for {patientName}:{identifier}\non Date:{date} for {service} at {clinicName}.</value>
+      <value>This is a reminder for upcoming Appointment for {patientName}:{identifier}\non Date:{date} for {service} at {facilityname}.</value>
       <description>Global property of message to send as appointment reminder</description>
     </globalProperty>
     <globalProperty>
@@ -21,7 +21,7 @@
     </globalProperty>
     <globalProperty>
       <property>sms.appointmentBookingSMSTemplate</property>
-      <value>Appointment for {patientName}, {identifier} on {date} for {service} is booked at {clinicName}.</value>
+      <value>Appointment for {patientName}, {identifier} on {date} for {service} is booked at {facilityname}.</value>
       <description>Global property of message to send when appointment booking is done</description>
     </globalProperty>
     <globalProperty>
@@ -31,7 +31,7 @@
     </globalProperty>
     <globalProperty>
       <property>sms.recurringAppointmentTemplate</property>
-      <value>A recurring appointment for {patientName}, {identifier} for {service} is booked for every {recurringPeriod} {recurringType} at {clinicName}. Your next appointment is at {date}.</value>
+      <value>A recurring appointment for {patientName}, {identifier} for {service} is booked for every {recurringPeriod} {recurringType} at {facilityname}. Your next appointment is at {date}.</value>
       <description>Global property for appointment recurring template</description>
     </globalProperty>
     <globalProperty>
