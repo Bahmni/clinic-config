@@ -20,12 +20,12 @@
         </sql>
     </changeSet>
     <changeSet id="BAH-2962-20230629" author="Bahmni" runAlways="true">
-        <comment>Create System SMS role and respective privilege for logging into bahmni by system</comment>
         <preConditions onFail="MARK_RAN">
                 <sqlCheck expectedResult="0">
                     SELECT COUNT(*) FROM role WHERE role = 'System-SMS';
                 </sqlCheck>
         </preConditions>
+        <comment>Create System SMS role and respective privilege for logging into bahmni by system</comment>
         <sql>
         INSERT IGNORE INTO role VALUES('System-SMS', 'Role added for system user to send sms to authenticate in case of reporting session', UUID()); 
         INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Send SMS');
