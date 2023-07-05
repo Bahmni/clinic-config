@@ -19,13 +19,13 @@
             INSERT INTO provider (person_id, identifier, creator, date_created, uuid, name) VALUES (@person_id, 'registration', 1, now(), uuid(), 'registration');
         </sql>
     </changeSet>
-    <changeSet id="BAH-2962-20230629" author="Anubhav" runAlways="true">
-        <comment>Create System SMS role and respective privilege for logging into bahmni by system</comment>
+    <changeSet id="BAH-2962-20230629" author="Bahmni" runAlways="true">
         <preConditions onFail="MARK_RAN">
                 <sqlCheck expectedResult="0">
                     SELECT COUNT(*) FROM role WHERE role = 'System-SMS';
                 </sqlCheck>
         </preConditions>
+        <comment>Create System SMS role and respective privilege for logging into bahmni by system</comment>
         <sql>
         INSERT IGNORE INTO role VALUES('System-SMS', 'Role added for system user to send sms to authenticate in case of reporting session', UUID()); 
         INSERT IGNORE INTO role_privilege VALUES('System-SMS', 'Send SMS');
@@ -35,7 +35,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="BAH-2962-20230629-1" author="Anubhav" runAlways="true">
+    <changeSet id="BAH-2962-20230629-1" author="Bahmni" runAlways="true">
     	<preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">
                 select count(*) from users where username='system-user';
@@ -52,7 +52,7 @@
          </sql>
     </changeSet>
 
-    <changeSet id="BAH-2962-20230629-2" author="Anubhav" runAlways="true">
+    <changeSet id="BAH-2962-20230629-2" author="Bahmni" runAlways="true">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
                 select count(*) from role where role = 'System-SMS';
