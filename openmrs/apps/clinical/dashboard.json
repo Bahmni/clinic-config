@@ -10,6 +10,7 @@
                 "displayOrder":0,
                 "ageLimit":100,
                 "patientAttributes":[],
+                "additionalPatientIdentifiers": [],
                 "addressFields":[
                     "address1",
                     "address2",
