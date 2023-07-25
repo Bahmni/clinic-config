@@ -278,7 +278,20 @@
             <where> property = 'locale.allowed.list'</where>
         </update>
     </changeSet>
-
+    <changeSet id="BAH-2184-provider-attribute-type-20221028" author="Clinic-Config">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT count(*) FROM provider_attribute_type where name="MCI Reg Number";
+            </sqlCheck>
+        </preConditions>
+        <comment>Adding provider attribute type of MCi Reg Number</comment>
+        <sql>
+            INSERT INTO provider_attribute_type (name, description, datatype, min_occurs, creator, date_created,
+            retired, uuid)
+            VALUES ("MCI Reg Number","Registration number of Doctor",
+            "org.openmrs.customdatatype.datatype.FreeTextDatatype", 0, 1, NOW(), 0, "07421454-e196-422d-a7c3-a045ffc5fac7");
+        </sql>
+    </changeSet>
     <changeSet id="BAH-2534-location-attribute-type-202303201129-2922" author="Clinic-Config">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">

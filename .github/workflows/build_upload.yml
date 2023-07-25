@@ -30,8 +30,8 @@ jobs:
       - name: Docker - Login
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Docker - Build and push
         uses: docker/build-push-action@v3
         with:
@@ -39,14 +39,14 @@ jobs:
           file: package/docker/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: bahmni/clinic-config:${{env.ARTIFACT_VERSION}},bahmni/clinic-config:latest
+          tags: bahmniindiadistro/clinic-config:${{env.ARTIFACT_VERSION}},bahmniindiadistro/clinic-config:latest
       - name: Pull Bahmni Default Config Helm Chart
         run: |
           helm pull default-config --repo https://bahmni.github.io/helm-charts --devel --untar --untardir package/helm
           mv package/helm/default-config/ package/helm/clinic-config/
       - name: Update Chart values
         run: |
-          yq --inplace '.image.repository = "bahmni"' $HELM_CHART_PATH/values.yaml
+          yq --inplace '.image.repository = "bahmniindiadistro"' $HELM_CHART_PATH/values.yaml
           yq --inplace '.image.name = "clinic-config"' $HELM_CHART_PATH/values.yaml
           yq --inplace '.image.tag = "${{ env.ARTIFACT_VERSION }}"' $HELM_CHART_PATH/values.yaml
           yq --inplace '.version = "${{ env.ARTIFACT_VERSION }}"' $HELM_CHART_PATH/Chart.yaml
@@ -62,7 +62,7 @@ jobs:
       - name: Helm - Checkout Charts Repository
         uses: actions/checkout@v2
         with:
-          repository: bahmni/helm-charts
+          repository: bahmniindiadistro/helm-charts
           ref: gh-pages
           path: helm-charts
           persist-credentials: false
@@ -72,7 +72,7 @@ jobs:
 
       - name: Helm - reIndex
         working-directory: helm-charts/
-        run: helm repo index --merge index.yaml --url https://bahmni.github.io/helm-charts/  .
+        run: helm repo index --merge index.yaml --url https://bahmniindiadistro.github.io/helm-charts/  .
 
       - name: Helm - Publish Chart
         working-directory: helm-charts/
@@ -81,4 +81,4 @@ jobs:
           git config user.email ${{ secrets.BAHMNI_EMAIL}}
           git add .
           git commit -m "Release of clinic-config-${{ env.ARTIFACT_VERSION }}"
-          git push 'https://${{ secrets.BAHMNI_USERNAME}}:${{ secrets.BAHMNI_PAT}}@github.com/bahmni/helm-charts.git' gh-pages
+          git push 'https://${{ secrets.BAHMNI_USERNAME}}:${{ secrets.BAHMNI_PAT}}@github.com/bahmniindiadistro/helm-charts.git' gh-pages
