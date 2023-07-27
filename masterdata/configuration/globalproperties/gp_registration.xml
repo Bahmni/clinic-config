@@ -48,6 +48,14 @@ where v.date_stopped is null AND v.voided = 0;</value>
       <value>+919999999999</value>
     </globalProperty>
     <globalProperty>
+    <property>clinic.clinicTimings</property>
+      <value>Mon-Fri (09:00-22:00), Sat-Sun CLOSED</value>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.registrationSMSTemplate</property>
+      <value>Thank you for registering at {location}. Please note your Patient Registration Details-{identifier}, name:{patientname}, {gender},Age- {age} years\nFor any queries call us on {helpdesknumber}. Clinic Timings: {facilitytimings}.</value>
+    </globalProperty>
+    <globalProperty>
       <property>sms.endpoint</property>
       <value>/sms-service/notification/sms</value>
       <description>Global property pointing to endpoint for sending sms</description>
