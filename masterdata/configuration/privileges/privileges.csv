@@ -1,3 +1,5 @@
 Uuid,Privilege name,Description
 ,app:atomfeed-console,Able to access atomfeed console.
-,Send SMS,Privilege to send SMS
+,Send Appointment Reminder SMS,Privilege to send sms on appointment booking
+,Send Registration SMS,Privilege to send sms on patient registration
+,Send Appointment Booking SMS,Privilege to send sms as a reminder of apointment
