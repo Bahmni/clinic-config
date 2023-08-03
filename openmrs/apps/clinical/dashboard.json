@@ -151,6 +151,7 @@
                 "dashboardConfig":{
                     "showDetailsButton":true,
                     "conceptNames":[
+                        "Chief Complaint Record",
                         "Chief Complaint Data",
                         "History of present illness",
                         "Smoking status",
@@ -161,6 +162,7 @@
                 },
                 "expandedViewConfig":{
                     "conceptNames":[
+                        "Chief Complaint Record",
                         "Chief Complaint Data",
                         "History of present illness",
                         "Smoking status",
