@@ -70,7 +70,8 @@
     "url": "/lab",
     "icon": "fa fa-flask",
     "order": 7,
-    "requiredPrivilege": "app:lab-lite"
+    "requiredPrivilege": "app:lab-lite",
+     "captureTestResults": true
   },
   "patientDocumentUpload": {
     "id": "bahmni.patient.document.upload",
