@@ -4,5 +4,49 @@
       <property>sms.enableAppointmentBookingSMSAlert</property>
       <value>false</value>
     </globalProperty>
+    <globalProperty>
+      <property>sms.appointmentReminderSMSTemplate</property>
+      <value>This is a reminder for upcoming Appointment for {patientName}:{identifier}\non Date:{date} for {service} at {facilityname}.</value>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.helpdeskTemplate</property>
+      <value>For any queries call us on {helpdeskNumber}.</value>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.providersTemplate</property>
+      <value>Your appointment is booked with {providerName}.</value>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.appointmentBookingSMSTemplate</property>
+      <value>Appointment for {patientName}, {identifier} on {date} for {service} is booked at {facilityname}.</value>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.teleconsultationLinkTemplate</property>
+      <value>As you have chosen to book a teleconsultation-appointment click on the link {teleconsultationLink} on {date} to join the consultation.</value>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.recurringAppointmentTemplate</property>
+      <value>A recurring appointment for {patientName}, {identifier} for {service} is booked for every {recurringPeriod} {recurringType} at {facilityname}. Your next appointment is at {date}.</value>
+    </globalProperty>
+    <globalProperty>
+      <property>sms.enableAppointmentReminderSMSAlert</property>
+      <value>false</value>
+    </globalProperty>
+    <globalProperty>
+      <property>bahmni.sms.timezone</property>
+      <value>IST</value>
+    </globalProperty>
+    <globalProperty>
+      <property>bahmni.sms.url</property>
+      <value>http://sms-service:8080/notification/sms</value>
+    </globalProperty>
+    <globalProperty>
+      <property>SchedulerReminderBeforeHours</property>
+      <value>24</value>
+    </globalProperty>
+    <globalProperty>
+      <property>bahmni.sms.dateformat</property>
+      <value>dd-MM-yyyy' Time 'HH:mm</value>
+    </globalProperty>
   </globalProperties>
 </config>
