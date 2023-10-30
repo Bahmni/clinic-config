@@ -22,6 +22,18 @@
         "icon": "fa-upload",
         "order": 1,
         "requiredPrivilege": "app:admin"
+    },
+    "fhirExport":{
+        "id": "bahmni.admin.fhirExport",
+        "extensionPointId": "org.bahmni.admin.dashboard",
+        "type": "link",
+        "extensionParams": {
+        },
+        "label": "FHIR Export",
+        "url": "#/fhirExport",
+        "icon": "fa-download",
+        "order": 1,
+        "requiredPrivilege": "app:admin"
     }
     
 }
