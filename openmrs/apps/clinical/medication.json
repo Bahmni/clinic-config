@@ -45,7 +45,7 @@
             "route": "Topical"
           },
           "Disintegrating tablet": {
-            "doseUnits": "Tablet(s)",
+            "doseUnits": "Tablet",
             "route": "Oral"
           },
           "Drops": {
@@ -53,7 +53,7 @@
             "route": "Topical"
           },
           "Enteric-coated tablet": {
-            "doseUnits": "Tablet(s)",
+            "doseUnits": "Tablet",
             "route": "Oral"
           },
           "Gas": {
@@ -84,7 +84,7 @@
             "route": "Topical"
           },
           "Oral capsule": {
-            "doseUnits": "Capsule(s)",
+            "doseUnits": "Capsule",
             "route": "Oral"
           },
           "Oral solution": {
@@ -105,19 +105,30 @@
             "route": "Oral"
           },
           "Sublingual tablet": {
-            "doseUnits": "Tablet(s)",
+            "doseUnits": "Tablet",
             "route": "Sub Lingual"
           },
           "Suspension": {
-            "doseUnits": "",
+            "doseUnits": "ml",
             "route": "Oral"
           },
           "Sustained-release tablet": {
-            "doseUnits": "Tablet(s)",
+            "doseUnits": "Tablet",
             "route": "Oral"
           },
           "Tablet": {
-            "doseUnits": "Tablet(s)",
+            "doseUnits": "Tablet",
+            "route": "Oral"
+          },
+          "Suppository": {
+            "doseUnits": "Tablet",
+            "route": "Oral"
+          },
+          "Crystals": {
+            "route": "Topical"
+          },
+          "Solution": {
+            "doseUnits": "ml",
             "route": "Oral"
           }
         }
