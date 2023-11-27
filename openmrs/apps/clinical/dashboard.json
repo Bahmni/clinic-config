@@ -182,7 +182,7 @@
       },
       "nutritionalValues": {
         "translationKey": "DASHBOARD_TITLE_NUTRITIONAL_VALUES_KEY",
-        "type": "vitals",
+        "type": "observation",
         "isObservation": true,
         "displayOrder": 6,
         "dashboardConfig": {
