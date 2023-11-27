@@ -194,7 +194,8 @@
           ],
           "showDetailsButton": true,
           "numberOfVisits": 3
-        }
+        },
+        "hideEmptyDisplayControl": true
       },
       "forms-2.0": {
         "type": "formsV2",
