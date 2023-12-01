@@ -193,7 +193,8 @@
             "BMI Status"
           ],
           "showDetailsButton": true,
-          "numberOfVisits": 3
+          "numberOfVisits": 3,
+          "displayNameType": "FSN"
         },
         "hideEmptyDisplayControl": true
       },
