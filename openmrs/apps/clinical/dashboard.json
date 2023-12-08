@@ -170,7 +170,8 @@
           "numberOfVisits": 2,
           "showDetailsButton": true,
           "pivotTable": {}
-        }
+        },
+        "hideEmptyDisplayControl": true
       },
       "patientAppointments": {
         "type": "custom",
