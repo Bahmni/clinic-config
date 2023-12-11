@@ -21,7 +21,7 @@
       "flowsheet": {
         "type": "flowSheet",
         "title": "Vitals Flow Sheet",
-        "displayOrder": 10,
+        "displayOrder": 7,
         "dashboardConfig": {
           "latestCount": "5",
           "groupBy": "obstime",
@@ -52,7 +52,7 @@
       "navigationLinksControl": {
         "translationKey": "DASHBOARD_TITLE_NAVIGATION_LINKS_CONTROL_KEY",
         "type": "navigationLinksControl",
-        "displayOrder": 2,
+        "displayOrder": 1,
         "showLinks": [
           "home",
           "visit",
@@ -67,17 +67,17 @@
         "showCertainty": true,
         "showOrder": true,
         "showDetailsButton": true,
-        "displayOrder": 1
+        "displayOrder": 8
       },
       "conditions": {
         "translationKey": "CONDITION_LIST_DISPLAY_CONTROL_TITLE",
         "type": "conditionsList",
-        "displayOrder": 3
+        "displayOrder": 9
       },
       "treatments": {
         "translationKey": "DASHBOARD_TITLE_TREATMENTS_KEY",
         "type": "treatment",
-        "displayOrder": 4,
+        "displayOrder": 2,
         "dashboardConfig": {
           "showFlowSheet": true,
           "showListView": true,
@@ -107,7 +107,7 @@
         "orderType": "Radiology Order",
         "type": "ordersControl",
         "translationKey": "DASHBOARD_TITLE_RADIOLOGY_ORDERS_KEY",
-        "displayOrder": 11,
+        "displayOrder": 13,
         "dashboardConfig": {
           "conceptNames": [],
           "numberOfVisits": 4
@@ -116,7 +116,7 @@
       "labResults": {
         "translationKey": "DASHBOARD_TITLE_LAB_RESULTS_KEY",
         "type": "labOrders",
-        "displayOrder": 8,
+        "displayOrder": 4,
         "dashboardConfig": {
           "title": null,
           "numberOfVisits": 6,
@@ -134,7 +134,7 @@
       "visits": {
         "translationKey": "DASHBOARD_TITLE_VISITS_KEY",
         "type": "visits",
-        "displayOrder": 5,
+        "displayOrder": 10,
         "dashboardConfig": {
           "title": null,
           "maximumNoOfVisits": 8,
@@ -145,7 +145,7 @@
         "translationKey": "DASHBOARD_TITLE_HISTORY_AND_EXAMINATIONS_KEY",
         "type": "vitals",
         "isObservation": true,
-        "displayOrder": 12,
+        "displayOrder": 5,
         "dashboardConfig": {
           "showDetailsButton": true,
           "conceptNames": [
@@ -175,7 +175,7 @@
       },
       "patientAppointments": {
         "type": "custom",
-        "displayOrder": 9,
+        "displayOrder": 12,
         "config": {
           "title": "DASHBOARD_TITLE_APPOINTMENTS_KEY",
           "template": "<patient-appointments-dashboard section='config' patient='patient'></patient-appointments-dashboard>"
@@ -185,7 +185,7 @@
         "translationKey": "DASHBOARD_TITLE_NUTRITIONAL_VALUES_KEY",
         "type": "observation",
         "isObservation": true,
-        "displayOrder": 6,
+        "displayOrder": 3,
         "dashboardConfig": {
           "conceptNames": [
             "Height (cm)",
@@ -201,7 +201,7 @@
       },
       "forms-2.0": {
         "type": "formsV2",
-        "displayOrder": 7,
+        "displayOrder": 11,
         "dashboardConfig": {
           "title": null,
           "maximumNoOfVisits": 10
@@ -255,7 +255,7 @@
           ],
           "pivotTable": {}
         },
-        "displayOrder": 13,
+        "displayOrder": 6,
         "title": "Patient Document"
       }
     }
