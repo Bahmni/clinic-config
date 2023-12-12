@@ -171,7 +171,7 @@
           "showDetailsButton": true,
           "pivotTable": {}
         },
-        "hideEmptyDisplayControl": false
+        "hideEmptyDisplayControl": true
       },
       "patientAppointments": {
         "type": "custom",
@@ -197,7 +197,7 @@
           "numberOfVisits": 3,
           "displayNameType": "FSN"
         },
-        "hideEmptyDisplayControl": false
+        "hideEmptyDisplayControl": true
       },
       "forms-2.0": {
         "type": "formsV2",
