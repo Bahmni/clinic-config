@@ -24,6 +24,18 @@
             "personAttributes": [
                 "phoneNumber"
             ]
+        },
+        "obsGroupDisplayFormat": {
+            "Chief Complaint Data": {
+                "displayObsFormat": {
+                    "translationKey": "CHIEF_COMPLAINT_MESSAGE_KEY",
+                    "concepts": ["Chief Complaint Coded", "Chief complaint (text)", "Sign/symptom duration", "Chief Complaint Duration"]}
+            },
+            "Chief Complaint Record": {
+                "displayObsFormat": {
+                    "translationKey": "CHIEF_COMPLAINT_MESSAGE_KEY",
+                    "concepts": ["Chief Complaint Coded", "Chief complaint (text)", "Sign/symptom duration", "Chief Complaint Duration"]}
+            }
         }
     }
 }
