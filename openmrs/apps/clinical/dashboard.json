@@ -125,10 +125,20 @@
           "showNormalLabResults": true,
           "showCommentsExpanded": true,
           "showAccessionNotes": true,
-          "showDetailsButton": false
+          "showDetailsButton": false,
+          "chartConfig": {
+            "sortResultColumnsLatestFirst":true,
+            "groupByPanel":true
+          }
         },
         "expandedViewConfig": {
-          "numberOfVisits": 10
+          "numberOfVisits": 10,
+          "showChart":true,
+          "showTable":false,
+          "chartConfig": {
+            "sortResultColumnsLatestFirst":true,
+            "groupByPanel":true
+          }  
         }
       },
       "visits": {

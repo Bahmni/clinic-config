@@ -59,7 +59,11 @@
                     "showAccessionNotes": true,
                     "numberOfVisits": 10,
                     "showDetailsButton": false,
-                    "hideResultsColumn": false
+                    "hideResultsColumn": false,
+                    "chartConfig": {
+                        "sortResultColumnsLatestFirst":true,
+                        "groupByPanel":true
+                    } 
                 }
             },
             "prescriptions":{
@@ -155,7 +159,11 @@
                     "showAccessionNotes": true,
                     "numberOfVisits": 10,
                     "showDetailsButton": false,
-                    "hideResultsColumn": false
+                    "hideResultsColumn": false,
+                    "chartConfig": {
+                        "sortResultColumnsLatestFirst":true,
+                        "groupByPanel":true
+                    }
                 }
             },
             "radiologyOrderControl":  {
