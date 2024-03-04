@@ -42,7 +42,7 @@ jobs:
           tags: bahmni/clinic-config:${{env.ARTIFACT_VERSION}},bahmni/clinic-config:latest
       - name: Push Translations to Transifex
         run: |
-          bash .github/scripts/transifex.sh
+          bash .github/scripts/transifex.sh push
         env:
           TX_TOKEN: ${{ secrets.TX_TOKEN }}
       - name: Pull Bahmni Default Config Helm Chart
