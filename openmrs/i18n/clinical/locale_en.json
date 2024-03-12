@@ -1,5 +1,9 @@
 {
   "MODULE_LABEL_ACTIVE_KEY": "Active",
+  "MODULE_LABEL_PROGRAMS_KEY": "Programs",
+  "MODULE_LABEL_MY_PATIENTS_KEY": "My Patients",
+  "MODULE_LABEL_ACTIVE_PATIENTS_BY_LOCATION": "PatientsByLocation",
+  "MODULE_LABEL_OPD_1_KEY": "OPD-1",
   "MODULE_LABEL_ALL_KEY": "All",
 
   "DASHBOARD_TITLE_LAB_RESULTS_KEY": "Lab Results",
@@ -9,11 +13,10 @@
   "DASHBOARD_TITLE_VISITS_KEY": "Visits",
   "DASHBOARD_TITLE_PROGRAMS_KEY": "Programs",
   "DASHBOARD_TITLE_TREATMENTS_KEY": "Treatments",
-  "DASHBOARD_TITLE_PRESCRIPTIONS_KEY": "Prescriptions",
   "DASHBOARD_TITLE_DISPOSITION_KEY": "Disposition",
   "DASHBOARD_TITLE_DIAGNOSIS_KEY": "Diagnoses",
   "DASHBOARD_TITLE_ADMISSION_DETAILS_KEY": "Admission Details",
-  "DASHBOARD_TITLE_NUTRITIONAL_VALUES_KEY": "Height & Weight",
+  "DASHBOARD_TITLE_NUTRITIONAL_VALUES_KEY": "Nutritional Values",
   "DASHBOARD_TITLE_SECOND_VITALS_KEY": "Second Vitals",
   "DASHBOARD_TITLE_GYNAECOLOGY_KEY": "Gynaecology",
   "DASHBOARD_TITLE_HISTORY_AND_EXAMINATIONS_KEY": "History and Examinations",
@@ -31,7 +34,6 @@
   "DASHBOARD_TITLE_PULSE": "Pulse",
   "DASHBOARD_TITLE_FORMS2_DISPLAY_CONTROL_KEY":"Forms-2",
   "DASHBOARD_TITLE_FORMS2_OBS_TO_OBS_DISPLAY_CONTROL_KEY":"Forms-2 ObsToObs",
-  "DASHBOARD_TITLE_FOLLOWUP_KEY": "Follow up",
 
   "DASHBOARD_TAB_GENERAL_KEY": "General",
   "DASHBOARD_TAB_TRENDS_KEY": "Trends",
@@ -40,7 +42,7 @@
   "DASHBOARD_TAB_ORDERS_KEY": "Orders",
 
   "LAB_INVESTIGATIONS_KEY":"Lab Investigations",
-  "PACS_ORDERS_VISIT_PAGE_KEY": "Pacs Orders Visit Page",
+  "RADIOLOGY_ORDERS_KEY": "Radiology Orders",
 
   "DISCHARGE_SUMMARY_DIAGNOSIS_KEY" :"Diagnoses",
 
@@ -71,8 +73,7 @@
   "PATIENT_VISIT_PAGE_KEY":"Patient Visit Page",
   "HOME_DASHBOARD_KEY":"Home Dashboard",
   "MEDICATION_CHANGE_DURATION_BUTTON": "Change Duration",
-  "DASHBOARD_TITLE_CONSULTATION_NOTES_KEY": "Consultation Notes",
-
+  "DASHBOARD_TITLE_Consultation_KEY": "Consultation Notes",
   "DASHBOARD_TITLE_APPOINTMENTS_KEY": "Appointments",
   "DASHBOARD_APPOINTMENTS_SLOT_KEY": "Slot",
   "DASHBOARD_APPOINTMENTS_SERVICE_KEY": "Service",
@@ -87,35 +88,12 @@
   "DASHBOARD_NO_UPCOMING_APPOINTMENTS_KEY": "No upcoming appointments",
   "DASHBOARD_TELECON_KEY": "Teleconsultation",
   "DASHBOARD_JOIN_TELECON_KEY": "Join teleconsultation",
-  "phoneNumber": "Phone No",
-
-  "DASHBOARD_TAB_PRINT": "Print",
-  "UNDER_TREATMENT_CERTIFICATE": "Under Treatment Certificate",
-  "FITNESS_CERTIFICATE": "Fitness Certificate",
-  "NAVIGATE_TO_UNDER_TREATMENT_CERTIFICATE_FORM" : "Consultation > Observation forms > Under Treatment and Fitness Certificate.",
-  "PRINT_BUTTON": "Print",
-  "DATE_LABEL": "Date:",
-  "PATIENT_REGISTRATION_NO_LABEL": "Patient Registration No:",
-  "CERTIFICATE_SUBJECT_1": "WHOM IT MAY CONCERN",
-  "UNDER_TREATMENT_CERTIFICATE_BODY_CONTENT": "This is to inform that <b> {{patient.givenName}} {{patient.middleName}} {{patient.familyName}} </b> Age: {{patient.age || '0'}} years, is undergoing treatment for {{treatment}}. They have been advised to take bed rest for {{restDuration}}.",
-  "FITNESS_CERTIFICATE_BODY_CONTENT": "This is to inform that <b> {{patient.givenName}} {{patient.middleName}} {{patient.familyName}} </b> Age: {{patient.age || '0'}} years, was undergoing treatment for {{treatment}}. {{patient.givenName}} {{patient.middleName}} {{patient.familyName}} is now fit to resume daily activities.",
-  "REGARDS_LABEL": "Regards,",
-  "REG_NO_LABEL": "Reg.No.",
-  "ADMISSION_LETTER": "Admission Letter",
-  "ADMISSION_CERTIFICATE_BODY_CONTENT": "<div class='mt-2'>To,</div> <span>{{referredToHospital}}</span><p class='text-justify'>Kindly admit<b> {{patient.givenName}} {{patient.middleName}}{{patient.familyName}}</b> Age: {{patient.age || '0'}} years, under  {{ReferredtoDoctor}}<p class='mt-2'>Comments:<span> {{comments}}</span></p>",
-  "THANKYOU_LABEL": "Thank you!",
-  "NAVIGATE_TO_ADMISSION_LETTER_FORM": "Consultation > Observation forms > Admission Letter.",
-  "NAVIGATE_TO_REFERRAL_LETTER_FORM": "Consultation > Observation forms > Referral Letter.",
-  "REFERRAL_LETTER": "Referral Letter",
-  "REFERRAL_LETTER_REFERRAL_TO":"Referral to:",
-  "REFERRAL_LETTER_NAME_OF_PATIENT": "Name of patient:",
-  "REFERRAL_LETTER_AGE": "Age:" ,
-  "REFERRAL_LETTER_YEARS": "years",
-  "REFERRAL_ADDRESS_LABEL": "Address of patient: ",
-  "REFERRAL_TEL_NO_LABEL": " Tel.No: ",
-  "REFERRAL_LETTER_REASON_FOR_REFERRAL": "Reason for referral: ",
-  "REFERRAL_LETTER_RELEVANT_CLINICAL_HISTORY":"Relevant Clinical History: ",
-  "REFERRAL_LETTER_TREATMENT":"Treatment/Observations: ",
-  "REFERRAL_SIGNATURE": "Signature: "
-
+  "DASHBOARD_TITLE_FORMS2_DISPLAY_EDIT_FORMS2_FORMS": "Display and Edit Forms (2.0)",
+  "PROGRAM_HIV_PROGRAM": "HIV Program",
+  "PROGRAM_TB_PROGRAM": "TB Program",
+  "PROGRAM_ID_NUMBER": "ID Number",
+  "PROGRAM_TREATMENT_DATE": "Treatment Date",
+  "PROGRAM_COMORBIDITES": "Co-morbidites",
+  "PROGRAM_DOCTORINCHARGE": "Doctor In-Charge",
+  "PROGRAM_PATIENT_STAGE": "Patient Stage"
 }
