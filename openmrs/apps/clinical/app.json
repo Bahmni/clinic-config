@@ -11,8 +11,8 @@
         "allowAdhocTeleConsultation": true,
         "defaultVisitType":"OPD",
         "teleConsultationDomain": "meet.jit.si",
-        "ignoredTabularViewHeadings": ["display", "uuid", "image", "activeVisitUuid", "hasBeenAdmitted", "programUuid", "enrollment"],
-        "identifierHeadings": ["ID", "identifier", "DQ_COLUMN_TITLE_ACTION"],
+        "ignoredTabularViewHeadings": ["extraIdentifierVal","uuid","activeVisitUuid","hasBeenAdmitted","display","image","$$hashKey","birthDate","extraIdentifiers","personId","deathDate","addressFieldValue","dateCreated","customAttribute","patientProgramAttributeValue"],
+        "identifierHeadings": ["identifier"],
         "conceptSetUI": {
             "Chief Complaint Data": {
                 "autocomplete":true,
