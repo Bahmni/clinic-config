@@ -26,6 +26,7 @@
     "recurringAppointmentBookingMessage": "RECURRING_APPOINTMENT_BOOKING_MESSAGE",
     "teleconsultationAppointmentBookingMessage": "TELECONSULTATION_APPOINTMENT_BOOKING_MESSAGE",
     "enableAppointmentStatusOption": true,
+    "enableDetailedSummaryView": true,
     "colorsForAppointmentService": [
       "#006400",
       "#DC143C",
