@@ -13,7 +13,7 @@
   "VIEWED_VISIT_PRINT_MESSAGE": "El usuario {{userId}} ha accedido al Impreso de Visita del paciente {{patientId}}.",
   "VIEWED_PATIENTPROGRAM_MESSAGE": "El usuario {{userId}} ha accedido al tablero de programas del paciente {{patientId}}.",
   "VIEWED_DASHBOARD_OBSERVATION_MESSAGE": "El usuario {{userId}} ha accedido al Editar Formulario en el Tablero del paciente {{patientId}}.",
-  "VIEWED_DIAGNOSIS_TAB_MESSAGE": "User {{userId}} accessed the diagnoses tab of patient {{patientId}}.",
+  "VIEWED_DIAGNOSIS_TAB_MESSAGE": "El usuario {{userId}} accedió a la pestaña de diagnósticos del paciente {{patientId}}.",
   "RUN_REPORT_MESSAGE": "El reporte {{params.reportName}} fue ejecutado por el usuario {{userId}}.",
   "EVENT_ID": "ID del Evento",
   "CREATED_AT": "Creado En",
@@ -49,5 +49,12 @@
   "MODULE_LABEL_ADMIN_KEY": "Administrador",
   "MODULE_LABEL_REPORTS_KEY": "Reportes",
   "MODULE_LABEL_LOGOUT_KEY": "Cerrar sesión",
-  "MODULE_LABEL_LOGIN_KEY": "Iniciar sesión"
+  "MODULE_LABEL_LOGIN_KEY": "Iniciar sesión",
+  "VIEWED_WARD_LEVEL_DASHBOARD_MESSAGE": "User {{userId}} accessed the ward level dashboard.",
+  "CREATE_SCHEDULED_MEDICATION_TASK_MESSAGE": "Usuario {{userId}} ha añadido una tarea de medicación para el paciente {{patientId}}.",
+  "EDIT_SCHEDULED_MEDICATION_TASK_MESSAGE": "Usario {{userId}} ha editado una tarea de medicación para el paciente {{patientId}}.",
+  "ADMINISTER_MEDICATION_TASK_MESSAGE": "Usuario {{userId}} ha administrado una tarea de medicación para el paciente {{patientId}}.",
+  "STOP_SCHEDULED_MEDICATION_TASK_MESSAGE": "Usuario {{userId}} ha parado una tarea de medicación para el paciente {{patientId}}.",
+  "SKIP_SCHEDULED_MEDICATION_TASK_MESSAGE": "Usuario {{userId}} ha saltado una tarea de medicación para el paciente {{patientId}}.",
+  "CREATE_EMERGENCY_MEDICATION_TASK_MESSAGE": "Usuario {{userId}} ha añadido una tarea de emergencia de medicación para el paciente {{patientId}}."
 }
