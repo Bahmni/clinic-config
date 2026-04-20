@@ -1,0 +1,22 @@
+{
+  "patientInformation": {},
+  "actions": [],
+  "dashboards": [
+    {
+      "name": "General Dashboard",
+      "requiredPrivileges": [""],
+      "icon": "fa fa-dashboard",
+      "default": true,
+      "url": "general.json"
+    }
+  ],
+  "consultationPad": {
+    "allergyConceptMap": {
+      "medicationAllergenUuid": "162552AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "foodAllergenUuid": "162553AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "environmentalAllergenUuid": "162554AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "allergyReactionUuid": "162555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "statDurationInMilliseconds": 7200000
+  }
+}

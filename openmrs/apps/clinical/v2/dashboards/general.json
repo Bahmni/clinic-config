@@ -1,0 +1,231 @@
+{
+  "sections": [
+    {
+      "name": "Basic Details",
+      "translationKey": "DASHBOARD_TITLE_BASIC_DETAILS_KEY",
+      "icon": "fa-user",
+      "controls": [
+        {
+          "type": "observations",
+          "config": {
+            "titleTranslationKey": "DASHBOARD_TITLE_OBSERVATIONS_KEY",
+            "conceptNames": [
+              "Pulse",
+              "Height (cm)",
+              "Weight (kg)",
+              "Image",
+              "Patient Video",
+              "Consultation Images",
+              "Consultation Videos"
+            ],
+            "conceptUuid": [
+              "1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "9bb0795c-4ff0-0305-1990-000000000005",
+              "9bb0795c-4ff0-0305-1990-000000000007"
+            ]
+          }
+        },
+        {
+          "type": "observations",
+          "config": {
+            "titleTranslationKey": "DASHBOARD_TITLE_HISTORY_AND_EXAMINATIONS_KEY",
+            "conceptNames": [
+              "Chief Complaint Record",
+              "History of present illness"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Allergies",
+      "translationKey": "DASHBOARD_TITLE_ALLERGIES_KEY",
+      "icon": "fa-hand-dots",
+      "controls": [
+        {
+          "type": "allergies"
+        }
+      ]
+    },
+    {
+      "name": "Documents",
+      "translationKey": "DOCUMENTS_TABLE_HEADING",
+      "icon": "fa-file-alt",
+      "controls": [
+        {
+          "type": "patientDocuments",
+          "requiredPrivileges": [
+            "Get DocumentReference"
+          ],
+          "config": {
+            "fields": [
+              "documentIdentifier",
+              "documentType",
+              "uploadedOn",
+              "uploadedBy",
+              "action"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Programs",
+      "translationKey": "DASHBOARD_TITLE_PROGRAMS_KEY",
+      "icon": "fa-clipboard-list",
+      "controls": [
+        {
+          "type": "programs",
+          "requiredPrivileges": [
+            "Get Patient Programs"
+          ],
+          "config": {
+            "fields": [
+              "programName",
+              "ID_Number",
+              "startDate",
+              "endDate",
+              "outcome",
+              "state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Forms",
+      "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY",
+      "icon": "fa-clipboard-list",
+      "controls": [
+        {
+          "type": "forms",
+          "requiredPrivileges": [
+            "Get Forms"
+          ],
+          "config": {
+            "numberOfVisits": 10,
+            "showEditForActiveEncounter": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "Conditions",
+      "translationKey": "DASHBOARD_TITLE_CONDITIONS_KEY",
+      "icon": "fa-stethoscope",
+      "controls": [
+        {
+          "type": "conditions",
+          "requiredPrivileges": [
+            "Get Conditions"
+          ]
+        },
+        {
+          "type": "diagnoses",
+          "requiredPrivileges": [
+            "Get Diagnoses"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vaccinations",
+      "translationKey": "DASHBOARD_TITLE_VACCINATION_KEY",
+      "icon": "fa-syringe",
+      "controls": [
+        {
+          "type": "treatment",
+          "config": {
+            "code": [
+              "http://hl7.org/fhir/sid/cvx|"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Medications",
+      "translationKey": "DASHBOARD_TITLE_MEDICATIONS_KEY",
+      "icon": "fa-pills",
+      "controls": [
+        {
+          "type": "treatment",
+          "requiredPrivileges": [
+            "Get Orders"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appointments",
+      "translationKey": "APPOINTMENTS_DISPLAY_CONTROL_HEADING",
+      "icon": "fa-calendar",
+      "controls": [
+        {
+          "type": "appointments",
+          "config": {
+            "numberOfPastAppointments": 5,
+            "fields": [
+              "appointmentNumber",
+              "service",
+              "reason",
+              "appointmentDate",
+              "appointmentSlot",
+              "status",
+              "provider"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Radiology Investigations",
+      "translationKey": "DASHBOARD_TITLE_RADIOLOGY_INVESTIGATIONS_KEY",
+      "icon": "fa-x-ray",
+      "controls": [
+        {
+          "type": "pacsOrders",
+          "config": {
+            "orderType": "Radiology order",
+            "numberOfVisits": 5
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lab Investigations",
+      "translationKey": "DASHBOARD_TITLE_LAB_INVESTIGATIONS_KEY",
+      "icon": "fa-flask",
+      "controls": [
+        {
+          "type": "labOrders",
+          "config": {
+            "orderType": "Lab order",
+            "numberOfVisits": 5
+          }
+        }
+      ]
+    },
+    {
+      "name": "Flowsheet",
+      "translationKey": "DASHBOARD_TITLE_VITALS_FLOWSHEET_KEY",
+      "icon": "fa-table",
+      "controls": [
+        {
+          "type": "flowSheet",
+          "config": {
+            "latestCount": 5,
+            "groupBy": "obstime",
+            "obsConcepts": [
+              "Temperature",
+              "Pulse",
+              "Respiratory rate",
+              "Blood Pressure",
+              "Body Position"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
