@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
-                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <property name="now" value="now()" dbms="mysql,mariadb,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="uuid_function" value="uuid_generate_v4()" dbms="postgresql"/>
+    <property name="uuid_function" value="uuid()" dbms="mysql,mariadb,h2"/>
 
     <!-- This changeset is temporary and to be deleted in production when setting up clinics (onboarding users) -->
 	<changeSet id="bah-1570-20220427-1" author="Deepthi,Soorya">
@@ -327,6 +334,28 @@
             select user_id  into @id from users where username = 'reports-user';
             INSERT IGNORE INTO user_role VALUES (@id, 'Reports-App');
         </sql>
+    </changeSet>
+
+    <changeSet id="insert-fhir-concept-source-hl7-cvx-202601191000" author="Clinic-Config" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="fhir_concept_source"/>
+            <tableExists tableName="concept_reference_source"/>
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*) FROM concept_reference_source WHERE name = 'HL-7-CVX'
+            </sqlCheck>
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) FROM fhir_concept_source WHERE url = 'http://hl7.org/fhir/sid/cvx'
+            </sqlCheck>
+        </preConditions>
+        <comment>Add FHIR concept source mapping for HL-7-CVX</comment>
+        <insert tableName="fhir_concept_source">
+            <column name="concept_source_id" valueComputed="(SELECT concept_source_id FROM concept_reference_source WHERE name = 'HL-7-CVX')"/>
+            <column name="url" value="http://hl7.org/fhir/sid/cvx"/>
+            <column name="name" value="HL-7-CVX"/>
+            <column name="creator" value="1"/>
+            <column name="date_created" valueDate="${now}"/>
+            <column name="uuid" valueComputed="${uuid_function}"/>
+        </insert>
     </changeSet>
 
     <changeSet id="BAH-2934-20230412-bahmni-atomfeed-offset-marker" author="bahmni">
