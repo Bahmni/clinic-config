@@ -358,6 +358,9 @@
         </insert>
     </changeSet>
 
+    <include file="override_ciel_immunization_valueset.xml" relativeToChangelogFile="true"/>
+    <include file="override_ciel_vaccination_site_valueset.xml" relativeToChangelogFile="true"/>
+
     <changeSet id="BAH-2934-20230412-bahmni-atomfeed-offset-marker" author="bahmni">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">

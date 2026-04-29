@@ -48,6 +48,20 @@
       ]
     },
     {
+      "name": "Immunization",
+      "translationKey": "DASHBOARD_TITLE_IMMUNISATION_KEY",
+      "icon": "fa-syringe",
+      "controls": [
+        {
+          "type": "immunizationHistory",
+          "config": {
+            "encounterType": "Immunization",
+            "startEncounterPrivilege": "app:clinical:addImmunizations"
+          }
+        }
+      ]
+    },
+    {
       "name": "Documents",
       "translationKey": "DOCUMENTS_TABLE_HEADING",
       "icon": "fa-file-alt",
