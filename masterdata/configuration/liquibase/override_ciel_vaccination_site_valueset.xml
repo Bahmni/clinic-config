@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="setup_vaccination_site_is_set_270420261730" author="angshu, pratiti">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">SELECT COUNT(*) FROM concept WHERE uuid = '280cbf8c-aff5-4753-a281-61e14d2c622a'</sqlCheck>
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM concept WHERE uuid = '280cbf8c-aff5-4753-a281-61e14d2c622a' AND is_set = 1</sqlCheck>
+        </preConditions>
+        <comment>mark vaccination body site concept as a set (280cbf8c-aff5-4753-a281-61e14d2c622a)</comment>
+        <sql>
+            UPDATE concept SET is_set = 1 WHERE uuid = '280cbf8c-aff5-4753-a281-61e14d2c622a';
+        </sql>
+    </changeSet>
+
+    <changeSet id="setup_vaccination_site_set_members_270420261730" author="angshu, pratiti">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">SELECT COUNT(*) FROM concept WHERE uuid = '280cbf8c-aff5-4753-a281-61e14d2c622a'</sqlCheck>
+        </preConditions>
+        <comment>add answers as set members for vaccination body site (280cbf8c-aff5-4753-a281-61e14d2c622a)</comment>
+        <sql>
+            SET @vaccination_site_id = 0;
+            SELECT concept_id into @vaccination_site_id from concept where uuid = '280cbf8c-aff5-4753-a281-61e14d2c622a';
+
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+                SELECT @vaccination_site_id, ca.answer_concept, ca.sort_weight, 1, NOW(), UUID()
+                FROM concept_answer ca
+                WHERE ca.concept_id = @vaccination_site_id
+                AND NOT EXISTS (
+                    SELECT 1
+                    FROM concept_set
+                    WHERE concept_set = @vaccination_site_id
+                    AND concept_id = ca.answer_concept
+                );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

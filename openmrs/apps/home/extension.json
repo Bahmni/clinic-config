@@ -92,5 +92,15 @@
     "icon": "icon-bahmni-admin",
     "order": 7,
     "requiredPrivilege": "app:admin"
+  },
+     "registrationNew": {
+      "id": "bahmni.registration.new",
+      "extensionPointId": "org.bahmni.home.dashboard",
+      "type": "link",
+      "translationKey": "MODULE_LABEL_REGISTRATION_NEW_KEY",
+      "url": "/bahmni-new/registration/search",
+      "icon": "fa-user-plus",
+      "order": 4,
+      "requiredPrivilege": "app:registration"
   }
 }
