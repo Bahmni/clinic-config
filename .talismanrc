@@ -4,5 +4,7 @@ fileignoreconfig:
 - filename: openmrs/apps/registration/v2/app.json
   checksum: afca1ec653dc202e64cceab0e896826bac8414e5f42139360e783e803044e8b5
 - filename: openmrs/i18n/clinical/locale_en.json
-  checksum: f093f1164155e4e4621d461bdd366977d73fbe4523fbfeb7d034b163b603e119
+  checksum: 0e5b6f8ef3045f4ef10cd0853aa8d93ce4c27efe978243372bf1d4084a750c01
+- filename: openmrs/i18n/clinical/locale_es.json
+  checksum: 092ce02ce4febf781d3a9d0d630fc487c1b18f08fa3428894dd30c05bf6c7cd3
 version: ""
