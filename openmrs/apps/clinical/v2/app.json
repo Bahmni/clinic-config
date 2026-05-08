@@ -4,9 +4,7 @@
   "dashboards": [
     {
       "name": "General Dashboard",
-      "requiredPrivileges": [
-        ""
-      ],
+      "requiredPrivileges": [""],
       "icon": "fa fa-dashboard",
       "default": true,
       "url": "general.json"
@@ -26,78 +24,50 @@
         "metadata": {
           "defaultEncounterType": "Consultation"
         },
-        "encounterTypes": [
-          "Consultation"
-        ],
-        "privileges": [
-          "Add Encounters"
-        ],
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Encounters"],
         "attributes": []
       },
       {
         "type": "allergies",
         "metadata": {},
-        "encounterTypes": [
-          "Consultation"
-        ],
-        "privileges": [
-          "Add Allergies"
-        ],
-        "attributes": []
-      },
-      {
-        "type": "investigations",
-        "metadata": {},
-        "encounterTypes": [
-          "Consultation"
-        ],
-        "privileges": [
-          "Add Orders"
-        ],
-        "attributes": []
-      },
-      {
-        "type": "medications",
-        "metadata": {},
-        "encounterTypes": [
-          "Consultation"
-        ],
-        "privileges": [
-          "Add Orders"
-        ],
-        "attributes": []
-      },
-      {
-        "type": "observationForms",
-        "metadata": {},
-        "encounterTypes": [
-          "Consultation"
-        ],
-        "privileges": [
-          "Add Observations"
-        ],
-        "attributes": []
-      },
-      {
-        "type": "vaccinations",
-        "metadata": {},
-        "encounterTypes": [
-          "Consultation"
-        ],
-        "privileges": [
-          "Add Orders"
-        ],
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Allergies"],
         "attributes": []
       },
       {
         "type": "conditionsAndDiagnoses",
         "metadata": {},
-        "encounterTypes": [
-          "Consultation"
-        ],
-        "privileges": [
-          "Add Diagnoses"
-        ],
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Diagnoses"],
+        "attributes": []
+      },
+      {
+        "type": "investigations",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Orders"],
+        "attributes": []
+      },
+      {
+        "type": "medications",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Orders"],
+        "attributes": []
+      },
+      {
+        "type": "observationForms",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Observations"],
+        "attributes": []
+      },
+      {
+        "type": "vaccinations",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Orders"],
         "attributes": []
       },
       {
@@ -108,42 +78,17 @@
           "vaccineConceptSetUuid": "984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
           "siteConceptUuid": "280cbf8c-aff5-4753-a281-61e14d2c622a"
         },
-        "encounterTypes": [
-          "Immunization"
-        ],
-        "privileges": [
-          "Get Immunizations",
-          "Add Immunizations"
-        ],
+        "encounterTypes": ["Immunization"],
+        "privileges": ["Get Immunizations", "Add Immunizations"],
         "attributes": [
-          {
-            "name": "administeredOn",
-            "required": true
-          },
-          {
-            "name": "administeredLocation",
-            "required": false
-          },
-          {
-            "name": "route",
-            "required": false
-          },
-          {
-            "name": "site",
-            "required": false
-          },
-          {
-            "name": "expiryDate",
-            "required": false
-          },
-          {
-            "name": "manufacturer",
-            "required": false
-          },
-          {
-            "name": "batchNumber",
-            "required": false
-          }
+          { "name": "drug", "required": true },
+          { "name": "administeredOn", "required": true },
+          { "name": "administeredLocation", "required": false },
+          { "name": "route", "required": false },
+          { "name": "site", "required": false },
+          { "name": "expiryDate", "required": false },
+          { "name": "manufacturer", "required": false },
+          { "name": "batchNumber", "required": false }
         ]
       }
     ]
