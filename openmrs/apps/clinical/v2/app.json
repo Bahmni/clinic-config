@@ -4,9 +4,7 @@
   "dashboards": [
     {
       "name": "General Dashboard",
-      "requiredPrivileges": [
-        ""
-      ],
+      "requiredPrivileges": [""],
       "icon": "fa fa-dashboard",
       "default": true,
       "url": "general.json"
@@ -20,122 +18,79 @@
       "allergyReactionUuid": "162555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
     "statDurationInMilliseconds": 7200000,
-    "encounterDetails": {
-      "metadata": {
-        "defaultEncounterType": "Consultation"
+    "inputControls": [
+      {
+        "type": "encounterDetails",
+        "metadata": {
+          "defaultEncounterType": "Consultation"
+        },
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Encounters"],
+        "attributes": []
       },
-      "encounterTypes": [
-        "Consultation"
-      ],
-      "privileges": [
-        "Add Encounters"
-      ],
-      "attributes": []
-    },
-    "allergies": {
-      "metadata": {},
-      "encounterTypes": [
-        "Consultation"
-      ],
-      "privileges": [
-        "Add Allergies"
-      ],
-      "attributes": []
-    },
-    "investigations": {
-      "metadata": {},
-      "encounterTypes": [
-        "Consultation"
-      ],
-      "privileges": [
-        "Add Orders"
-      ],
-      "attributes": []
-    },
-    "medications": {
-      "metadata": {},
-      "encounterTypes": [
-        "Consultation"
-      ],
-      "privileges": [
-        "Add Orders"
-      ],
-      "attributes": []
-    },
-    "observationForms": {
-      "metadata": {},
-      "encounterTypes": [
-        "Consultation"
-      ],
-      "privileges": [
-        "Add Observations"
-      ],
-      "attributes": []
-    },
-    "vaccinations": {
-      "metadata": {},
-      "encounterTypes": [
-        "Consultation"
-      ],
-      "privileges": [
-        "Add Orders"
-      ],
-      "attributes": []
-    },
-    "conditionsAndDiagnoses": {
-      "metadata": {},
-      "encounterTypes": [
-        "Consultation"
-      ],
-      "privileges": [
-        "Add Diagnoses"
-      ],
-      "attributes": []
-    },
-    "immunizationHistory": {
-      "metadata": {
-        "administeredLocationTag": "Immunization Location",
-        "routeConceptUuid": "162394AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "vaccineConceptSetUuid": "984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "siteConceptUuid": "280cbf8c-aff5-4753-a281-61e14d2c622a"
+      {
+        "type": "allergies",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Allergies"],
+        "attributes": []
       },
-      "encounterTypes": [
-        "Immunization"
-      ],
-      "privileges": [
-        "Get Immunizations",
-        "Add Immunizations"
-      ],
-      "attributes": [
-        {
-          "name": "administeredOn",
-          "required": true
+      {
+        "type": "conditionsAndDiagnoses",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Diagnoses"],
+        "attributes": []
+      },
+      {
+        "type": "investigations",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Orders"],
+        "attributes": []
+      },
+      {
+        "type": "medications",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Orders"],
+        "attributes": []
+      },
+      {
+        "type": "observationForms",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Observations"],
+        "attributes": []
+      },
+      {
+        "type": "vaccinations",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Orders"],
+        "attributes": []
+      },
+      {
+        "type": "immunizationHistory",
+        "metadata": {
+          "administeredLocationTag": "Immunization Location",
+          "routeConceptUuid": "162394AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "vaccineConceptSetUuid": "984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "siteConceptUuid": "280cbf8c-aff5-4753-a281-61e14d2c622a"
         },
-        {
-          "name": "administeredLocation",
-          "required": false
-        },
-        {
-          "name": "route",
-          "required": false
-        },
-        {
-          "name": "site",
-          "required": false
-        },
-        {
-          "name": "expiryDate",
-          "required": false
-        },
-        {
-          "name": "manufacturer",
-          "required": false
-        },
-        {
-          "name": "batchNumber",
-          "required": false
-        }
-      ]
-    }
+        "encounterTypes": ["Immunization"],
+        "privileges": ["Get Immunizations", "Add Immunizations"],
+        "attributes": [
+          { "name": "drug", "required": true },
+          { "name": "administeredOn", "required": true },
+          { "name": "administeredLocation", "required": false },
+          { "name": "route", "required": false },
+          { "name": "site", "required": false },
+          { "name": "expiryDate", "required": false },
+          { "name": "manufacturer", "required": false },
+          { "name": "batchNumber", "required": false }
+        ]
+      }
+    ]
   }
 }
