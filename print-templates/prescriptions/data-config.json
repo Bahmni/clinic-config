@@ -1,0 +1,21 @@
+{
+  "sources": {
+    "patient": {
+      "api": "fhir",
+      "resource": "Patient",
+      "params": {
+        "_id": "{{patientUuid}}"
+      }
+    },
+    "medicationRequests": {
+      "api": "fhir",
+      "resource": "MedicationRequest",
+      "params": {
+        "patient": "{{patientUuid}}",
+        "_include": ["MedicationRequest:encounter", "MedicationRequest:medication"],
+        "_sort": "-_lastUpdated",
+        "_count": "100"
+      }
+    }
+  }
+}

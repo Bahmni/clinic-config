@@ -1,0 +1,20 @@
+{
+  "DATE":              "Date",
+  "REGISTRATION_CARD": "REGISTRATION CARD",
+  "NOTICE":            "Notice",
+  "CAUTION":           "Caution",
+  "DATED":             "Dated",
+  "REGISTRATION":      "Registration",
+  "NAME":              "Name",
+  "AGE":               "Age",
+  "YEAR_S":            "Year(s)",
+  "GENDER":            "Gender",
+  "ADDRESS":           "Address",
+  "VILLAGE":           "Village",
+  "TEHSIL":            "Tehsil",
+  "REGISTRATION_INSTITUTION_NAME":       "Bahmni Hospital",
+  "BAHMNI":             "Bahmni",
+  "REGISTRATION_INSTITUTION_REGISTERED": "(Registered)",
+  "REGISTRATION_INSTITUTION_ADDRESS":    "Ganiyari, District - Bilaspur",
+  "NO_MEDICATIONS_PRESCRIBED": "No medications prescribed for this visit"
+}

@@ -1,0 +1,103 @@
+{% extends "_base/portrait.html" %}
+
+{% block title %}OPD{% endblock %}
+
+{# ── Header: centered logo + clinic name + address + "Prescriptions" title ── #}
+{% block header %}
+<div class="print-header">
+  <h1 class="print-title-with-logo">
+   <div>
+    <img src="/bahmni_config/openmrs/apps/home/logo.png" height="30" width="100" alt="logo" />
+  </div>
+    {{ 'REGISTRATION_INSTITUTION_NAME' | t }}
+  </h1>
+  <div class="clinic-info">
+    <span>Prescriptions</span>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{# ── Patient info ── #}
+<div class="patient-info">
+  <table>
+    <tbody>
+      <tr>
+        <td>Name: <span class="value">{{ computed.patientName | default('') }}</span></td>
+        <td>Age: <span class="value">
+          {% if computed.age %}{{ computed.age }}{% endif %}
+          {% if computed.gender %} ({{ computed.gender | capitalize }}){% endif %}
+        </span></td>
+        <td>Registration No: <span class="value">{{ computed.patientId | default('') }}</span></td>
+      </tr>
+      <tr>
+        <td>Village / Town: <span class="value">{{ computed.village | default('') }}</span></td>
+        <td>P.O: <span class="value">{{ computed.postalAddress | default('') }}</span></td>
+        <td>District: <span class="value">{{ computed.district | default('') }}</span></td>
+      </tr>
+      <tr>
+        <td colspan="3">Visit Date: <span class="value">{{ computed.visitDate | default('') }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{# ── Treatment section ── #}
+{% if computed.medications and computed.medications.length > 0 %}
+<section class="treatment-section">
+  <h2 class="section-title">TREATMENT</h2>
+
+  {% for medication in computed.medications %}
+  <h2 class="encounter-info">Consultation with {{ medication.doctorName | default('') }}</h2>
+
+  {#
+    Bare <tr> header with no <thead> — browser wraps it in an implicit <tbody>,
+    making it the 1st/odd tbody which picks up the #EDEDED alternating background.
+    Each drug then gets its own <tbody> so odd/even alternation works correctly.
+  #}
+  <table class="prescription-table">
+    <tr>
+      <th class="col-sl">S. No.</th>
+      <th class="col-drug">Drug Name</th>
+      <th class="col-dose">Dosage Instructions</th>
+      <th class="col-date">Start Date</th>
+    </tr>
+    {% for drug in medication.drugOrders %}
+    <tbody>
+      <tr>
+        <td>{{ loop.index }}.</td>
+        <td class="drug-name {{ 'strike-text' if drug.stopped }}">{{ drug.drugName | default('') }}</td>
+        <td class="dosage-form">
+          <span class="{{ 'strike-text' if drug.stopped }}">
+            {% if drug.dosageInstructions %}{{ drug.dosageInstructions }}{% else %}-{% endif %}
+          </span>
+          {% if drug.stopped and drug.stoppedDate %}
+            <span class="fr">stopped {{ drug.stoppedDate }}</span>
+          {% endif %}
+        </td>
+        <td>{{ drug.startDate | default('') }}</td>
+      </tr>
+      {% if drug.treatmentNotes %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td colspan="2" class="inline-notes notes">
+          <p class="left"><strong>Treatment Notes: </strong>{{ drug.treatmentNotes }}</p>
+        </td>
+      </tr>
+      {% endif %}
+    </tbody>
+    {% endfor %}
+  </table>
+  {% endfor %}
+
+</section>
+{% else %}
+<div class="no-data">No medications prescribed for this visit.</div>
+{% endif %}
+
+{% endblock %}
+
+{# ── No footer ── #}
+{% block footer %}{% endblock %}

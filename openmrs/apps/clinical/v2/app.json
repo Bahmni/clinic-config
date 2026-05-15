@@ -143,5 +143,11 @@
         ]
       }
     ]
-  }
+  },
+  "printOptions": [
+    {
+      "translationKey": "CLINICAL_PRINT_MEDICATION_PRESCRIPTION_KEY",
+      "templateId": "PRESCRIPTION_V1"
+    }
+  ]
 }

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Document{% endblock %}</title>
+  <style>
+    /* ---------------------------------------------------------------
+       Base reset and typography
+    --------------------------------------------------------------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+      color: #111;
+      background: #fff;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 15mm;
+    }
+
+    /* ---------------------------------------------------------------
+       Document header (facility name, title, date)
+    --------------------------------------------------------------- */
+    .doc-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 2px solid #000;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .doc-header .facility { flex: 1; }
+    .doc-header .facility h1 { font-size: 14pt; font-weight: bold; }
+    .doc-header .facility h2 { font-size: 12pt; font-weight: normal; margin-top: 2px; }
+    .doc-header .logo { max-height: 60px; max-width: 120px; object-fit: contain; }
+    .doc-header .doc-date { font-size: 9pt; color: #444; white-space: nowrap; }
+
+    /* ---------------------------------------------------------------
+       Patient info grid
+    --------------------------------------------------------------- */
+    .patient-info {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin-bottom: 16px;
+    }
+    .info-grid {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .info-grid td {
+      padding: 3px 8px;
+      font-size: 10pt;
+      vertical-align: top;
+    }
+    .info-grid td.label {
+      font-weight: bold;
+      color: #555;
+      width: 20%;
+      white-space: nowrap;
+    }
+    .info-grid td.value {
+      width: 30%;
+    }
+
+    /* ---------------------------------------------------------------
+       Medications / data table
+    --------------------------------------------------------------- */
+    .section-title {
+      font-size: 11pt;
+      font-weight: bold;
+      margin: 16px 0 6px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+    }
+    .provider-label {
+      font-size: 10pt;
+      font-style: italic;
+      color: #444;
+      margin: 10px 0 4px;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+    }
+    .data-table th {
+      background: #f0f0f0;
+      font-size: 9pt;
+      font-weight: bold;
+      text-align: left;
+      padding: 5px 8px;
+      border: 1px solid #ccc;
+    }
+    .data-table td {
+      font-size: 9.5pt;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      vertical-align: top;
+    }
+    .data-table tr:nth-child(even) td { background: #fafafa; }
+
+    /* ---------------------------------------------------------------
+       No data message
+    --------------------------------------------------------------- */
+    .no-data {
+      font-style: italic;
+      color: #666;
+      padding: 12px;
+      text-align: center;
+      border: 1px dashed #ccc;
+      border-radius: 4px;
+    }
+
+    /* ---------------------------------------------------------------
+       Document footer
+    --------------------------------------------------------------- */
+    .doc-footer {
+      margin-top: 24px;
+      border-top: 1px solid #ccc;
+      padding-top: 12px;
+      font-size: 9pt;
+      color: #555;
+    }
+    .signature-line {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 200px;
+      float: right;
+    }
+    .signature-line .line {
+      width: 100%;
+      border-bottom: 1px solid #000;
+      margin-bottom: 4px;
+    }
+    .signature-line .sig-label {
+      font-size: 8pt;
+      color: #444;
+    }
+
+    /* ---------------------------------------------------------------
+       Print media — hide everything except the page content
+    --------------------------------------------------------------- */
+    @media print {
+      body { background: white; }
+      .page { width: 100%; padding: 0; margin: 0; min-height: 0; }
+      @page { size: A4 portrait; margin: 15mm; }
+    }
+
+    /* ---------------------------------------------------------------
+       Custom CSS block — child templates can add their own styles
+    --------------------------------------------------------------- */
+    {% block styles %}{% endblock %}
+  </style>
+</head>
+<body>
+  <div class="page">
+    {#
+      Generic header block — rendered automatically for every template that
+      extends this base. A child template overrides {% block header %} when it
+      needs a completely different layout; otherwise it gets this for free just
+      by setting config.facilityName / config.header in templates.json.
+    #}
+    {% block header %}
+      {% if config.facilityName or config.header %}
+      <div class="doc-header">
+        <div class="facility">
+          <h1>{{ config.facilityName | default('') }}</h1>
+          {% if config.header %}
+            <h2>{{ config.header | t }}</h2>
+          {% endif %}
+        </div>
+        <div class="doc-date">{{ 'DATE' | t }}: {{ now | dateFormat }}</div>
+      </div>
+      {% endif %}
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {#
+      Generic footer block — renders config.footer text when present.
+      Override this block to add template-specific elements like signature lines.
+    #}
+    {% block footer %}
+      {% if config.footer %}
+      <div class="doc-footer">
+        <p>{{ config.footer }}</p>
+      </div>
+      {% endif %}
+    {% endblock %}
+  </div>
+</body>
+</html>
