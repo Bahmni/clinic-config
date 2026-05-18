@@ -5,6 +5,6 @@
   "primary-active": "#004144",
   "link-hover": "#005d5d",
   "link-visited": "#8A3FFC",
-  "link-visited-on-dark": "#BE95FF",
-  "layer-01": "#f4f4f4"
+  "link-visited-inverse": "#BE95FF",
+  "background-secondary": "#f4f4f4"
 }
