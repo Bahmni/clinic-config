@@ -16,5 +16,11 @@
   "BAHMNI":             "Bahmni",
   "REGISTRATION_INSTITUTION_REGISTERED": "(Registered)",
   "REGISTRATION_INSTITUTION_ADDRESS":    "Ganiyari, District - Bilaspur",
-  "NO_MEDICATIONS_PRESCRIBED": "No medications prescribed for this visit"
+  "NO_MEDICATIONS_PRESCRIBED": "No medications prescribed for this visit",
+  "NOTICE_BRING_CARD":           "It is quite important to bring the card to the hospital.",
+  "NOTICE_TAKE_MEDICINES":       "Take medicines according to instructions of the doctor.",
+  "NOTICE_REGISTRATION_TIMINGS": "Registration Timings are from 8:30 am to 12:00 pm.",
+  "NOTICE_OPD_DAYS":             "OPD days are on Monday, Wednesday, Friday.",
+  "NOTICE_SUNDAY_HOLIDAY":       "Sundays are holidays.",
+  "CAUTION_SMOKING":             "Smoking, Tobacco chewing can cause cancer, heart diseases and ASTHMA."
 }

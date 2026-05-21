@@ -59,6 +59,5 @@
   "REGISTRATION_ALTERNATE_PHONE_NUMBER_VALIDATION": "Alternate phone number should have 6 to 15 digits",
 
   "PATIENT_DASHBOARD_REDIRECT": "Patient Dashboard",
-  "PRINT_REGISTRATION_CARD": "Print Registration Card",
-  "CLINICAL_PRINT_MEDICATION_PRESCRIPTION_KEY": "Print Medication Prescription"
+  "PRINT_REGISTRATION_CARD": "Print Registration Card"
 }

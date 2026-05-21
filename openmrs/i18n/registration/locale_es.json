@@ -22,6 +22,5 @@
   "FEE_INFORMATION_LOCALE_KEY": "Fee Information",
   "NUTRITIONAL_VALUES_LOCALE_KEY": "Nutritional Values",
   "REGISTRATION_PRINT_WITH_BARCODE": "Bar<u>c</u>ode Print",
-  "PRINT_REGISTRATION_CARD": "Imprimir Tarjeta de Registro",
-  "CLINICAL_PRINT_MEDICATION_PRESCRIPTION_KEY": "Imprimir receta médica"
+  "PRINT_REGISTRATION_CARD": "Imprimir Tarjeta de Registro"
 }
