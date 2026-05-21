@@ -43,7 +43,16 @@
       "icon": "fa-hand-dots",
       "controls": [
         {
-          "type": "allergies"
+          "type": "allergies",
+          "config": {
+            "actions": [
+              {
+                "label": "Edit",
+                "type": "edit",
+                "requiredPrivilege": ["Edit Allergies"]
+              }
+            ]
+          }
         }
       ]
     },
@@ -132,7 +141,16 @@
           "type": "conditions",
           "requiredPrivileges": [
             "Get Conditions"
-          ]
+          ],
+          "config": {
+            "actions": [
+              {
+                "label": "Actions",
+                "type": "actions",
+                "requiredPrivilege": ["Edit Conditions"]
+              }
+            ]
+          }
         },
         {
           "type": "diagnoses",
