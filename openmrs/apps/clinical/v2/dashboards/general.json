@@ -48,60 +48,82 @@
       ]
     },
     {
-      "name": "Immunization",
-      "translationKey": "DASHBOARD_TITLE_IMMUNISATION_KEY",
-      "icon": "fa-syringe",
+      "name": "Conditions",
+      "translationKey": "DASHBOARD_TITLE_CONDITIONS_KEY",
+      "icon": "fa-stethoscope",
       "controls": [
         {
-          "type": "immunizationHistory",
-          "config": {
-            "encounterType": "Immunization",
-            "startEncounterPrivilege": "app:clinical:addImmunizations"
-          }
+          "type": "conditions",
+          "requiredPrivileges": [
+            "Get Conditions"
+          ]
+        },
+        {
+          "type": "diagnoses",
+          "requiredPrivileges": [
+            "Get Diagnoses"
+          ]
         }
       ]
     },
     {
-      "name": "Documents",
-      "translationKey": "DOCUMENTS_TABLE_HEADING",
-      "icon": "fa-file-alt",
+      "name": "Medications",
+      "translationKey": "DASHBOARD_TITLE_MEDICATIONS_KEY",
+      "icon": "fa-pills",
       "controls": [
         {
-          "type": "patientDocuments",
+          "type": "treatment",
           "requiredPrivileges": [
-            "Get DocumentReference"
-          ],
+            "Get Orders"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Flowsheet",
+      "translationKey": "DASHBOARD_TITLE_VITALS_FLOWSHEET_KEY",
+      "icon": "fa-table",
+      "controls": [
+        {
+          "type": "flowSheet",
           "config": {
-            "fields": [
-              "documentIdentifier",
-              "documentType",
-              "uploadedOn",
-              "uploadedBy",
-              "action"
+            "latestCount": 5,
+            "groupBy": "obstime",
+            "obsConcepts": [
+              "Temperature",
+              "Pulse",
+              "Respiratory rate",
+              "Blood Pressure",
+              "Body Position"
             ]
           }
         }
       ]
     },
     {
-      "name": "Programs",
-      "translationKey": "DASHBOARD_TITLE_PROGRAMS_KEY",
-      "icon": "fa-clipboard-list",
+      "name": "Lab Investigations",
+      "translationKey": "DASHBOARD_TITLE_LAB_INVESTIGATIONS_KEY",
+      "icon": "fa-flask",
       "controls": [
         {
-          "type": "programs",
-          "requiredPrivileges": [
-            "Get Patient Programs"
-          ],
+          "type": "labOrders",
           "config": {
-            "fields": [
-              "programName",
-              "ID_Number",
-              "startDate",
-              "endDate",
-              "outcome",
-              "state"
-            ]
+            "orderType": "Lab order",
+            "numberOfVisits": 5
+          }
+        }
+      ]
+    },
+    {
+      "name": "Radiology Investigations",
+      "translationKey": "DASHBOARD_TITLE_RADIOLOGY_INVESTIGATIONS_KEY",
+      "icon": "fa-x-ray",
+      "controls": [
+        {
+          "type": "pacsOrders",
+          "config": {
+            "orderType": "Radiology order",
+            "numberOfVisits": 5
           }
         }
       ]
@@ -124,21 +146,16 @@
       ]
     },
     {
-      "name": "Conditions",
-      "translationKey": "DASHBOARD_TITLE_CONDITIONS_KEY",
-      "icon": "fa-stethoscope",
+      "name": "Immunization History",
+      "translationKey": "DASHBOARD_TITLE_IMMUNISATION_KEY",
+      "icon": "fa-syringe",
       "controls": [
         {
-          "type": "conditions",
-          "requiredPrivileges": [
-            "Get Conditions"
-          ]
-        },
-        {
-          "type": "diagnoses",
-          "requiredPrivileges": [
-            "Get Diagnoses"
-          ]
+          "type": "immunizationHistory",
+          "config": {
+            "encounterType": "Immunization",
+            "startEncounterPrivilege": "app:clinical:addImmunizations"
+          }
         }
       ]
     },
@@ -154,19 +171,6 @@
               "http://hl7.org/fhir/sid/cvx|"
             ]
           }
-        }
-      ]
-    },
-    {
-      "name": "Medications",
-      "translationKey": "DASHBOARD_TITLE_MEDICATIONS_KEY",
-      "icon": "fa-pills",
-      "controls": [
-        {
-          "type": "treatment",
-          "requiredPrivileges": [
-            "Get Orders"
-          ]
         }
       ]
     },
@@ -193,49 +197,22 @@
       ]
     },
     {
-      "name": "Radiology Investigations",
-      "translationKey": "DASHBOARD_TITLE_RADIOLOGY_INVESTIGATIONS_KEY",
-      "icon": "fa-x-ray",
+      "name": "Patient Documents",
+      "translationKey": "DOCUMENTS_TABLE_HEADING",
+      "icon": "fa-file-alt",
       "controls": [
         {
-          "type": "pacsOrders",
+          "type": "patientDocuments",
+          "requiredPrivileges": [
+            "Get DocumentReference"
+          ],
           "config": {
-            "orderType": "Radiology order",
-            "numberOfVisits": 5
-          }
-        }
-      ]
-    },
-    {
-      "name": "Lab Investigations",
-      "translationKey": "DASHBOARD_TITLE_LAB_INVESTIGATIONS_KEY",
-      "icon": "fa-flask",
-      "controls": [
-        {
-          "type": "labOrders",
-          "config": {
-            "orderType": "Lab order",
-            "numberOfVisits": 5
-          }
-        }
-      ]
-    },
-    {
-      "name": "Flowsheet",
-      "translationKey": "DASHBOARD_TITLE_VITALS_FLOWSHEET_KEY",
-      "icon": "fa-table",
-      "controls": [
-        {
-          "type": "flowSheet",
-          "config": {
-            "latestCount": 5,
-            "groupBy": "obstime",
-            "obsConcepts": [
-              "Temperature",
-              "Pulse",
-              "Respiratory rate",
-              "Blood Pressure",
-              "Body Position"
+            "fields": [
+              "documentIdentifier",
+              "documentType",
+              "uploadedOn",
+              "uploadedBy",
+              "action"
             ]
           }
         }
