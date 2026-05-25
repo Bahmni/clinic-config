@@ -87,5 +87,8 @@
   "PROGRAM_TREATMENT_DATE": "Treatment Date",
   "PROGRAM_COMORBIDITES": "Co-morbidites",
   "PROGRAM_DOCTORINCHARGE": "Doctor In-Charge",
-  "PROGRAM_PATIENT_STAGE": "Patient Stage"
+  "PROGRAM_PATIENT_STAGE": "Patient Stage",
+  "IMMUNIZATION_HISTORY_INPUT_CONTROL_LABEL": "Immunization History",
+  "MEDICATIONS_INPUT_CONTROL_LABEL": "Medications",
+  "VACCINATION_INPUT_CONTROL_LABEL": "Vaccinations"
 }

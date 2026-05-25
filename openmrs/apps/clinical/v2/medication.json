@@ -1,6 +1,4 @@
 {
-    "defaultDurationUnit": "d",
-    "defaultInstructions": "As directed",
     "drugFormDefaults": {
         "Ayurvedic": {
             "doseUnits": "Teaspoon",
