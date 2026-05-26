@@ -41,8 +41,24 @@ from
    JOIN person on patient_conditions.patient_id = person.person_id
    WHERE patient_conditions.clinical_status = 'ACTIVE'
    AND cast(patient_conditions.date_created AS DATE) BETWEEN '#startDate#' AND '#endDate#' 
-   AND patient_conditions.voided = FALSE AND person.voided = FALSE group by patient_conditions.condition_coded
-   )) as diagnosisObs
+   AND patient_conditions.voided = FALSE AND person.voided = FALSE group by patient_conditions.condition_coded)
+
+   UNION
+
+   (SELECT
+   ed.diagnosis_coded                       AS value_coded,
+   SUM(IF(person.gender = 'F', 1, 0))       AS female,
+   SUM(IF(person.gender = 'M', 1, 0))       AS male,
+   SUM(IF(person.gender = 'O', 1, 0))       AS other,
+   SUM(IF(person.gender = 'U', 1, 0))       AS undisclosed,
+   enc.encounter_datetime                   AS obs_datetime
+   FROM encounter_diagnosis ed
+   JOIN encounter enc ON enc.encounter_id = ed.encounter_id AND enc.voided = FALSE
+   JOIN person ON person.person_id = enc.patient_id AND person.voided = FALSE
+   WHERE ed.certainty IN ('CONFIRMED', 'PROVISIONAL')
+   AND cast(enc.encounter_datetime AS DATE) BETWEEN '#startDate#' AND '#endDate#'
+   AND ed.voided = FALSE GROUP BY ed.diagnosis_coded)
+   ) as diagnosisObs
 
 JOIN concept_name cn on cn.concept_id = diagnosisObs.value_coded
 AND cn.concept_name_type = 'FULLY_SPECIFIED' AND cn.locale = 'en' AND cn.voided = FALSE group by cn.name;
