@@ -47,17 +47,7 @@ FROM patient pt
                            patient_conditions.date_created AS obs_datetime
                     FROM conditions patient_conditions
                     WHERE patient_conditions.clinical_status = 'ACTIVE'
-                          AND cast(patient_conditions.date_created AS DATE) BETWEEN '#startDate#' AND '#endDate#'
-                          AND voided = FALSE
-               UNION
-                    SELECT ed.diagnosis_coded AS value_coded,
-                           e.patient_id AS person_id,
-                           ed.date_created AS obs_datetime
-                    FROM encounter_diagnosis ed
-                    JOIN encounter e ON e.encounter_id = ed.encounter_id AND e.voided = FALSE
-                    WHERE ed.voided = FALSE
-                          AND ed.certainty IN ('CONFIRMED', 'PRESUMED')
-                          AND cast(ed.date_created AS DATE) BETWEEN '#startDate#' AND '#endDate#'
+                          AND cast(patient_conditions.date_created AS DATE) BETWEEN '#startDate#' AND '#endDate#'                                                                                                                                                                        AND voided = FALSE
                ) as diagnosisObs on diagnosisObs.person_id = p.person_id
          JOIN concept_name notifiableDisease on notifiableDisease.name = 'Notifiable Disease'
               AND notifiableDisease.concept_name_type = 'FULLY_SPECIFIED' AND notifiableDisease.voided = false
