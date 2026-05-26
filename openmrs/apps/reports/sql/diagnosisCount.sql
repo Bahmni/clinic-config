@@ -51,12 +51,12 @@ from
    SUM(IF(person.gender = 'M', 1, 0))       AS male,
    SUM(IF(person.gender = 'O', 1, 0))       AS other,
    SUM(IF(person.gender = 'U', 1, 0))       AS undisclosed,
-   ed.date_created                          AS obs_datetime
+   enc.encounter_datetime                   AS obs_datetime
    FROM encounter_diagnosis ed
    JOIN encounter enc ON enc.encounter_id = ed.encounter_id AND enc.voided = FALSE
    JOIN person ON person.person_id = enc.patient_id AND person.voided = FALSE
    WHERE ed.certainty IN ('CONFIRMED', 'PRESUMED')
-   AND cast(ed.date_created AS DATE) BETWEEN '#startDate#' AND '#endDate#'
+   AND cast(enc.encounter_datetime AS DATE) BETWEEN '#startDate#' AND '#endDate#'
    AND ed.voided = FALSE GROUP BY ed.diagnosis_coded)
    ) as diagnosisObs
 

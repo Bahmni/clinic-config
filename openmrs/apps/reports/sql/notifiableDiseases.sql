@@ -52,12 +52,12 @@ FROM patient pt
                UNION
                     SELECT ed.diagnosis_coded AS value_coded,
                            e.patient_id AS person_id,
-                           ed.date_created AS obs_datetime
+                           enc.encounter_datetime AS obs_datetime
                     FROM encounter_diagnosis ed
                     JOIN encounter e ON e.encounter_id = ed.encounter_id AND e.voided = FALSE
                     WHERE ed.voided = FALSE
                           AND ed.certainty IN ('CONFIRMED', 'PRESUMED')
-                          AND cast(ed.date_created AS DATE) BETWEEN '#startDate#' AND '#endDate#'
+                          AND cast(enc.encounter_datetime AS DATE) BETWEEN '#startDate#' AND '#endDate#'
                ) as diagnosisObs on diagnosisObs.person_id = p.person_id
          JOIN concept_name notifiableDisease on notifiableDisease.name = 'Notifiable Disease'
               AND notifiableDisease.concept_name_type = 'FULLY_SPECIFIED' AND notifiableDisease.voided = false
