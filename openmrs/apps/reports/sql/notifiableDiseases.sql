@@ -56,7 +56,7 @@ FROM patient pt
                     FROM encounter_diagnosis ed
                     JOIN encounter e ON e.encounter_id = ed.encounter_id AND e.voided = FALSE
                     WHERE ed.voided = FALSE
-                          AND ed.certainty IN ('CONFIRMED', 'PRESUMED')
+                          AND ed.certainty IN ('CONFIRMED', 'PROVISIONAL')
                           AND cast(enc.encounter_datetime AS DATE) BETWEEN '#startDate#' AND '#endDate#'
                ) as diagnosisObs on diagnosisObs.person_id = p.person_id
          JOIN concept_name notifiableDisease on notifiableDisease.name = 'Notifiable Disease'

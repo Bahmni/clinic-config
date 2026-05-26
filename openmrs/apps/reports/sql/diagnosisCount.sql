@@ -55,7 +55,7 @@ from
    FROM encounter_diagnosis ed
    JOIN encounter enc ON enc.encounter_id = ed.encounter_id AND enc.voided = FALSE
    JOIN person ON person.person_id = enc.patient_id AND person.voided = FALSE
-   WHERE ed.certainty IN ('CONFIRMED', 'PRESUMED')
+   WHERE ed.certainty IN ('CONFIRMED', 'PROVISIONAL')
    AND cast(enc.encounter_datetime AS DATE) BETWEEN '#startDate#' AND '#endDate#'
    AND ed.voided = FALSE GROUP BY ed.diagnosis_coded)
    ) as diagnosisObs
