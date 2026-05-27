@@ -50,11 +50,41 @@
         "attributes": []
       },
       {
-        "type": "medications",
+        "type": "medication",
+        "label": "MEDICATION_INPUT_CONTROL_LABEL",
         "metadata": {},
         "encounterTypes": ["Consultation"],
         "privileges": ["Add Orders"],
-        "attributes": []
+        "attributes": [
+          { "name": "stat", "required": false },
+          { "name": "prn", "required": false },
+          { "name": "dosage", "required": true },
+          { "name": "dosageUnit", "required": true },
+          { "name": "frequency", "required": true },
+          { "name": "route", "required": true },
+          { "name": "duration", "required": false },
+          { "name": "durationUnit", "required": false, "default": "d" },
+          { "name": "instruction", "required": false, "default": "As directed" },
+          { "name": "startDate", "required": true },
+          { "name": "note", "required": false }
+        ]
+      },
+      {
+        "type": "vaccination",
+        "label": "VACCINATION_INPUT_CONTROL_LABEL",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Orders"],
+        "attributes": [
+          { "name": "stat", "required": false, "default": true },
+          { "name": "dosage", "required": true, "default": "1" },
+          { "name": "dosageUnit", "required": true },
+          { "name": "route", "required": true },
+          { "name": "frequency", "required": false, "default": "Immediately" },
+          { "name": "instruction", "required": false },
+          { "name": "startDate", "required": true },
+          { "name": "note", "required": false }
+        ]
       },
       {
         "type": "observationForms",
@@ -64,14 +94,8 @@
         "attributes": []
       },
       {
-        "type": "vaccinations",
-        "metadata": {},
-        "encounterTypes": ["Consultation"],
-        "privileges": ["Add Orders"],
-        "attributes": []
-      },
-      {
         "type": "immunizationHistory",
+        "label": "IMMUNIZATION_HISTORY_INPUT_CONTROL_LABEL",
         "metadata": {
           "administeredLocationTag": "Immunization Location",
           "routeConceptUuid": "162394AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -79,16 +103,43 @@
           "siteConceptUuid": "280cbf8c-aff5-4753-a281-61e14d2c622a"
         },
         "encounterTypes": ["Immunization"],
-        "privileges": ["Get Immunizations", "Add Immunizations"],
+        "privileges": ["Add Immunizations"],
         "attributes": [
           { "name": "drug", "required": true },
+          { "name": "doseSequence", "required": false },
           { "name": "administeredOn", "required": true },
           { "name": "administeredLocation", "required": false },
           { "name": "route", "required": false },
           { "name": "site", "required": false },
           { "name": "expiryDate", "required": false },
           { "name": "manufacturer", "required": false },
-          { "name": "batchNumber", "required": false }
+          { "name": "batchNumber", "required": false },
+          { "name": "note", "required": false }
+        ]
+      },
+      {
+        "type": "immunizationAdministration",
+        "label": "IMMUNIZATION_ADMINISTRATION_INPUT_CONTROL_LABEL",
+        "metadata": {
+          "administeredLocationTag": "Immunization Location",
+          "routeConceptUuid": "162394AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "vaccineConceptSetUuid": "984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "siteConceptUuid": "280cbf8c-aff5-4753-a281-61e14d2c622a",
+          "disableAdditionalAdministrations": true
+        },
+        "encounterTypes": ["Immunization Administration"],
+        "privileges": ["Add Immunizations"],
+        "attributes": [
+          { "name": "drug", "required": true },
+          { "name": "doseSequence", "required": false },
+          { "name": "administeredOn", "required": true },
+          { "name": "administeredLocation", "required": true },
+          { "name": "route", "required": true },
+          { "name": "site", "required": true },
+          { "name": "expiryDate", "required": true },
+          { "name": "manufacturer", "required": false },
+          { "name": "batchNumber", "required": true },
+          { "name": "note", "required": false }
         ]
       }
     ]
