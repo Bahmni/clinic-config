@@ -103,7 +103,7 @@
           "siteConceptUuid": "280cbf8c-aff5-4753-a281-61e14d2c622a"
         },
         "encounterTypes": ["Immunization"],
-        "privileges": ["app:clinical:addImmunizations"],
+        "privileges": ["Add Immunizations"],
         "attributes": [
           { "name": "drug", "required": true },
           { "name": "doseSequence", "required": false },
@@ -128,7 +128,7 @@
           "disableAdditionalAdministrations": true
         },
         "encounterTypes": ["Immunization Administration"],
-        "privileges": ["app:clinical:addImmunizations"],
+        "privileges": ["Add Immunizations"],
         "attributes": [
           { "name": "drug", "required": true },
           { "name": "doseSequence", "required": false },
