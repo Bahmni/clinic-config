@@ -87,5 +87,6 @@
   "PROGRAM_TREATMENT_DATE": "Treatment Date",
   "PROGRAM_COMORBIDITES": "Co-morbidites",
   "PROGRAM_DOCTORINCHARGE": "Doctor In-Charge",
-  "PROGRAM_PATIENT_STAGE": "Patient Stage"
+  "PROGRAM_PATIENT_STAGE": "Patient Stage",
+  "MODULE_LABEL_ALL_LEGACY_KEY": "Todo (heredado)"
 }

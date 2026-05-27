@@ -32,7 +32,7 @@
     "extensionParams": {
       "searchHandler": "emrapi.sqlSearch.activePatients",
       "translationKey": "MODULE_LABEL_ACTIVE_NEW_KEY",
-      "forwardUrl": "/bahmni-new/clinical/{{patientUuid}}"
+      "forwardUrl": "/bahmni/v1/clinical/{{patientUuid}}"
     },
     "label": "New - Active",
     "order": 1,

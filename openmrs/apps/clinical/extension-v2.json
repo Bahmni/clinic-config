@@ -6,11 +6,24 @@
     "extensionParams": {
       "searchHandler": "emrapi.sqlSearch.activePatients",
       "translationKey": "MODULE_LABEL_ACTIVE_KEY",
-      "forwardUrl": "/bahmni-new/clinical/{{patientUuid}}"
+      "forwardUrl": "/bahmni/clinical/{{patientUuid}}"
     },
     "label": "New - Active",
     "order": 1,
     "requiredPrivilege": "app:clinical"
+  },
+  "bahmniClinicalPatientsSearchAllActivePatients": {
+    "id": "bahmni.clinical.patients.search.allActivePatients",
+    "extensionPointId": "org.bahmni.patient.search",
+    "type": "config",
+    "extensionParams": {
+      "searchHandler": "emrapi.sqlSearch.activePatients",
+      "translationKey": "MODULE_LABEL_ACTIVE_LEGACY_KEY",
+      "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+    },
+    "label": "Active",
+    "order": 1,
+    "requiredPrivilege": "app:clinical:legacyPatientTabs"
   },
   "bahmniNewClinicalPatientsSearchAllPatients": {
     "id": "bahmni.clinical.patients.search.newallPatients",
@@ -18,11 +31,23 @@
     "type": "config",
     "extensionParams": {
       "translationKey": "MODULE_LABEL_ALL_KEY",
-      "forwardUrl": "/bahmni-new/clinical/{{patientUuid}}"
+      "forwardUrl": "/bahmni/clinical/{{patientUuid}}"
     },
     "label": "All",
     "order": 5,
     "requiredPrivilege": "app:clinical"
+  },
+  "bahmniClinicalLegacyPatientsSearchAllPatients": {
+    "id": "bahmni.clinical.patients.search.allPatients",
+    "extensionPointId": "org.bahmni.patient.search",
+    "type": "config",
+    "extensionParams": {
+      "translationKey": "MODULE_LABEL_ALL_LEGACY_KEY",
+      "forwardUrl": "#/default/patient/{{patientUuid}}/dashboard"
+    },
+    "label": "All",
+    "order": 5,
+    "requiredPrivilege": "app:clinical:legacyPatientTabs"
   },
   "observations": {
     "id": "bahmni.clinical.consultation.observations",
