@@ -73,9 +73,7 @@
       "controls": [
         {
           "type": "treatment",
-          "requiredPrivileges": [
-            "Get Orders"
-          ]
+          "requiredPrivileges": ["Get Orders"]
         }
       ]
     },
@@ -167,8 +165,14 @@
         {
           "type": "treatment",
           "config": {
-            "code": [
-              "http://hl7.org/fhir/sid/cvx|"
+            "code": ["http://hl7.org/fhir/sid/cvx|"],
+            "actions": [
+              {
+                "label": "ADMINISTER_ACTION_LABEL",
+                "type": "administer",
+                "encounterType": "Immunization Administration",
+                "requiredPrivilege": ["Get Orders"]
+              }
             ]
           }
         }

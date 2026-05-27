@@ -51,7 +51,7 @@
       },
       {
         "type": "medication",
-        "label": "MEDICATIONS_INPUT_CONTROL_LABEL",
+        "label": "MEDICATION_INPUT_CONTROL_LABEL",
         "metadata": {},
         "encounterTypes": ["Consultation"],
         "privileges": ["Add Orders"],
@@ -76,11 +76,12 @@
         "encounterTypes": ["Consultation"],
         "privileges": ["Add Orders"],
         "attributes": [
-          { "name": "stat", "default": true },
+          { "name": "stat", "required": false, "default": true },
           { "name": "dosage", "required": true, "default": "1" },
-          { "name": "dosageUnit", "required": true, "default": "Dose" },
-          { "name": "frequency", "required": true },
+          { "name": "dosageUnit", "required": true },
           { "name": "route", "required": true },
+          { "name": "frequency", "required": false },
+          { "name": "instruction", "required": false },
           { "name": "startDate", "required": true },
           { "name": "note", "required": false }
         ]
