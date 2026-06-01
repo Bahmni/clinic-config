@@ -34,6 +34,16 @@
         "icon": "fa-download",
         "order": 1,
         "requiredPrivilege": "app:admin"
-    }
+    },
+    "appointmentServiceUnavailability": {
+        "id": "bahmni.online.appointment.unavailability",
+        "extensionPointId": "org.bahmni.home.dashboard",
+        "type": "link",
+        "label": "Appointment Unavailability",
+        "url":  "/bahmni-new/appointments/admin/unavailability",
+        "icon": "fa fa-calendar",
+        "order": 15,
+        "requiredPrivilege": "Get Appointment Unavailability"
+  }
     
 }
