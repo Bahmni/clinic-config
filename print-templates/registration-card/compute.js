@@ -8,7 +8,6 @@ module.exports = {
       patientId:             fhirPath(patientBundle, "Bundle.entry.first().resource.identifier.where(use = 'official').first().value") ?? '',
       patientName:           fhirPath(patientBundle, "Bundle.entry.first().resource.name.first().text") ?? '',
       birthDate:             fhirPath(patientBundle, "Bundle.entry.first().resource.birthDate") ?? '',
-      age:                   computeAge(fhirPath(patientBundle, "Bundle.entry.first().resource.birthDate")),
       gender:                fhirPath(patientBundle, "Bundle.entry.first().resource.gender") ?? '',
       phone:                 fhirPath(patientBundle, "Bundle.entry.first().resource.telecom.where(system = 'phone').first().value") ?? '',
       address:               fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().text") ?? '',
@@ -22,13 +21,3 @@ module.exports = {
   },
 };
 
-function computeAge(birthDate) {
-  if (!birthDate) return '';
-  const birth = new Date(birthDate);
-  const now   = new Date();
-  const days  = Math.floor((now - birth) / (1000 * 60 * 60 * 24));
-  if (days < 30)   return `${days} days`;
-  const months = Math.floor(days / 30.44);
-  if (months < 12) return `${months} months`;
-  return `${Math.floor(months / 12)} years`;
-}

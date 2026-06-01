@@ -26,7 +26,7 @@
       <tr>
         <td>Name: <span class="value">{{ computed.patientName | default('') }}</span></td>
         <td>Age: <span class="value">
-          {% if computed.age %}{{ computed.age }}{% endif %}
+          {% if computed.birthDate %}{{ computed.birthDate | age }}{% endif %}
           {% if computed.gender %} ({{ computed.gender | capitalize }}){% endif %}
         </span></td>
         <td>Registration No: <span class="value">{{ computed.patientId | default('') }}</span></td>
@@ -37,7 +37,7 @@
         <td>District: <span class="value">{{ computed.district | default('') }}</span></td>
       </tr>
       <tr>
-        <td colspan="3">Visit Date: <span class="value">{{ computed.visitDate | default('') }}</span></td>
+        <td colspan="3">Visit Date: <span class="value">{{ computed.visitDate | dateFormat }}</span></td>
       </tr>
     </tbody>
   </table>
@@ -73,10 +73,10 @@
             {% if drug.dosageInstructions %}{{ drug.dosageInstructions }}{% else %}-{% endif %}
           </span>
           {% if drug.stopped and drug.stoppedDate %}
-            <span class="fr">stopped {{ drug.stoppedDate }}</span>
+            <span class="fr">stopped {{ drug.stoppedDate | dateFormat }}</span>
           {% endif %}
         </td>
-        <td>{{ drug.startDate | default('') }}</td>
+        <td>{{ drug.startDate | dateFormat }}</td>
       </tr>
       {% if drug.treatmentNotes %}
       <tr>

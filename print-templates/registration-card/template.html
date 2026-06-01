@@ -114,7 +114,7 @@ h1, h2, h3 { text-align: center; }
         <tr>
           <td class="registrationCard-details-name"><span class="hindi-text">{{ 'AGE' | t }}</span></td>
           <td class="registrationCard-details-seperator"> : </td>
-          <td>{{ computed.age | default('') }}</td>
+          <td>{{ computed.birthDate | age }}</td>
         </tr>
         <tr>
           <td class="registrationCard-details-name"><span class="hindi-text">{{ 'GENDER' | t }}</span></td>

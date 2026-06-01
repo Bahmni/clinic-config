@@ -50,9 +50,9 @@ module.exports = {
         return {
           drugName:           dosageForm ? `${baseName} (${dosageForm})` : baseName,
           dosageInstructions: buildDosageInstructions(mr.dosageInstruction),
-          startDate:          formatDate(mr.authoredOn ?? ''),
+          startDate:          mr.authoredOn ?? '',
           stopped,
-          stoppedDate:        stopped ? formatDate(fhirPath(mr, 'meta.lastUpdated') ?? '') : '',
+          stoppedDate:        stopped ? fhirPath(mr, 'meta.lastUpdated') ?? '' : '',
           treatmentNotes:     parseAdditionalInstructions(mr.dosageInstruction?.[0]?.text),
         };
       }),
@@ -63,12 +63,12 @@ module.exports = {
     return {
       patientName,
       patientId,
-      age:          computeAge(birthDate),
+      birthDate,
       gender,
       village,
       postalAddress,
       district,
-      visitDate:    firstStart ? formatDate(firstStart) : '',
+      visitDate:    firstStart ?? '',
       medications,
     };
   },
@@ -79,17 +79,6 @@ module.exports = {
 function toArray(val) {
   if (val == null) return [];
   return Array.isArray(val) ? val : [val];
-}
-
-function computeAge(birthDate) {
-  if (!birthDate) return '';
-  const birth  = new Date(birthDate);
-  const now    = new Date();
-  const days   = Math.floor((now - birth) / (1000 * 60 * 60 * 24));
-  if (days < 30)   return `${days} days`;
-  const months = Math.floor(days / 30.44);
-  if (months < 12) return `${months} months`;
-  return `${Math.floor(months / 12)} years`;
 }
 
 function refId(reference) {
@@ -146,15 +135,3 @@ function durationLabel(code) {
   return map[code] ?? code ?? '';
 }
 
-function formatDate(value) {
-  if (!value) return '';
-  try {
-    const date = new Date(value);
-    if (isNaN(date.getTime())) return '';
-    const day   = String(date.getDate()).padStart(2, '0');
-    const month = date.toLocaleDateString('en', { month: 'long' });
-    return `${day} ${month} ${date.getFullYear()}`;
-  } catch {
-    return '';
-  }
-}
