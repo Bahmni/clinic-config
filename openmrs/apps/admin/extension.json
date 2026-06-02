@@ -40,7 +40,7 @@
         "extensionPointId": "org.bahmni.home.dashboard",
         "type": "link",
         "label": "Appointment Unavailability",
-        "url":  "/bahmni-new/appointments/admin/unavailability",
+        "url":  "/bahmni-v2/appointments/admin/unavailability",
         "icon": "fa fa-calendar",
         "order": 15,
         "requiredPrivilege": "Get Appointment Unavailability"

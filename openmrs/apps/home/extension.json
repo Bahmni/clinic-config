@@ -98,7 +98,7 @@
       "extensionPointId": "org.bahmni.home.dashboard",
       "type": "link",
       "translationKey": "MODULE_LABEL_REGISTRATION_NEW_KEY",
-      "url": "/bahmni-new/registration/search",
+      "url": "/bahmni-v2/registration/search",
       "icon": "fa-user-plus",
       "order": 4,
       "requiredPrivilege": "app:registration"

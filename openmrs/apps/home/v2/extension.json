@@ -89,5 +89,15 @@
     "icon": "fa-calendar-days",
     "order": 9,
     "requiredPrivilege": "app:appointments"
+  },
+  "registrationLegacy": {
+    "id": "bahmni.registration",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "translationKey": "MODULE_LABEL_REGISTRATION_LEGACY_KEY",
+    "url": "/bahmni/registration/index.html",
+    "icon": "fa-user",
+    "order": 1,
+    "requiredPrivilege": "app:legacy-registration"
   }
 }
