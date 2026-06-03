@@ -232,9 +232,9 @@
             "fields": [
               "documentIdentifier",
               "documentType",
+              "attachments",
               "uploadedOn",
-              "uploadedBy",
-              "action"
+              "uploadedBy"
             ]
           }
         }
