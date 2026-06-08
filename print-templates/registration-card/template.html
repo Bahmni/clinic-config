@@ -1,0 +1,146 @@
+{% extends "_base/landscape.html" %}
+
+{% block title %}{{ 'REGISTRATION_CARD' | t }}{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block styles %}
+@page { margin-left: 0.2cm; margin-right: 0.2cm; margin-top: 0.2cm; margin-bottom: 0.2cm; }
+
+p, h1, h2, h3, table, tr, td, div, span, li { margin: 0px; padding: 0px; }
+h1, h2, h3 { text-align: center; }
+.print-center { text-align: center; }
+
+.registrationCard-print-table {
+  width: 150mm;
+  height: 83mm;
+  overflow: scroll;
+  margin: 0 auto;
+  table-layout: fixed;
+}
+.registrationCard-print-table td.registrationCard-photo { padding-top: 2px; }
+
+.print-table-left { width: 77mm; }
+.print-table-header { text-align: center; margin-top: 10px; }
+.print-table-left-body { font-size: 4mm; margin-bottom: 0px; padding-bottom: 0px; margin-top: 15px; padding-left: 16px; }
+.print-table-left-body li { margin: 0px; padding: 0px 0px 5px 0px; line-height: 18px; }
+
+.caution { text-align: center; line-height: 20px; }
+.caution h3 { line-height: 25px; margin-bottom: 6px; margin-top: 12px; }
+
+.print-table-right { width: 77mm; }
+.print-table-right .logo { text-align: center; width: 12mm; padding: 0px; margin: 0px; height: 12mm; }
+.print-table-right-header { text-align: center; width: 42mm; text-align: left; height: 12mm; }
+.registrationCard-location { padding: 5px 8px 8px 8px; }
+
+.registrationCard-details { padding: 0mm 5mm 0mm 5mm; }
+.registrationCard-details-name { width: 70px; }
+.registrationCard-details-seperator { width: 20px; text-align: center; }
+.hindi-text { vertical-align: bottom; }
+{% endblock %}
+
+{% block content %}
+<table border="1" cellpadding="0" cellspacing="1" class="registrationCard-print-table">
+  <tbody>
+  <tr>
+
+    {# ── Left panel ── #}
+    <td class="print-table-left">
+      <table width="100%">
+        <tr>
+          <td>
+            <h3 class="print-table-header">{{ 'NOTICE' | t }}</h3>
+            <ul class="print-table-left-body">
+              <li>{{ 'NOTICE_BRING_CARD' | t }}</li>
+              <li>{{ 'NOTICE_TAKE_MEDICINES' | t }}</li>
+              <li>{{ 'NOTICE_REGISTRATION_TIMINGS' | t }}</li>
+              <li>{{ 'NOTICE_OPD_DAYS' | t }}</li>
+              <li>{{ 'NOTICE_SUNDAY_HOLIDAY' | t }}</li>
+            </ul>
+            <div class="caution">
+              <h3 class="print-table-header">{{ 'CAUTION' | t }}</h3>
+              <p>{{ 'CAUTION_SMOKING' | t }}</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+
+    {# ── Right panel ── #}
+    <td class="print-table-right" valign="top">
+
+      {# Header: logo | facility name | photo #}
+      <table>
+        <tr>
+          <td class="logo">
+            <p><img src="/bahmni_config/openmrs/apps/registration/registrationCardLayout/images/bahmni-icon.png" style="width: 12mm; height: 12mm;" /></p>
+          </td>
+          <td class="print-table-right-header">
+            <h3>{{ 'REGISTRATION_INSTITUTION_NAME' | t }}</h3>
+            <h3 class="print-center">{{ 'REGISTRATION_INSTITUTION_REGISTERED' | t }}</h3>
+          </td>
+          <td class="registrationCard-photo">
+            {% if computed.photoUrl %}
+              <img src="{{ computed.photoUrl }}" style="width: 20mm; height: 20mm;"
+                   onerror="this.onerror=null;this.src='../images/blank.jpeg';" />
+            {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" class="print-center registrationCard-location">
+            {{ 'REGISTRATION_INSTITUTION_ADDRESS' | t }}
+          </td>
+        </tr>
+      </table>
+
+      {# Patient details table #}
+      <table class="registrationCard-details">
+        <tbody>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'DATED' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td>{{ computed.registrationDate | dateFormat | default('') }}</td>
+        </tr>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'REGISTRATION' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td>{{ computed.patientId | default('') }}</td>
+        </tr>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'NAME' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td><span class="hindi-text">{{ computed.patientName | default('') }}</span></td>
+        </tr>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'AGE' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td>{{ computed.birthDate | age }}</td>
+        </tr>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'GENDER' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td>{{ computed.gender | upper | first | default('') }}</td>
+        </tr>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'ADDRESS' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td>{{ computed.address | default('') }}</td>
+        </tr>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'VILLAGE' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td>{{ computed.village | default('') }}</td>
+        </tr>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'TEHSIL' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td>{{ computed.tehsil | default('') }}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+{% endblock %}

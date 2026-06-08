@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Document{% endblock %}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #111; background: #fff; }
+
+    .page {
+      width: 297mm;
+      min-height: 105mm;  /* A6 landscape height */
+      margin: 0 auto;
+      padding: 10mm;
+    }
+
+    .card-header { font-size: 13pt; font-weight: bold; text-align: center; margin-bottom: 8px; }
+    .card-facility { font-size: 10pt; text-align: center; margin-bottom: 12px; color: #444; }
+
+    .info-grid { width: 100%; border-collapse: collapse; }
+    .info-grid td { padding: 3px 10px; font-size: 9.5pt; }
+    .info-grid td.label { font-weight: bold; color: #555; width: 35%; }
+    .info-grid td.value { width: 65%; }
+
+    .barcode-section { text-align: center; margin-top: 12px; }
+
+    @media print {
+      @page { size: A4 landscape; margin: 10mm; }
+      body { background: white; }
+    }
+
+    {% block styles %}{% endblock %}
+  </style>
+</head>
+<body>
+  <div class="page">
+    {#
+      Generic header block — renders facility name and document title centered,
+      matching the compact card layout. Override in child templates when needed.
+    #}
+    {% block header %}
+      {% if config.facilityName or config.header %}
+      <div class="card-header">{{ config.facilityName | default('') }}</div>
+      {% if config.header %}
+        <div class="card-facility">{{ config.header | t }}</div>
+      {% endif %}
+      {% endif %}
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {#
+      Generic footer block — renders config.footer text when present.
+      Override when template-specific footer content is needed.
+    #}
+    {% block footer %}
+      {% if config.footer %}
+      <div style="text-align:center; font-size:9pt; color:#555; margin-top:8px;">
+        {{ config.footer }}
+      </div>
+      {% endif %}
+    {% endblock %}
+  </div>
+</body>
+</html>
