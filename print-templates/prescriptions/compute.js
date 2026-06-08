@@ -1,6 +1,6 @@
 module.exports = {
   compute: async function ({ context, resolved, ValidationError, fhirPath,translate }) {
-    if (!context?.patientUuid) throw new ValidationError('patientUuid is required');
+    if (!context?.patientUUID) throw new ValidationError('patientUuid is required');
     if (!context?.visitUuid) throw new ValidationError('visitUuid is required');
 
     // Patient demographics
