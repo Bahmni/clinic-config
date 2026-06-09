@@ -4,14 +4,14 @@
       "api": "fhir",
       "resource": "Patient",
       "params": {
-        "_id": "{{patientUuid}}"
+        "_id": "{{patientUUID}}"
       }
     },
     "medicationRequests": {
       "api": "fhir",
       "resource": "MedicationRequest",
       "params": {
-        "patient": "{{patientUuid}}",
+        "patient": "{{patientUUID}}",
         "_include": ["MedicationRequest:encounter", "MedicationRequest:medication"],
         "_sort": "-_lastUpdated",
         "_count": "100"
