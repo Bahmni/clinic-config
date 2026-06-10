@@ -203,7 +203,7 @@
       "extensionPointId": "org.bahmni.registration.navigation",
       "type": "startVisit",
       "translationKey": "PATIENT_DASHBOARD_REDIRECT",
-      "url": "/bahmni-new/clinical/{{patientUuid}}",
+      "url": "/bahmni-v2/clinical/{{patientUuid}}",
       "order": 1,
       "requiredPrivilege": "View Patients"
     }

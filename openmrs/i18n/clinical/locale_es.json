@@ -94,5 +94,6 @@
   "MEDICATION_INPUT_CONTROL_LABEL": "Medicamentos",
   "VACCINATION_INPUT_CONTROL_LABEL": "Vacunas",
   "DOCUMENTS_ATTACHMENTS": "Adjuntos",
-  "CLINICAL_PRINT_MEDICATION_PRESCRIPTION_KEY": "Imprimir los últimos medicamentos"
+  "CLINICAL_PRINT_MEDICATION_PRESCRIPTION_KEY": "Imprimir los últimos medicamentos",
+  "MODULE_LABEL_ALL_LEGACY_KEY": "Todo (heredado)"
 }
