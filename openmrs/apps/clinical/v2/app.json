@@ -69,7 +69,7 @@
           { "name": "dosageUnit", "required": true },
           { "name": "frequency", "required": true },
           { "name": "route", "required": true },
-          { "name": "duration", "required": false },
+          { "name": "duration", "required": true },
           { "name": "durationUnit", "required": false, "default": "d" },
           { "name": "instruction", "required": false, "default": "As directed" },
           { "name": "startDate", "required": true },
