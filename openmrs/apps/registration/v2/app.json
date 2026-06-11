@@ -200,5 +200,5 @@
       "requiredPrivilege": "View Patients"
     }
   ],
-  "registrationEncounterTypeUuid": "b9cf04a1-f496-11ed-b02c-0242ac150003"
+  "registrationEncounterType": "REG"
 }
