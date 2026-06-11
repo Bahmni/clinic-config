@@ -107,7 +107,8 @@
       "attributes": [
         {
           "field": "phoneNumber",
-          "translationKey": "REGISTRATION_PHONE_NUMBER"
+          "translationKey": "REGISTRATION_PHONE_NUMBER",
+          "required": true
         },
         {
           "field": "alternatePhoneNumber",
