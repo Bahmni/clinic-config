@@ -172,20 +172,6 @@
       ]
     },
     {
-      "name": "Immunization History",
-      "translationKey": "DASHBOARD_TITLE_IMMUNISATION_KEY",
-      "icon": "fa-syringe",
-      "controls": [
-        {
-          "type": "immunizationHistory",
-          "config": {
-            "encounterType": "Immunization",
-            "startEncounterPrivilege": "app:clinical:addImmunizations"
-          }
-        }
-      ]
-    },
-    {
       "name": "Vaccinations",
       "translationKey": "DASHBOARD_TITLE_VACCINATION_KEY",
       "icon": "fa-syringe",
@@ -193,15 +179,7 @@
         {
           "type": "treatment",
           "config": {
-            "code": ["http://hl7.org/fhir/sid/cvx|"],
-            "actions": [
-              {
-                "label": "ADMINISTER_ACTION_LABEL",
-                "type": "administer",
-                "encounterType": "Immunization Administration",
-                "requiredPrivilege": ["Get Orders", "Add Immunizations"]
-              }
-            ]
+            "code": ["http://hl7.org/fhir/sid/cvx|"]
           }
         }
       ]

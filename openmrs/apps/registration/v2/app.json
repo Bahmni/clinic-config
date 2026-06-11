@@ -153,15 +153,6 @@
             "type": "additionalIdentifiers"
           }
         ]
-      },
-      {
-        "name": "Relationships",
-        "translationKey": "REGISTRATION_SECTION_RELATIONSHIPS",
-        "controls": [
-          {
-            "type": "relationships"
-          }
-        ]
       }
     ]
   },
