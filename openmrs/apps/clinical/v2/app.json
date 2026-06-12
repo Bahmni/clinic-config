@@ -94,6 +94,17 @@
         ]
       },
       {
+        "type": "stopMedications",
+        "metadata": {},
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Edit Orders"],
+        "attributes": [
+          { "name": "stopDate", "required": true },
+          { "name": "stopReason", "required": true },
+          { "name": "note", "required": false }
+        ]
+      },
+      {
         "type": "observationForms",
         "metadata": {},
         "encounterTypes": ["Consultation"],
