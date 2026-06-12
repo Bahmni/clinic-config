@@ -50,9 +50,9 @@ module.exports = {
         return {
           drugName:           dosageForm ? `${baseName} (${dosageForm})` : baseName,
           dosageInstructions: buildDosageInstructions(mr.dosageInstruction),
-          startDate:          mr.authoredOn ?? '',
+          startDate:          toLocalDate(mr.dosageInstruction?.[0]?.timing?.event?.[0] ?? mr.authoredOn, context.timeZone),
           stopped,
-          stoppedDate:        stopped ? fhirPath(mr, 'meta.lastUpdated') ?? '' : '',
+          stoppedDate:        stopped ? toLocalDate(fhirPath(mr, 'meta.lastUpdated'), context.timeZone) : '',
           treatmentNotes:     parseAdditionalInstructions(mr.dosageInstruction?.[0]?.text),
         };
       }),
@@ -68,7 +68,7 @@ module.exports = {
       village,
       postalAddress,
       district,
-      visitDate:    firstStart ?? '',
+      visitDate:    toLocalDate(firstStart, context.timeZone),
       medications,
     };
   },
@@ -133,5 +133,12 @@ function parseAdditionalInstructions(text) {
 function durationLabel(code) {
   const map = { s: 'Seconds', min: 'Minutes', h: 'Hours', d: 'Days', wk: 'Weeks', mo: 'Months', a: 'Years' };
   return map[code] ?? code ?? '';
+}
+
+function toLocalDate(value, timeZone) {
+  if (!value || !timeZone) return value ?? '';
+  const date = new Date(value);
+  if (isNaN(date.getTime())) return value;
+  return date.toLocaleString('sv-SE', { timeZone });
 }
 
