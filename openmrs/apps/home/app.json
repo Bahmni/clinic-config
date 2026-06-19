@@ -5,5 +5,8 @@
       "id": "org.bahmni.home.dashboard",
       "description": "Bahmni Home Page"
     }
-  ]
+  ],
+  "config": {
+    "homeUrl": "/bahmni-v2/home"
+  }
 }
