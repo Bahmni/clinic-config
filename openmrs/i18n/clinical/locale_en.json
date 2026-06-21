@@ -110,5 +110,7 @@
   "CLINICAL_PRINT_MEDICATION_PRESCRIPTION_KEY": "Print latest medications",
   "MODULE_LABEL_ACTIVE_LEGACY_KEY": "Active - Legacy",
   "MODULE_LABEL_ALL_LEGACY_KEY": "All - Legacy",
-  "STOP_ACTION_LABEL": "Stop"
+  "STOP_ACTION_LABEL": "Stop",
+  "MEDICATION_LABEL_RATE": "Rate (ml/hr)",
+  "MEDICATION_LABEL_ADDITIVES": "Additives"
 }
