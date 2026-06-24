@@ -53,7 +53,7 @@ module.exports = {
           startDate:          toLocalDate(mr.dosageInstruction?.[0]?.timing?.event?.[0] ?? mr.authoredOn, context.timeZone),
           stopped,
           stoppedDate:        stopped ? toLocalDate(fhirPath(mr, 'meta.lastUpdated'), context.timeZone) : '',
-          treatmentNotes:     parseAdditionalInstructions(mr.dosageInstruction?.[0]?.text),
+          treatmentNotes:     parseAdditionalInstructions(mr.dosageInstruction?.[0]?.text) || mr.note?.[0]?.text || '',
         };
       }),
     }));
