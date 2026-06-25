@@ -377,4 +377,80 @@
             1, now(), NULL, NULL, NULL, uuid());
         </sql>
     </changeSet>
+
+    <changeSet id="CIEL-202606-retire-specimen-id-concept" author="Bahmni">
+        <comment>Retire custom Specimen Id concept (concept 6) to allow CIEL concept 159968 import - Resolves DuplicateConceptNameException</comment>
+        <sql>
+            UPDATE concept c
+            JOIN (
+                SELECT c.concept_id
+                FROM concept c
+                JOIN concept_name cn ON c.concept_id = cn.concept_id
+                WHERE cn.name = 'Specimen Id'
+                AND cn.concept_name_type = 'FULLY_SPECIFIED'
+            ) t ON c.concept_id = t.concept_id
+            SET c.retired = TRUE
+            WHERE c.version IS NULL;
+        </sql>
+    </changeSet>
+
+    <changeSet id="CIEL-202606-retire-custom-dosing-units" author="Bahmni">
+        <comment>Retire custom dosing unit concepts (Tablet, Capsule, ml, mg, Drop, IU, Tablespoon, Teaspoon, Unit(s)) to allow CIEL concepts to populate Dosing Units set</comment>
+        <sql>
+            UPDATE concept c
+            JOIN (
+                SELECT c.concept_id
+                FROM concept c
+                JOIN concept_name cn ON c.concept_id = cn.concept_id
+                WHERE cn.name IN ('Tablet', 'Capsule', 'ml', 'mg', 'Drop', 'IU', 'Tablespoon', 'Teaspoon', 'Unit(s)')
+                AND cn.concept_name_type = 'FULLY_SPECIFIED'
+            ) t ON c.concept_id = t.concept_id
+            SET c.retired = TRUE
+            WHERE c.version IS NULL;
+        </sql>
+    </changeSet>
+
+    <changeSet id="bahmni-emrapi-202606-retire-disposition-ciel" author="Bahmni">
+        <preConditions onFail="CONTINUE">
+            <sqlCheck expectedResult="2">
+                select count(rmap.concept_id) from concept_reference_map rmap
+                join concept_reference_term rterm on rmap.concept_reference_term_id = rterm.concept_reference_term_id
+                and rterm.code='Disposition Concept Set'
+                join concept_reference_source rsource on rsource.concept_source_id = rterm.concept_source_id and rsource.name = 'org.openmrs.module.emrapi'
+                join concept c on c.concept_id = rmap.concept_id and c.retired = FALSE and c.version is null;
+            </sqlCheck>
+        </preConditions>
+        <comment>Retire duplicate local Disposition Set concept (concept 33) - keeping CIEL concept 57747 for interoperability</comment>
+        <sql>
+            UPDATE concept
+            SET retired = 1,
+                retired_by = 1,
+                date_retired = NOW(),
+                retire_reason = 'Duplicate of CIEL concept 57747 Inpatient disposition construct'
+            WHERE concept_id = 33
+            AND version IS NULL;
+        </sql>
+    </changeSet>
+
+    <changeSet id="bahmni-emrapi-202606-retire-disposition" author="Bahmni">
+        <preConditions onFail="CONTINUE">
+            <sqlCheck expectedResult="2">
+                select count(rmap.concept_id) from concept_reference_map rmap
+                join concept_reference_term rterm on rmap.concept_reference_term_id = rterm.concept_reference_term_id
+                and rterm.code='Disposition'
+                join concept_reference_source rsource on rsource.concept_source_id = rterm.concept_source_id and rsource.name = 'org.openmrs.module.emrapi'
+                join concept c on c.concept_id = rmap.concept_id and c.retired = FALSE and c.version is null;
+            </sqlCheck>
+        </preConditions>
+        <comment>Retire duplicate local Disposition concept (concept 32) - keeping CIEL concept 22569 for interoperability</comment>
+        <sql>
+            UPDATE concept
+            SET retired = 1,
+                retired_by = 1,
+                date_retired = NOW(),
+                retire_reason = 'Duplicate of CIEL Inpatient patient disposition concept'
+            WHERE concept_id = 32
+            AND version IS NULL;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
