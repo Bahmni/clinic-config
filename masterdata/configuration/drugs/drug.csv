@@ -207,6 +207,7 @@ Uuid,Void/Retire,Name,Concept Drug,Concept Dosage Form,Strength,_version:1
 ,,Peginterferon alfa-2a 120 mcg,Peginterferon alfa-2a,Injection,120 mcg,
 ,,Ribavirin 200 mg,Ribavirin,Oral capsule,200 mg,
 ,,Sofosbuvir 400 mg,Sofosbuvir,Tablet,400 mg,
+,,Tenofovir 300 mg,Tenofovir disoproxil,Tablet,300 mg,
 ,,Metronidazole 400 mg,Metronidazole,Tablet,400 mg,
 ,,Amphotericin B 50 mg,Amphotericin B,Powder for injection,50 mg,
 ,,"Amphotericin B, liposomal 50 mg","Amphotericin B, liposomal",Powder for injection,50 mg,
