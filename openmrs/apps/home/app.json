@@ -7,6 +7,7 @@
     }
   ],
   "config": {
-    "homeUrl": "/bahmni-v2/home"
+    "homeUrl": "/bahmni-v2/home",
+    "enableCommandPalette": true
   }
 }
