@@ -30,16 +30,6 @@
     "order": 3,
     "requiredPrivilege": "app:registration"
   },
-  "cmdPaletteNavBedManagement": {
-    "id": "org.bahmni.commandpalette.nav.bedmanagement",
-    "extensionPointId": "org.bahmni.commandpalette.navItem",
-    "type": "link",
-    "translationKey": "COMMAND_PALETTE_NAV_BED_MANAGEMENT",
-    "url": "/bahmni/bedmanagement/",
-    "icon": "fa-bed",
-    "order": 4,
-    "requiredPrivilege": "app:adt"
-  },
   "cmdPaletteNavBahmniWiki": {
     "id": "org.bahmni.commandpalette.nav.bahmniwiki",
     "extensionPointId": "org.bahmni.commandpalette.navItem",
