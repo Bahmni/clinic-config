@@ -168,6 +168,7 @@
     <include file ="addObsPathSplitterProperty.xml"/>
     <include file ="addMoreObsSplitterProperty.xml"/>
     <include file ="addMultiSelectObsSplitterProperty.xml"/>
+    <include file ="addDocumentUploadMaxSizeProperty.xml"/>
     <!-- <include file ="loginRolesAndPrivileges.xml"/>
     <include file ="registrationAndSearchPrivileges.xml"/>
     <include file ="clinicalPrivileges.xml"/> -->
