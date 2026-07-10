@@ -116,13 +116,13 @@
     "order": 3,
     "requiredPrivilege": "app:clinical"
   },
-  "bahmniClinicalConceptSetGroupObservationsFitnessProgram": {
-    "id": "bahmni.clinical.conceptSetGroup.observations.fitnessProgram",
+  "bahmniClinicalConceptSetGroupObservationsFitnessEvaluation": {
+    "id": "bahmni.clinical.conceptSetGroup.observations.fitnessEvaluation",
     "extensionPointId": "org.bahmni.clinical.conceptSetGroup.observations",
     "type": "config",
     "extensionParams": {
       "default": true,
-      "formName": "Fitness Program"
+      "formName": "Fitness Evaluation"
     },
     "order": 4,
     "requiredPrivilege": "app:clinical"
