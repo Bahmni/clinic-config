@@ -14,7 +14,7 @@
     "extensionPointId": "org.bahmni.home.dashboard",
     "type": "link",
     "translationKey": "MODULE_LABEL_CLINICAL_KEY",
-    "url": "/bahmni/clinical/index.html#/v2/patient/search",
+    "url": "/bahmni/clinical/index.html#/default/patient/search",
     "icon": "fa-stethoscope",
     "order": 2,
     "requiredPrivilege": "app:clinical"
