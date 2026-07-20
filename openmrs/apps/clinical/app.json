@@ -7,6 +7,8 @@
         }
     ],
     "config": {
+        "enableFormDraftFeature": true,
+        "autoSaveIntervalSeconds":900,
 		"preferExtraIdInSearchResults": true,
         "allowAdhocTeleConsultation": true,
         "defaultVisitType":"OPD",
