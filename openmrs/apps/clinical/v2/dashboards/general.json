@@ -67,6 +67,7 @@
             "Get Conditions"
           ],
           "config": {
+            "encounterType": "Consultation",
             "actions": [
               {
                 "label": "Actions",
