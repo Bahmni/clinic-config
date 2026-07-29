@@ -63,6 +63,7 @@
     },
     "additionalInfoColumns": {"Language": "English"},
     "enableAppointmentReasons": true,
-    "appointmentReasonConceptSet": "Appointment Reasons"
+    "appointmentReasonConceptSet": "Appointment Reasons",
+    "enableAppointmentNumber": true
   }
 }
