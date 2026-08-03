@@ -148,6 +148,12 @@
       "requiredPrivilege": "View Patients"
     }
   ],
+  "printOptions": [
+    {
+      "translationKey": "REGISTRATION_PRINT_REGISTRATION_CARD",
+      "templateId": "REG_CARD_V1"
+    }
+  ],
   "registrationEncounterType": "REG",
   "extensions": [
     {
