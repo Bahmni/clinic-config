@@ -1,56 +1,4 @@
 {
-  "patientSearch": {
-    "customAttributes": [
-      {
-        "translationKey": "REGISTRATION_PATIENT_SEARCH_DROPDOWN_PHONE_NUMBER",
-        "fields": ["phoneNumber", "alternatePhoneNumber"],
-        "expectedFields": [
-          {
-            "field": "phoneNumber",
-            "translationKey": "REGISTRATION_PATIENT_SEARCH_HEADER_PHONE_NUMBER"
-          },
-          {
-            "field": "alternatePhoneNumber",
-            "translationKey": "REGISTRATION_PATIENT_SEARCH_HEADER_ALTERNATE_PHONE_NUMBER"
-          }
-        ],
-        "type": "person"
-      },
-      {
-        "translationKey": "REGISTRATION_PATIENT_SEARCH_DROPDOWN_EMAIL",
-        "fields": ["email"],
-        "expectedFields": [
-          {
-            "field": "email",
-            "translationKey": "REGISTRATION_PATIENT_SEARCH_HEADER_EMAIL"
-          }
-        ],
-        "type": "person"
-      },
-      {
-        "translationKey": "REGISTRATION_PATIENT_SEARCH_DROPDOWN_VILLAGE",
-        "fields": ["city_village"],
-        "expectedFields": [
-          {
-            "field": "city_village",
-            "translationKey": "REGISTRATION_PATIENT_SEARCH_HEADER_VILLAGE"
-          }
-        ],
-        "type": "address"
-      },
-      {
-        "translationKey": "REGISTRATION_PATIENT_SEARCH_DROPDOWN_LOCALITY",
-        "fields": ["address2"],
-        "expectedFields": [
-          {
-            "field": "address2",
-            "translationKey": "REGISTRATION_PATIENT_SEARCH_HEADER_LOCALITY"
-          }
-        ],
-        "type": "address"
-      }
-    ]
-  },
   "defaultVisitType": "OPD",
   "patientInformation": {
     "defaultIdentifierPrefix": "ABC",
@@ -200,5 +148,17 @@
       "requiredPrivilege": "View Patients"
     }
   ],
-  "registrationEncounterType": "REG"
+  "registrationEncounterType": "REG",
+  "extensions": [
+    {
+      "id": "bahmni.registration.v2.search.registrationSearch",
+      "extensionPointId": "org.bahmni.registration.v2.search",
+      "translationKey": "REGISTRATION_DEFAULT_SEARCH_LABEL",
+      "requiredPrivileges": ["app:registration"],
+      "extensionParams": {
+        "searchHandler": "defaultSearch",
+        "configUrl": "/bahmni_config/openmrs/apps/registration/v2/extensions/defaultSearchConfig.json"
+      }
+    }
+  ]
 }
