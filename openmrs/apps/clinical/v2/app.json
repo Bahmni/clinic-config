@@ -25,6 +25,7 @@
       "allergyReactionUuid": "162555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
     "statDurationInMilliseconds": 7200000,
+    "allowedVisitTypes": ["OPD", "Follow Up"],
     "inputControls": [
       {
         "type": "encounterDetails",
