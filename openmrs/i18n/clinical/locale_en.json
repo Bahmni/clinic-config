@@ -112,5 +112,8 @@
   "MODULE_LABEL_ALL_LEGACY_KEY": "All - Legacy",
   "STOP_ACTION_LABEL": "Stop",
   "MEDICATION_LABEL_RATE": "Rate (ml/hr)",
-  "MEDICATION_LABEL_ADDITIVES": "Additives"
+  "MEDICATION_LABEL_ADDITIVES": "Additives",
+  "MEDICATION_PHARMACIST_REVIEW_HEADING": "New Medications Available to be Dispensed",
+  "MEDICATION_PHARMACIST_REVIEW_SUBTEXT": "Please review the patient's weight, allergies, and prescriptions to continue with dispensing.",
+  "MEDICATION_CONFIRM_REVIEW": "Confirm Review"
 }
