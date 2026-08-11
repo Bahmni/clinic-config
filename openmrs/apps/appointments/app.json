@@ -61,6 +61,9 @@
     "recurrence": {
       "defaultNumberOfOccurrences": 10
     },
-    "additionalInfoColumns": {"Language": "English"}
+    "additionalInfoColumns": {"Language": "English"},
+    "enableAppointmentReasons": true,
+    "appointmentReasonConceptSet": "Appointment Reasons",
+    "enableAppointmentNumber": true
   }
 }

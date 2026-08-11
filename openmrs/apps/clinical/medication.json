@@ -3,7 +3,14 @@
   "tabConfig": {
     "allMedicationTabConfig": {
       "orderSet": {
-        "calculateDoseOnlyOnCurrentVisitValues": false
+        "calculateDoseOnlyOnCurrentVisitValues": false,
+         "showRulesInMedication":true,
+        "hideDefaultRuleList": ["mg/m2", "customrule", "Chemotherapy"],
+        "dosageRuleUnitsMap": {
+          "mg/kg":  ["mg"],
+          "mcg/kg": ["mcg"],
+          "ml/kg":  ["ml"]
+        }
       },
       "inputOptionsConfig": {
         "defaultDurationUnit": "Days",

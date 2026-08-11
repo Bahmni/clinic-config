@@ -1,6 +1,8 @@
 {
   "MODULE_LABEL_ALL_PATIENTS_KEY": "Todos los Pacientes",
   "MODULE_LABEL_ACTIVE_PATIENTS_KEY":"Pacientes Activos",
+  "MODULE_LABEL_ALL_PATIENTS_KEY_LEGACY_KEY": "Todos los Pacientes - heredado",
+  "MODULE_LABEL_ACTIVE_PATIENTS_KEY_LEGACY_KEY":"Pacientes Activos - heredado",
 
   "SEARCH_NAME_PLACEHOLDER_KEY": "Buscar Nombre/ID ...",
   "SEARCH_KEY": "Buscar"

@@ -41,7 +41,6 @@
   "CLOSE_VISIT_MESSAGE": "User {{userId}} closed {{params.visitType}} visit of patient {{patientId}}.",
   "CLOSE_VISIT_FAILED_MESSAGE": "User {{userId}} tries to close {{params.visitType}} visit of patient {{patientId}}, but failed.",
   "EDIT_ENCOUNTER_MESSAGE": "User {{userId}} edited {{params.encounterType}} encounter of patient {{patientId}}",
-  "CREATE_ENCOUNTER_MESSAGE": "User {{userId}} created {{params.encounterType}} encounter for patient {{patientId}}",
   "MODULE_LABEL_REGISTRATION_KEY": "Registration",
   "MODULE_LABEL_CLINICAL_KEY": "Clinical",
   "MODULE_LABEL_INPATIENT_KEY": "InPatient",
@@ -57,5 +56,6 @@
   "ADMINISTER_MEDICATION_TASK_MESSAGE": "User {{userId}} administered a medication task for patient {{patientId}}.",
   "STOP_SCHEDULED_MEDICATION_TASK_MESSAGE": "User {{userId}} stopped a medication task for patient {{patientId}}.",
   "SKIP_SCHEDULED_MEDICATION_TASK_MESSAGE": "User {{userId}} skipped a medication task for patient {{patientId}}.",
-  "CREATE_EMERGENCY_MEDICATION_TASK_MESSAGE": "User {{userId}} added a emergency medication task for patient {{patientId}}."
+  "CREATE_EMERGENCY_MEDICATION_TASK_MESSAGE": "User {{userId}} added a emergency medication task for patient {{patientId}}.",
+  "START_VISIT_MESSAGE": "Started a visit for patient"
 }
