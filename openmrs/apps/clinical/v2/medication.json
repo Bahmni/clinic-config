@@ -71,5 +71,6 @@
             "doseUnits": "Tablet",
             "route": "Oral"
         }
-    }
+    },
+    "stopOrderedReasonConceptSet": "Stopped Order Reason"
 }
