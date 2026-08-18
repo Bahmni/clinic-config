@@ -18,51 +18,51 @@
       "strictAutocompleteFromLevel": "postalCode"
     },
     "additionalPatientInformation": {
-      "translationKey": "REGISTRATION_ADDITIONAL_PATIENT_INFORMATION_TITLE",
+      "translationKey": "REGISTRATION_ADDITIONAL_PATIENT_INFORMATION_TITLE", 
       "attributes": [
-        {
-          "field": "distanceFromCenter",
-          "translationKey": "REGISTRATION_DISTANCE_FROM_CENTER"
-        },
-        {
-          "field": "isUrban",
-          "translationKey": "REGISTRATION_IS_URBAN"
-        },
-        {
-          "field": "cluster",
-          "translationKey": "REGISTRATION_CLUSTER"
-        },
-        {
-          "field": "RationCard",
-          "translationKey": "REGISTRATION_RATION_CARD"
-        },
-        {
-          "field": "familyIncome",
-          "translationKey": "REGISTRATION_FAMILY_INCOME"
-        },
-        {
-          "field": "debt",
-          "translationKey": "REGISTRATION_DEBT"
-        },
-        {
-          "field": "email",
-          "translationKey": "REGISTRATION_EMAIL"
-        }
-      ]
+                        {
+                          "field": "distanceFromCenter",
+                          "translationKey": "REGISTRATION_DISTANCE_FROM_CENTER"
+                        },
+                        {
+                          "field": "isUrban",
+                          "translationKey": "REGISTRATION_IS_URBAN"
+                        },
+                        {
+                          "field": "cluster",
+                          "translationKey": "REGISTRATION_CLUSTER"
+                        },
+                        {
+                          "field": "RationCard",
+                          "translationKey": "REGISTRATION_RATION_CARD"
+                        },
+                        {
+                          "field": "familyIncome",
+                          "translationKey": "REGISTRATION_FAMILY_INCOME"
+                        },
+                        {
+                          "field": "debt",
+                          "translationKey": "REGISTRATION_DEBT"
+                        },
+                        {
+                          "field": "email",
+                          "translationKey": "REGISTRATION_EMAIL"
+                        }
+                    ]
     },
     "contactInformation": {
-      "translationKey": "REGISTRATION_CONTACT_INFORMATION_TITLE",
+      "translationKey": "REGISTRATION_CONTACT_INFORMATION_TITLE", 
       "attributes": [
-        {
-          "field": "phoneNumber",
-          "translationKey": "REGISTRATION_PHONE_NUMBER",
-          "required": true
-        },
-        {
-          "field": "alternatePhoneNumber",
-          "translationKey": "REGISTRATION_ALTERNATE_PHONE_NUMBER"
-        }
-      ]
+                        {
+                          "field": "phoneNumber",
+                          "translationKey": "REGISTRATION_PHONE_NUMBER",
+                          "required": true
+                        },
+                        {
+                          "field": "alternatePhoneNumber",
+                          "translationKey": "REGISTRATION_ALTERNATE_PHONE_NUMBER"
+                        }
+                    ]
     }
   },
   "registrationForm": {
@@ -131,23 +131,6 @@
       "errorMessage": "REGISTRATION_ALTERNATE_PHONE_NUMBER_VALIDATION"
     }
   },
-  "extensionPoints": [
-    {
-      "id": "org.bahmni.registration.navigation",
-      "description": "Navigation within registration first and second page"
-    }
-  ],
-  "registrationAppExtensions": [
-    {
-      "id": "bahmni.registration.navigation.patient.start.visit",
-      "extensionPointId": "org.bahmni.registration.navigation",
-      "type": "startVisit",
-      "translationKey": "PATIENT_DASHBOARD_REDIRECT",
-      "url": "/bahmni-v2/clinical/{{patientUuid}}",
-      "order": 1,
-      "requiredPrivilege": "View Patients"
-    }
-  ],
   "registrationEncounterType": "REG",
   "extensions": [
     {
@@ -158,6 +141,17 @@
       "extensionParams": {
         "searchHandler": "defaultSearch",
         "configUrl": "/bahmni_config/openmrs/apps/registration/v2/extensions/defaultSearchConfig.json"
+      }
+    },
+    {
+      "id": "bahmni.registration.navigation.patient.start.visit",
+      "extensionPointId": "org.bahmni.registration.navigation",
+      "requiredPrivileges": ["View Patients"],
+      "translationKey": "PATIENT_DASHBOARD_REDIRECT",
+      "extensionParams": {
+        "type": "startVisit",
+        "url": "bahmni-v2/clinical/{{patientUuid}}",
+        "order": 1
       }
     }
   ]
