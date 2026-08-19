@@ -1,41 +1,19 @@
 {
   "formJson": {
-    "id": 19,
-    "uuid": "226a26fa-e9a3-4419-bd0b-1903f582dc0a",
+    "uuid": "7d416b24-2031-4e68-8870-12f4a2659cf5",
     "name": "Follow Up",
-    "version": "2",
+    "version": "1",
     "published": true,
-    "auditInfo": {
-      "creator": {
-        "uuid": "A4F30A1B-5EB9-11DF-A648-37A07F9C90FB",
-        "display": "daemon",
-        "links": [
-          {
-            "rel": "self",
-            "uri": "http://localhost/openmrs/ws/rest/v1/user/A4F30A1B-5EB9-11DF-A648-37A07F9C90FB",
-            "resourceAlias": "user"
-          }
-        ]
-      },
-      "dateCreated": "2026-08-19T00:25:17.000+0000",
-      "changedBy": {
-        "uuid": "4ae826bc-9b59-11f1-a0f0-9291857a925f",
-        "display": "superman",
-        "links": [
-          {
-            "rel": "self",
-            "uri": "http://localhost/openmrs/ws/rest/v1/user/4ae826bc-9b59-11f1-a0f0-9291857a925f",
-            "resourceAlias": "user"
-          }
-        ]
-      },
-      "dateChanged": "2026-08-19T00:25:18.000+0000"
-    },
     "resources": [
       {
-        "value": "{\"name\":\"Follow Up\",\"id\":19,\"uuid\":\"226a26fa-e9a3-4419-bd0b-1903f582dc0a\",\"defaultLocale\":\"en\",\"controls\":[{\"type\":\"obsControl\",\"label\":{\"translationKey\":\"RETURN_VISIT_DATE_1\",\"id\":\"1\",\"units\":\"\",\"type\":\"label\",\"value\":\"Return visit date\"},\"properties\":{\"mandatory\":false,\"notes\":false,\"addMore\":false,\"hideLabel\":false,\"controlEvent\":false,\"location\":{\"column\":0,\"row\":0},\"allowFutureDates\":true},\"id\":\"1\",\"concept\":{\"name\":\"Return visit date\",\"uuid\":\"5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"description\":{\"value\":\"Patient is to return on this date\",\"translationKey\":\"RETURN_VISIT_DATE_1_DESC\"},\"datatype\":\"Date\",\"conceptClass\":\"Misc\",\"conceptHandler\":null,\"answers\":[],\"properties\":{\"allowDecimal\":null}},\"units\":null,\"hiNormal\":null,\"lowNormal\":null,\"hiAbsolute\":null,\"lowAbsolute\":null},{\"type\":\"obsControl\",\"label\":{\"translationKey\":\"REASON_FOR_VISIT_2\",\"id\":\"2\",\"units\":\"\",\"type\":\"label\",\"value\":\"Reason for visit\"},\"properties\":{\"mandatory\":false,\"notes\":false,\"addMore\":false,\"hideLabel\":false,\"controlEvent\":false,\"location\":{\"column\":0,\"row\":1}},\"id\":\"2\",\"concept\":{\"name\":\"Reason for visit\",\"uuid\":\"160430AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"datatype\":\"Text\",\"conceptClass\":\"Question\",\"conceptHandler\":null,\"answers\":[],\"properties\":{\"allowDecimal\":null}},\"units\":null,\"hiNormal\":null,\"lowNormal\":null,\"hiAbsolute\":null,\"lowAbsolute\":null}],\"events\":{\"onFormSave\":\"ZnVuY3Rpb24oZm9ybSkgewogIGxldCB0b2RheSA9IERhdGUubm93KCk7CiAgbGV0IHNlbGVjdGVkRGF0ZSA9IGZvcm0uZ2V0KCdSZXR1cm4gdmlzaXQgZGF0ZScpLmdldFZhbHVlKCk7CiAgaWYgKHNlbGVjdGVkRGF0ZSkgewogICAgbGV0IG5ld0RhdGUgPSBuZXcgRGF0ZShzZWxlY3RlZERhdGUpOwogICAgaWYgKG5ld0RhdGUuZ2V0VGltZSgpIDwgdG9kYXkpIHsKICAgICAgdGhyb3cgewogICAgICAgIG1lc3NhZ2U6ICdQbGVhc2Ugc2VsZWN0IGEgZnV0dXJlIGRhdGUnCiAgICAgIH07CiAgICB9CiAgfQp9\",\"onFormInit\":\"\"},\"formDefVersion\":2,\"translationsUrl\":\"/openmrs/ws/rest/v1/bahmniie/form/translations\",\"referenceVersion\":\"1\",\"referenceFormUuid\":\"7d416b24-2031-4e68-8870-12f4a2659cf5\"}",
+        "value": "{\"name\":\"Follow Up\",\"id\":54,\"uuid\":\"7d416b24-2031-4e68-8870-12f4a2659cf5\",\"defaultLocale\":\"en\",\"controls\":[{\"type\":\"obsControl\",\"label\":{\"translationKey\":\"RETURN_VISIT_DATE_1\",\"id\":\"1\",\"units\":\"\",\"type\":\"label\",\"value\":\"Return visit date\"},\"properties\":{\"mandatory\":false,\"notes\":false,\"addMore\":false,\"hideLabel\":false,\"controlEvent\":false,\"location\":{\"column\":0,\"row\":0},\"allowFutureDates\":true},\"id\":\"1\",\"concept\":{\"name\":\"Return visit date\",\"uuid\":\"5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"description\":{\"value\":\"Patient is to return on this date\",\"translationKey\":\"RETURN_VISIT_DATE_1_DESC\"},\"datatype\":\"Date\",\"conceptClass\":\"Misc\",\"conceptHandler\":null,\"answers\":[],\"properties\":{\"allowDecimal\":null}},\"units\":null,\"hiNormal\":null,\"lowNormal\":null,\"hiAbsolute\":null,\"lowAbsolute\":null},{\"type\":\"obsControl\",\"label\":{\"translationKey\":\"REASON_FOR_VISIT_2\",\"id\":\"2\",\"units\":\"\",\"type\":\"label\",\"value\":\"Reason for visit\"},\"properties\":{\"mandatory\":false,\"notes\":false,\"addMore\":false,\"hideLabel\":false,\"controlEvent\":false,\"location\":{\"column\":0,\"row\":1}},\"id\":\"2\",\"concept\":{\"name\":\"Reason for visit\",\"uuid\":\"160430AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"datatype\":\"Text\",\"conceptClass\":\"Question\",\"conceptHandler\":null,\"answers\":[],\"properties\":{\"allowDecimal\":null}},\"units\":null,\"hiNormal\":null,\"lowNormal\":null,\"hiAbsolute\":null,\"lowAbsolute\":null}],\"events\":{\"onFormSave\":\"function(form) {\\n  let today = Date.now();\\n  let selectedDate = form.get('Return visit date').getValue();\\n  if (selectedDate) {\\n    let newDate = new Date(selectedDate);\\n    if (newDate.getTime() < today) {\\n      throw {\\n        message: 'Please select a future date'\\n      };\\n    }\\n  }\\n}\",\"onFormInit\":\"\"},\"translationsUrl\":\"/openmrs/ws/rest/v1/bahmniie/form/translations\",\"referenceVersion\":\"6\",\"referenceFormUuid\":\"c3bae803-01b4-4fc8-8d3a-685d55345a86\"}",
         "dataType": "org.bahmni.customdatatype.datatype.FileSystemStorageDatatype",
-        "uuid": "b91eca18-50b8-4c11-a3c6-df17e2eecd28"
+        "uuid": "469d89f7-be00-4fc1-8ad9-74638f959344"
+      },
+      {
+        "value": "[{\"display\":\"Follow Up\",\"locale\":\"en\"}]",
+        "dataType": "org.bahmni.customdatatype.datatype.FormNameTranslationDatatype",
+        "uuid": "ce3bba8a-83a3-4021-acc1-c7d3e6313348"
       }
     ]
   },
@@ -50,7 +28,7 @@
       },
       "formName": "Follow Up",
       "formUuid": null,
-      "version": "2",
+      "version": "1",
       "referenceVersion": null,
       "referenceFormUuid": null
     }
