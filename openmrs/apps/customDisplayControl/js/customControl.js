@@ -29,15 +29,23 @@ angular.module('bahmni.common.displaycontrol.custom')
             });
         };
 
-        var transformDate = function (dateTimeArray) {
-            var dateTime = dateTimeArray.slice();
-            dateTime[1] = dateTime[1] - 1
-            return Bahmni.Common.Util.DateUtil.formatDateWithoutTimeToLocal(dateTime)
-        }
+        const zeroIndexMonth = (dateTimeArray) => {
+            const zeroIndexedMonth = dateTimeArray.slice();
+            zeroIndexedMonth[1] -= 1;
+            return zeroIndexedMonth;
+        };
 
-        var transformTime = function (dateTime) {
-            return Bahmni.Common.Util.DateUtil.formatTimeToLocal(dateTime);
-        }
+        const transformDate = (dateTimeArray) => {
+            return Bahmni.Common.Util.DateUtil.formatDateWithoutTimeToLocal(
+                zeroIndexMonth(dateTimeArray),
+            );
+        };
+
+        const transformTime = (dateTimeArray) => {
+            return Bahmni.Common.Util.DateUtil.formatTimeToLocal(
+                zeroIndexMonth(dateTimeArray),
+            );
+        };
 
         var getAppointmentDateAndSlot = function (startTimeInMillseconds, endTimeInMillseconds) {
             let appointmentStartDate = transformDate(startTimeInMillseconds);
