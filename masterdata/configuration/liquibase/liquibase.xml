@@ -377,118 +377,57 @@
             1, now(), NULL, NULL, NULL, uuid());
         </sql>
     </changeSet>
-    <changeSet id="bahmni-emrapi-disposition-fix-20260811-ciel159488" author="Aishwarya" runAlways="true">
+    <changeSet id="BAH-4805-20260826-retire-ciel-disposition-concept" author="Bahmni" runAlways="true">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                select count(rmap.concept_id) from concept_reference_map rmap
-                join concept_reference_term rterm on rmap.concept_reference_term_id = rterm.concept_reference_term_id
-                and rterm.code = '159488'
-                join concept_reference_source rsource on rsource.concept_source_id = rterm.concept_source_id and rsource.name = 'CIEL'
-                join concept c on c.concept_id = rmap.concept_id and c.retired = FALSE and c.version is null;
+                select count(*) from concept c
+                join concept_name cn on c.concept_id = cn.concept_id
+                where c.uuid = '159488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+                and cn.name = 'Disposition'
+                and cn.concept_name_type = 'FULLY_SPECIFIED'
+                and c.retired = FALSE;
             </sqlCheck>
         </preConditions>
-        <comment>Retire CIEL Disposition duplicate (mapped to CIEL code 159488, no emrapi mapping) by reference-code lookup (portable across databases, not by hardcoded concept_id). Follows diagnosis fix pattern (bahmni-emrapi-202208181344).</comment>
+        <comment>Retire CIEL Disposition (CIEL 159488)</comment>
         <sql>
-            SET @concept_id = 0;
-            SELECT rmap.concept_id into @concept_id from concept_reference_map rmap
-            join concept_reference_term rterm on rmap.concept_reference_term_id = rterm.concept_reference_term_id and rterm.code = '159488'
-            join concept_reference_source rsource on rsource.concept_source_id = rterm.concept_source_id and rsource.name = 'CIEL'
-            join concept c on c.concept_id = rmap.concept_id and c.version is null order by rmap.date_created desc limit 1;
-            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Unused CIEL artifact - name conflicts with Bahmni Disposition' where concept_id = @concept_id and retired = FALSE;
+            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Duplicate CIEL Disposition - conflicts with Bahmni Disposition concept'
+            where uuid = '159488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' and retired = FALSE;
         </sql>
     </changeSet>
 
-    <changeSet id="bahmni-emrapi-disposition-fix-20260811-disposition" author="Aishwarya" runAlways="true">
+    <changeSet id="BAH-4805-20260826-retire-ciel-inpatient-patient-disposition" author="Aishwarya" runAlways="true">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                select count(rmap.concept_id) from concept_reference_map rmap
-                join concept_reference_term rterm on rmap.concept_reference_term_id = rterm.concept_reference_term_id
-                and rterm.code = 'Disposition'
-                join concept_reference_source rsource on rsource.concept_source_id = rterm.concept_source_id and rsource.name = 'org.openmrs.module.emrapi'
-                join concept c on c.concept_id = rmap.concept_id and c.retired = FALSE and c.version is null
-                where exists (
-                    select 1 from concept_reference_map rmap2
-                    join concept_reference_term rterm2 on rmap2.concept_reference_term_id = rterm2.concept_reference_term_id
-                    join concept_reference_source rsource2 on rsource2.concept_source_id = rterm2.concept_source_id
-                    where rmap2.concept_id = rmap.concept_id and rsource2.name = 'CIEL'
-                );
+                select count(*) from concept c
+                join concept_name cn on c.concept_id = cn.concept_id
+                where c.uuid = 'ce085d74-323c-4c9a-9fdf-051de81dd020'
+                and cn.name = 'Inpatient patient disposition'
+                and cn.concept_name_type = 'FULLY_SPECIFIED'
+                and c.retired = FALSE;
             </sqlCheck>
         </preConditions>
-        <comment>Retire the CIEL-imported duplicate concept mapped to emrapi code 'Disposition' (identified by also carrying a CIEL-source mapping, not by hardcoded concept_id or creation date - the original Bahmni concept 32 never carries a CIEL mapping), independent of the CIEL-159488 changeset above.</comment>
+        <comment>Retire CIEL Inpatient patient disposition</comment>
         <sql>
-            SET @concept_id = 0;
-            SELECT rmap.concept_id into @concept_id from concept_reference_map rmap
-            join concept_reference_term rterm on rmap.concept_reference_term_id = rterm.concept_reference_term_id and rterm.code = 'Disposition'
-            join concept_reference_source rsource on rsource.concept_source_id = rterm.concept_source_id and rsource.name = 'org.openmrs.module.emrapi'
-            where exists (
-                select 1 from concept_reference_map rmap2
-                join concept_reference_term rterm2 on rmap2.concept_reference_term_id = rterm2.concept_reference_term_id
-                join concept_reference_source rsource2 on rsource2.concept_source_id = rterm2.concept_source_id
-                where rmap2.concept_id = rmap.concept_id and rsource2.name = 'CIEL'
-            ) limit 1;
-            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Replaced by Bahmni Disposition concept' where concept_id = @concept_id and retired = FALSE;
+            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Duplicate CIEL Inpatient patient disposition - conflicts with Bahmni Disposition concept'
+            where uuid = 'ce085d74-323c-4c9a-9fdf-051de81dd020' and retired = FALSE;
         </sql>
     </changeSet>
 
-    <changeSet id="bahmni-emrapi-disposition-fix-20260811-dispositionset" author="Aishwarya" runAlways="true">
+    <changeSet id="BAH-4805-20260826-retire-ciel-inpatient-disposition-construct" author="Aishwarya" runAlways="true">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">
-                select count(rmap.concept_id) from concept_reference_map rmap
-                join concept_reference_term rterm on rmap.concept_reference_term_id = rterm.concept_reference_term_id
-                and rterm.code = 'Disposition Concept Set'
-                join concept_reference_source rsource on rsource.concept_source_id = rterm.concept_source_id and rsource.name = 'org.openmrs.module.emrapi'
-                join concept c on c.concept_id = rmap.concept_id and c.retired = FALSE and c.version is null
-                where exists (
-                    select 1 from concept_reference_map rmap2
-                    join concept_reference_term rterm2 on rmap2.concept_reference_term_id = rterm2.concept_reference_term_id
-                    join concept_reference_source rsource2 on rsource2.concept_source_id = rterm2.concept_source_id
-                    where rmap2.concept_id = rmap.concept_id and rsource2.name = 'CIEL'
-                );
+                select count(*) from concept c
+                join concept_name cn on c.concept_id = cn.concept_id
+                where c.uuid = '9ceedfb7-60e4-42ce-a11e-f2dbabc82112'
+                and cn.name = 'Inpatient disposition construct'
+                and cn.concept_name_type = 'FULLY_SPECIFIED'
+                and c.retired = FALSE;
             </sqlCheck>
         </preConditions>
-        <comment>Retire the CIEL-imported duplicate concept mapped to emrapi code 'Disposition Concept Set' (identified by also carrying a CIEL-source mapping, not by hardcoded concept_id or creation date - the original Bahmni concept 33 never carries a CIEL mapping), independent of the other two changesets above.</comment>
+        <comment>Retire CIEL Inpatient disposition construct (CIEL 169405)</comment>
         <sql>
-            SET @concept_id = 0;
-            SELECT rmap.concept_id into @concept_id from concept_reference_map rmap
-            join concept_reference_term rterm on rmap.concept_reference_term_id = rterm.concept_reference_term_id and rterm.code = 'Disposition Concept Set'
-            join concept_reference_source rsource on rsource.concept_source_id = rterm.concept_source_id and rsource.name = 'org.openmrs.module.emrapi'
-            where exists (
-                select 1 from concept_reference_map rmap2
-                join concept_reference_term rterm2 on rmap2.concept_reference_term_id = rterm2.concept_reference_term_id
-                join concept_reference_source rsource2 on rsource2.concept_source_id = rterm2.concept_source_id
-                where rmap2.concept_id = rmap.concept_id and rsource2.name = 'CIEL'
-            ) limit 1;
-            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Replaced by Bahmni Disposition Set concept' where concept_id = @concept_id and retired = FALSE;
-        </sql>
-    </changeSet>
-
-    <changeSet id="BAH-4805-20260824-delete-orphaned-diagnosis-mapping" author="Aishwarya" runAlways="true">
-        <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="1">
-                select count(distinct crm.concept_id) from concept_reference_map crm
-                join concept_reference_term crt on crm.concept_reference_term_id = crt.concept_reference_term_id
-                join concept_reference_source crs on crt.concept_source_id = crs.concept_source_id
-                join concept c on crm.concept_id = c.concept_id
-                where crs.name = 'org.openmrs.module.emrapi'
-                  and crt.code = 'Diagnosis Concept Set'
-                  and c.retired = 1;
-            </sqlCheck>
-        </preConditions>
-        <comment>Delete orphaned concept_reference_map entries pointing to retired concepts for Diagnosis Concept Set. This handles the case where CIEL concepts were imported and later retired, but their mappings were not cleaned up. Identifies duplicates by reference mapping lookup (portable across databases, not by hardcoded concept_id).</comment>
-        <sql>
-            DELETE FROM concept_reference_map
-            WHERE concept_reference_term_id IN (
-                SELECT crt.concept_reference_term_id
-                FROM concept_reference_term crt
-                JOIN concept_reference_source crs ON crt.concept_source_id = crs.concept_source_id
-                WHERE crs.name = 'org.openmrs.module.emrapi'
-                  AND crt.code = 'Diagnosis Concept Set'
-            )
-            AND concept_id IN (
-                SELECT c.concept_id
-                FROM concept c
-                WHERE c.retired = 1
-            );
+            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Duplicate CIEL Disposition Concept Set - conflicts with Bahmni Disposition Concept Set'
+            where uuid = '9ceedfb7-60e4-42ce-a11e-f2dbabc82112' and retired = FALSE;
         </sql>
     </changeSet>
 </databaseChangeLog>
