@@ -377,4 +377,57 @@
             1, now(), NULL, NULL, NULL, uuid());
         </sql>
     </changeSet>
+    <changeSet id="BAH-4805-20260826-retire-ciel-disposition-concept" author="Bahmni" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from concept c
+                join concept_name cn on c.concept_id = cn.concept_id
+                where c.uuid = '159488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+                and cn.name = 'Disposition'
+                and cn.concept_name_type = 'FULLY_SPECIFIED'
+                and c.retired = FALSE;
+            </sqlCheck>
+        </preConditions>
+        <comment>Retire CIEL Disposition (CIEL 159488)</comment>
+        <sql>
+            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Duplicate CIEL Disposition - conflicts with Bahmni Disposition concept'
+            where uuid = '159488AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' and retired = FALSE;
+        </sql>
+    </changeSet>
+
+    <changeSet id="BAH-4805-20260826-retire-ciel-inpatient-patient-disposition" author="Aishwarya" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from concept c
+                join concept_name cn on c.concept_id = cn.concept_id
+                where c.uuid = 'ce085d74-323c-4c9a-9fdf-051de81dd020'
+                and cn.name = 'Inpatient patient disposition'
+                and cn.concept_name_type = 'FULLY_SPECIFIED'
+                and c.retired = FALSE;
+            </sqlCheck>
+        </preConditions>
+        <comment>Retire CIEL Inpatient patient disposition</comment>
+        <sql>
+            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Duplicate CIEL Inpatient patient disposition - conflicts with Bahmni Disposition concept'
+            where uuid = 'ce085d74-323c-4c9a-9fdf-051de81dd020' and retired = FALSE;
+        </sql>
+    </changeSet>
+
+    <changeSet id="BAH-4805-20260826-retire-ciel-inpatient-disposition-construct" author="Aishwarya" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from concept c
+                join concept_name cn on c.concept_id = cn.concept_id
+                where c.uuid = '9ceedfb7-60e4-42ce-a11e-f2dbabc82112'
+                and cn.name = 'Inpatient disposition construct'
+                and cn.concept_name_type = 'FULLY_SPECIFIED'
+                and c.retired = FALSE;
+            </sqlCheck>
+        </preConditions>
+        <comment>Retire CIEL Inpatient disposition construct (CIEL 169405)</comment>
+        <sql>
+            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Duplicate CIEL Disposition Concept Set - conflicts with Bahmni Disposition Concept Set'
+            where uuid = '9ceedfb7-60e4-42ce-a11e-f2dbabc82112' and retired = FALSE;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
