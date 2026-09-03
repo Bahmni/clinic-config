@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="setup_immunization_is_set_240420261730" author="angshu, pratiti">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">SELECT COUNT(*) FROM concept WHERE uuid = '984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'</sqlCheck>
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM concept WHERE uuid = '984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' AND is_set = 1</sqlCheck>
+        </preConditions>
+        <comment>mark immunization concept as a set (984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA)</comment>
+        <sql>
+            UPDATE concept SET is_set = 1 WHERE uuid = '984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+        </sql>
+    </changeSet>
+
+    <changeSet id="setup_immunization_set_members_240420261730" author="angshu, pratiti">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">SELECT COUNT(*) FROM concept WHERE uuid = '984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'</sqlCheck>
+        </preConditions>
+        <comment>add answers as set members for immunization (984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA)</comment>
+        <sql>
+            SET @immunization_valueset_id = 0;
+            SELECT concept_id into @immunization_valueset_id from concept where uuid = '984AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+
+            INSERT INTO concept_set (concept_set, concept_id, sort_weight, creator, date_created, uuid)
+                SELECT @immunization_valueset_id, ca.answer_concept, ca.sort_weight, 1, NOW(), UUID()
+                FROM concept_answer ca
+                WHERE ca.concept_id = @immunization_valueset_id
+                AND NOT EXISTS (
+                    SELECT 1
+                    FROM concept_set
+                    WHERE concept_set = @immunization_valueset_id
+                    AND concept_id = ca.answer_concept
+                );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

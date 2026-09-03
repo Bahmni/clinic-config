@@ -1,0 +1,54 @@
+{
+  "bahmniNewDocUploadPatientsSearchActivePatients": {
+    "id": "bahmni.docUpload.patients.search.activePatientsnew",
+    "extensionPointId": "org.bahmni.patient.search",
+    "type": "config",
+    "extensionParams": {
+      "searchHandler": "emrapi.sqlSearch.activePatients",
+      "translationKey": "MODULE_LABEL_ACTIVE_PATIENTS_KEY",
+      "forwardUrl": "/bahmni-v2/patient-documents/{{patientUuid}}?encounterType={{encounterType}}&topLevelConcept={{topLevelConcept}}&defaultOption={{defaultOption}}",
+      "searchColumns": ["identifier", "name", "extraIdentifierVal"]
+    },
+    "label": "Active Patients",
+    "order": 1,
+    "requiredPrivileges": ["Add DocumentReference", "Get DocumentReference"]
+  },
+  "bahmniDocUploadPatientsSearchActivePatients": {
+    "id": "bahmni.docUpload.patients.search.activePatients",
+    "extensionPointId": "org.bahmni.patient.search",
+    "type": "config",
+    "extensionParams": {
+      "searchHandler": "emrapi.sqlSearch.activePatients",
+      "translationKey": "MODULE_LABEL_ACTIVE_PATIENTS_KEY_LEGACY_KEY",
+      "forwardUrl": "#/patient/{{patientUuid}}/document",
+      "searchColumns": ["identifier", "name", "extraIdentifierVal"]
+    },
+    "label": "Active Patients - Legacy",
+    "order": 2,
+    "requiredPrivilege": "app:patient-documents:legacyPatientTabs"
+  },
+  "bahmniNewDocUploadPatientsSearchAllPatients": {
+    "id": "bahmni.docUpload.patients.search.allPatientsnew",
+    "extensionPointId": "org.bahmni.patient.search",
+    "type": "config",
+    "extensionParams": {
+      "translationKey": "MODULE_LABEL_ALL_PATIENTS_KEY",
+      "forwardUrl": "/bahmni-v2/patient-documents/{{patientUuid}}?encounterType={{encounterType}}&topLevelConcept={{topLevelConcept}}&defaultOption={{defaultOption}}"
+    },
+    "label": "All Patients",
+    "order": 3,
+    "requiredPrivileges": ["Add DocumentReference", "Get DocumentReference"]
+  },
+  "bahmniDocUploadPatientsSearchAllPatients": {
+    "id": "bahmni.docUpload.patients.search.allPatients",
+    "extensionPointId": "org.bahmni.patient.search",
+    "type": "config",
+    "extensionParams": {
+      "translationKey": "MODULE_LABEL_ALL_PATIENTS_KEY_LEGACY_KEY",
+      "forwardUrl": "#/patient/{{patientUuid}}/document"
+    },
+    "label": "All Patients - Legacy",
+    "order": 4,
+    "requiredPrivilege": "app:patient-documents:legacyPatientTabs"
+  }
+}
