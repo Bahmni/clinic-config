@@ -1,5 +1,0 @@
-Uuid,Void/Retire,Same as mappings,Fully specified name:en,Short name:en,Description:en,Data class,Data type,Members,_version:1,_order:1200
-3b24bff4-31fb-4982-bef8-341ce76d9e61,,SNOMED-CT:406151001,Post-discharge follow-up,Post-discharge follow-up,Post-discharge follow-up,Finding,N/A,,,
-b074e5b0-d266-4603-9f5d-ec1c9057cc3e,,SNOMED-CT:302805002,Preventive Care,Preventive Care,Preventive Care,Misc,N/A,,,
-ed8d2230-a4bd-4f4c-ad23-253454f3583d,,SNOMED-CT:183484003,Day care treatment,Day care treatment,Day care treatment,Misc,N/A,,,
-bb4d670e-64a1-4f37-bb02-49d2a8119bc2,,,Appointment Reasons,Appointment Reasons,ValueSet with the list of appointment reasons,Misc,N/A,164081AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA;160523AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA;1622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA;1623AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA;5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA;3b24bff4-31fb-4982-bef8-341ce76d9e61;b074e5b0-d266-4603-9f5d-ec1c9057cc3e;ed8d2230-a4bd-4f4c-ad23-253454f3583d,,
