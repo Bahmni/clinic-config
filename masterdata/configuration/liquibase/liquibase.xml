@@ -430,4 +430,40 @@
             where uuid = '9ceedfb7-60e4-42ce-a11e-f2dbabc82112' and retired = FALSE;
         </sql>
     </changeSet>
+
+    <changeSet id="BAH-4805-20260904-retire-ciel-admission-decision-duplicate" author="Bahmni" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from concept c
+                join concept_name cn on c.concept_id = cn.concept_id
+                where c.uuid = 'ac4d3e94-03f3-458a-9cb1-9c2ab3c3a3f7'
+                and cn.name = 'Admission to hospital decision'
+                and cn.concept_name_type = 'FULLY_SPECIFIED'
+                and c.retired = FALSE;
+            </sqlCheck>
+        </preConditions>
+        <comment>Retire CIEL duplicate of Admission Decision (conflicts with Bahmni concept mapped as org.openmrs.module.emrapi:Admission Decision, breaks CloseStaleVisitsTask)</comment>
+        <sql>
+            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Duplicate CIEL Admission to hospital decision - conflicts with Bahmni Admission Decision concept'
+            where uuid = 'ac4d3e94-03f3-458a-9cb1-9c2ab3c3a3f7' and retired = FALSE;
+        </sql>
+    </changeSet>
+
+    <changeSet id="BAH-4805-20260904-retire-ciel-deny-admission-duplicate" author="Bahmni" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                select count(*) from concept c
+                join concept_name cn on c.concept_id = cn.concept_id
+                where c.uuid = 'cc6a6126-b8a1-4d2d-9a35-31f9be7c5e68'
+                and cn.name = 'Admission denied'
+                and cn.concept_name_type = 'FULLY_SPECIFIED'
+                and c.retired = FALSE;
+            </sqlCheck>
+        </preConditions>
+        <comment>Retire CIEL duplicate of Deny Admission (conflicts with Bahmni concept mapped as org.openmrs.module.emrapi:Deny Admission, breaks CloseStaleVisitsTask)</comment>
+        <sql>
+            UPDATE concept set retired = TRUE, retired_by = 1, date_retired = NOW(), retire_reason = 'Duplicate CIEL Admission denied - conflicts with Bahmni Deny Admission concept'
+            where uuid = 'cc6a6126-b8a1-4d2d-9a35-31f9be7c5e68' and retired = FALSE;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
