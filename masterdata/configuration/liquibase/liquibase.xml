@@ -466,4 +466,24 @@
             where uuid = 'cc6a6126-b8a1-4d2d-9a35-31f9be7c5e68' and retired = FALSE;
         </sql>
     </changeSet>
+
+    <changeSet id="BAH-4994-20260909-fhir2-person-contact-point-attribute-type" author="Bahmni" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <sqlCheck expectedResult="1">
+                    SELECT COUNT(*) FROM global_property WHERE property = 'fhir2.personContactPointAttributeTypeUuid';
+                </sqlCheck>
+                <sqlCheck expectedResult="1">
+                    SELECT COUNT(*) FROM person_attribute_type WHERE name = 'phoneNumber' AND retired = 0;
+                </sqlCheck>
+            </and>
+        </preConditions>
+        <comment>Map Bahmni's phoneNumber person attribute type onto FHIR Patient.telecom</comment>
+        <sql>
+            UPDATE global_property gp
+            JOIN person_attribute_type pat ON pat.name = 'phoneNumber' AND pat.retired = 0
+            SET gp.property_value = pat.uuid
+            WHERE gp.property = 'fhir2.personContactPointAttributeTypeUuid';
+        </sql>
+    </changeSet>
 </databaseChangeLog>
