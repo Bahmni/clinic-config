@@ -13,20 +13,19 @@ module.exports = {
     const profile         = resolved?.patientProfile;
 
     const houseNumber = fhirPath(patientBundle, addrExt('address1')) ?? '';
-    const locality = fhirPath(patientBundle, addrExt('address2')) ?? '';
     const state = fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().state") ?? '';
-    const postalCode = fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().postalCode") ?? '';
-    const composedAddress = [houseNumber, locality, state, postalCode].filter(Boolean).join(", ");
-
+    const addressLine = [houseNumber, state].filter(Boolean).join(", ");
     return {
       patientId:             fhirPath(patientBundle, "Bundle.entry.first().resource.identifier.where(use = 'official').first().value") ?? '',
       patientName:           fhirPath(patientBundle, "Bundle.entry.first().resource.name.first().text") ?? '',
       birthDate:             fhirPath(patientBundle, "Bundle.entry.first().resource.birthDate") ?? '',
       gender:                fhirPath(patientBundle, "Bundle.entry.first().resource.gender") ?? '',
       phone:                 fhirPath(patientBundle, "Bundle.entry.first().resource.telecom.where(system = 'phone').first().value") ?? '',
-      address:               composedAddress || (fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().text") ?? ''),
-      village:               fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().city") ?? '',
-      tehsil:                fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().district") ?? '',
+      address:               addressLine || (fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().text") ?? ''),
+      localitySector:        fhirPath(patientBundle, addrExt('address2')) ?? '',
+      cityVillage:           fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().city") ?? '',
+      district:              fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().district") ?? '',
+      pincode:               fhirPath(patientBundle, "Bundle.entry.first().resource.address.first().postalCode") ?? '',
       registrationDate:      profile?.patient?.auditInfo?.dateCreated ?? '',
       nextOfKinName:         fhirPath(relativesBundle, "Bundle.entry.first().resource.name.first().text") ?? '',
       nextOfKinRelationship: fhirPath(relativesBundle, "Bundle.entry.first().resource.relationship.first().text") ?? '',
