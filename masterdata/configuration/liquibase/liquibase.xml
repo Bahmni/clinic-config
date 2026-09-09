@@ -466,4 +466,21 @@
             where uuid = 'cc6a6126-b8a1-4d2d-9a35-31f9be7c5e68' and retired = FALSE;
         </sql>
     </changeSet>
+
+    <changeSet id="BAH-4994-20260909-fhir2-person-contact-point-attribute-type" author="Bahmni" runAlways="true">
+        <preConditions onFail="WARN">
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*) FROM person_attribute_type WHERE name = 'phoneNumber' AND retired = 0;
+            </sqlCheck>
+        </preConditions>
+        <comment>Map Bahmni's phoneNumber person attribute type onto FHIR Patient.telecom. Liquibase's static globalproperties domain cannot express dynamic UUID mapping per-install.</comment>
+        <sql>
+            INSERT IGNORE INTO global_property (property, property_value, description)
+            VALUES ('fhir2.personContactPointAttributeTypeUuid', '', 'FHIR2 Person Attribute Type for Contact Point');
+        </sql>
+        <update tableName="global_property">
+            <column name="property_value" valueComputed="(SELECT uuid FROM person_attribute_type WHERE name='phoneNumber' AND retired=0)"/>
+            <where>property='fhir2.personContactPointAttributeTypeUuid'</where>
+        </update>
+    </changeSet>
 </databaseChangeLog>
