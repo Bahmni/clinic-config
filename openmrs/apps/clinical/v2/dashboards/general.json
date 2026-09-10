@@ -162,6 +162,19 @@
       ]
     },
     {
+      "name": "Procedures",
+      "translationKey": "DASHBOARD_TITLE_PROCEDURES_KEY",
+      "icon": "fa-bed-pulse",
+      "controls": [
+        {
+          "type": "ordersControl",
+          "config": {
+            "orderType": "Procedure Order"
+          }
+        }
+      ]
+    },
+    {
       "name": "Forms",
       "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY",
       "icon": "fa-clipboard-list",
