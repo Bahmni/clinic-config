@@ -6,3 +6,4 @@ Uuid,Privilege name,Description
 ,app:clinical:legacyPatientTabs,Privilege to view legacy patient tabs
 ,app:patient-documents:legacyPatientTabs,Privilege to view legacy patient documents tabs
 ,app:legacy-registration,Privilege to view legacy patient registration tile
+,app:legacy-appointments,Privilege to view legacy appointment scheduling tile
