@@ -80,15 +80,25 @@
     "order": 8,
     "requiredPrivilege": "app:patient-documents"
   },
-  "appointmentScheduling": {
-    "id": "bahmni.appointment.scheduling",
+  "appointmentSchedulingNew": {
+    "id": "bahmni.appointment.scheduling.new",
     "extensionPointId": "org.bahmni.home.dashboard",
     "type": "link",
     "translationKey": "MODULE_LABEL_APPOINTMENT_SCHEDULING_KEY",
-    "url": "/appointments/#/home/manage/summary",
+    "url": "appointments/admin/services",
     "icon": "fa-calendar-days",
     "order": 9,
     "requiredPrivilege": "app:appointments"
+  },
+  "appointmentSchedulingLegacy": {
+    "id": "bahmni.appointment.scheduling",
+    "extensionPointId": "org.bahmni.home.dashboard",
+    "type": "link",
+    "translationKey": "MODULE_LABEL_APPOINTMENT_SCHEDULING_LEGACY_KEY",
+    "url": "/appointments/#/home/manage/summary",
+    "icon": "fa-calendar-days",
+    "order": 9,
+    "requiredPrivilege": "app:legacy-appointments"
   },
   "registrationLegacy": {
     "id": "bahmni.registration",
