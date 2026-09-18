@@ -1,0 +1,29 @@
+<div class="vaidra-visit-launch" ng-if="visitUuid">
+    <link rel="stylesheet" href="/bahmni_config/openmrs/apps/customDisplayControl/styles/vaidraVisitLaunch.css"/>
+    <div class="vaidra-visit-launch__card">
+        <div class="vaidra-visit-launch__copy">
+            <h2 class="vaidra-visit-launch__title">{{ ::'OPEN_IN_VAIDRA_KEY' | translate }}</h2>
+            <p class="vaidra-visit-launch__hint" ng-if="writeStatus === 'saving'">
+                {{ writeMessage || 'Saving Consultation Note from Vaidra…' }}
+            </p>
+            <p class="vaidra-visit-launch__hint" ng-if="writeStatus === 'saved'">
+                {{ writeMessage || 'Consultation Note saved to this visit.' }}
+            </p>
+            <p class="vaidra-visit-launch__hint vaidra-visit-launch__hint--muted" ng-if="writeStatus === 'error'">
+                {{ writeMessage || 'Could not save note.' }}
+            </p>
+            <p class="vaidra-visit-launch__hint" ng-if="!writeStatus && canLaunch">
+                Dictate or talk through the visit. When you finish, Vaidra saves a Consultation Note on this visit.
+            </p>
+            <p class="vaidra-visit-launch__hint vaidra-visit-launch__hint--muted" ng-if="!writeStatus && !canLaunch">
+                This visit is closed. Open an active visit to document.
+            </p>
+        </div>
+        <button type="button"
+                class="vaidra-visit-launch__button"
+                ng-disabled="!canLaunch || writeStatus === 'saving'"
+                ng-click="openInVaidra()">
+            {{ writeStatus === 'saving' ? 'Saving…' : (canLaunch ? 'Start now' : 'Visit closed') }}
+        </button>
+    </div>
+</div>
