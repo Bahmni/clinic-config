@@ -1,0 +1,72 @@
+{
+  "sources": {
+    "patient": {
+      "api": "fhir",
+      "resource": "Patient",
+      "params": {
+        "_id": "{{patientUUID}}",
+        "_revinclude": ["AllergyIntolerance:patient"],
+        "_count": "50"
+      }
+    },
+    "conditions": {
+      "api": "fhir",
+      "resource": "Condition",
+      "params": {
+        "patient": "{{patientUUID}}",
+        "category": "problem-list-item",
+        "clinical-status": "active",
+        "_sort": "-_lastUpdated",
+        "_count": "50"
+      }
+    },
+    "diagnoses": {
+      "api": "fhir",
+      "resource": "Condition",
+      "params": {
+        "patient": "{{patientUUID}}",
+        "category": "encounter-diagnosis",
+        "_sort": "-_lastUpdated",
+        "_count": "50"
+      }
+    },
+    "chiefComplaintObs": {
+      "api": "fhir",
+      "resource": "Observation",
+      "params": {
+        "encounter": "{{encounterUuid}}",
+        "code": "da47a35d-5806-48b7-b467-e29902759491",
+        "_include": ["Observation:has-member"]
+      }
+    },
+    "medicationRequests": {
+      "api": "fhir",
+      "resource": "MedicationRequest",
+      "params": {
+        "encounter": "{{encounterUuid}}",
+        "_include": ["MedicationRequest:medication"],
+        "_sort": "-_lastUpdated"
+      }
+    },
+    "investigations": {
+      "api": "fhir",
+      "resource": "ServiceRequest",
+      "params": { "encounter": "{{encounterUuid}}" }
+    },
+    "vitals": {
+      "api": "fhir",
+      "resource": "Observation",
+      "params": {
+        "patient": "{{patientUUID}}",
+        "code": "9bb0795c-4ff0-0305-1990-000000000020,5087AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5242AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5092AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,631f9e92-b15f-41da-a6ba-4f4cd67f36b7",
+        "date": ["ge{{visitStartDate}}", "le{{visitEndDate}}"],
+        "_include": ["Observation:has-member"],
+        "_sort": "-_lastUpdated"
+      }
+    },
+    "providerPractitioner": {
+      "api": "fhir",
+      "resource": "Practitioner/{{providerUuid}}"
+    }
+  }
+}
