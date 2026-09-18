@@ -1,0 +1,13 @@
+{
+    "_comment": "Each Bahmni host is its own Vaidra site (location.host). Optional vaidraSiteId only if this hospital must keep one tenant across hostname changes.",
+    "vaidraLaunch": {
+        "type": "custom",
+        "displayOrder": -10,
+        "config": {
+            "title": "Auto notes. Live AI.",
+            "vaidraWebBaseUrl": "https://platform.vaidra.care",
+            "vaidraApiBaseUrl": "https://api.vaidra.care",
+            "template": "<vaidra-visit-launch patient='patient' visit-uuid='visitUuid' visit-summary='visitSummary' config='config'></vaidra-visit-launch>"
+        }
+    }
+}
