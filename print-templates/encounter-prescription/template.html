@@ -1,0 +1,221 @@
+{% extends "_base/portrait.html" %}
+
+{% block title %}{{ 'ENCOUNTER_PRESCRIPTION_TITLE' | t }}{% endblock %}
+
+{% block header %}
+<div class="print-header">
+  <div class="print-title-with-logo">
+    <div>
+      <img src="/bahmni_config/openmrs/apps/home/logo.png" height="30" width="100" alt="logo" />
+      <h1>{{ 'REGISTRATION_INSTITUTION_NAME' | t }}</h1>
+    </div>
+    <span class="clinic-info">{{ 'ENCOUNTER_PRESCRIPTION_TITLE' | t }}</span>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="patient-info">
+  <table class="info-grid">
+    <tr>
+      <td class="label">{{ 'NAME' | t }}:</td>
+      <td class="value">{{ computed.patientName | default('') }}</td>
+      <td class="label">{{ 'PATIENT_ID' | t }}:</td>
+      <td class="value">{{ computed.patientId | default('') }}</td>
+    </tr>
+    <tr>
+      <td class="label">{{ 'GENDER' | t }}:</td>
+      <td class="value">{{ computed.gender | capitalize | default('') }}</td>
+      <td class="label">{{ 'AGE' | t }}:</td>
+      <td class="value">{% if computed.birthDate %}{{ computed.birthDate | age }}{% endif %}</td>
+    </tr>
+    <tr>
+      <td class="label">{{ 'ADDRESS' | t }}:</td>
+      <td class="value">{{ computed.address | default('') }}</td>
+    </tr>
+  </table>
+</div>
+
+<h2 class="section-title">{{ 'ALLERGIES' | t }}</h2>
+{% if computed.allergies and computed.allergies.length > 0 %}
+<table class="data-table">
+  <tr>
+    <th>{{ 'ALLERGEN' | t }}</th>
+    <th>{{ 'SEVERITY' | t }}</th>
+    <th>{{ 'REACTION' | t }}</th>
+    <th>{{ 'RECORDED_BY' | t }}</th>
+    <th>{{ 'RECORDED_DATE' | t }}</th>
+  </tr>
+  {% for allergy in computed.allergies %}
+  <tr>
+    <td>{{ allergy.allergen | default('') }}</td>
+    <td>{{ allergy.severity | capitalize | default('') }}</td>
+    <td>{{ allergy.reactions | join(', ') }}</td>
+    <td>{{ allergy.recordedBy | default('') }}</td>
+    <td>{{ allergy.recordedDate | dateFormat | default('') }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<div class="no-data">{{ 'NONE_RECORDED' | t }}</div>
+{% endif %}
+
+<h2 class="section-title">{{ 'CONDITIONS' | t }}</h2>
+{% if computed.conditions and computed.conditions.length > 0 %}
+<table class="data-table">
+  <tr>
+    <th>{{ 'CONDITION' | t }}</th>
+    <th>{{ 'ONSET_DATE' | t }}</th>
+    <th>{{ 'RECORDED_BY' | t }}</th>
+    <th>{{ 'NOTES' | t }}</th>
+  </tr>
+  {% for condition in computed.conditions %}
+  <tr>
+    <td>{{ condition.name | default('') }}</td>
+    <td>{{ condition.onsetDate | dateFormat | default('') }}</td>
+    <td>{{ condition.recordedBy | default('') }}</td>
+    <td>{{ condition.note | default('') }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<div class="no-data">{{ 'NONE_RECORDED' | t }}</div>
+{% endif %}
+
+<h2 class="section-title">{{ 'DIAGNOSIS' | t }}</h2>
+{% if computed.diagnoses and computed.diagnoses.length > 0 %}
+<table class="data-table">
+  <tr>
+    <th>{{ 'DIAGNOSIS' | t }}</th>
+    <th>{{ 'CERTAINTY' | t }}</th>
+    <th>{{ 'RECORDED_DATE' | t }}</th>
+    <th>{{ 'NOTES' | t }}</th>
+  </tr>
+  {% for diagnosis in computed.diagnoses %}
+  <tr>
+    <td>{{ diagnosis.name | default('') }}</td>
+    <td>{{ diagnosis.certainty | capitalize | default('') }}</td>
+    <td>{{ diagnosis.recordedDate | dateFormat | default('') }}</td>
+    <td>{{ diagnosis.note | default('') }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<div class="no-data">{{ 'NONE_RECORDED' | t }}</div>
+{% endif %}
+
+<h2 class="section-title">{{ 'CHIEF_COMPLAINT' | t }}</h2>
+{% if computed.chiefComplaints and computed.chiefComplaints.length > 0 %}
+<table class="data-table">
+  <tr>
+    <th>{{ 'CHIEF_COMPLAINT' | t }}</th>
+    <th>{{ 'DURATION' | t }}</th>
+  </tr>
+  {% for cc in computed.chiefComplaints %}
+  <tr>
+    <td>{{ cc.complaint | default('') }}{% if cc.notes %} — {{ cc.notes }}{% endif %}</td>
+    <td>{{ cc.duration | default('') }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<div class="no-data">{{ 'NONE_RECORDED' | t }}</div>
+{% endif %}
+
+<h2 class="section-title">{{ 'MEDICATIONS' | t }}</h2>
+{% if computed.medications and computed.medications.length > 0 %}
+<table class="prescription-table">
+  <tr>
+    <th class="col-sl">{{ 'S_NO' | t }}</th>
+    <th class="col-drug">{{ 'DRUG' | t }}</th>
+    <th class="col-dose">{{ 'DOSAGE_INSTRUCTIONS' | t }}</th>
+    <th class="col-date">{{ 'START_DATE' | t }}</th>
+  </tr>
+  {% for drug in computed.medications %}
+  <tbody>
+    <tr>
+      <td>{{ loop.index }}.</td>
+      <td class="drug-name">
+        {{ drug.drugName | default('') }}
+        {% if drug.priority == 'STAT' %}<span class="badge badge-stat">STAT</span>{% endif %}
+        {% if drug.priority == 'PRN' %}<span class="badge badge-prn">PRN</span>{% endif %}
+      </td>
+      <td>{{ drug.dosageInstructions | default('-') }}</td>
+      <td>{{ drug.startDate | dateFormat }}</td>
+    </tr>
+    {% if drug.treatmentNotes %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td colspan="2" class="inline-notes notes">
+        <p class="left"><strong>{{ 'TREATMENT_NOTES' | t }}: </strong>{{ drug.treatmentNotes }}</p>
+      </td>
+    </tr>
+    {% endif %}
+  </tbody>
+  {% endfor %}
+</table>
+{% else %}
+<div class="no-data">{{ 'NONE_RECORDED' | t }}</div>
+{% endif %}
+
+<h2 class="section-title">{{ 'INVESTIGATIONS' | t }}</h2>
+{% if computed.investigations and computed.investigations.length > 0 %}
+{% for group in computed.investigations %}
+<h3 class="subsection-title">{{ group.orderType }}</h3>
+<table class="data-table investigations-table">
+  <colgroup>
+    <col style="width: 35%;" />
+    <col style="width: 20%;" />
+    <col style="width: 45%;" />
+  </colgroup>
+  <tr>
+    <th>{{ 'TEST_NAME' | t }}</th>
+    <th>{{ 'ORDER_DATE' | t }}</th>
+    <th>{{ 'NOTES' | t }}</th>
+  </tr>
+  {% for investigation in group.items %}
+  <tr>
+    <td>{{ investigation.name | default('') }}</td>
+    <td>{{ investigation.orderDate | dateFormat | default('') }}</td>
+    <td>{{ investigation.note | default('') }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endfor %}
+{% else %}
+<div class="no-data">{{ 'NONE_RECORDED' | t }}</div>
+{% endif %}
+
+<h2 class="section-title">{{ 'VITALS' | t }}</h2>
+{% if computed.vitals and computed.vitals.length > 0 %}
+<table class="data-table">
+  <tr>
+    <th>{{ 'VITAL' | t }}</th>
+    <th>{{ 'VALUE' | t }}</th>
+  </tr>
+  {% for v in computed.vitals %}
+  <tr>
+    <td>{{ v.concept | default('') }}{% if v.range %} <span class="vital-range">{{ v.range }}</span>{% endif %}</td>
+    <td class="{{ 'abnormal' if v.abnormal }}">{{ v.value | default('-') }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<div class="no-data">{{ 'NONE_RECORDED' | t }}</div>
+{% endif %}
+
+<h2 class="section-title">{{ 'PROVIDER_DETAILS' | t }}</h2>
+<table class="info-grid">
+  <tr>
+    <td class="label">{{ 'PROVIDER_NAME' | t }}:</td>
+    <td class="value">{{ computed.providerName | default('') }}</td>
+    <!-- <td class="label">{{ 'LICENSE_NO' | t }}:</td>
+<td class="value">{{ computed.providerLicenseNumber | default('N/A') }}</td> -->
+  </tr>
+</table>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
