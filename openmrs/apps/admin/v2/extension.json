@@ -1,7 +1,7 @@
 {
   "auditLog": {
     "id": "bahmni.admin.auditLog",
-    "extensionPointId": "org.bahmni.admin.v2.dashboard",
+    "extensionPointId": "org.bahmni.admin.dashboard",
     "type": "link",
     "translationKey": "MODULE_LABEL_AUDIT_LOG_KEY",
     "label": "Audit Log",
@@ -12,7 +12,7 @@
   },
   "orderSet": {
     "id": "bahmni.admin.orderSet",
-    "extensionPointId": "org.bahmni.admin.v2.dashboard",
+    "extensionPointId": "org.bahmni.admin.dashboard",
     "type": "link",
     "translationKey": "MODULE_LABEL_ORDER_SET_KEY",
     "label": "Order Set",
@@ -23,7 +23,7 @@
   },
   "fhirExport": {
     "id": "bahmni.admin.fhirExport",
-    "extensionPointId": "org.bahmni.admin.v2.dashboard",
+    "extensionPointId": "org.bahmni.admin.dashboard",
     "type": "link",
     "translationKey": "MODULE_LABEL_FHIR_EXPORT_KEY",
     "label": "FHIR Export",
