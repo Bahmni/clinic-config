@@ -49,5 +49,8 @@
   "MODULE_LABEL_ADMIN_KEY": "Administrateur",
   "MODULE_LABEL_REPORTS_KEY": "Rapports",
   "MODULE_LABEL_LOGOUT_KEY": "Déconnexion",
-  "MODULE_LABEL_LOGIN_KEY": "Connexion"
+  "MODULE_LABEL_LOGIN_KEY": "Connexion",
+  "MODULE_LABEL_AUDIT_LOG_KEY": "Journal d'audit",
+  "MODULE_LABEL_ORDER_SET_KEY": "Ensemble de prescriptions",
+  "MODULE_LABEL_FHIR_EXPORT_KEY": "Exportation FHIR"
 }

@@ -49,5 +49,8 @@
   "MODULE_LABEL_ADMIN_KEY": "المدير",
   "MODULE_LABEL_REPORTS_KEY": "التقارير",
   "MODULE_LABEL_LOGOUT_KEY": "تسجيل خروج",
-  "MODULE_LABEL_LOGIN_KEY": "تسجيل دخول"
+  "MODULE_LABEL_LOGIN_KEY": "تسجيل دخول",
+  "MODULE_LABEL_AUDIT_LOG_KEY": "سجل التدقيق",
+  "MODULE_LABEL_ORDER_SET_KEY": "مجموعة الطلبات",
+  "MODULE_LABEL_FHIR_EXPORT_KEY": "تصدير FHIR"
 }

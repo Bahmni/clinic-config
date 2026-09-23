@@ -49,5 +49,8 @@
   "MODULE_LABEL_ADMIN_KEY": "ຜູ້ຈັດການລະບົບ",
   "MODULE_LABEL_REPORTS_KEY": "ບົດລາຍງານ",
   "MODULE_LABEL_LOGOUT_KEY": "ອອກຈາກລະບົບ",
-  "MODULE_LABEL_LOGIN_KEY": "ເຂົ້າສູ່ລະບົບ"
+  "MODULE_LABEL_LOGIN_KEY": "ເຂົ້າສູ່ລະບົບ",
+  "MODULE_LABEL_AUDIT_LOG_KEY": "ບັນທຶກການກວດສອບ",
+  "MODULE_LABEL_ORDER_SET_KEY": "ຊຸດຄໍາສັ່ງ",
+  "MODULE_LABEL_FHIR_EXPORT_KEY": "ການສົ່ງອອກ FHIR"
 }
