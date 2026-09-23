@@ -1,6 +1,24 @@
 {
   "sections": [
     {
+      "name": "Visits",
+      "translationKey": "DASHBOARD_TITLE_VISITS_KEY",
+      "icon": "fa-calendar-days",
+      "controls": [
+        {
+          "type": "visits",
+          "requiredPrivileges": ["View Visits"],
+          "config": {
+            "maximumNoOfVisits": 4,
+            "fields": ["visitDate", "visitType", "status", "location"],
+            "navigationURL": "/bahmni/clinical/index.html#/default/patient/{patientUuid}/dashboard/visit/{id}/",
+            "ipdDashboardUrl": "/bahmni/clinical/index.html#/default/patient/{patientUuid}/dashboard/visit/ipd/{id}",
+            "ipdVisitTypes": ["IPD"]
+          }
+        }
+      ]
+    },
+    {
       "name": "Basic Details",
       "translationKey": "DASHBOARD_TITLE_BASIC_DETAILS_KEY",
       "icon": "fa-user",
