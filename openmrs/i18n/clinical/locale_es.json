@@ -96,5 +96,7 @@
   "DOCUMENTS_ATTACHMENTS": "Adjuntos",
   "CLINICAL_PRINT_MEDICATION_PRESCRIPTION_KEY": "Imprimir los últimos medicamentos",
   "MODULE_LABEL_ALL_LEGACY_KEY": "Todo (heredado)",
-  "STOP_ACTION_LABEL": "Detener"
+  "STOP_ACTION_LABEL": "Detener",
+  "OPEN_IN_VAIDRA_KEY": "Notas automáticas. IA en vivo.",
+  "DASHBOARD_TITLE_OPEN_IN_VAIDRA_KEY": "Notas automáticas. IA en vivo."
 }

@@ -1,0 +1,55 @@
+.vaidra-visit-launch {
+    margin: 0 0 1rem;
+}
+
+.vaidra-visit-launch__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem 1.25rem;
+    border: 2px solid #00796b;
+    border-radius: 4px;
+    background: #e0f2f1;
+}
+
+.vaidra-visit-launch__title {
+    margin: 0 0 0.35rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #004d40;
+}
+
+.vaidra-visit-launch__hint {
+    margin: 0;
+    max-width: 36rem;
+    font-size: 0.9rem;
+    color: #37474f;
+    line-height: 1.35;
+}
+
+.vaidra-visit-launch__hint--muted {
+    color: #78909c;
+}
+
+.vaidra-visit-launch__button {
+    flex-shrink: 0;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 3px;
+    background: #00796b;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.vaidra-visit-launch__button:hover:not(:disabled) {
+    background: #00695c;
+}
+
+.vaidra-visit-launch__button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}

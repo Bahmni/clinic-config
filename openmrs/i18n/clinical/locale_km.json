@@ -95,5 +95,7 @@
   "PROGRAM_TREATMENT_DATE": "Treatment Date",
   "PROGRAM_COMORBIDITES": "Co-morbidites",
   "PROGRAM_DOCTORINCHARGE": "Doctor In-Charge",
-  "PROGRAM_PATIENT_STAGE": "Patient Stage"
+  "PROGRAM_PATIENT_STAGE": "Patient Stage",
+  "OPEN_IN_VAIDRA_KEY": "កំណត់ត្រាស្វ័យប្រវត្តិ។ AI ផ្ទាល់។",
+  "DASHBOARD_TITLE_OPEN_IN_VAIDRA_KEY": "កំណត់ត្រាស្វ័យប្រវត្តិ។ AI ផ្ទាល់។"
 }
