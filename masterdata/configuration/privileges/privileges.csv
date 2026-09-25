@@ -3,6 +3,7 @@ Uuid,Privilege name,Description
 ,Send SMS,Privilege to send SMS
 ,app:clinical:addImmunizations,Privilege to add immunizations in clinical module.
 ,app:clinical:printmedications,Privilege to print Medications
+,app:clinical:printPrescription,Privilege to print prescription
 ,app:clinical:legacyPatientTabs,Privilege to view legacy patient tabs
 ,app:patient-documents:legacyPatientTabs,Privilege to view legacy patient documents tabs
 ,app:legacy-registration,Privilege to view legacy patient registration tile

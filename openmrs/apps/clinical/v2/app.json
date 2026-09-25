@@ -13,6 +13,12 @@
           "translationKey": "CLINICAL_PRINT_MEDICATION_PRESCRIPTION_KEY",
           "templateId": "PRESCRIPTION_V1",
           "privileges": ["app:clinical:printmedications"]
+        },
+        {
+          "translationKey": "PRINT_PRESCRIPTION_KEY",
+          "templateId": "PRESCRIPTION_ENCOUNTER_V1",
+          "privileges": ["app:clinical:printPrescription"],
+          "category": "PRESCRIPTION"
         }
       ]
     }
