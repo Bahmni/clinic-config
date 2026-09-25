@@ -10,7 +10,7 @@
           "requiredPrivileges": ["View Visits"],
           "config": {
             "maximumNoOfVisits": 4,
-            "fields": ["visitDate", "visitType", "status", "location"],
+            "fields": ["status", "location"],
             "navigationURL": "/bahmni/clinical/index.html#/default/patient/{patientUuid}/dashboard/visit/{id}/",
             "ipdDashboardUrl": "/bahmni/clinical/index.html#/default/patient/{patientUuid}/dashboard/visit/ipd/{id}",
             "ipdVisitTypes": ["IPD"]
