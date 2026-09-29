@@ -7,7 +7,7 @@
       "controls": [
         {
           "type": "visits",
-          "requiredPrivileges": ["View Visits"],
+          "requiredPrivileges": ["Get Visits"],
           "config": {
             "maximumNoOfVisits": 4,
             "fields": ["status", "location"],
