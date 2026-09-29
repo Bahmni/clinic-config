@@ -23,6 +23,7 @@
   "NOTICE_OPD_DAYS":             "Los días de consulta externa son lunes, miércoles y viernes.",
   "NOTICE_SUNDAY_HOLIDAY":       "Los domingos son días festivos.",
   "CAUTION_SMOKING":             "Fumar y mascar tabaco puede causar cáncer, enfermedades cardíacas y ASMA.",
+
   "ENCOUNTER_PRESCRIPTION_TITLE": "Prescripción del Encuentro",
   "PATIENT_ID":        "ID",
   "NONE_RECORDED":     "Ninguno",
@@ -48,13 +49,11 @@
   "TREATMENT_NOTES":   "Notas de Tratamiento",
   "INVESTIGATIONS":    "Investigaciones",
   "TEST_NAME":         "Prueba",
-  "STATUS":            "Estado",
-  "ORDERED_BY":        "Ordenado Por",
+  "INVESTIGATION_PANEL": "Panel",
   "ORDER_DATE":        "Fecha de Orden",
   "VITALS":            "Signos Vitales",
   "VITAL":             "Signo Vital",
   "VALUE":             "Medición",
   "PROVIDER_DETAILS":  "Detalles del Proveedor",
-  "PROVIDER_NAME":     "Proveedor",
-  "LICENSE_NO":        "N.° de Licencia"
+  "PROVIDER_NAME":     "Proveedor"
 }

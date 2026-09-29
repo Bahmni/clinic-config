@@ -1,10 +1,10 @@
-// No ProviderAttributeType for license number yet, so hardcode until it's added.
-const LICENSE_NUMBER_PLACEHOLDER = '-';
-
 module.exports = {
   compute: async function ({ context, resolved, ValidationError, fhirPath }) {
     if (!context?.patientUUID) throw new ValidationError('patientUUID is required');
     if (!context?.encounterUuid) throw new ValidationError('encounterUuid is required');
+    if (!context?.visitStartDate) throw new ValidationError('visitStartDate is required');
+    if (!context?.visitEndDate) throw new ValidationError('visitEndDate is required');
+    if (!context?.providerUuid) throw new ValidationError('providerUuid is required');
 
     // "patient" bundle also carries AllergyIntolerance via _revinclude; split by resourceType.
     const patient = fhirPath(resolved?.patient, "Bundle.entry.resource.where(resourceType = 'Patient').first()");
@@ -22,16 +22,15 @@ module.exports = {
       gender: fhirPath(patient, 'gender') ?? '',
       address: buildAddress(fhirPath, patient),
 
-      allergies: buildAllergies(fhirPath, allergyResources),
-      conditions: buildConditions(fhirPath, resolved?.conditions),
-      diagnoses: buildDiagnoses(fhirPath, resolved?.diagnoses, context.encounterUuid),
+      allergies: buildAllergies(fhirPath, allergyResources, context.timeZone),
+      conditions: buildConditions(fhirPath, resolved?.conditions, context.timeZone),
+      diagnoses: buildDiagnoses(fhirPath, resolved?.diagnoses, context.encounterUuid, context.timeZone),
       chiefComplaints: buildChiefComplaints(fhirPath, resolved?.chiefComplaintObs),
-      medications: buildMedications(fhirPath, resolved?.medicationRequests),
-      investigations: buildInvestigations(fhirPath, resolved?.investigations),
+      medications: buildMedications(fhirPath, resolved?.medicationRequests, context.timeZone),
+      investigations: buildInvestigations(fhirPath, resolved?.investigations, context.timeZone),
       vitals: buildVitals(fhirPath, resolved?.vitals),
 
       providerName: fhirPath(provider, 'name.first().text') ?? '',
-      providerLicenseNumber: LICENSE_NUMBER_PLACEHOLDER,
     };
   },
 };
@@ -43,6 +42,18 @@ function toArray(val) {
 
 function refId(reference) {
   return reference?.split('/')?.[1] ?? '';
+}
+
+// Matches prescriptions/compute.js's toLocalDate so both templates resolve raw FHIR
+// datetimes (which carry their own UTC offset) to the same calendar date before | dateFormat
+// re-renders them in the server's local zone.
+function toLocalDate(dateStr, timeZone) {
+  if (!dateStr) return '';
+  try {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: timeZone ?? 'UTC', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(dateStr));
+  } catch {
+    return dateStr;
+  }
 }
 
 // House number/locality live in a nested OpenMRS address extension, not plain FHIR Address fields.
@@ -63,7 +74,7 @@ function buildAddress(fhirPath, patient) {
   return composed || (fhirPath(patient, 'address.first().text') ?? '');
 }
 
-function buildAllergies(fhirPath, resources) {
+function buildAllergies(fhirPath, resources, timeZone) {
   return (resources ?? []).map((a) => ({
     allergen: fhirPath(a, 'code.text') ?? fhirPath(a, 'code.coding.first().display') ?? '',
     // Falls back to criticality only when no reaction severity is recorded.
@@ -72,26 +83,26 @@ function buildAllergies(fhirPath, resources) {
       .map((m) => m.text ?? m.coding?.[0]?.display ?? '')
       .filter(Boolean),
     recordedBy: fhirPath(a, 'recorder.display') ?? '',
-    recordedDate: fhirPath(a, 'recordedDate') ?? '',
+    recordedDate: toLocalDate(fhirPath(a, 'recordedDate'), timeZone),
   }));
 }
 
-function buildConditions(fhirPath, bundle) {
+function buildConditions(fhirPath, bundle, timeZone) {
   return toArray(fhirPath(bundle, 'Bundle.entry.resource')).map((c) => ({
     name: fhirPath(c, 'code.text') ?? fhirPath(c, 'code.coding.first().display') ?? '',
-    onsetDate: fhirPath(c, 'onsetDateTime') ?? '',
+    onsetDate: toLocalDate(fhirPath(c, 'onsetDateTime'), timeZone),
     recordedBy: fhirPath(c, 'recorder.display') ?? '',
     note: toArray(fhirPath(c, 'note.text')).filter(Boolean).join('; '),
   }));
 }
 
-function buildDiagnoses(fhirPath, bundle, encounterUuid) {
+function buildDiagnoses(fhirPath, bundle, encounterUuid, timeZone) {
   return toArray(fhirPath(bundle, 'Bundle.entry.resource'))
     .filter((d) => refId(fhirPath(d, 'encounter.reference')) === encounterUuid)
     .map((d) => ({
       name: fhirPath(d, 'code.text') ?? fhirPath(d, 'code.coding.first().display') ?? '',
       certainty: fhirPath(d, 'verificationStatus.coding.first().display') ?? fhirPath(d, 'verificationStatus.coding.first().code') ?? '',
-      recordedDate: fhirPath(d, 'recordedDate') ?? '',
+      recordedDate: toLocalDate(fhirPath(d, 'recordedDate'), timeZone),
       note: toArray(fhirPath(d, 'note.text')).filter(Boolean).join('; '),
     }));
 }
@@ -122,7 +133,7 @@ function buildChiefComplaints(fhirPath, bundle) {
     .filter((c) => c.complaint);
 }
 
-function buildMedications(fhirPath, bundle) {
+function buildMedications(fhirPath, bundle, timeZone) {
   const medicationResources = toArray(fhirPath(bundle, "Bundle.entry.resource.where(resourceType = 'Medication')"));
   const medicationMap = new Map(
     medicationResources.map((m) => [m.id, fhirPath(m, 'form.text') ?? fhirPath(m, 'form.coding.first().display') ?? '']),
@@ -140,7 +151,10 @@ function buildMedications(fhirPath, bundle) {
       return {
         drugName: dosageForm ? `${baseName} (${dosageForm})` : baseName,
         dosageInstructions: buildDosageInstructions(fhirPath, mr.dosageInstruction),
-        startDate: fhirPath(mr, 'dosageInstruction.first().timing.event.first()') ?? fhirPath(mr, 'authoredOn') ?? '',
+        startDate: toLocalDate(
+          fhirPath(mr, 'dosageInstruction.first().timing.event.first()') ?? fhirPath(mr, 'authoredOn'),
+          timeZone,
+        ),
         treatmentNotes: parseAdditionalInstructions(fhirPath(mr, 'dosageInstruction.first().text')) || fhirPath(mr, 'note.first().text') || '',
         priority,
       };
@@ -180,7 +194,7 @@ function parseInstructions(text) {
     const instr = JSON.parse(text)?.instructions ?? '';
     return instr.toLowerCase() === 'as directed' ? '' : instr;
   } catch {
-    return text;
+    return '';
   }
 }
 
@@ -198,8 +212,12 @@ function durationLabel(code) {
   return map[code] ?? code ?? '';
 }
 
+// bahmni-module-fhir2-addl-extension tags ServiceRequest with this extension (valueString
+// 'Panel'/'Test') when the ordered concept's class is LabSet/LabTest/Test.
+const LAB_ORDER_CONCEPT_TYPE_EXTENSION_URL = 'http://fhir.bahmni.org/ext/lab-order-concept-type';
+
 // Grouped dynamically by category; requests with no category are dropped.
-function buildInvestigations(fhirPath, bundle) {
+function buildInvestigations(fhirPath, bundle, timeZone) {
   const requests = toArray(fhirPath(bundle, 'Bundle.entry.resource'));
 
   const groups = new Map();
@@ -207,12 +225,16 @@ function buildInvestigations(fhirPath, bundle) {
     const orderType = fhirPath(sr, 'category.first().text') ?? fhirPath(sr, 'category.first().coding.first().display') ?? '';
     if (!orderType) continue;
 
+    const isPanel =
+      fhirPath(sr, `extension.where(url = '${LAB_ORDER_CONCEPT_TYPE_EXTENSION_URL}').valueString`) === 'Panel';
+
     if (!groups.has(orderType)) groups.set(orderType, []);
     groups.get(orderType).push({
       name: fhirPath(sr, 'code.text') ?? fhirPath(sr, 'code.coding.first().display') ?? '',
       // meta.lastUpdated reflects order status changes; authoredOn stays fixed at creation.
-      orderDate: fhirPath(sr, 'meta.lastUpdated') ?? '',
+      orderDate: toLocalDate(fhirPath(sr, 'meta.lastUpdated'), timeZone),
       note: toArray(fhirPath(sr, 'note.text')).filter(Boolean).join('; '),
+      isPanel,
     });
   }
 
@@ -251,8 +273,10 @@ function buildVitals(fhirPath, bundle) {
     if (!concept) continue;
 
     const time = fhirPath(obs, 'effectiveDateTime') ?? fhirPath(obs, 'issued') ?? '';
-    if (!latestByConcept.has(concept) || time > latestByConcept.get(concept).time) {
-      latestByConcept.set(concept, { time, obs });
+    const timestamp = time ? Date.parse(time) : NaN;
+    const current = latestByConcept.get(concept);
+    if (!current || (!isNaN(timestamp) && (isNaN(current.timestamp) || timestamp > current.timestamp))) {
+      latestByConcept.set(concept, { timestamp, obs });
     }
   }
 

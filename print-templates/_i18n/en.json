@@ -48,13 +48,11 @@
   "TREATMENT_NOTES":   "Treatment Notes",
   "INVESTIGATIONS":    "Investigations",
   "TEST_NAME":         "Test",
-  "STATUS":            "Status",
-  "ORDERED_BY":        "Ordered By",
+  "INVESTIGATION_PANEL": "Panel",
   "ORDER_DATE":        "Order Date",
   "VITALS":            "Vitals",
   "VITAL":             "Vital Sign",
   "VALUE":             "Measurement",
   "PROVIDER_DETAILS":  "Provider Details",
-  "PROVIDER_NAME":     "Provider",
-  "LICENSE_NO":        "License No."
+  "PROVIDER_NAME":     "Provider"
 }

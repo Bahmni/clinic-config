@@ -45,7 +45,8 @@
       "params": {
         "encounter": "{{encounterUuid}}",
         "_include": ["MedicationRequest:medication"],
-        "_sort": "-_lastUpdated"
+        "_sort": "-_lastUpdated",
+        "_count": "100"
       }
     },
     "investigations": {
