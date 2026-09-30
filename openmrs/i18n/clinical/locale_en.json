@@ -115,5 +115,6 @@
   "MEDICATION_LABEL_ADDITIVES": "Additives",
   "MEDICATION_PHARMACIST_REVIEW_HEADING": "New Medications Available to be Dispensed",
   "MEDICATION_PHARMACIST_REVIEW_SUBTEXT": "Please review the patient's weight, allergies, and prescriptions to continue with dispensing.",
-  "MEDICATION_CONFIRM_REVIEW": "Confirm Review"
+  "MEDICATION_CONFIRM_REVIEW": "Confirm Review",
+  "PRINT_PRESCRIPTION_KEY": "Print prescription"
 }

@@ -9,6 +9,11 @@
       "id": "PRESCRIPTION_V1",
       "name": "Prescription",
       "folder": "prescriptions"
+    },
+    {
+      "id": "PRESCRIPTION_ENCOUNTER_V1",
+      "name": "Encounter Prescription",
+      "folder": "encounter-prescription"
     }
   ]
 }
