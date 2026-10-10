@@ -127,14 +127,24 @@ h1, h2, h3 { text-align: center; }
           <td>{{ computed.address | default('') }}</td>
         </tr>
         <tr>
-          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'VILLAGE' | t }}</span></td>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'LOCALITY_SECTOR' | t }}</span></td>
           <td class="registrationCard-details-seperator"> : </td>
-          <td>{{ computed.village | default('') }}</td>
+          <td>{{ computed.localitySector | default('') }}</td>
         </tr>
         <tr>
-          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'TEHSIL' | t }}</span></td>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'CITY_VILLAGE' | t }}</span></td>
           <td class="registrationCard-details-seperator"> : </td>
-          <td>{{ computed.tehsil | default('') }}</td>
+          <td>{{ computed.cityVillage | default('') }}</td>
+        </tr>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'DISTRICT' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td>{{ computed.district | default('') }}</td>
+        </tr>
+        <tr>
+          <td class="registrationCard-details-name"><span class="hindi-text">{{ 'PINCODE' | t }}</span></td>
+          <td class="registrationCard-details-seperator"> : </td>
+          <td>{{ computed.pincode | default('') }}</td>
         </tr>
         </tbody>
       </table>
