@@ -121,6 +121,27 @@
         "attributes": []
       },
       {
+        "type": "disposition",
+        "label": "DISPOSITION_FORM_TITLE",
+        "metadata": {
+          "dispositionTypes": [
+            { "value": "ADMIT", "label": "Admit" },
+            { "value": "DISCHARGE", "label": "Discharge" },
+            { "value": "TRANSFER", "label": "Transfer" },
+            { "value": "UNDO_DISCHARGE", "label": "Undo Discharge" }
+          ],
+          "notesMaxLength": 100,
+          "showDatePicker": true
+        },
+        "encounterTypes": ["Consultation"],
+        "privileges": ["Add Encounters"],
+        "attributes": [
+          { "name": "type", "required": true },
+          { "name": "date", "required": false },
+          { "name": "notes", "required": false }
+        ]
+      },
+      {
         "type": "immunizationHistory",
         "label": "IMMUNIZATION_HISTORY_INPUT_CONTROL_LABEL",
         "metadata": {
