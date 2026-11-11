@@ -193,6 +193,16 @@
       ]
     },
     {
+      "name": "Disposition",
+      "translationKey": "DASHBOARD_TITLE_DISPOSITION_KEY",
+      "icon": "fa-right-from-bracket",
+      "controls": [
+        {
+          "type": "disposition"
+        }
+      ]
+    },
+    {
       "name": "Forms",
       "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY",
       "icon": "fa-clipboard-list",
