@@ -1,0 +1,23 @@
+name: Check Forms
+
+on:
+  pull_request:
+    paths:
+      - 'masterdata/configuration/bahmniforms/**'
+      - 'scripts/check_form_answers.py'
+      - '.github/workflows/check-forms.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-form-answers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5  # v4.3.1
+        with:
+          persist-credentials: false
+      - name: Check for duplicate answers in Bahmni forms
+        run: python3 scripts/check_form_answers.py masterdata/configuration/bahmniforms
+        continue-on-error: true
