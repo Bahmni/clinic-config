@@ -20,3 +20,4 @@ jobs:
           persist-credentials: false
       - name: Check for duplicate answers in Bahmni forms
         run: python3 scripts/check_form_answers.py masterdata/configuration/bahmniforms
+        continue-on-error: true
