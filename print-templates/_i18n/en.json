@@ -54,5 +54,7 @@
   "VITAL":             "Vital Sign",
   "VALUE":             "Measurement",
   "PROVIDER_DETAILS":  "Provider Details",
-  "PROVIDER_NAME":     "Provider"
+  "PROVIDER_NAME":     "Provider",
+  "PROVIDER_LICENSE_NUMBER": "License No.",
+  "NOT_AVAILABLE":     "N/A"
 }

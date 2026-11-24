@@ -1,5 +1,5 @@
 module.exports = {
-  compute: async function ({ context, resolved, ValidationError, fhirPath }) {
+  compute: async function ({ context, resolved, ValidationError, fhirPath, translate }) {
     if (!context?.patientUUID) throw new ValidationError('patientUUID is required');
     if (!context?.encounterUuid) throw new ValidationError('encounterUuid is required');
     if (!context?.visitStartDate) throw new ValidationError('visitStartDate is required');
@@ -31,6 +31,7 @@ module.exports = {
       vitals: buildVitals(fhirPath, resolved?.vitals),
 
       providerName: fhirPath(provider, 'name.first().text') ?? '',
+      ...buildProviderLicense(translate, provider, context.practitionerIdentifierSystem, context.practitionerIdentifierLabel),
     };
   },
 };
@@ -38,6 +39,17 @@ module.exports = {
 function toArray(val) {
   if (val == null) return [];
   return Array.isArray(val) ? val : [val];
+}
+
+// Empty label hides the row in the template (identifier not configured). Matched in JS, not FHIRPath,
+// so a system URL containing quotes cannot break an expression.
+function buildProviderLicense(translate, provider, system, label) {
+  if (!system) return { providerLicenseLabel: '', providerLicenseNumber: '' };
+  const value = String(toArray(provider?.identifier).find((i) => i?.system === system)?.value ?? '').trim();
+  return {
+    providerLicenseLabel: translate(label || 'PROVIDER_LICENSE_NUMBER'),
+    providerLicenseNumber: value || translate('NOT_AVAILABLE'),
+  };
 }
 
 function refId(reference) {
