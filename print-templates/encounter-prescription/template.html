@@ -226,6 +226,12 @@
     <td class="label">{{ 'PROVIDER_NAME' | t }}:</td>
     <td class="value">{{ computed.providerName | default('') }}</td>
   </tr>
+  {% if computed.providerLicenseLabel %}
+  <tr>
+    <td class="label">{{ computed.providerLicenseLabel }}:</td>
+    <td class="value">{{ computed.providerLicenseNumber }}</td>
+  </tr>
+  {% endif %}
 </table>
 
 {% endblock %}

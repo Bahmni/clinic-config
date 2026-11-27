@@ -1,5 +1,9 @@
 {
   "patientInformation": {},
+  "practitionerIdentifierConfig": {
+    "system": "http://fhir.bahmni.org/identifier/provider-license",
+    "displayLabel": "PROVIDER_LICENSE_NUMBER"
+  },
   "actions": [],
   "dashboards": [
     {
